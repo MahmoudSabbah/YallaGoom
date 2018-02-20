@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_3sdp"
+    android:background="@drawable/shadow_layout">
+
+    <RelativeLayout
+        android:id="@+id/top2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp">
+
+        <com.yallagoom.widget.CircularImageView
+            android:id="@+id/image_sport2"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/circle_arrow"
+            app:civ_border_width="0sp" />
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/text_note2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/image_sport2"
+            android:layout_toRightOf="@+id/image_sport2"
+            android:maxLines="2"
+            android:text="Football"
+            android:textColor="@color/color_178d8e"
+            android:textSize="@dimen/_13sdp" />
+
+        <com.yallagoom.widget.SmoothCheckBox.SmoothCheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            app:color_checked="@color/color_178d8e" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rate_myself"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top2"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <com.yallagoom.font.Roboto_Italic
+            android:id="@+id/your_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Your Rate:(1/10)"
+            android:textColor="@color/color_178d8e" />
+
+        <com.warkiz.widget.IndicatorSeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            app:isb_indicator_stay="false"
+            app:isb_indicator_type="rectangle_rounded_corner"
+            app:isb_max="10"
+            app:isb_min="1"
+            app:isb_seek_bar_type="discrete_ticks_texts"
+            app:isb_tick_num="10"
+            app:isb_tick_color="@color/color_178d8e"
+            app:isb_thumb_color="@color/color_178d8e"
+            app:isb_track_progress_bar_color="@color/color_178d8e"
+            app:isb_track_background_bar_color="@color/color_view_bg"
+            app:isb_indicator_color="@color/color_9fdaa6"
+            app:isb_text_color="@color/color_178d8e"
+            app:isb_tick_type="oval" />
+    </LinearLayout>
+
+</RelativeLayout>

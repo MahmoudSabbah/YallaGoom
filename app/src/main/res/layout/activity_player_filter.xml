@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.yallagoom.activity.PlayerFilterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/color_f6f7f9"
+        android:gravity="center"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingBottom="@dimen/_5sdp"
+
+        android:paddingTop="@dimen/_25sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp">
+
+            <com.yallagoom.font.Roboto_Medium
+                android:id="@+id/ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/filter_header_lay"
+                android:layout_centerVertical="true"
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:text="@string/ok"
+                android:textColor="@drawable/pressed_f6f7f9"
+                android:textSize="@dimen/_12sdp" />
+
+            <RelativeLayout
+                android:id="@+id/filter_header_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ok"
+                android:layout_toLeftOf="@+id/cancel"
+                android:layout_toRightOf="@+id/ok"
+                android:layout_toStartOf="@+id/cancel"
+                android:gravity="center"
+                android:paddingBottom="@dimen/_7sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:paddingTop="@dimen/_7sdp">
+
+                <com.yallagoom.font.TextAwesome
+                    android:id="@+id/filter_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:text="@string/fa_sliders"
+                    android:textColor="@color/color_615e5e"
+                    android:textSize="@dimen/_15sdp" />
+
+                <com.yallagoom.font.Roboto_Medium
+                    android:id="@+id/search_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/filter_icon"
+                    android:layout_toRightOf="@+id/filter_icon"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="end"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:text="@string/players_filter"
+                    android:textColor="@color/color_6a6767"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="@dimen/_12sdp"
+
+                    />
+            </RelativeLayout>
+
+            <com.yallagoom.font.Roboto_Medium
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/filter_header_lay"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="Cancel"
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:text="@string/cancel"
+                android:textColor="@drawable/pressed_f6f7f9"
+                android:textSize="@dimen/_12sdp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".9dp"
+        android:background="@color/color_e2dfdf" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/title_float_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/title_remove"
+                    android:layout_toStartOf="@+id/title_remove">
+
+                    <com.yallagoom.font.Roboto_Light_EditText
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/player_name"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingBottom="3dp"
+                        android:textColor="@color/color_edit_text"
+                        android:textColorHint="@color/color_86999999"
+                        android:textSize="@dimen/_12sdp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <com.yallagoom.font.TextAwesome
+                    android:id="@+id/title_remove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:text="@string/fa_times_circle"
+                    android:textColor="@color/color_615e5e"
+                    android:textSize="@dimen/_15sdp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".9dp"
+                android:background="@color/color_view_bg" />
+
+            <RelativeLayout
+                android:id="@+id/choose_cat_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_marginRight="@dimen/_3sdp"
+                android:layout_marginTop="@dimen/_15sdp">
+
+                <com.yallagoom.font.TextAwesome
+                    android:id="@+id/choose_sport_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:text="@string/fa_search"
+                    android:textColor="@color/color_615e5e"
+                    android:textSize="@dimen/_15sdp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/search_sport_float_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/choose_sport_icon"
+                    android:layout_toLeftOf="@+id/search_sport_remove"
+                    android:layout_toRightOf="@+id/choose_sport_icon"
+                    android:layout_toStartOf="@+id/search_sport_remove"
+                    android:paddingBottom="@dimen/_5sdp">
+
+                    <com.yallagoom.font.Roboto_Light_EditText
+                        android:id="@+id/search_sport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:hint="@string/choose_sport"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/color_edit_text"
+                        android:textColorHint="@color/color_86999999"
+                        android:textSize="@dimen/_12sdp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <com.yallagoom.font.TextAwesome
+                    android:id="@+id/search_sport_remove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:text="@string/fa_times_circle"
+                    android:textColor="@color/color_615e5e"
+                    android:textSize="@dimen/_15sdp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".9dp"
+                android:background="@color/color_view_bg" />
+
+            <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/segmented1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal"
+                android:weightSum=".9"
+                segmentedgroup:sc_border_width=".7dp"
+                segmentedgroup:sc_checked_text_color="@color/white"
+                segmentedgroup:sc_corner_radius="5dp"
+                segmentedgroup:sc_tint_color="@color/color_2cb8b9"
+                segmentedgroup:sc_unchecked_text_color="@color/color_999999"
+                segmentedgroup:sc_unchecked_tint_color="@color/transparent">
+
+                <com.yallagoom.font.Roboto_LightRadio
+                    android:id="@+id/male_ra"
+                    style="@style/RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="@string/Male"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.yallagoom.font.Roboto_LightRadio
+                    android:id="@+id/female_Ar"
+                    style="@style/RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="@string/female"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.yallagoom.font.Roboto_LightRadio
+                    android:id="@+id/none_ra"
+                    style="@style/RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="@string/none"
+                    android:textSize="@dimen/_12sdp" />
+            </com.yallagoom.widget.segmented.SegmentedGroup>
+
+            <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/segmented2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal"
+                android:weightSum=".9"
+                segmentedgroup:sc_border_width=".7dp"
+                segmentedgroup:sc_checked_text_color="@color/white"
+                segmentedgroup:sc_corner_radius="5dp"
+                segmentedgroup:sc_tint_color="@color/color_2cb8b9"
+                segmentedgroup:sc_unchecked_text_color="@color/color_999999"
+                segmentedgroup:sc_unchecked_tint_color="@color/transparent">
+
+                <com.yallagoom.font.Roboto_LightRadio
+                    android:id="@+id/today_ra"
+                    style="@style/RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:text="@string/beginner"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <com.yallagoom.font.Roboto_LightRadio
+                    android:id="@+id/week_ra"
+                    style="@style/RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:text="@string/intermediate"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.yallagoom.font.Roboto_LightRadio
+                    android:id="@+id/none"
+                    style="@style/RadioButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:text="@string/professional"
+                    android:textSize="@dimen/_12sdp" />
+            </com.yallagoom.widget.segmented.SegmentedGroup>
+
+            <com.yallagoom.font.Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Age"
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/_12sdp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_minus20sdp">
+
+                <com.yallagoom.font.Roboto_Light
+                    android:id="@+id/min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="14"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.yallagoom.widget.RangeSeekBar
+                    android:id="@+id/seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/min"
+                    android:layout_toEndOf="@+id/min"
+                    android:layout_toLeftOf="@+id/max"
+                    android:layout_toStartOf="@+id/max"
+                    android:paddingLeft="@dimen/_3sdp"
+                    android:paddingRight="@dimen/_3sdp"
+                    app:rsb_cellMode="other"
+                    app:rsb_hintBGHeight="@dimen/_30sdp"
+                    app:rsb_lineColorEdge="@color/colorSeekBarDefault"
+                    app:rsb_lineColorSelected="@color/color_2cb8b9"
+                    app:rsb_max="65"
+                    app:rsb_min="14"
+                    app:rsb_reserve="1"
+                    app:rsb_seekBarHeight="1dp"
+                    app:rsb_seekBarMode="range"
+                    app:rsb_textPadding="17dp"
+                    app:rsb_textSize="16sp"
+
+                    app:rsb_thumbResId="@drawable/custom_thumb"
+                    app:rsb_thumbSize="@dimen/_20sdp" />
+                <com.yallagoom.font.Roboto_Light
+                    android:id="@+id/max"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="65"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/_12sdp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/choose_country_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_minus20sdp">
+
+                <com.yallagoom.font.TextAwesome
+                    android:id="@+id/country_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_3sdp"
+                    android:layout_marginRight="@dimen/_3sdp"
+                    android:gravity="center"
+                    android:text="@string/fa_map_marker"
+                    android:textColor="@color/color_615e5e"
+                    android:textSize="@dimen/_16sdp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/country_float_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/country_icon"
+                    android:layout_toLeftOf="@+id/country_remove"
+                    android:layout_toRightOf="@+id/country_icon"
+                    android:layout_toStartOf="@+id/country_remove"
+                    android:paddingBottom="@dimen/_5sdp">
+
+                    <com.yallagoom.font.Roboto_Light_EditText
+                        android:id="@+id/country_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/choose_country"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textColor="@color/color_edit_text"
+                        android:textColorHint="@color/color_86999999"
+                        android:textSize="@dimen/_12sdp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <com.yallagoom.font.TextAwesome
+                    android:id="@+id/country_remove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:text="@string/fa_times_circle"
+                    android:textColor="@color/color_615e5e"
+                    android:textSize="@dimen/_15sdp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".9dp"
+                android:background="@color/color_view_bg" />
+
+            <RelativeLayout
+                android:id="@+id/search_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/bt_bg_gradiant180"
+                android:gravity="center"
+                android:visibility="gone"
+                android:paddingBottom="@dimen/padding_bt"
+                android:paddingTop="@dimen/padding_bt">
+
+                <com.yallagoom.font.TextAwesome
+                    android:id="@+id/search_icon_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:text="@string/fa_search"
+
+                    android:textColor="@drawable/pressed_white"
+                    android:textSize="@dimen/_15sdp" />
+
+                <com.yallagoom.font.Roboto_Bold
+                    android:id="@+id/search_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/search_icon_2"
+                    android:layout_toRightOf="@+id/search_icon_2"
+                    android:text="@string/search"
+                    android:textColor="@drawable/pressed_white"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

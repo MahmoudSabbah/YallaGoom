@@ -1,0 +1,183 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bt_bg_gradiant180"
+        android:gravity="center"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingTop="@dimen/_19sdp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <com.yallagoom.font.TextAwesome
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:gravity="center"
+                android:text="@string/fa_sort_amount_desc"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_19sdp" />
+
+            <com.yallagoom.font.TextAwesome
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:gravity="center"
+                android:text="@string/fa_search"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_17sdp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/logo" />
+
+                <com.yallagoom.font.Roboto_Medium
+                    android:id="@+id/header_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_toRightOf="@+id/logo"
+                    android:gravity="center"
+                    android:text="Event"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@drawable/shadow_below" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2sp" />
+    </RelativeLayout>
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.yinglan.alphatabs.AlphaTabsIndicator
+                android:id="@+id/alphaIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <com.yinglan.alphatabs.AlphaTabView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/tap_padding"
+                    app:tabIconNormal="@drawable/foot_de"
+                    app:tabIconSelected="@drawable/foot_en"
+                    app:tabText="Event"
+                    app:tabTextSize="@dimen/tap_size"
+                    app:textColorNormal="#999999"
+                    app:textColorSelected="#1a9f9f" />
+
+                <com.yinglan.alphatabs.AlphaTabView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/tap_padding"
+                    app:tabIconNormal="@drawable/score_de"
+                    app:tabIconSelected="@drawable/score_en"
+                    app:tabText="Scores"
+                    app:tabTextSize="@dimen/tap_size"
+                    app:textColorNormal="#999999"
+                    app:textColorSelected="#1a9f9f" />
+
+                <com.yinglan.alphatabs.AlphaTabView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/tap_padding"
+                    app:tabIconNormal="@drawable/ticket_de"
+                    app:tabIconSelected="@drawable/ticket_en"
+                    app:tabText="Tickets"
+                    app:tabTextSize="@dimen/tap_size"
+                    app:textColorNormal="#999999"
+                    app:textColorSelected="#1a9f9f" />
+
+                <com.yinglan.alphatabs.AlphaTabView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/tap_padding"
+                    app:tabIconNormal="@drawable/gift_de"
+                    app:tabIconSelected="@drawable/gift_en"
+                    app:tabText="Gifts"
+                    app:tabTextSize="@dimen/tap_size"
+                    app:textColorNormal="#999999"
+                    app:textColorSelected="#1a9f9f" />
+
+
+                <com.yinglan.alphatabs.AlphaTabView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="@dimen/tap_padding"
+                    app:tabIconNormal="@drawable/settings_de"
+                    app:tabIconSelected="@drawable/settings_en"
+                    app:tabText="Settings"
+                    app:tabTextSize="@dimen/tap_size"
+                    app:textColorNormal="#999999"
+                    app:textColorSelected="#1a9f9f" />
+
+            </com.yinglan.alphatabs.AlphaTabsIndicator>
+
+        </android.support.v7.widget.CardView>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+</LinearLayout>

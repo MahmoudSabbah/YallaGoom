@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp">
+
+        <RelativeLayout
+            android:id="@+id/image_player_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerInParent="true" />
+
+            <com.yallagoom.widget.CircularImageView
+                android:id="@+id/image_player"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/default_image"
+                app:civ_border_width="0sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/image_player_lay"
+            android:layout_toLeftOf="@+id/check_friend"
+            android:layout_toRightOf="@+id/image_player_lay"
+            android:layout_toStartOf="@+id/check_friend"
+            android:gravity="center">
+
+            <HorizontalScrollView
+                android:id="@+id/player_name_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <com.yallagoom.font.Roboto_Regular
+                    android:id="@+id/player_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:text="Mahmoud Sabbah"
+                    android:textColor="@color/color_black_80"
+                    android:textSize="@dimen/_11sdp" />
+            </HorizontalScrollView>
+
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/location_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/player_name_scroll"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:text="Californian"
+                android:textColor="@color/color_80000000"
+                android:textSize="@dimen/_11sdp" />
+
+        </RelativeLayout>
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/check_friend"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:background="@drawable/selected_add_friend_search"
+            android:gravity="center"
+            android:paddingBottom="@dimen/_7sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:paddingTop="@dimen/_7sdp"
+            android:text="@string/already_friend"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/_11sdp" />
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:layout_below="@+id/container"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/color_e2dfdf" />
+
+</RelativeLayout>

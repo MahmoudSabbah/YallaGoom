@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/parent_view"
+    android:layout_marginEnd="@dimen/_5sdp"
+    android:layout_marginRight="@dimen/_5sdp"
+    android:layout_marginTop="12sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_48sdp"
+
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_c777da" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_11sdp"
+            android:layout_marginStart="@dimen/_11sdp"
+            android:gravity="center_vertical">
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/title_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qatar Marathon"
+                android:textColor="@color/color_3e3b3b"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="normal" />
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_event"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="Great Simple Studio / Millionnaya 29"
+                android:textColor="@color/color_6f6c6c"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="normal" />
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="17:00 - 18:00"
+                android:textColor="@color/color_6f6c6c"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="normal" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

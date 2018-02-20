@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fcfcfc"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/must_login"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="@dimen/_79sdp"
+            android:src="@drawable/must_login_icon"/>
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/login_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:textColor="@color/black"
+            android:text="@string/you_must"
+            android:textSize="@dimen/_17sdp"
+            android:layout_below="@+id/must_login"/>
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/color_96282828"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:text="Lorem Ipsum is simply dummy text of the printing"
+            android:textSize="@dimen/_16sdp"
+            android:layout_below="@+id/login_text"/>
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/login_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_55sdp"
+            android:textColor="@drawable/pressed_color_178d8e"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:text="@string/log_in"
+            android:textSize="@dimen/_16sdp"
+            android:layout_below="@+id/title"/>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/paernt_swip"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_60sdp"
+    app:dragEdge="right"
+    app:mode="same_level">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/accept"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="match_parent"
+            android:background="@color/colord2d1d1"
+            android:gravity="center"
+            android:text="@string/accept"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/_12sdp" />
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/reject"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="match_parent"
+            android:background="@color/color_f5f5f5"
+            android:gravity="center"
+            android:text="@string/reject"
+            android:textColor="@color/color_a09d9d"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_12sdp"
+
+            android:layout_marginStart="@dimen/_12sdp"
+            android:paddingTop="@dimen/_5sdp">
+
+            <RelativeLayout
+                android:id="@+id/image_player_lay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_centerInParent="true" />
+
+                <com.yallagoom.widget.CircularImageView
+                    android:id="@+id/image_player"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:src="@drawable/default_image"
+                    app:civ_border_width="0sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/image_player_lay"
+                android:layout_toRightOf="@+id/image_player_lay"
+                android:gravity="center">
+
+                <com.yallagoom.font.Roboto_Regular
+                    android:id="@+id/player_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:text="Mahmoud Sabbah"
+                    android:textColor="@color/color_black_80"
+                    android:textSize="@dimen/_11sdp" />
+
+                <com.yallagoom.font.Roboto_Regular
+                    android:id="@+id/location_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/player_name"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:text="Californian"
+                    android:textColor="@color/color_80000000"
+                    android:textSize="@dimen/_11sdp" />
+
+                <com.yallagoom.font.Roboto_Regular
+                    android:id="@+id/sport_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/location_name"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:visibility="gone"
+                    android:scrollHorizontally="true"
+                    android:text="Football"
+                    android:textColor="@color/color_80000000"
+                    android:textSize="@dimen/_11sdp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_e2dfdf" />
+    </RelativeLayout>
+
+    <!-- android:layout_marginEnd="@dimen/_20sdp"
+     android:layout_marginRight="@dimen/_20sdp"-->
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

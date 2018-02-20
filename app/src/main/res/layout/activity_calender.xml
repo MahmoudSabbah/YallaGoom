@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="com.yallagoom.activity.CalenderActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/color_f6f7f9"
+        android:gravity="center"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingBottom="@dimen/_5sdp"
+
+        android:paddingTop="@dimen/_25sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp">
+
+            <com.yallagoom.font.Roboto_Medium
+                android:id="@+id/ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/filter_header_lay"
+                android:layout_centerVertical="true"
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:text="@string/ok"
+                android:textColor="@drawable/pressed_f6f7f9"
+                android:textSize="@dimen/_12sdp" />
+
+            <RelativeLayout
+                android:id="@+id/filter_header_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ok"
+                android:layout_toLeftOf="@+id/cancel"
+                android:layout_toRightOf="@+id/ok"
+                android:layout_toStartOf="@+id/cancel"
+                android:gravity="center"
+                android:paddingBottom="@dimen/_7sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:paddingTop="@dimen/_7sdp">
+
+                <com.yallagoom.font.TextAwesome
+                    android:id="@+id/filter_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:text="@string/fa_calendar"
+                    android:textColor="@color/color_615e5e"
+                    android:textSize="@dimen/_15sdp" />
+
+                <com.yallagoom.font.Roboto_Medium
+                    android:id="@+id/search_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/filter_icon"
+                    android:layout_toRightOf="@+id/filter_icon"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="end"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:text="Choose Date"
+                    android:textColor="@color/color_6a6767"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="@dimen/_12sdp"
+
+                    />
+            </RelativeLayout>
+
+            <com.yallagoom.font.Roboto_Medium
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/filter_header_lay"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="@dimen/_5sdp"
+                android:onClick="Cancel"
+                android:paddingTop="@dimen/_5sdp"
+                android:text="@string/cancel"
+                android:textColor="@drawable/pressed_f6f7f9"
+                android:textSize="@dimen/_12sdp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".9dp"
+        android:background="@color/color_e2dfdf" />
+
+    <com.yallagoom.font.Roboto_Medium
+        android:id="@+id/date_header"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_f6f7f9"
+        android:textSize="@dimen/_12sdp"
+        android:gravity="center"
+        android:text="2018-02-05" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:orientation="horizontal">
+
+        <com.yallagoom.font.Roboto_Medium
+            android:id="@+id/between"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="@string/between"
+            android:textColor="@drawable/select_calender"
+            android:textSize="@dimen/_13sdp" />
+
+        <com.yallagoom.font.Roboto_Medium
+            android:id="@+id/after_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="@string/after_date"
+            android:textColor="@drawable/select_calender"
+            android:textSize="@dimen/_13sdp" />
+
+        <com.yallagoom.font.Roboto_Medium
+            android:id="@+id/specific_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/specific_date"
+            android:textColor="@drawable/select_calender"
+            android:textSize="@dimen/_13sdp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/start_end_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_minus7sdp"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <com.yallagoom.font.Roboto_Medium
+            android:id="@+id/start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="@string/start_date"
+            android:textColor="@drawable/select_calender"
+            android:textSize="@dimen/_12sdp" />
+
+        <com.yallagoom.font.Roboto_Medium
+            android:id="@+id/end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="@string/end_date"
+            android:textColor="@drawable/select_calender"
+            android:textSize="@dimen/_12sdp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".9dp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@color/color_e2dfdf" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp">
+
+        <com.yallagoom.font.TextAwesome
+            android:id="@+id/previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/fa_arrow_circle_left"
+            android:textColor="@color/color_6a6767"
+
+            android:textSize="@dimen/_19sdp" />
+
+        <com.yallagoom.font.Roboto_Medium
+            android:id="@+id/date_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="5 Feb 2018"
+            android:textColor="@color/color_6a6767"
+            android:textSize="@dimen/_13sdp" />
+
+        <com.yallagoom.font.TextAwesome
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+
+            android:text="@string/fa_arrow_circle_right"
+            android:textColor="@color/color_6a6767"
+            android:textSize="@dimen/_19sdp" />
+    </RelativeLayout>
+
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/compactcalendar_view"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:compactCalendarBackgroundColor="@color/transparent"
+        app:compactCalendarCurrentDayBackgroundColor="@color/color_c5c3c3"
+        app:compactCalendarCurrentDayTextColor="@color/white"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="#1aa1a1"
+        app:compactCalendarCurrentSelectedDayTextColor="@color/white"
+        app:compactCalendarDisplayOtherMonthDays="true"
+        app:compactCalendarEventIndicatorStyle="fill_large_indicator"
+        app:compactCalendarOtherMonthDaysTextColor="@color/color_c5c3c3"
+        app:compactCalendarTargetHeight="250dp"
+        app:compactCalendarTextColor="#6a6767"
+        app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
+        app:compactCalendarTextSize="13sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".9dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/color_e2dfdf" />
+</LinearLayout>
