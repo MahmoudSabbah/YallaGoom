@@ -74,11 +74,11 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_toEndOf="@+id/image_player_lay"
                 android:layout_toRightOf="@+id/image_player_lay"
-                android:gravity="center">
+                >
 
                 <com.yallagoom.font.Roboto_Regular
                     android:id="@+id/player_name"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
@@ -89,7 +89,7 @@
 
                 <com.yallagoom.font.Roboto_Regular
                     android:id="@+id/location_name"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/player_name"
                     android:ellipsize="end"
@@ -101,7 +101,7 @@
 
                 <com.yallagoom.font.Roboto_Regular
                     android:id="@+id/sport_type"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/location_name"
                     android:ellipsize="end"

@@ -164,5 +164,6 @@ public class HomeListFragment extends Fragment implements GoogleApiClient.Connec
         });
 
     }
+
 }
 

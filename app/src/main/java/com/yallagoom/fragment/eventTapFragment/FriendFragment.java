@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -22,28 +23,25 @@ import com.yallagoom.adapter.RecycleViewMyFriendsList;
 import com.yallagoom.adapter.RecycleViewNewFriendsRequest;
 import com.yallagoom.api.GetMyFriendAsyncTask;
 import com.yallagoom.api.GetRequestFriendAsyncTask;
+import com.yallagoom.entity.MyFriendList;
 import com.yallagoom.entity.MyFriends;
 import com.yallagoom.interfaces.GetMyFriendCallback;
+import com.yallagoom.interfaces.GetMyFriendListCallback;
+import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.floatingactionbutton.FloatingActionButton;
 import com.yallagoom.widget.floatingactionbutton.FloatingActionsMenu;
 import com.yallagoom.widget.segmented.SegmentedGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class FriendFragment extends Fragment {
 
 
-    private TextView header_title;
-    private TextView no_msg;
-    private boolean auto = true;
-    private RecyclerView alert_list;
     RecyclerView mRecyclerView;
-
-    private int page = 1;
-    private ArrayList<MyFriends.FriendsList> selectPlayerLists;
     private SmartRefreshLayout refreshLayout;
-    // private EditText search_bt;
     private FloatingActionsMenu multiple_actions_down;
     private FloatingActionButton search_friends;
     private FloatingActionButton contact_friend;
@@ -53,6 +51,7 @@ public class FriendFragment extends Fragment {
     private RadioButton new_requests;
     private RecycleViewNewFriendsRequest recycleViewNewFriendsRequest;
     private boolean checkrefresh = false;
+    private RelativeLayout no_data_layout;
 
     public FriendFragment() {
         // Required empty public constructor
@@ -65,6 +64,7 @@ public class FriendFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_friends, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.fast_scroller_recycler);
         //   search_bt = (EditText) view.findViewById(R.id.search_bt);
+        no_data_layout = (RelativeLayout) view.findViewById(R.id.no_data_layout);
         segmented_friends = (SegmentedGroup) view.findViewById(R.id.segmented_friends);
         friends_list = (RadioButton) view.findViewById(R.id.friends_list);
         friends_list.setChecked(true);
@@ -151,6 +151,7 @@ public class FriendFragment extends Fragment {
                     }
                     checkrefresh = false;
                 } else {
+                    checkrefresh = false;
                     refreshLayout.finishRefresh();
                 }
 
@@ -163,18 +164,34 @@ public class FriendFragment extends Fragment {
     private void refreshItems() {
         mRecyclerView.setVisibility(View.INVISIBLE);
         multiple_actions_down.setVisibility(View.VISIBLE);
-        GetMyFriendAsyncTask getMyFriendAsyncTask = new GetMyFriendAsyncTask(FriendFragment.this.getActivity(), new GetMyFriendCallback() {
+        GetMyFriendAsyncTask getMyFriendAsyncTask = new GetMyFriendAsyncTask(FriendFragment.this.getActivity(), new GetMyFriendListCallback() {
             @Override
-            public void processFinish(MyFriends myFriend) {
-                Log.e("myFriend1", "" + myFriend.getData().size());
-                recycleViewFindPlayer = new RecycleViewMyFriendsList(myFriend.getData());
+            public void processFinish(MyFriendList myFriend) {
+                if (myFriend.getData().size()==0){
+                    no_data_layout.setVisibility(View.VISIBLE);
+                }else {
+                    no_data_layout.setVisibility(View.GONE);
+
+                }
+                List<MyFriendList.Data.User> users = new ArrayList<>();
+                int userId = ToolUtils.getSharedPreferences(FriendFragment.this.getActivity(), Constant.userData).getInt(Constant.userId, -1);
+                for (int i = 0; i < myFriend.getData().size(); i++) {
+                    Log.e("idUser",userId+" - "+myFriend.getData().get(i).getUser_id());
+                    if (userId != -1 && userId == myFriend.getData().get(i).getUser_id()) {
+                        users.add(myFriend.getData().get(i).getUser_target());
+                    }else {
+                        users.add(myFriend.getData().get(i).getUser());
+
+                    }
+                }
+
+                recycleViewFindPlayer = new RecycleViewMyFriendsList(users, FriendFragment.this.getActivity());
                 mRecyclerView.setAdapter(recycleViewFindPlayer);
                 mRecyclerView.setVisibility(View.VISIBLE);
                 onItemsLoadComplete();
             }
         });
         getMyFriendAsyncTask.execute();
-
 
     }
 
@@ -188,6 +205,12 @@ public class FriendFragment extends Fragment {
         GetRequestFriendAsyncTask getRequestFriendAsyncTask = new GetRequestFriendAsyncTask(FriendFragment.this.getActivity(), new GetMyFriendCallback() {
             @Override
             public void processFinish(MyFriends myFriend) {
+                if (myFriend.getData().size()==0){
+                    no_data_layout.setVisibility(View.VISIBLE);
+                }else {
+                    no_data_layout.setVisibility(View.GONE);
+
+                }
                 recycleViewNewFriendsRequest = new RecycleViewNewFriendsRequest(myFriend.getData());
                 mRecyclerView.setAdapter(recycleViewNewFriendsRequest);
                 mRecyclerView.setVisibility(View.VISIBLE);

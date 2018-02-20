@@ -64,6 +64,7 @@ public class AddFriendsBySearchActivity extends AppCompatActivity {
     private RecycleViewAddFriendsSearch recycleViewAddFriendsSearch;
     private EditText search_bt;
     private TextView right_text;
+    private RelativeLayout no_data_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,8 @@ public class AddFriendsBySearchActivity extends AppCompatActivity {
         parent = (LinearLayout) findViewById(R.id.parent);
         ToolUtils.hideStatus(AddFriendsBySearchActivity.this);
         ToolUtils.setLightStatusBar(parent, AddFriendsBySearchActivity.this);
+        no_data_layout = (RelativeLayout) findViewById(R.id.no_data_layout);
+
         right_text = (TextView) findViewById(R.id.right_text);
         levelList = new ArrayList<>();
         levelList.add(getString(R.string.none));
@@ -268,6 +271,12 @@ public class AddFriendsBySearchActivity extends AppCompatActivity {
                 gender, country_id, minage, maxage, rate, sport_id, new SearchFriendsCallback() {
             @Override
             public void finishProcess(Player player) {
+                if (player.getData().size()==0){
+                    no_data_layout.setVisibility(View.VISIBLE);
+                }else {
+                    no_data_layout.setVisibility(View.GONE);
+
+                }
                 selectPlayerLists = player.getData();
                 recycleViewAddFriendsSearch = new RecycleViewAddFriendsSearch(player);
                 players_list.setAdapter(recycleViewAddFriendsSearch);

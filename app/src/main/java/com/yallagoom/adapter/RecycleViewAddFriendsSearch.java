@@ -39,7 +39,7 @@ public class RecycleViewAddFriendsSearch extends RecyclerView.Adapter<RecycleVie
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         // holder.player_name.setText(daStringList.get(position).getFirst_name()+" "+daStringList.get(position).getLast_name() );
-        holder.player_name.setText(daStringList.get(position).getFirst_name()+" "+daStringList.get(position).getFirst_name());
+        holder.player_name.setText(daStringList.get(position).getFirst_name()+" "+daStringList.get(position).getLast_name());
         holder.check_friend.setSelected(true);
         holder.check_friend.setText(context.getString(R.string.add_friend));
         holder.check_friend.setOnClickListener(new View.OnClickListener() {

@@ -60,4 +60,5 @@ public class Constant {
     public static String EEEE_dd_MMM_yyyy="EEEE, dd MMM yyyy";
     public static String HH_mm_ss="HH:mm:ss";
     public static String hh_mm_aa="hh:mm aa";
+    public static String userId="userId";
 }

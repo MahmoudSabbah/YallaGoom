@@ -7,9 +7,11 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
+import com.yallagoom.entity.MyFriendList;
 import com.yallagoom.entity.MyFriends;
 import com.yallagoom.interfaces.AcceptFriendCallback;
 import com.yallagoom.interfaces.GetMyFriendCallback;
+import com.yallagoom.interfaces.GetMyFriendListCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
@@ -25,12 +27,12 @@ import okhttp3.Response;
 
 public class GetMyFriendAsyncTask extends AsyncTask<String, String, Integer> {
     private final Context mContext;
-    private final GetMyFriendCallback getMyFriendCallback;
+    private final GetMyFriendListCallback getMyFriendCallback;
     private KProgressHUD progress;
     private String error;
-    private MyFriends myFriend;
+    private MyFriendList myFriend;
 
-    public GetMyFriendAsyncTask(Context context, GetMyFriendCallback getMyFriendCallback) {
+    public GetMyFriendAsyncTask(Context context, GetMyFriendListCallback getMyFriendCallback) {
         mContext = context;
         this.getMyFriendCallback = getMyFriendCallback;
 
@@ -71,7 +73,7 @@ public class GetMyFriendAsyncTask extends AsyncTask<String, String, Integer> {
                     JSONObject data = jsonObject.getJSONObject(Constant.data);
                     Log.e("datadata", "" + data);
 
-                    myFriend = new Gson().fromJson(data.toString(), MyFriends.class);
+                    myFriend = new Gson().fromJson(data.toString(), MyFriendList.class);
 
                 }
                 return status;

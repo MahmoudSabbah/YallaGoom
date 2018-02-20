@@ -19,9 +19,12 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
 import com.yallagoom.api.BlockFriendAsyncTask;
 import com.yallagoom.api.DeleteFriendAsyncTask;
+import com.yallagoom.entity.MyFriendList;
 import com.yallagoom.entity.MyFriends;
 import com.yallagoom.interfaces.BlockFriendCallback;
 import com.yallagoom.interfaces.DeleteFriendCallback;
+import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.CircularImageView;
 
 import java.util.ArrayList;
@@ -30,7 +33,8 @@ import java.util.List;
 public class RecycleViewMyFriendsList extends RecyclerView.Adapter<RecycleViewMyFriendsList.MyViewHolder> implements SectionIndexer {
 
     private final ImageLoader imageLoader;
-    private ArrayList<MyFriends.FriendsList> dataplayer;
+    private final int userId;
+    private List<MyFriendList.Data.User> dataplayer;
     public Context context;
     private ArrayList<Integer> mSectionPositions;
 
@@ -39,7 +43,7 @@ public class RecycleViewMyFriendsList extends RecyclerView.Adapter<RecycleViewMy
         List<String> sections = new ArrayList<>(26);
         mSectionPositions = new ArrayList<>(26);
         for (int i = 0, size = dataplayer.size(); i < size; i++) {
-            String section = String.valueOf(dataplayer.get(i).getUser().getFirst_name().charAt(0)).toUpperCase();
+            String section = String.valueOf(dataplayer.get(i).getFirst_name().charAt(0)).toUpperCase();
             if (!sections.contains(section)) {
                 sections.add(section);
                 mSectionPositions.add(i);
@@ -58,7 +62,7 @@ public class RecycleViewMyFriendsList extends RecyclerView.Adapter<RecycleViewMy
         return 0;
     }
 
-    public void updateList(ArrayList<MyFriends.FriendsList> listData) {
+    public void updateList(ArrayList<MyFriendList.Data.User> listData) {
         this.dataplayer = listData;
     }
 
@@ -93,9 +97,10 @@ public class RecycleViewMyFriendsList extends RecyclerView.Adapter<RecycleViewMy
     }
 
 
-    public RecycleViewMyFriendsList(ArrayList<MyFriends.FriendsList> myFriends) {
+    public RecycleViewMyFriendsList(List<MyFriendList.Data.User> myFriends , Context mContext) {
         this.dataplayer = myFriends;
         imageLoader = ImageLoader.getInstance();
+        userId = ToolUtils.getSharedPreferences(mContext, Constant.userData).getInt(Constant.userId, -1);
 
 
     }
@@ -110,13 +115,13 @@ public class RecycleViewMyFriendsList extends RecyclerView.Adapter<RecycleViewMy
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.player_name.setText(dataplayer.get(position).getUser().getFirst_name() + " " + dataplayer.get(position).getUser().getLast_name());
+        holder.player_name.setText(dataplayer.get(position).getFirst_name() + " " + dataplayer.get(position).getLast_name());
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (holder.paernt_swip.isClosed()) {
                     holder.paernt_swip.open(true);
-                }else {
+                } else {
                     holder.paernt_swip.close(true);
 
                 }
@@ -136,7 +141,7 @@ public class RecycleViewMyFriendsList extends RecyclerView.Adapter<RecycleViewMy
                         }
                     }
                 });
-                deleteFriendAsyncTask.execute(dataplayer.get(position).getUser_id() + "");
+                deleteFriendAsyncTask.execute(dataplayer.get(position).getId() + "");
             }
         });
         holder.block.setOnClickListener(new View.OnClickListener() {
@@ -152,10 +157,9 @@ public class RecycleViewMyFriendsList extends RecyclerView.Adapter<RecycleViewMy
                         }
                     }
                 });
-                blockFriendAsyncTask.execute(dataplayer.get(position).getUser_id() + "");
+                blockFriendAsyncTask.execute(dataplayer.get(position).getId() + "");
             }
         });
-
     }
 
     public int getItemViewType(int position) {

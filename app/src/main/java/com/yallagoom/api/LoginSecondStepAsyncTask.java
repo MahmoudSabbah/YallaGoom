@@ -80,6 +80,8 @@ public class LoginSecondStepAsyncTask extends AsyncTask<String, String, Integer>
                     JSONObject data = jsonObject.getJSONObject(Constant.data);
                     SharedPreferences.Editor shared = ToolUtils.setSharedPrefernce(mContext, Constant.userData);
                     shared.putString(Constant.userToken, data.getString("token"));
+                    shared.putInt(Constant.userId, data.getInt("id"));
+                    Log.e("getInt",""+data.getInt("id"));
                     shared.apply();
                 }
                 return status;

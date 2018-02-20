@@ -164,42 +164,46 @@
                     android:textColor="@color/white_color"
                     android:textSize="@dimen/_20sdp" />
             </RelativeLayout>
+
+            <include layout="@layout/no_data" />
+
         </RelativeLayout>
 
-       <!-- <RelativeLayout
-            android:id="@+id/new_requests_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/refreshLayout_new_request"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_marginRight="@dimen/_5sdp"
-                app:srlAccentColor="@color/color_178d8e"
-                app:srlEnableHeaderTranslationContent="false"
-                app:srlEnableLoadmore="false"
-                app:srlEnableRefresh="true"
-                app:srlPrimaryColor="@color/color_f6f7f9">
+        <!-- <RelativeLayout
+             android:id="@+id/new_requests_layout"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
-                <com.scwang.smartrefresh.header.WaveSwipeHeader
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+             <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/refreshLayout_new_request"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_marginLeft="@dimen/_5sdp"
+                 android:layout_marginRight="@dimen/_5sdp"
+                 app:srlAccentColor="@color/color_178d8e"
+                 app:srlEnableHeaderTranslationContent="false"
+                 app:srlEnableLoadmore="false"
+                 app:srlEnableRefresh="true"
+                 app:srlPrimaryColor="@color/color_f6f7f9">
 
-                    />
+                 <com.scwang.smartrefresh.header.WaveSwipeHeader
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/fast_scroller_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                     />
 
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:scrollbars="vertical"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
-            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+                 <android.support.v7.widget.RecyclerView
+                     android:id="@+id/fast_scroller_recycler"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
 
-        </RelativeLayout>-->
+                     android:layout_marginTop="@dimen/_7sdp"
+                     android:scrollbars="vertical"
+                     app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+             </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+         </RelativeLayout>-->
 
     </RelativeLayout>
 

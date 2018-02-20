@@ -305,7 +305,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/_5sdp"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:text="+974"
+                        android:text="+972"
                         android:textColor="@color/color_edit_text" />
 
                 </RelativeLayout>
@@ -524,26 +524,18 @@
 
         </LinearLayout>
 
-        <com.andexert.library.RippleView
-            android:id="@+id/login_lay"
-            rv_centered="true"
-            android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
-            android:layout_below="@+id/view"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:gravity="center">
-
             <com.yallagoom.font.Roboto_Bold
                 android:id="@+id/sign_up_bt"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@drawable/bt_bg_gradiant180"
                 android:gravity="center"
+                android:layout_below="@+id/view"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:text="@string/sing_up"
-                android:textColor="@color/white"
+                android:textColor="@drawable/pressed_white"
                 android:textSize="@dimen/_12sdp" />
-        </com.andexert.library.RippleView>
     </LinearLayout>
 
 </ScrollView>

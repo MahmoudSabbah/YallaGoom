@@ -75,6 +75,7 @@ public class AddFriendsUsingMobileActivity extends AppCompatActivity {
         PermissMe.with(AddFriendsUsingMobileActivity.this)
                 .setRequiredPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
                 .setRequiredPermissions(Manifest.permission.SEND_SMS)
+                .setRequiredPermissions(Manifest.permission.READ_CONTACTS)
                 .listener(new PermissMe.PermissionListener() {
                     @Override
                     public void onSuccess() {

@@ -51,6 +51,7 @@
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         <HorizontalScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_7sdp"
@@ -271,6 +272,10 @@
 
 
         </HorizontalScrollView>
+        <include layout="@layout/no_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/scrollView"/>
 
     </RelativeLayout>
 

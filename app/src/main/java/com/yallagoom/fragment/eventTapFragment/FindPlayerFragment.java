@@ -58,6 +58,7 @@ public class FindPlayerFragment extends Fragment {
     private int selectPositionGender = 0;
     private int selectPositionLevels = 0;
     private RelativeLayout invite_layout;
+    private RelativeLayout no_data_layout;
 
     public FindPlayerFragment() {
         // Required empty public constructor
@@ -68,7 +69,7 @@ public class FindPlayerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_find_player, container, false);
-
+        no_data_layout = (RelativeLayout) view.findViewById(R.id.no_data_layout);
         levelList = new ArrayList<>();
         levelList.add(getString(R.string.none));
         levelList.add(getString(R.string.beginner));
@@ -220,6 +221,12 @@ public class FindPlayerFragment extends Fragment {
                 gender, country_id, minage, maxage, rate, sport_id, new PlayerCallback() {
             @Override
             public void processFinish(Player player) {
+                if (player.getData().size()==0){
+                    no_data_layout.setVisibility(View.VISIBLE);
+                }else {
+                    no_data_layout.setVisibility(View.GONE);
+
+                }
                 recycleViewFindPlayer = new RecycleViewFindPlayer(player, new PlayerListCallback() {
                     @Override
                     public void processFinish(ArrayList<Player.PlayerList> playerLists) {
