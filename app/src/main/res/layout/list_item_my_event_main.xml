@@ -11,17 +11,20 @@
         android:layout_height="wrap_content"
         android:gravity="center">
 
-        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.joooonho.SelectableRoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/my_event_image"
             android:layout_width="@dimen/_78sdp"
             android:layout_height="@dimen/_78sdp"
             android:scaleType="centerCrop"
-            android:src="@drawable/default_image"
-            app:riv_border_color="#333333"
-            app:riv_border_width="0dip"
-            app:riv_corner_radius="5dip"
-            app:riv_mutate_background="true"
-            app:riv_oval="false" />
+            android:background="@drawable/default_image"
+            app:sriv_left_top_corner_radius="5dip"
+            app:sriv_right_top_corner_radius="5dip"
+            app:sriv_left_bottom_corner_radius="5dip"
+            app:sriv_right_bottom_corner_radius="5dip"
+            app:sriv_border_width="0dip"
+            app:sriv_border_color="#008fea"
+            app:sriv_oval="false" />
 
         <RelativeLayout
             android:layout_width="wrap_content"

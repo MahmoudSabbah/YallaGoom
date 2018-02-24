@@ -145,7 +145,7 @@ public class ToolUtils {
     public static void showSnak(Activity context, String msg) {
         Alerter.create(context)
                 .setTitle(msg)
-                .setTextTypeface(font(context,"Roboto-Light.ttf"))
+                .setTextTypeface(font(context, "Roboto-Light.ttf"))
                 .setTextAppearance(R.style.SnackText)
                 .setBackgroundColorRes(R.color.color_1cacad) // or setBackgroundColorInt(Color.CYAN)
                 .show();
@@ -556,21 +556,28 @@ public class ToolUtils {
             Log.e("day " + i, "" + calendar.getTime());
         }*/
     }
-    public static  void sendSMS(Context context,String phoneNo, String msg) {
+
+    public static void sendSMS(Context context, String phoneNo, String msg) {
         try {
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNo, null, msg, null, null);
             Toast.makeText(context, "Message Sent",
                     Toast.LENGTH_LONG).show();
         } catch (Exception ex) {
-            Toast.makeText(context,ex.getMessage().toString(),
+            Toast.makeText(context, ex.getMessage().toString(),
                     Toast.LENGTH_LONG).show();
             ex.printStackTrace();
         }
     }
+
     public static boolean hexChecker(String c, String value) {
         String string = value;
         return string.indexOf(c) > -1;
+    }
+
+    public static String getDay(Date date1) {
+        String day = (String) DateFormat.format("dd", date1);
+        return day;
     }
 
 }

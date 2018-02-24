@@ -72,7 +72,7 @@ public class RecycleViewShawAllMyEvent extends RecyclerView.Adapter<RecycleViewS
         }
         holder.category.setText(data.get(position).getCategory().getCategoryName());
         if (data.get(position).getEventImage()!=null){
-            imageLoader.loadImage(Constant.urlImage+""+data.get(position).getEventImage(), new SimpleImageLoadingListener() {
+            imageLoader.loadImage(Constant.imageUrl+""+data.get(position).getEventImage(), new SimpleImageLoadingListener() {
                 @Override
                 public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                     holder.my_event_image.setImageBitmap(loadedImage);

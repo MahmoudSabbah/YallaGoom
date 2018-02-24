@@ -111,7 +111,6 @@
     <string name="fa_chevron_right_left">&#xf054;</string>
     <string name="who_respond_going">Who respond going</string>
     <string name="may_be_and_not_interested">May be and not interested</string>
-    <string name="delete">Delete</string>
     <string name="upcoming_text">Upcomming Events</string>
     <string name="may_be">May be</string>
     <string name="going">Going</string>
@@ -166,5 +165,25 @@
     <string name="accept">Accept</string>
     <string name="reject">Reject</string>
     <string name="no_data_available">No data available</string>
+    <string name="this_month">This Month</string>
+    <string name="january">JANUARY</string>
+    <string name="december_2017">DECEMBER 2017</string>
+    <string name="by">By</string>
+    <string name="home">Home</string>
+    <string name="find_a_player">Find a player</string>
+    <string name="find_event">Find event</string>
+    <string name="friend_s_events">Friend’s events</string>
+    <string name="my_events_">My events</string>
+    <string name="chat">Chat</string>
+    <string name="group">Group</string>
+    <string name="my_groups">My Groups</string>
+    <string name="delete">Delete</string>
+    <string name="others_groups">Others Groups</string>
+    <string name="delete_group">Delete Group successfully</string>
+    <string name="groups">Groups</string>
+    <string name="new_group">New Group</string>
+    <string name="group_name">Group name</string>
+    <string name="add_group">Add Group successfully</string>
+    <string name="group_title">Please enter group title</string>
 
 </resources>

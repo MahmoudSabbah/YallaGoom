@@ -28,37 +28,41 @@
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home" />
+                android:text="@string/home" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Find a player" />
+                android:text="@string/find_a_player" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Find event" />
+                android:text="@string/find_event" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Friends" />
+                android:text="@string/friends" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Friend’s events" />
+                android:text="@string/friend_s_events" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My events" />
+                android:text="@string/my_events_" />
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/group" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chat" />
+                android:text="@string/chat" />
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 

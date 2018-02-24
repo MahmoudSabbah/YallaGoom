@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_fcfcfc">
 
     <RelativeLayout
         android:id="@+id/list_data"
@@ -14,8 +15,7 @@
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
+
             app:srlAccentColor="@android:color/white"
             app:srlEnableHeaderTranslationContent="false"
             app:srlEnableLoadmore="true"
@@ -48,6 +48,7 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             app:fabSize="normal"
+            android:visibility="gone"
             app:srcCompat="@drawable/plus"
 
             />

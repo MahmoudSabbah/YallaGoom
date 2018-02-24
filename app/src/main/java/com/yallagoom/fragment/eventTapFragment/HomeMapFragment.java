@@ -2,32 +2,47 @@ package com.yallagoom.fragment.eventTapFragment;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.yallagoom.R;
 import com.yallagoom.api.NearByEventAsyncTask;
 import com.yallagoom.entity.Event;
 import com.yallagoom.interfaces.NearEventCallback;
+import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.MapUtils;
 
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
 import io.nlopez.smartlocation.SmartLocation;
@@ -43,6 +58,7 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
 
     private GoogleMap mGoogleMap;
     private SupportMapFragment mapFragment;
+    private ImageLoader imageLoader;
 
     public HomeMapFragment() {
         // Required empty public constructor
@@ -59,6 +75,8 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
         mapFragment = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map));
         mapFragment.getMapAsync(HomeMapFragment.this);
         cameraZoom();
+        imageLoader = ImageLoader.getInstance();
+
     /*    ToolUtils.buildAlertMessageNoGps(HomeMapFragment.this.getActivity(), this, this, new CheckGPSCallback() {
             @Override
             public void processFinish(boolean check, Status status) {
@@ -146,11 +164,58 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
                             @Override
                             public void processFinish(Event nearEvent) {
                                 for (int i = 0; i < nearEvent.getData().size(); i++) {
+
+
                                     LatLng latLng = new LatLng(Double.parseDouble(nearEvent.getData().get(i).getEventLat()), Double.parseDouble(nearEvent.getData().get(i).getEventLong()));
-                                    final MarkerOptions marker = new MarkerOptions().position(
+                                    View marker = ((LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.custom_marker, null);
+                                    TextView numTxt = (TextView) marker.findViewById(R.id.name);
+                                    final ImageView image_event = (ImageView) marker.findViewById(R.id.image_event);
+                                    numTxt.setText(nearEvent.getData().get(i).getEventTitle());
+                                    //     imageLoader.displayImage(Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), image_event);
+                                    ImageSize targetSize = new ImageSize(50, 50); // result Bitmap will be fit to this size
+                                    if (nearEvent.getData().get(i).getEventImage() != null) {
+                                        imageLoader.loadImage(Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), targetSize, new ImageLoadingListener() {
+                                            @Override
+                                            public void onLoadingStarted(String s, View view) {
+                                                Log.e("onLoading", "onLoadingStarted");
+
+                                            }
+
+                                            @Override
+                                            public void onLoadingFailed(String s, View view, FailReason failReason) {
+                                                Log.e("onLoading", "onLoadingFailed");
+
+                                            }
+
+                                            @Override
+                                            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+                                                Log.e("onLoading", "onLoadingComplete" + s);
+                                                // image_event.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 80, 80, false));
+                                                image_event.setImageBitmap(bitmap);
+                                            }
+
+                                            @Override
+                                            public void onLoadingCancelled(String s, View view) {
+                                                Log.e("onLoading", "onLoadingCancelled");
+
+                                            }
+                                        });
+                                    }
+                                    //  MapUtils.PicassoImage(getActivity(), Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), image_event);
+                                    BitmapDescriptor imagelayout = BitmapDescriptorFactory.fromBitmap(MapUtils.createDrawableFromView(getActivity(), marker));
+                                    if (imagelayout != null) {
+                                        mGoogleMap.addMarker(new MarkerOptions()
+                                                .position(latLng)
+                                                .icon(imagelayout));
+                                    }
+
+
+
+
+                              /*      final MarkerOptions marker = new MarkerOptions().position(
                                             latLng).anchor(0.5f, 0.5f) .title(nearEvent.getData().get(i).getEventTitle())
                                             .snippet(nearEvent.getData().get(i).getStartEventDate()+" "+nearEvent.getData().get(i).getStartEventTime()).flat(true);//fromBitmap(MapUtils.getbitmap(CONTEXT, MapUtils.carIconMarker))
-                                    mGoogleMap.addMarker(marker).setTag(nearEvent.getData().get(i).getId());
+                                    mGoogleMap.addMarker(marker).setTag(nearEvent.getData().get(i).getId());*/
                                 }
                                 LatLng myLocation = new LatLng(location.getLatitude(), location.getLongitude());
                                 final CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(myLocation, 15);
@@ -158,7 +223,7 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
                                 mGoogleMap.animateCamera(yourLocation);
                             }
                         });
-                        nearByEventAsyncTask.execute(location.getLatitude() + "", location.getLongitude() + "", "5");
+                        nearByEventAsyncTask.execute(location.getLatitude() + "", location.getLongitude() + "", Constant.defultDistance);
 
                     }
                 });
@@ -170,5 +235,14 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
         super.onDestroy();
         SmartLocation.with(HomeMapFragment.this.getActivity()).location().stop();
     }
+   /* @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        MapFragment mapFragment = (MapFragment) getActivity()
+                .getFragmentManager().findFragmentById(R.id.map);
+        if (mapFragment != null)
+            getActivity().getFragmentManager().beginTransaction()
+                    .remove(mapFragment).commit();
+    }*/
 }
 

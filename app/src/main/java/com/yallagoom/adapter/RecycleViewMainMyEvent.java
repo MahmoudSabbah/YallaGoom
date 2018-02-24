@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.joooonho.SelectableRoundedImageView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
@@ -37,14 +39,14 @@ public class RecycleViewMainMyEvent extends RecyclerView.Adapter<RecycleViewMain
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
 
-        private final RoundedImageView my_event_image;
+        private final SelectableRoundedImageView my_event_image;
         private final TextView event_name;
         private final RelativeLayout parent_raw;
 
         public MyViewHolder(View view) {
             super(view);
             context = view.getContext();
-            my_event_image = (RoundedImageView) view.findViewById(R.id.my_event_image);
+            my_event_image = (SelectableRoundedImageView) view.findViewById(R.id.my_event_image);
             event_name = (TextView) view.findViewById(R.id.event_name);
             parent_raw = (RelativeLayout) view.findViewById(R.id.parent_raw);
 
@@ -87,7 +89,8 @@ public class RecycleViewMainMyEvent extends RecyclerView.Adapter<RecycleViewMain
         });
         holder.event_name.setText(myEvent.get(position).getEventTitle());
         if (myEvent.get(position).getEventImage()!=null){
-            imageLoader.loadImage(Constant.urlImage+""+myEvent.get(position).getEventImage(), new SimpleImageLoadingListener() {
+            Log.e("getEventImage","'"+myEvent.get(position).getEventImage());
+            imageLoader.loadImage(Constant.imageUrl+""+myEvent.get(position).getEventImage(), new SimpleImageLoadingListener() {
                 @Override
                 public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                     holder.my_event_image.setImageBitmap(loadedImage);

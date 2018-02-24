@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_15sdp">
+
+        <RelativeLayout
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@drawable/bg_url">
+
+        </RelativeLayout>
+<!--
+        <ImageView
+            android:id="@+id/image_event"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:src="@drawable/default_image_small" />-->
+        <com.joooonho.SelectableRoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/image_event"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/default_image_small"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:sriv_left_top_corner_radius="5dip"
+            app:sriv_right_top_corner_radius="5dip"
+            app:sriv_left_bottom_corner_radius="5dip"
+            app:sriv_right_bottom_corner_radius="5dip"
+            app:sriv_border_width="0dip"
+            app:sriv_border_color="#008fea"
+            app:sriv_oval="false" />
+    </RelativeLayout>
+
+
+    <com.yallagoom.font.Roboto_Regular
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:background="@drawable/marker_text_radius_"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/_5sdp"
+        android:paddingRight="@dimen/_5sdp"
+        android:scrollHorizontally="true"
+        android:text="Mahmoud Sabbah"
+        android:textColor="#6a6868"
+        android:textSize="@dimen/_12sdp" />
+
+</RelativeLayout>

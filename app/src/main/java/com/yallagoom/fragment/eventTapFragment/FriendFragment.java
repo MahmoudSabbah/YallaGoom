@@ -167,28 +167,30 @@ public class FriendFragment extends Fragment {
         GetMyFriendAsyncTask getMyFriendAsyncTask = new GetMyFriendAsyncTask(FriendFragment.this.getActivity(), new GetMyFriendListCallback() {
             @Override
             public void processFinish(MyFriendList myFriend) {
-                if (myFriend.getData().size()==0){
+                if (myFriend.getData().size() == 0) {
                     no_data_layout.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     no_data_layout.setVisibility(View.GONE);
 
                 }
                 List<MyFriendList.Data.User> users = new ArrayList<>();
-                int userId = ToolUtils.getSharedPreferences(FriendFragment.this.getActivity(), Constant.userData).getInt(Constant.userId, -1);
-                for (int i = 0; i < myFriend.getData().size(); i++) {
-                    Log.e("idUser",userId+" - "+myFriend.getData().get(i).getUser_id());
-                    if (userId != -1 && userId == myFriend.getData().get(i).getUser_id()) {
-                        users.add(myFriend.getData().get(i).getUser_target());
-                    }else {
-                        users.add(myFriend.getData().get(i).getUser());
+                if (FriendFragment.this.getActivity() != null) {
+                    int userId = ToolUtils.getSharedPreferences(FriendFragment.this.getActivity(), Constant.userData).getInt(Constant.userId, -1);
+                    for (int i = 0; i < myFriend.getData().size(); i++) {
+                        Log.e("idUser", userId + " - " + myFriend.getData().get(i).getUser_id());
+                        if (userId != -1 && userId == myFriend.getData().get(i).getUser_id()) {
+                            users.add(myFriend.getData().get(i).getUser_target());
+                        } else {
+                            users.add(myFriend.getData().get(i).getUser());
 
+                        }
                     }
-                }
 
-                recycleViewFindPlayer = new RecycleViewMyFriendsList(users, FriendFragment.this.getActivity());
-                mRecyclerView.setAdapter(recycleViewFindPlayer);
-                mRecyclerView.setVisibility(View.VISIBLE);
-                onItemsLoadComplete();
+                    recycleViewFindPlayer = new RecycleViewMyFriendsList(users, FriendFragment.this.getActivity());
+                    mRecyclerView.setAdapter(recycleViewFindPlayer);
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                    onItemsLoadComplete();
+                }
             }
         });
         getMyFriendAsyncTask.execute();
@@ -205,9 +207,9 @@ public class FriendFragment extends Fragment {
         GetRequestFriendAsyncTask getRequestFriendAsyncTask = new GetRequestFriendAsyncTask(FriendFragment.this.getActivity(), new GetMyFriendCallback() {
             @Override
             public void processFinish(MyFriends myFriend) {
-                if (myFriend.getData().size()==0){
+                if (myFriend.getData().size() == 0) {
                     no_data_layout.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     no_data_layout.setVisibility(View.GONE);
 
                 }

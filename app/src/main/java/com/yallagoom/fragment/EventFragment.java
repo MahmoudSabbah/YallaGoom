@@ -21,9 +21,9 @@ import com.yallagoom.fragment.eventTapFragment.FindEventFragment;
 import com.yallagoom.fragment.eventTapFragment.FindPlayerFragment;
 import com.yallagoom.fragment.eventTapFragment.FriendEventFragment;
 import com.yallagoom.fragment.eventTapFragment.FriendFragment;
+import com.yallagoom.fragment.eventTapFragment.GroupFragment;
 import com.yallagoom.fragment.eventTapFragment.HomeFragment;
 import com.yallagoom.fragment.eventTapFragment.MyEventFragment;
-import com.yallagoom.utils.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +86,9 @@ public class EventFragment extends Fragment {
                         fragment = new MyEventFragment();
                         break;
                     case 6:
+                        fragment = new GroupFragment();
+                        break;
+                    case 7:
                         fragment = new ChatFragment();
                         break;
                 }

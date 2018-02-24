@@ -1,25 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_fbfbfb">
+    android:background="@color/color_fbfbfb"
+    android:orientation="vertical">
+
 
     <FrameLayout
-        android:id="@+id/body"
+        android:id="@+id/body2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <com.nightonke.boommenu.BoomMenuButton
-        android:id="@+id/bmb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        app:bmb_buttonEnum="simpleCircle"
-        app:bmb_buttonPlaceAlignmentEnum="buttonPlaceAlignment_center"
-        app:bmb_buttonPlaceEnum="buttonPlace_sc_2_1"
-        app:bmb_piecePlaceEnum="piecePlace_dot_2_1"
-
+        android:layout_height="match_parent">
         />
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:gravity="right|end|center_vertical"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/change_view_floating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:visibility="gone"
+            android:src="@drawable/location_icon2"
+            app:backgroundTint="@color/color_df488a"
+            app:fabSize="mini"
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_event_floating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:visibility="gone"
+            android:src="@drawable/plus_icon"
+            app:backgroundTint="@color/color_df488a"
+            app:fabSize="mini"
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/maim_floating_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/list_icon"
+            app:backgroundTint="@color/color_df488a"
+            app:fabSize="normal"
+            app:fab_icon="@drawable/list_icon" />
+
+
+    </LinearLayout>
+
+    <!--
+            <RelativeLayout
+                android:id="@+id/bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp">
+
+                <com.yallagoom.widget.floatingactionbutton.FloatingActionsMenu
+                    android:id="@+id/multiple_actions_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    fab:fab_addButtonColorNormal="@color/color_df488a"
+                    fab:fab_addButtonColorPressed="@color/color_df488a"
+                    fab:fab_addButtonPlusIconColor="@color/white_color"
+                    fab:fab_addButtonSize="normal"
+                    fab:fab_expandDirection="left">
+
+                    <com.yallagoom.widget.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/search_friends"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:fab_icon="@drawable/search_icon"
+                        fab:fab_colorNormal="@color/color_df488a"
+                        fab:fab_colorPressed="@color/white_color"
+                        fab:fab_size="mini" />
+
+                    <com.yallagoom.widget.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/contact_friend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        app:fab_icon="@drawable/mobile_icon"
+                        fab:fab_colorNormal="@color/color_df488a"
+                        fab:fab_colorPressed="@color/white_color"
+                        fab:fab_size="mini"
+                        fab:fab_title="Click to remove" />
+
+
+                </com.yallagoom.widget.floatingactionbutton.FloatingActionsMenu>
+
+                <com.yallagoom.font.TextAwesome
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_17sdp"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:text="@string/user_plus"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/_20sdp" />
+            </RelativeLayout>
+    -->
+
+
 </RelativeLayout>

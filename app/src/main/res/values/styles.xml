@@ -57,4 +57,16 @@
     <style name="menu_labels_style">
         <item name="android:background">@drawable/user_plus</item>
     </style>
+    <style name="PhotoChoiceBtnStyle" parent="@android:style/Widget.Button">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textColor">@color/color_178d8e</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/photo_choice_button_bg</item>
+
+    </style>
+    <style name="BottomPopupAnimStyle">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
 </resources>

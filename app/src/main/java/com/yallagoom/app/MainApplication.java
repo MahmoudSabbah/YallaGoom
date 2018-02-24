@@ -43,12 +43,13 @@ public class MainApplication extends Application {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
+                .resetViewBeforeLoading(false)
                 .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
 
                 .defaultDisplayImageOptions(options)
-                .memoryCacheSize(41943040)
-                .threadPoolSize(10)
+               /* .memoryCacheSize(41943040)
+                .threadPoolSize(10)*/
                 .build();
 
         ImageLoader.getInstance().init(config);

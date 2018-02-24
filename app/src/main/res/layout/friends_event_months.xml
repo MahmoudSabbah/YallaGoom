@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_13sdp"
+        android:background="@drawable/layout_round_corners"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_8sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/logo_this_week"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:src="@drawable/circle_arrow" />
+
+            <com.yallagoom.font.Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_toEndOf="@+id/logo_this_week"
+                android:layout_toLeftOf="@+id/show_me_week"
+                android:layout_toRightOf="@+id/logo_this_week"
+                android:layout_toStartOf="@+id/show_me_week"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/this_week"
+                android:textColor="@color/black_50_op"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="normal" />
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/show_me_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_21sdp"
+                android:layout_marginRight="@dimen/_21sdp"
+                android:text="@string/show_more"
+                android:textColor="@drawable/pressed_black_50_op"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="normal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/this_week_list"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:orientation="horizontal" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

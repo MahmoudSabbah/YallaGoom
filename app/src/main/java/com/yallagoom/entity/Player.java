@@ -18,7 +18,7 @@ public class Player implements Serializable {
         this.data = data;
     }
 
-    public class PlayerList implements Serializable{
+    public class PlayerList implements Serializable {
 
 
         private int id;
@@ -34,6 +34,16 @@ public class Player implements Serializable {
         private String last_name;
         private String birth_date;
         private String gender;
+        private int checkSelectGroup = 0;
+
+        public int getCheckSelectGroup() {
+            return checkSelectGroup;
+        }
+
+        public void setCheckSelectGroup(int checkSelectGroup) {
+            this.checkSelectGroup = checkSelectGroup;
+        }
+
         private ArrayList<SportList> get_user_sports_list;
 
         public int getId() {
@@ -148,7 +158,7 @@ public class Player implements Serializable {
             this.get_user_sports_list = get_user_sports_list;
         }
 
-        public class SportList implements Serializable{
+        public class SportList implements Serializable {
             private int id;
             private int user_id;
             private int sport_id;
