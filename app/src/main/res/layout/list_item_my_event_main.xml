@@ -43,6 +43,7 @@
                 android:textStyle="normal" />
 
             <com.yallagoom.font.Roboto_Light
+                android:id="@+id/year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/event_name"

@@ -1,4 +1,4 @@
-package com.yallagoom.fragment.eventTapFragment;
+package com.yallagoom.fragment.MyEventTapFragment;
 
 import android.content.Intent;
 import android.os.Bundle;

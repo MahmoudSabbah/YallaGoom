@@ -1,4 +1,4 @@
-package com.yallagoom.fragment.eventTapFragment;
+package com.yallagoom.fragment.MyEventTapFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +22,6 @@ import com.yallagoom.R;
 import com.yallagoom.activity.CalenderActivity;
 import com.yallagoom.activity.ChooseLocationActivity;
 import com.yallagoom.activity.SearchCategoryActivity;
-import com.yallagoom.activity.SignUpActivity;
 import com.yallagoom.api.SearchEventAsyncTask;
 import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.segmented.SegmentedGroup;

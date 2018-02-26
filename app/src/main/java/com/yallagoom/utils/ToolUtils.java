@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,20 +32,29 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.utils.DiskCacheUtils;
+import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 import com.tapadoo.alerter.Alerter;
 import com.yallagoom.R;
 import com.yallagoom.interfaces.CheckGPSCallback;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -576,8 +586,137 @@ public class ToolUtils {
     }
 
     public static String getDay(Date date1) {
-        String day = (String) DateFormat.format("dd", date1);
+        String day = (String) DateFormat.format("dd-MM-yyyy", date1);
         return day;
     }
 
+    public static String getMonth(Date date1) {
+        String day = (String) DateFormat.format("MMMM-MM-yyyy", date1);
+        return day;
+    }
+
+    public static Date getStartWeek() {
+       /* Calendar c1 = Calendar.getInstance();
+        //first day of week
+        c1.set(Calendar.DAY_OF_WEEK, 1);
+
+        int year1 = c1.get(Calendar.YEAR);
+        int month1 = c1.get(Calendar.MONTH)+1;
+        int day1 = c1.get(Calendar.DAY_OF_MONTH);
+
+        //last day of week
+        c1.set(Calendar.DAY_OF_WEEK, 7);
+
+        int year7 = c1.get(Calendar.YEAR);
+        int month7 = c1.get(Calendar.MONTH)+1;
+        int day7 = c1.get(Calendar.DAY_OF_MONTH);*/
+
+        Calendar cal = Calendar.getInstance();
+        int i = cal.get(Calendar.DAY_OF_WEEK) - cal.getFirstDayOfWeek();
+        cal.add(Calendar.DATE, -i);
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+        cal.setFirstDayOfWeek(Calendar.SATURDAY);
+
+        return cal.getTime();
+    }
+
+    public static Date getEndWeek() {
+        Calendar cal = Calendar.getInstance();
+        int i = cal.get(Calendar.DAY_OF_WEEK) - cal.getFirstDayOfWeek();
+        cal.add(Calendar.DATE, -i);
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+        cal.setFirstDayOfWeek(Calendar.SATURDAY);
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY
+        );
+        return cal.getTime();
+    }
+
+    public static Date getFirstDayOfCurrentMonth(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        Log.e("Start Day1", " Day1 : " + calendar.getTime());
+
+        return calendar.getTime();
+    }
+
+    public static Date getLastDayOfCurrentMonth(Date date) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));
+
+        Date lastDayOfMonth = cal.getTime();
+        Log.e("Last Day1", "Last Day 1: " + lastDayOfMonth);
+
+        return cal.getTime();
+    }
+
+    public static void setImage(String url, final ImageView imageView, ImageLoader imageLoader) {
+        List<Bitmap> list = MemoryCacheUtils.findCachedBitmapsForImageUri(url, ImageLoader.getInstance().getMemoryCache());
+        Log.e("list.size()", "" + list.size());
+        Log.e("list.size()", "" + isDiskCache(url));
+        if (list.size() > 0 || isDiskCache(url)) {
+            imageLoader.displayImage(url, imageView);
+        } else {
+            imageLoader.loadImage(url, new ImageLoadingListener() {
+                @Override
+                public void onLoadingStarted(String s, View view) {
+
+                }
+
+                @Override
+                public void onLoadingFailed(String s, View view, FailReason failReason) {
+
+                }
+
+                @Override
+                public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+                    imageView.setImageBitmap(bitmap);
+                }
+
+                @Override
+                public void onLoadingCancelled(String s, View view) {
+
+                }
+            });
+        }
+    }
+    public static void setImageSmall_50(String url, final ImageView imageView, ImageLoader imageLoader) {
+        ImageSize targetSize = new ImageSize(50, 50); // result Bitmap will be fit to this size
+
+        List<Bitmap> list = MemoryCacheUtils.findCachedBitmapsForImageUri(url, ImageLoader.getInstance().getMemoryCache());
+        Log.e("list.size()", "" + list.size());
+        Log.e("list.size()", "" + isDiskCache(url));
+        if (list.size() > 0 || isDiskCache(url)) {
+            imageLoader.displayImage(url, imageView);
+        } else {
+            imageLoader.loadImage(url,targetSize, new ImageLoadingListener() {
+                @Override
+                public void onLoadingStarted(String s, View view) {
+
+                }
+
+                @Override
+                public void onLoadingFailed(String s, View view, FailReason failReason) {
+
+                }
+
+                @Override
+                public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+                    imageView.setImageBitmap(bitmap);
+                }
+
+                @Override
+                public void onLoadingCancelled(String s, View view) {
+
+                }
+            });
+        }
+    }
+
+    public static boolean isDiskCache(String url) {
+        File file = DiskCacheUtils.findInCache(url, ImageLoader.getInstance().getDiskCache());
+        return file != null;
+    }
 }

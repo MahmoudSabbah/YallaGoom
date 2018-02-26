@@ -97,7 +97,7 @@ public class RecycleViewMyFriendsList extends RecyclerView.Adapter<RecycleViewMy
     }
 
 
-    public RecycleViewMyFriendsList(List<MyFriendList.Data.User> myFriends , Context mContext) {
+    public RecycleViewMyFriendsList(List<MyFriendList.Data.User> myFriends, Context mContext) {
         this.dataplayer = myFriends;
         imageLoader = ImageLoader.getInstance();
         userId = ToolUtils.getSharedPreferences(mContext, Constant.userData).getInt(Constant.userId, -1);
@@ -128,6 +128,13 @@ public class RecycleViewMyFriendsList extends RecyclerView.Adapter<RecycleViewMy
             }
         });
         holder.progress_bar.setVisibility(View.GONE);
+        try {
+            if (dataplayer.get(position).getImg_url() != null) {
+                ToolUtils.setImageSmall_50(Constant.imageUrl + dataplayer.get(position).getImg_url(), holder.image_player, imageLoader);
+            }
+        } catch (NullPointerException e) {
+
+        }
         holder.unfriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

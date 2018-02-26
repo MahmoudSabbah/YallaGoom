@@ -10,7 +10,7 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
 import com.yallagoom.activity.SearchEventResultActivity;
 import com.yallagoom.entity.Event;
-import com.yallagoom.fragment.eventTapFragment.FindEventFragment;
+import com.yallagoom.fragment.MyEventTapFragment.FindEventFragment;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 

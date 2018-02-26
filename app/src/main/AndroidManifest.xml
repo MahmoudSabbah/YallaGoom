@@ -94,6 +94,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activity.AddGroupActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.ShowMoreFriendsEventActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

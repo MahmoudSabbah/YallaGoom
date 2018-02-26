@@ -24,6 +24,7 @@ import com.yallagoom.interfaces.ClickFindEventCallback;
 import com.yallagoom.interfaces.PlayerCallback;
 import com.yallagoom.interfaces.PlayerListCallback;
 import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.CircularImageView;
 
 import java.util.ArrayList;
@@ -47,11 +48,13 @@ public class RecycleViewFindPlayer extends RecyclerView.Adapter<RecycleViewFindP
         private final TextView location_name;
         private final TextView sport_type;
         private final ProgressBar progress_bar;
+        private final CircularImageView default_image;
 
         public MyViewHolder(View view) {
             super(view);
             context = view.getContext();
             image_player = (CircularImageView) view.findViewById(R.id.image_player);
+            default_image = (CircularImageView) view.findViewById(R.id.default_image);
             parent = (RelativeLayout) view.findViewById(R.id.parent);
             player_name = (TextView) view.findViewById(R.id.player_name);
             location_name = (TextView) view.findViewById(R.id.location_name);
@@ -87,13 +90,13 @@ public class RecycleViewFindPlayer extends RecyclerView.Adapter<RecycleViewFindP
             public void onClick(View view) {
                 Log.e("isSelected", "" + holder.image_player.isSelected());
                 if (holder.image_player.isSelected()) {
-                    holder.image_player.setImageResource(R.drawable.default_image);
                     holder.image_player.setSelected(false);
                     playerLists.remove(dataplayer.get(position));
+                    holder.default_image.setVisibility(View.GONE);
                     playerCallback.processFinish(playerLists);
                 } else {
                     holder.image_player.setSelected(true);
-                    holder.image_player.setImageResource(R.drawable.image_selected);
+                    holder.default_image.setVisibility(View.VISIBLE);
                     playerLists.add(dataplayer.get(position));
                     playerCallback.processFinish(playerLists);
 
@@ -101,7 +104,13 @@ public class RecycleViewFindPlayer extends RecyclerView.Adapter<RecycleViewFindP
             }
         });
         holder.progress_bar.setVisibility(View.GONE);
+        try {
+            if (dataplayer.get(position).getImg_url() != null) {
+                ToolUtils.setImageSmall_50(Constant.imageUrl + dataplayer.get(position).getImg_url() , holder.image_player, imageLoader);
+            }
+        } catch (NullPointerException e) {
 
+        }
       /*  if (dataplayer.get(position).getEventImage()!=null){
             imageLoader.loadImage(Constant.urlImage+""+dataplayer.get(position).getEventImage(), new SimpleImageLoadingListener() {
                 @Override

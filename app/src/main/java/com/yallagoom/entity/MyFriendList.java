@@ -95,7 +95,16 @@ public class MyFriendList {
             private String last_name;
             private String birth_date;
             private String gender;
+            private String img_url;
             private getCountryData get_country_data;
+
+            public String getImg_url() {
+                return img_url;
+            }
+
+            public void setImg_url(String img_url) {
+                this.img_url = img_url;
+            }
 
             public int getId() {
                 return id;

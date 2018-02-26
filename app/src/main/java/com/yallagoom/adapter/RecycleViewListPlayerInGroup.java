@@ -22,6 +22,8 @@ import com.yallagoom.entity.Group;
 import com.yallagoom.interfaces.ClickPopUpCallback;
 import com.yallagoom.interfaces.DeleteCallback;
 import com.yallagoom.interfaces.DeleteFragmentCallback;
+import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.CircularImageView;
 import com.yallagoom.widget.PhotoChoicePopup;
 
@@ -66,6 +68,14 @@ public class RecycleViewListPlayerInGroup extends RecyclerView.Adapter<RecycleVi
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        try {
+            if (memberslists.get(position).getMember_data().getImg_url() != null) {
+                ToolUtils.setImageSmall_50(Constant.imageUrl + memberslists.get(position).getMember_data().getImg_url(), holder.player_image, imageLoader);
+            }
+        } catch (NullPointerException e) {
+
+        }
+       /* */
 
     }
 

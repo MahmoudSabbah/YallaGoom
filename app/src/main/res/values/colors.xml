@@ -21,6 +21,8 @@
     <color name="color_9fdaa6">#9fdaa6</color>
     <color name="color_fdfdff">#fdfdff</color>
     <color name="black">#000000</color>
+    <color name="black_40">#66000000</color>
+    <color name="black_70">#b2000000</color>
     <color name="black_61000000">#61000000</color>
     <color name="color_0000ff">#0000ff</color>
     <color name="color_53c7f2">#53c7f2</color>

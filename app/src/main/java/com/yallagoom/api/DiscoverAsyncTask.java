@@ -1,22 +1,22 @@
 package com.yallagoom.api;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
-import com.yallagoom.entity.Player;
+import com.yallagoom.entity.Discover;
+import com.yallagoom.entity.MyFriendList;
+import com.yallagoom.interfaces.DiscoverCallback;
+import com.yallagoom.interfaces.GetMyFriendListCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-import okhttp3.MultipartBody;
+import okhttp3.FormBody;
 import okhttp3.Request;
 import okhttp3.Response;
 
@@ -24,50 +24,35 @@ import okhttp3.Response;
  * Created by Mahmoud Sabbah on 2/5/2018.
  */
 
-public class EventInvitationAsyncTask extends AsyncTask<String, String, Integer> {
+public class DiscoverAsyncTask extends AsyncTask<String, String, Integer> {
     private final Context mContext;
-    private final ArrayList<Player.PlayerList> selectPlayerLists;
-    private final int eventId;
-
+    private final DiscoverCallback discoverCallback;
     private KProgressHUD progress;
     private String error;
+    private Discover discover;
 
-    public EventInvitationAsyncTask(Context context, ArrayList<Player.PlayerList> selectPlayerLists, int eventId) {
+    public DiscoverAsyncTask(Context context, KProgressHUD progress, DiscoverCallback discoverCallback) {
         mContext = context;
-        this.selectPlayerLists = selectPlayerLists;
-        this.eventId = eventId;
+        this.discoverCallback = discoverCallback;
+        this.progress = progress;
+
     }
 
     @Override
     protected void onPreExecute() {
-        progress = KProgressHUD.create(mContext)
-                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                .setLabel(mContext.getString(R.string.please_wait))
-                .setCancellable(true)
-                .setAnimationSpeed(2)
-                .setDimAmount(0.5f);
-                /*.setWindowColor(R.color.color_ffba00)*/
-        progress.show();
 
 
     }
 
     @Override
     protected Integer doInBackground(String[] params) {
-        MultipartBody.Builder req = new MultipartBody.Builder().setType(MultipartBody.FORM);
-        for (int i = 0; i < selectPlayerLists.size(); i++) {
-            req.addFormDataPart("invitee_id[]", selectPlayerLists.get(i).getId() + "");
-        }
-        req.addFormDataPart("event_id", eventId + "");
-
-
+        FormBody.Builder formBody = new FormBody.Builder();
+        formBody.add("code_3",params[0]);
         Request.Builder builder = new Request.Builder();
-        builder.url(Constant.urlData + Constant.EventInvitation);
-        Log.e("response", "" + ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.userToken, null));
-        builder.post(req.build());
+        builder.url(Constant.urlData + Constant.discover_ticket);
+        builder.post(formBody.build());
         builder.header("Authorization", "Bearer " + ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.userToken, null));
         Request request = builder.build();
-        Log.e("bodyToString", "" + ToolUtils.bodyToString(request));
         try {
             Response response = ToolUtils.getOkHttpClient().newCall(request).execute();
             Log.e("response", "" + response.code());
@@ -80,8 +65,7 @@ public class EventInvitationAsyncTask extends AsyncTask<String, String, Integer>
                     error = errorMsg.getString(error);
                 } else {
                     JSONObject data = jsonObject.getJSONObject(Constant.data);
-                    JSONArray inviataions = data.getJSONArray("inviataions");
-                    Log.e("EventInvitation", "" + inviataions.length());
+                    discover = new Gson().fromJson(data.toString(), Discover.class);
 
                 }
                 return status;
@@ -100,10 +84,7 @@ public class EventInvitationAsyncTask extends AsyncTask<String, String, Integer>
         super.onPostExecute(status);
         progress.dismiss();
         if (status == 1) {
-            ToolUtils.viewToast(mContext, "Invited successfully");
-            ((Activity) mContext).setResult(102);
-            ((Activity) mContext).finish();
-
+            discoverCallback.processFinish(discover);
         } else {
             ToolUtils.viewToast(mContext, error);
         }

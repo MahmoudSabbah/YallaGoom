@@ -1,19 +1,16 @@
-package com.yallagoom.fragment.eventTapFragment;
+package com.yallagoom.fragment.MyEventTapFragment;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +23,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -34,15 +30,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.assist.ImageSize;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.yallagoom.R;
 import com.yallagoom.api.NearByEventAsyncTask;
 import com.yallagoom.entity.Event;
 import com.yallagoom.interfaces.NearEventCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.MapUtils;
+import com.yallagoom.utils.ToolUtils;
 
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
 import io.nlopez.smartlocation.SmartLocation;
@@ -172,9 +166,9 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
                                     final ImageView image_event = (ImageView) marker.findViewById(R.id.image_event);
                                     numTxt.setText(nearEvent.getData().get(i).getEventTitle());
                                     //     imageLoader.displayImage(Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), image_event);
-                                    ImageSize targetSize = new ImageSize(50, 50); // result Bitmap will be fit to this size
                                     if (nearEvent.getData().get(i).getEventImage() != null) {
-                                        imageLoader.loadImage(Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), targetSize, new ImageLoadingListener() {
+                                        ToolUtils.setImageSmall_50(Constant.imageUrl + nearEvent.getData().get(i).getEventImage(),image_event,imageLoader);
+                                   /*     imageLoader.loadImage(Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), targetSize, new ImageLoadingListener() {
                                             @Override
                                             public void onLoadingStarted(String s, View view) {
                                                 Log.e("onLoading", "onLoadingStarted");
@@ -199,7 +193,7 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
                                                 Log.e("onLoading", "onLoadingCancelled");
 
                                             }
-                                        });
+                                        });*/
                                     }
                                     //  MapUtils.PicassoImage(getActivity(), Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), image_event);
                                     BitmapDescriptor imagelayout = BitmapDescriptorFactory.fromBitmap(MapUtils.createDrawableFromView(getActivity(), marker));

@@ -55,7 +55,6 @@
     <string name="specific_date">Specific date</string>
     <string name="none">None</string>
     <string name="this_week">This week</string>
-    <string name="tomorrow">Tomorrow</string>
     <string name="today">Today</string>
     <string name="start_date">Start</string>
     <string name="end_date">End</string>
@@ -109,6 +108,7 @@
     <string name="edit">Edit</string>
     <string name="fa_chevron_left_right">&#xf053;</string>
     <string name="fa_chevron_right_left">&#xf054;</string>
+    <string name="fa_angle_right_left">&#xf105;</string>
     <string name="who_respond_going">Who respond going</string>
     <string name="may_be_and_not_interested">May be and not interested</string>
     <string name="upcoming_text">Upcomming Events</string>
@@ -185,5 +185,20 @@
     <string name="group_name">Group name</string>
     <string name="add_group">Add Group successfully</string>
     <string name="group_title">Please enter group title</string>
+    <string name="_week">Week</string>
+    <string name="discover">Discover</string>
+    <string name="offers">Offers</string>
+    <string name="my_bookings">My Bookings</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="tickets">Tickets</string>
+    <string name="gifts">Gifts</string>
+    <string name="scores">Scores</string>
+    <string name="settings">Settings</string>
+    <string name="discover_other_country">Discover other country</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="recommendations_for_you">Recommendations for you</string>
+    <string name="discover_by_category">Discover By Category</string>
+    <string name="special_offers">Special Offers</string>
+    <string name="friend_event">Friends Event</string>
 
 </resources>

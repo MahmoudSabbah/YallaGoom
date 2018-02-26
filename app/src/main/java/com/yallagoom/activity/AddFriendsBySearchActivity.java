@@ -16,19 +16,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yallagoom.R;
 import com.yallagoom.action.RecyclerItemClickListener;
 import com.yallagoom.adapter.RecycleViewAddFriendsSearch;
-import com.yallagoom.adapter.RecycleViewFriendsListEvent;
 import com.yallagoom.adapter.RecycleViewGenderLevel;
 import com.yallagoom.api.SearchFriendsAsyncTask;
-import com.yallagoom.entity.MyFriends;
 import com.yallagoom.entity.Player;
-import com.yallagoom.fragment.eventTapFragment.FindPlayerFragment;
-import com.yallagoom.fragment.eventTapFragment.FriendEventFragment;
-import com.yallagoom.interfaces.PlayerListCallback;
 import com.yallagoom.interfaces.SearchFriendsCallback;
 import com.yallagoom.utils.ToolUtils;
 

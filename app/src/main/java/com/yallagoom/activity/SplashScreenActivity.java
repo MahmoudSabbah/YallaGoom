@@ -5,9 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,13 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.andexert.library.RippleView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
@@ -30,18 +24,12 @@ import com.tumblr.permissme.PermissMe;
 import com.yallagoom.R;
 import com.yallagoom.adapter.SplashPagerAdapter;
 import com.yallagoom.api.GetCountriesAsyncTask;
-import com.yallagoom.api.MyEventAsyncTask;
 import com.yallagoom.entity.Country;
-import com.yallagoom.entity.Event;
-import com.yallagoom.fragment.eventTapFragment.HomeMapFragment;
 import com.yallagoom.interfaces.CheckGPSCallback;
 import com.yallagoom.interfaces.GetCountriesCallback;
-import com.yallagoom.interfaces.NearEventCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.animator.ViewAnimator;
-
-import org.w3c.dom.Text;
 
 import me.relex.circleindicator.CircleIndicator;
 

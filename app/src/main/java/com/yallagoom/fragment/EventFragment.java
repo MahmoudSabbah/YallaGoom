@@ -16,14 +16,14 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.yallagoom.R;
-import com.yallagoom.fragment.eventTapFragment.ChatFragment;
-import com.yallagoom.fragment.eventTapFragment.FindEventFragment;
-import com.yallagoom.fragment.eventTapFragment.FindPlayerFragment;
-import com.yallagoom.fragment.eventTapFragment.FriendEventFragment;
-import com.yallagoom.fragment.eventTapFragment.FriendFragment;
-import com.yallagoom.fragment.eventTapFragment.GroupFragment;
-import com.yallagoom.fragment.eventTapFragment.HomeFragment;
-import com.yallagoom.fragment.eventTapFragment.MyEventFragment;
+import com.yallagoom.fragment.MyEventTapFragment.ChatFragment;
+import com.yallagoom.fragment.MyEventTapFragment.FindEventFragment;
+import com.yallagoom.fragment.MyEventTapFragment.FindPlayerFragment;
+import com.yallagoom.fragment.MyEventTapFragment.FriendEventFragment;
+import com.yallagoom.fragment.MyEventTapFragment.FriendFragment;
+import com.yallagoom.fragment.MyEventTapFragment.GroupFragment;
+import com.yallagoom.fragment.MyEventTapFragment.HomeFragment;
+import com.yallagoom.fragment.MyEventTapFragment.MyEventFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +39,7 @@ public class EventFragment extends Fragment {
     private TabLayout tabLayout;
     private FrameLayout body;
     Fragment fragment = null;
+    private TextView header_title;
 
     public EventFragment() {
         // Required empty public constructor
@@ -50,6 +51,9 @@ public class EventFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tabevent_item, container, false);
+        header_title=(TextView)getActivity().findViewById(R.id.header_title);
+        header_title.setText(getString(R.string.my_event));
+
         body = (FrameLayout) view.findViewById(R.id.body);
        // viewPager = (ViewPager) view.findViewById(R.id.viewpager);
          // viewPager.setOffscreenPageLimit(0);

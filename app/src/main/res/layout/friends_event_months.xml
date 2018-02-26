@@ -28,15 +28,16 @@
                 android:src="@drawable/circle_arrow" />
 
             <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/name_week_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/_8sdp"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_toEndOf="@+id/logo_this_week"
-                android:layout_toLeftOf="@+id/show_me_week"
+                android:layout_toLeftOf="@+id/show_more"
                 android:layout_toRightOf="@+id/logo_this_week"
-                android:layout_toStartOf="@+id/show_me_week"
+                android:layout_toStartOf="@+id/show_more"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@string/this_week"
@@ -45,7 +46,7 @@
                 android:textStyle="normal" />
 
             <com.yallagoom.font.Roboto_Regular
-                android:id="@+id/show_me_week"
+                android:id="@+id/show_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

@@ -19,6 +19,7 @@ public class SettingsFragment extends Fragment {
 
 
     private TextView login_bt;
+    private TextView header_title;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -30,6 +31,8 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        header_title=(TextView)getActivity().findViewById(R.id.header_title);
+        header_title.setText(getString(R.string.settings));
         login_bt=(TextView)view.findViewById(R.id.login_bt);
         login_bt.setOnClickListener(new View.OnClickListener() {
             @Override

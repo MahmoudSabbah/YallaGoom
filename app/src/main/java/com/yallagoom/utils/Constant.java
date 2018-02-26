@@ -61,6 +61,8 @@ public class Constant {
     public static String reject_friend="friend/reject";
     public static String MyFriendList="friend/getMyFriendList";
     public static String getNewRequest="friend/getNewRequest";
+    public static String ticket="ticket";
+    public static String discover_ticket=ticket+"/discover";
     public static String categories="categories";
     public static String yyyy_MM_dd="yyyy-MM-dd";
     public static String dd_MMM_yyyy="dd MMM yyyy";
@@ -68,4 +70,5 @@ public class Constant {
     public static String HH_mm_ss="HH:mm:ss";
     public static String hh_mm_aa="hh:mm aa";
     public static String userId="userId";
+    public static String country_code_url="http://ip-api.com/json";
 }

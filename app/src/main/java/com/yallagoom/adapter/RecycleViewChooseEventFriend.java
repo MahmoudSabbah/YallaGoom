@@ -17,6 +17,7 @@ import com.yallagoom.R;
 import com.yallagoom.entity.Event;
 import com.yallagoom.entity.Player;
 import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.CircularImageView;
 
 import java.util.ArrayList;
@@ -70,6 +71,13 @@ public class RecycleViewChooseEventFriend extends RecyclerView.Adapter<RecycleVi
         }else {
            // holder.progress_bar.setVisibility(View.GONE);
         }*/
+        try {
+            if (playerLists.get(position).getImg_url() != null) {
+                ToolUtils.setImageSmall_50(Constant.imageUrl + playerLists.get(position).getImg_url() , holder.image_player, imageLoader);
+            }
+        } catch (NullPointerException e) {
+
+        }
     }
 
 

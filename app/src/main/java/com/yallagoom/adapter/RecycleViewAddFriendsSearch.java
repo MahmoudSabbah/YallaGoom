@@ -9,10 +9,13 @@ import android.view.ViewGroup;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
 import com.yallagoom.api.AddFriendAsyncTask;
 import com.yallagoom.entity.Player;
 import com.yallagoom.interfaces.AddFriendCallback;
+import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.CircularImageView;
 
 import java.util.ArrayList;
@@ -21,12 +24,14 @@ import java.util.List;
 
 public class RecycleViewAddFriendsSearch extends RecyclerView.Adapter<RecycleViewAddFriendsSearch.MyViewHolder> implements SectionIndexer {
 
+    private final ImageLoader imageLoader;
     private ArrayList<Player.PlayerList> daStringList;
     public Context context;
     private ArrayList<Integer> mSectionPositions;
 
     public RecycleViewAddFriendsSearch(Player player) {
         this.daStringList = player.getData();
+        imageLoader= ImageLoader.getInstance();
     }
 
     @Override
@@ -64,6 +69,13 @@ public class RecycleViewAddFriendsSearch extends RecyclerView.Adapter<RecycleVie
 
             }
         });
+        try {
+            if (daStringList.get(position).getImg_url() != null) {
+                ToolUtils.setImageSmall_50(Constant.imageUrl + daStringList.get(position).getImg_url(), holder.image_player, imageLoader);
+            }
+        } catch (NullPointerException e) {
+
+        }
     }
 
     @Override
