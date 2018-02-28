@@ -110,16 +110,19 @@ public class SearchCountryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int id = -1;
                 String country_name = null;
+                String code_3 = null;
                 for (int i = 0; i < countryListData.size(); i++) {
                     if (countryListData.get(i).getVis() == 1) {
                         id = countryListData.get(i).getId();
                         country_name = countryListData.get(i).getName_en();
+                        code_3 = countryListData.get(i).getCode_3();
                     }
                 }
                 if (id != -1) {
                     Intent intent = new Intent();
                     intent.putExtra("country_id", id);
                     intent.putExtra("country_name", country_name);
+                    intent.putExtra("code_3", code_3);
                     setResult(102, intent);
                     finish();
                 }else {

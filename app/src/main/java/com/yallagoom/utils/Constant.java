@@ -63,6 +63,9 @@ public class Constant {
     public static String getNewRequest="friend/getNewRequest";
     public static String ticket="ticket";
     public static String discover_ticket=ticket+"/discover";
+    public static String show_ticket=ticket+"/show";
+    public static String discover_category=ticket+"/discover_category";
+    public static String special_offers=ticket+"/special_offers";
     public static String categories="categories";
     public static String yyyy_MM_dd="yyyy-MM-dd";
     public static String dd_MMM_yyyy="dd MMM yyyy";
@@ -71,4 +74,5 @@ public class Constant {
     public static String hh_mm_aa="hh:mm aa";
     public static String userId="userId";
     public static String country_code_url="http://ip-api.com/json";
+    public static String alpha3Country="";
 }

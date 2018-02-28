@@ -1,19 +1,24 @@
 package com.yallagoom.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.joooonho.SelectableRoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
+import com.yallagoom.activity.TicketsDetailsActivity;
+import com.yallagoom.api.TicketDetailsAsyncTask;
 import com.yallagoom.entity.Discover;
 import com.yallagoom.entity.Event;
+import com.yallagoom.interfaces.TicketDeatailsCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
@@ -36,10 +41,12 @@ public class RecycleViewRecommendations extends RecyclerView.Adapter<RecycleView
         private final TextView cost;
         private final SelectableRoundedImageView recomm_image;
         private final View view_;
+        private final RelativeLayout parent;
 
         public MyViewHolder(View view) {
             super(view);
             context = view.getContext();
+            parent = (RelativeLayout) view.findViewById(R.id.parent);
             recom_title = (TextView) view.findViewById(R.id.recom_title);
             like_value = (TextView) view.findViewById(R.id.like_value);
             time = (TextView) view.findViewById(R.id.time);
@@ -53,7 +60,7 @@ public class RecycleViewRecommendations extends RecyclerView.Adapter<RecycleView
 
     public RecycleViewRecommendations(ArrayList<Discover.Recommended.Data> data) {
         this.data = data;
-        imageLoader= ImageLoader.getInstance();
+        imageLoader = ImageLoader.getInstance();
 
     }
 
@@ -70,16 +77,29 @@ public class RecycleViewRecommendations extends RecyclerView.Adapter<RecycleView
         if (position == data.size() - 1) {
             holder.view_.setVisibility(View.GONE);
         }
-        if (data.get(position).getImg_url()!=null){
-            ToolUtils.setImage(Constant.imageUrl+data.get(position).getImg_url(),holder.recomm_image,imageLoader);
+        if (data.get(position).getImg_url() != null) {
+            ToolUtils.setImage(Constant.imageUrl + data.get(position).getImg_url(), holder.recomm_image, imageLoader);
 
         }
         holder.recom_title.setText(data.get(position).getTitle());
-        if (data.get(position).getTime()!=null){
+        if (data.get(position).getTime() != null) {
             holder.time.setText(ToolUtils.convert24TimeTo12(data.get(position).getTime()));
         }
-        holder.cost.setText("$ "+data.get(position).getPrice());
-
+        holder.cost.setText("$ " + data.get(position).getPrice());
+        holder.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TicketDetailsAsyncTask ticketDetailsAsyncTask=new TicketDetailsAsyncTask(context, false, new TicketDeatailsCallback() {
+                    @Override
+                    public void processFinish(String result) {
+                        Intent intent = new Intent(context, TicketsDetailsActivity.class);
+                        intent.putExtra("TicketsDetails", "" + result);
+                        context.startActivity(intent);
+                    }
+                });
+                ticketDetailsAsyncTask.execute(data.get(position).getId()+"");
+            }
+        });
     }
 
     public int getItemViewType(int position) {

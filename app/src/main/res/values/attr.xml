@@ -197,4 +197,5 @@
         <attr name="setIndexBarTextColorRes" format="color" />
         <attr name="setIndexBarHighlightTextColorRes" format="color" />
     </declare-styleable>
+
 </resources>

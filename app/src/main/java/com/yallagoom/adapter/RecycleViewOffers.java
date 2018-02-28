@@ -1,16 +1,21 @@
 package com.yallagoom.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.joooonho.SelectableRoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
+import com.yallagoom.activity.TicketsDetailsActivity;
+import com.yallagoom.api.TicketDetailsAsyncTask;
 import com.yallagoom.entity.Discover;
+import com.yallagoom.interfaces.TicketDeatailsCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
@@ -34,6 +39,7 @@ public class RecycleViewOffers extends RecyclerView.Adapter<RecycleViewOffers.My
         private final TextView cost_befor;
         private final SelectableRoundedImageView recomm_image;
         private final View view_;
+        private final LinearLayout parent;
 
         public MyViewHolder(View view) {
             super(view);
@@ -44,6 +50,7 @@ public class RecycleViewOffers extends RecyclerView.Adapter<RecycleViewOffers.My
             cost_after = (TextView) view.findViewById(R.id.cost_after);
             cost_befor = (TextView) view.findViewById(R.id.cost_befor);
             view_ = (View) view.findViewById(R.id.view);
+            parent = (LinearLayout) view.findViewById(R.id.parent);
             recomm_image = (SelectableRoundedImageView) view.findViewById(R.id.recomm_image);
 
         }
@@ -78,7 +85,20 @@ public class RecycleViewOffers extends RecyclerView.Adapter<RecycleViewOffers.My
         }
         holder.cost_befor.setText("$ "+data.get(position).getPrice()+"");
         holder.cost_after.setText("$ "+data.get(position).getPrice_after_discount());
-
+        holder.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TicketDetailsAsyncTask ticketDetailsAsyncTask=new TicketDetailsAsyncTask(context, false, new TicketDeatailsCallback() {
+                    @Override
+                    public void processFinish(String result) {
+                        Intent intent = new Intent(context, TicketsDetailsActivity.class);
+                        intent.putExtra("TicketsDetails", "" + result);
+                        context.startActivity(intent);
+                    }
+                });
+                ticketDetailsAsyncTask.execute(data.get(position).getId()+"");
+            }
+        });
     }
 
     public int getItemViewType(int position) {

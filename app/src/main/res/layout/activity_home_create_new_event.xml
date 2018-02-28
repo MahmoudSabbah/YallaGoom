@@ -160,7 +160,7 @@
                     android:layout_marginLeft="@dimen/_7sdp"
                     android:layout_marginRight="@dimen/_7sdp"
                     android:text="5 Feb 2018"
-                    android:textColor="@color/color_blak_73"
+                    android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_11sdp" />
 
                 <com.yallagoom.font.TextAwesome
@@ -238,7 +238,7 @@
                     android:layout_marginLeft="@dimen/_7sdp"
                     android:layout_marginRight="@dimen/_7sdp"
                     android:text="5 Feb 2018"
-                    android:textColor="@color/color_blak_73"
+                    android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_11sdp" />
 
                 <com.yallagoom.font.TextAwesome

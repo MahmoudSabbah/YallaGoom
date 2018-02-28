@@ -100,4 +100,7 @@ public class MapUtils {
         }
 
     }*/
+  public static String staticPathMap(Context context,String location){//+AIzaSyAPgJOTSuSn31iMoqnNW-p1Aq3ZJN6oUyY //size:mid%7C//AIzaSyCCHA5gaItN2IyGubLD32n9WTDaWAe1mhA
+      return  "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=500x300&markers=color:0xffba00|"+location+"&key="+context.getString(R.string.google_maps_key);//+context.getString(R.string.google_maps_key);
+  }
 }

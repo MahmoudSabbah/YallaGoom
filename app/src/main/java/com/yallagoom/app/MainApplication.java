@@ -17,6 +17,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -96,6 +98,13 @@ public class MainApplication extends Application {
                         }
                     }
                 });
+        Realm.init(this);
+        RealmConfiguration realmConfiguration= new RealmConfiguration.Builder()
+                .name(Realm.DEFAULT_REALM_NAME)
+                .schemaVersion(0)
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
 
     }
 

@@ -53,10 +53,10 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
         setContentView(R.layout.activity_splash_screen);
         ToolUtils.hideStatus(SplashScreenActivity.this);
         SharedPreferences sharedPreferences = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.loginCheck);
-     //   SharedPreferences sharedPreferences2 = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.userData);
+        //   SharedPreferences sharedPreferences2 = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.userData);
 
         sharedPreferences.edit().putBoolean(Constant.verification_check, false).apply();
-      //  sharedPreferences2.edit().clear().apply();
+        //  sharedPreferences2.edit().clear().apply();
 
         verification_check = sharedPreferences.getBoolean(Constant.verification_check, false);
 
@@ -128,35 +128,53 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
                     public void onSuccess() {
                      /*   logo_text.startAnimation(animationDown);
                         logo.startAnimation(animation);*/
-                        ToolUtils.buildAlertMessageNoGps(SplashScreenActivity.this, SplashScreenActivity.this, SplashScreenActivity.this, new CheckGPSCallback() {
-                            @Override
-                            public void processFinish(boolean check, Status status) {
-                                if (!check) {
-                                    try {
-                                        status.startResolutionForResult(
-                                                SplashScreenActivity.this, REQUEST_CHECK_SETTINGS);
-                                    } catch (IntentSender.SendIntentException e) {
-                                        // Ignore the error.
-                                    }
-                                } else {
+                        Log.e("test1", "test1");
+
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                            ToolUtils.buildAlertMessageNoGps2(SplashScreenActivity.this, new CheckGPSCallback() {
+                                @Override
+                                public void processFinish(boolean b, Status status) {
                                     excNext();
                                 }
-                            }
-                        });
+                            });
+                        } else {
+                            ToolUtils.buildAlertMessageNoGps(SplashScreenActivity.this, SplashScreenActivity.this, SplashScreenActivity.this, new CheckGPSCallback() {
+                                @Override
+                                public void processFinish(boolean check, Status status) {
+                                    if (!check) {
+                                        try {
+                                            status.startResolutionForResult(
+                                                    SplashScreenActivity.this, REQUEST_CHECK_SETTINGS);
+                                        } catch (IntentSender.SendIntentException e) {
+                                            Log.e("test2", "test2");
 
+                                        }
+                                    } else {
+                                        excNext();
+                                    }
+                                    Log.e("test3", "test3");
+                                }
+                            });
+
+                        }
                     }
 
                     @Override
-                    public void onRequiredPermissionDenied(String[] deniedPermissions, boolean[] isAutoDenied) {
+                    public void onRequiredPermissionDenied(String[] deniedPermissions,
+                                                           boolean[] isAutoDenied) {
                         finish();
                     }
 
                     @Override
-                    public void onOptionalPermissionDenied(String[] deniedPermissions, boolean[] isAutoDenied) {
+                    public void onOptionalPermissionDenied(String[] deniedPermissions,
+                                                           boolean[] isAutoDenied) {
+                        Log.e("test4", "test4");
 
                     }
                 })
-                .verifyPermissions();
+                .
+
+                        verifyPermissions();
 
 
     }
@@ -181,7 +199,7 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
     }
 
     private void excNext() {
-        Log.e("SnackTextSnackText","SnackTextSnackText");
+        Log.e("SnackTextSnackText", "SnackTextSnackText");
         logo.setVisibility(View.VISIBLE);
         logo_text.setVisibility(View.VISIBLE);
         ViewAnimator

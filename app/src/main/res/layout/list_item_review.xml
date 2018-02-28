@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/_7sdp"
+    android:paddingBottom="@dimen/_15sdp"
+    android:orientation="vertical">
+
+    <com.iarcuschin.simpleratingbar.SimpleRatingBar
+        android:id="@+id/rate_bar1_comment"
+        app:srb_borderColor="@color/color_ffba00"
+        app:srb_fillColor="@color/color_ffba00"
+        app:srb_isIndicator="true"
+        app:srb_numberOfStars="5"
+        app:srb_rating="5"
+        app:srb_starBorderWidth=".51"
+        app:srb_starSize="@dimen/_12sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/_7sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:clickable="false" />
+
+    <com.yallagoom.font.Roboto_Regular
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_7sdp"
+        android:text="This is description of ticket , note that it will be html formatWhis restrict format , his is description of ticket , dead see bla bla bla text . , his is description of ticket , dead see bla bla bla text . "
+        android:textColor="@color/black_70"
+        android:textSize="@dimen/_12sdp" />
+
+    <com.yallagoom.font.Roboto_Regular
+        android:id="@+id/reviewer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mohammed S. Yaghi from United Kingdom"
+        android:textColor="@color/black_45"
+        android:textSize="@dimen/_11sdp"
+        android:textStyle="normal" />
+</LinearLayout>

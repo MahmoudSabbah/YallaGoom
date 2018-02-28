@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/_13sdp"
     android:layout_marginStart="@dimen/_13sdp"
+    android:id="@+id/parent"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -18,7 +19,7 @@
             android:id="@+id/recomm_image"
             android:layout_width="@dimen/_78sdp"
             android:layout_height="@dimen/_78sdp"
-            android:src="@drawable/food_img_bg"
+            android:src="@drawable/default_image_small"
             android:scaleType="centerCrop"
             app:sriv_border_color="#008fea"
             app:sriv_border_width="0dip"
@@ -134,6 +135,7 @@
                     android:textColor="@color/black_70"
                     android:textSize="@dimen/_11sdp" />
                 <View
+                    android:id="@+id/view_before"
                     android:layout_width="wrap_content"
                     android:layout_height="1.0dp"
                     android:background="@color/black_70"

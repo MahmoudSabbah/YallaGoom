@@ -28,7 +28,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        ToolUtils.hideStatus(HomeActivity.this);
+      ToolUtils.hideStatus(HomeActivity.this);
+
         // ViewPager mViewPger = (ViewPager) findViewById(R.id.mViewPager);
         alphaTabsIndicator = (AlphaTabsIndicator) findViewById(R.id.alphaIndicator);
         HomeTapAdapter mainAdapter = new HomeTapAdapter(getSupportFragmentManager(), alphaTabsIndicator);

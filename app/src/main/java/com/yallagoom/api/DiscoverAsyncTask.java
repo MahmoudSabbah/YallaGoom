@@ -40,6 +40,15 @@ public class DiscoverAsyncTask extends AsyncTask<String, String, Integer> {
 
     @Override
     protected void onPreExecute() {
+        if (progress == null) {
+            progress = KProgressHUD.create(mContext)
+                    .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                    .setLabel(mContext.getString(R.string.please_wait))
+                    .setCancellable(true)
+                    .setAnimationSpeed(2)
+                    .setDimAmount(0.5f)
+                    .show();
+        }
 
 
     }
@@ -47,11 +56,11 @@ public class DiscoverAsyncTask extends AsyncTask<String, String, Integer> {
     @Override
     protected Integer doInBackground(String[] params) {
         FormBody.Builder formBody = new FormBody.Builder();
-        formBody.add("code_3",params[0]);
+        formBody.add("code_3", params[0]);
         Request.Builder builder = new Request.Builder();
         builder.url(Constant.urlData + Constant.discover_ticket);
         builder.post(formBody.build());
-        builder.header("Authorization", "Bearer " + ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.userToken, null));
+        builder.header("Authorization", Constant.API_KEY);
         Request request = builder.build();
         try {
             Response response = ToolUtils.getOkHttpClient().newCall(request).execute();

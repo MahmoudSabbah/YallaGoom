@@ -5,12 +5,14 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:background="@drawable/pressed_bg_transparent"
         android:paddingLeft="@dimen/_13sdp"
         android:paddingStart="@dimen/_13sdp"
-        android:paddingTop="@dimen/_10sdp">
+        android:paddingTop="@dimen/_5sdp">
 
 
         <com.yallagoom.font.Roboto_Regular

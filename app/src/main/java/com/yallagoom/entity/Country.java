@@ -24,7 +24,25 @@ public class Country {
         private String code;
         private String phone_code;
         private String flag;
+        private String code_3;
+        private String img_url;
        private int vis=0;
+
+       public String getCode_3() {
+           return code_3;
+       }
+
+       public void setCode_3(String code_3) {
+           this.code_3 = code_3;
+       }
+
+       public String getImg_url() {
+           return img_url;
+       }
+
+       public void setImg_url(String img_url) {
+           this.img_url = img_url;
+       }
 
        public int getVis() {
            return vis;
