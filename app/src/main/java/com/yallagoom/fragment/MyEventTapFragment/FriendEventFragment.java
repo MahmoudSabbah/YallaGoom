@@ -13,9 +13,7 @@ import android.widget.TextView;
 
 import com.joooonho.SelectableRoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yallagoom.R;
-import com.yallagoom.activity.ShowAllMyEventActivity;
 import com.yallagoom.activity.ShowMoreFriendsEventActivity;
 import com.yallagoom.adapter.RecycleFriendsEventByType;
 import com.yallagoom.api.GetEventFriendAsyncTask;
@@ -26,7 +24,6 @@ import com.yallagoom.utils.ToolUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 
 

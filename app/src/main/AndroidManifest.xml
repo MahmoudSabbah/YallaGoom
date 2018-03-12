@@ -104,7 +104,10 @@
         <activity
             android:name=".activity.TicketsdetailsMoreActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.DiscoverCategoryActivity"
+        <activity
+            android:name=".activity.DiscoverCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.BookingNowActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

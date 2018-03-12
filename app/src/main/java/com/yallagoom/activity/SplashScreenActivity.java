@@ -52,6 +52,7 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         ToolUtils.hideStatus(SplashScreenActivity.this);
+        ToolUtils.getAllDays();
         SharedPreferences sharedPreferences = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.loginCheck);
         //   SharedPreferences sharedPreferences2 = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.userData);
 

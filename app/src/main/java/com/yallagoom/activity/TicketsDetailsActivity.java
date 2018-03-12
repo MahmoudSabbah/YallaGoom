@@ -18,11 +18,11 @@ import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
 import com.yallagoom.adapter.RecycleViewReviewList;
+import com.yallagoom.api.BookingsettingsAsyncTask;
 import com.yallagoom.controller.RealmController;
-import com.yallagoom.entity.TicketDetails;
+import com.yallagoom.entity.TicketClasses.TicketDetails;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.MapUtils;
-import com.yallagoom.utils.RealmTools;
 import com.yallagoom.utils.ToolUtils;
 
 import io.realm.Realm;
@@ -57,6 +57,8 @@ public class TicketsDetailsActivity extends AppCompatActivity {
     private RelativeLayout heart_layout;
     private Realm mRealm;
     private RealmController realmController;
+    private RelativeLayout booking_bt1;
+    private RelativeLayout booking_bt2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +90,21 @@ public class TicketsDetailsActivity extends AppCompatActivity {
             }
         });
 
+        booking_bt1 = (RelativeLayout) findViewById(R.id.booking_bt1);
+        booking_bt2 = (RelativeLayout) findViewById(R.id.booking_bt2);
+        booking_bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookingNow();
+            }
+        });
+        booking_bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookingNow();
+            }
+        });
+
         heart_layout = (RelativeLayout) findViewById(R.id.heart_layout);
         select_true = (TextView) findViewById(R.id.select_true);
         select_false = (TextView) findViewById(R.id.select_false);
@@ -98,18 +115,19 @@ public class TicketsDetailsActivity extends AppCompatActivity {
             select_true.setVisibility(View.GONE);
             select_false.setVisibility(View.VISIBLE);
         }
-       /// realmController.clearAllTicketDetails();
+        /// realmController.clearAllTicketDetails();
         heart_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("getTicketDetailsCkeck",""+realmController.checkTicketsExists(ticketDetails.getTicket_info().getId()));
+                Log.e("getTicketDetailsCkeck", "" + realmController.checkTicketsExists(ticketDetails.getTicket_info().getId()));
                 if (!realmController.checkTicketsExists(ticketDetails.getTicket_info().getId())) {
                     mRealm.beginTransaction();
-                    mRealm.copyToRealm(ticketDetails);
+                    mRealm.copyToRealmOrUpdate(ticketDetails.getReview_list());
+                    mRealm.copyToRealmOrUpdate(ticketDetails.getTicket_info());
                     mRealm.commitTransaction();
                 } else {
                     mRealm.beginTransaction();
-                  realmController.removeTickets(ticketDetails.getTicket_info().getId());
+                    realmController.removeTickets(ticketDetails.getTicket_info().getId());
                     mRealm.commitTransaction();
                 }
 
@@ -127,8 +145,11 @@ public class TicketsDetailsActivity extends AppCompatActivity {
                     }*/
 
                 }
-                Log.e("getTicketDetails",""+realmController.getTicketDetails().size());
-
+                Log.e("getTicketDetails", "" + realmController.getTicketDetails().size());
+                Log.e("getTicketDetailsCountry", "" + realmController.getCountry().size());
+                for (int i = 0; i < realmController.getCountry().size(); i++) {
+                    Log.e("getCountry",""+realmController.getCountry().get(i).getId());
+                }
             }
         });
 
@@ -216,7 +237,10 @@ public class TicketsDetailsActivity extends AppCompatActivity {
         progress3.setProgress(30);
         progress4.setProgress(10);
     }
-
+    private void BookingNow() {
+        BookingsettingsAsyncTask bookingsettingsAsyncTask=new BookingsettingsAsyncTask(TicketsDetailsActivity.this);
+        bookingsettingsAsyncTask.execute(ticketDetails.getTicket_info().getId()+"");
+    }
     public void Back(View view) {
         finish();
     }

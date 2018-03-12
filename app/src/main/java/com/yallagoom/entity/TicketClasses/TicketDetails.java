@@ -1,4 +1,4 @@
-package com.yallagoom.entity;
+package com.yallagoom.entity.TicketClasses;
 
 import com.yallagoom.entity.TicketClasses.ReviewList;
 import com.yallagoom.entity.TicketClasses.TicketInfo;

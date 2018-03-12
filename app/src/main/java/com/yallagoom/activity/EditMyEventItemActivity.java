@@ -13,7 +13,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import com.yallagoom.R;
@@ -21,6 +20,7 @@ import com.yallagoom.api.UpdateEventAsyncTask;
 import com.yallagoom.entity.Event;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
+import com.yallagoom.widget.compactcalendarview.CompactCalendarView;
 import com.yallagoom.widget.segmented.SegmentedGroup;
 
 import java.util.Calendar;

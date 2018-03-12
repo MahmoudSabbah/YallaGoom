@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yallagoom.R;
 import com.yallagoom.adapter.RecycleViewDiscoverCategory;
-import com.yallagoom.entity.TicketFullData;
+import com.yallagoom.entity.TicketClasses.TicketFullData;
 import com.yallagoom.utils.ToolUtils;
 
 public class DiscoverCategoryActivity extends AppCompatActivity {

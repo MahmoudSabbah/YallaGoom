@@ -1,4 +1,4 @@
-package com.yallagoom.entity;
+package com.yallagoom.entity.TicketClasses;
 
 import java.util.ArrayList;
 

@@ -10,8 +10,10 @@ import android.app.Application;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
+import com.yallagoom.entity.TicketClasses.Country;
+import com.yallagoom.entity.TicketClasses.ReviewList;
 import com.yallagoom.entity.TicketClasses.TicketInfo;
-import com.yallagoom.entity.TicketDetails;
+import com.yallagoom.entity.TicketClasses.TicketDetails;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -84,6 +86,14 @@ public class RealmController {
 
         return realm.where(TicketDetails.class).findAll();
     }
+    public RealmResults<ReviewList> getReviewList() {
+
+        return realm.where(ReviewList.class).findAll();
+    }
+    public RealmResults<Country> getCountry() {
+
+        return realm.where(Country.class).findAll();
+    }
     public RealmResults<TicketInfo> getTicketInfo () {
 
         return realm.where(TicketInfo.class).findAll();
@@ -103,7 +113,7 @@ public class RealmController {
         RealmResults<TicketDetails> ticketDetails = realm.where(TicketDetails.class).findAll();
         Log.e("removeTicketsDetails",""+ticketDetails.size());
 
-        for (int i=0;i<ticketDetails.size();i++){
+        for (int i=0;i<ticketDetails.size();i++){//distinct
             if (ticketDetails.get(i).getTicket_info().getId()==id){
                 Log.e("removeTickets","removeTickets"+i);
                 ticketDetails.get(i).getTicket_info().deleteFromRealm();

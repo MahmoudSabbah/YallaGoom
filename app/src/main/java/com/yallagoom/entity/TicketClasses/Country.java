@@ -3,12 +3,14 @@ package com.yallagoom.entity.TicketClasses;
 import java.io.Serializable;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Mahmoud Sabbah on 2/28/2018.
  */
 
 public class Country extends RealmObject implements Serializable {
+    @PrimaryKey
     private int id;
     private String name_en;
     private String name_ar;

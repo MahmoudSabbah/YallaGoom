@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.yallagoom.R;
 import com.yallagoom.adapter.RecycleViewWishListFragment;
 import com.yallagoom.controller.RealmController;
-import com.yallagoom.utils.RealmTools;
 
 import io.realm.Realm;
 

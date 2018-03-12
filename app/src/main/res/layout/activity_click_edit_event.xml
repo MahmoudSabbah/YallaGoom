@@ -176,7 +176,7 @@
                     android:textSize="@dimen/_19sdp" />
             </RelativeLayout>
 
-            <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+            <com.yallagoom.widget.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/compactcalendar_view_start"
                 android:layout_width="fill_parent"
                 android:layout_height="250dp"
@@ -254,7 +254,7 @@
                     android:textSize="@dimen/_19sdp" />
             </RelativeLayout>
 
-            <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+            <com.yallagoom.widget.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/compactcalendar_end"
                 android:layout_width="fill_parent"
                 android:layout_height="250dp"

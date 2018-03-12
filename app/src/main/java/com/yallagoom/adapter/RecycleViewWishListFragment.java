@@ -11,12 +11,9 @@ import android.widget.TextView;
 import com.joooonho.SelectableRoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
-import com.yallagoom.entity.TicketDetails;
-import com.yallagoom.entity.TicketFullData;
+import com.yallagoom.entity.TicketClasses.TicketDetails;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
-
-import java.util.ArrayList;
 
 import io.realm.RealmResults;
 

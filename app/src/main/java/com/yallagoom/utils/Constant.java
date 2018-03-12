@@ -17,6 +17,11 @@ public class Constant {
     public static String urlData="http://devyallagoom.com/"+api+"/";
     public static String imageUrl="http://devyallagoom.com/"+uploads+"/";
     public static String urlImage="http://devyallagoom.com/";
+
+    public static String urlMatches1="https://api.sportradar.us/soccer-t3/global/en/schedules/";
+    public static String urlMatchesResults2 ="/results.json?api_key=99935cnbcu7cv797fy4kd4xd";
+    public static String urlMatchesSchedule2 ="/schedule.json?api_key=99935cnbcu7cv797fy4kd4xd";
+
     public static String API_KEY="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjM0MmY3OTVlYWJmZDc3NDQ1Njg0OGM3NzI4MTVmZDc0MzA4NzlmMjUzYWFmMjRiNzQzMGQ3MDIwNmVkZTczZTYwY2Y4MzUzMjJhNThiMTYzIn0.eyJhdWQiOiI5IiwianRpIjoiMzQyZjc5NWVhYmZkNzc0NDU2ODQ4Yzc3MjgxNWZkNzQzMDg3OWYyNTNhYWYyNGI3NDMwZDcwMjA2ZWRlNzNlNjBjZjgzNTMyMmE1OGIxNjMiLCJpYXQiOjE1MTY0NTI3NjAsIm5iZiI6MTUxNjQ1Mjc2MCwiZXhwIjoxNTQ3OTg4NzYwLCJzdWIiOiIiLCJzY29wZXMiOltdfQ.GmXg6SCHW-ZTaJxyTIm6zEefGzAivz6NpfXxlzNMSs5srF9NIRmtM_F-f7DD0o_csVipRP6lpNmjNbMP_6bCpDsHQuCbr7FJ2NKT9zEnbuund38D35dHdcItDoi7T_IyhtvUkXqns-ElzXi5QXVAru676EG2R7sKNip8oPIn1XfWmYd7FczAKuC8P7cD_JsRZFrugwDIZt60ts6D6TQgIjEUoy5CiWlZYkNp37DwrhCrQ0VZNBVEI2mW0aL0zI7v5is-eVR0JSyWUCWAJEVTXQgFlgZK_jCA7qXMvaqVBXUs4pqYq3cAVyHHn9mvDbX5mEQHe_mEY3oG-2z01aCYje-wgc0xWdXbZiT37zbjN0pRh1pEscCHDxoHC04HLPC2fSDS2hTA3rzqYYpg05S_xqMX30OTMQFb_ro64iiAklEYM58UhWSovQ9NU6pjzQ-LK-VYPzQC-Wb3Vc2E5ZCxPIJzcSq7ap8ajeSCAFLW-UOsygck3sbZN42sS7ztnjmCUErT5_rzWqPDPUdCg_Av0RuS1SVAIiAzGRStaea3HfnPpRRJJf2KxrD9rIuMp0pHLR6b3xP5u-aYOD1jB11huRuLPBbeX9Olnbn0LmmkFm4qa9x3_03hpgxJlX77NCVpYCCpHdv0Hy8bI18Fdp-7j3B8xO5fP2Z__nqTkR1bev8";
     public static String status_callback="status";
     public static String error_callback="errors";
@@ -62,17 +67,22 @@ public class Constant {
     public static String MyFriendList="friend/getMyFriendList";
     public static String getNewRequest="friend/getNewRequest";
     public static String ticket="ticket";
+    public static String sports_matches="sports_matches";
     public static String discover_ticket=ticket+"/discover";
     public static String show_ticket=ticket+"/show";
+    public static String booking_settings_ticket=ticket+"/booking_settings";
     public static String discover_category=ticket+"/discover_category";
+    public static String sports_matches_list=sports_matches+"/list";
     public static String special_offers=ticket+"/special_offers";
     public static String categories="categories";
     public static String yyyy_MM_dd="yyyy-MM-dd";
     public static String dd_MMM_yyyy="dd MMM yyyy";
+    public static String MMM_dd_EEE_yyyy="MMM-dd-EEE-yyyy";
     public static String EEEE_dd_MMM_yyyy="EEEE, dd MMM yyyy";
     public static String HH_mm_ss="HH:mm:ss";
     public static String hh_mm_aa="hh:mm aa";
     public static String userId="userId";
     public static String country_code_url="http://ip-api.com/json";
     public static String alpha3Country="";
+    public static int lastPos;
 }

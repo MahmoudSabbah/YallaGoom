@@ -14,7 +14,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
 import com.yallagoom.activity.TicketsDetailsActivity;
 import com.yallagoom.api.TicketDetailsAsyncTask;
-import com.yallagoom.entity.TicketFullData;
+import com.yallagoom.entity.TicketClasses.TicketFullData;
 import com.yallagoom.interfaces.TicketDeatailsCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;

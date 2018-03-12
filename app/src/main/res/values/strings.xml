@@ -208,5 +208,12 @@
     <string name="back">Back</string>
     <string name="reviews">Reviews</string>
     <string name="map">Map</string>
+    <string name="check_out">Check out</string>
+    <string name="price">Price</string>
+    <string name="schedule">Schedule</string>
+    <string name="option1">option1</string>
+    <string name="option2">option2</string>
+    <string name="option3">option3</string>
+    <string name="schedule2">Schedule2</string>
 
 </resources>

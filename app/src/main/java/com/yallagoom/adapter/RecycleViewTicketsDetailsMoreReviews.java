@@ -10,9 +10,6 @@ import android.widget.TextView;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.yallagoom.R;
 import com.yallagoom.entity.TicketClasses.ReviewListData;
-import com.yallagoom.entity.TicketDetails;
-
-import java.util.ArrayList;
 
 import io.realm.RealmList;
 

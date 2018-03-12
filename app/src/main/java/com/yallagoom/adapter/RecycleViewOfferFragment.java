@@ -1,7 +1,6 @@
 package com.yallagoom.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +11,7 @@ import android.widget.TextView;
 import com.joooonho.SelectableRoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
-import com.yallagoom.activity.TicketsDetailsActivity;
-import com.yallagoom.api.TicketDetailsAsyncTask;
-import com.yallagoom.entity.TicketFullData;
-import com.yallagoom.interfaces.TicketDeatailsCallback;
+import com.yallagoom.entity.TicketClasses.TicketFullData;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 

@@ -2,6 +2,8 @@ package com.yallagoom.entity;
 
 import java.util.ArrayList;
 
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Mahmoud Sabbah on 2/5/2018.
  */

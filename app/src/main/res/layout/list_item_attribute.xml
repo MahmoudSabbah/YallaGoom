@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white_color"
+    android:orientation="vertical">
+
+    <com.yallagoom.font.Roboto_Regular
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:background="@color/color_f9f9f9"
+        android:gravity="center"
+        android:minHeight="@dimen/_30sdp"
+        android:minWidth="@dimen/_90sdp"
+        android:text="Price"
+        android:textColor="@color/color_7f7d7e" />
+
+    <com.yallagoom.font.Roboto_Regular
+        android:id="@+id/value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/color_f9f9f9"
+        android:gravity="center"
+        android:minHeight="@dimen/_30sdp"
+        android:minWidth="@dimen/_90sdp"
+        android:text="120 $"
+        android:textColor="@color/color_df488a" />
+</LinearLayout>

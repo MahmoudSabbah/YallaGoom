@@ -54,7 +54,7 @@
                 android:layout_centerInParent="true"
                 android:text="@string/fa_heart"
                 android:visibility="gone"
-                android:textColor="@color/red_light"
+                android:textColor="@color/white_color"
                 android:textSize="@dimen/_16sdp" />
         </RelativeLayout>
 
@@ -195,6 +195,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/booking_bt1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_15sdp"
@@ -635,6 +636,7 @@
             android:background="@color/color_33000000" />
 
         <RelativeLayout
+            android:id="@+id/booking_bt2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_20sdp"

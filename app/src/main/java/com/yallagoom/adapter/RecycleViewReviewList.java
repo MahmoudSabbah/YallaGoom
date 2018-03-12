@@ -5,16 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.yallagoom.R;
-import com.yallagoom.entity.Event;
 import com.yallagoom.entity.TicketClasses.ReviewListData;
-import com.yallagoom.entity.TicketDetails;
-
-import java.util.ArrayList;
 
 import io.realm.RealmList;
 

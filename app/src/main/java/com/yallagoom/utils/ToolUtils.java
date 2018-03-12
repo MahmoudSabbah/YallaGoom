@@ -58,6 +58,7 @@ import java.net.URLEncoder;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -134,7 +135,8 @@ public class ToolUtils {
         });
 
     }
-    public static void buildAlertMessageNoGps2(final Activity context,final CheckGPSCallback checkGPSCallback){
+
+    public static void buildAlertMessageNoGps2(final Activity context, final CheckGPSCallback checkGPSCallback) {
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(30 * 1000);
@@ -149,9 +151,9 @@ public class ToolUtils {
                 try {
 //                    Log.e("qwe21","qwe2"+task.getResult().getLocationSettingsStates().isGpsUsable());
                     LocationSettingsResponse response = task.getResult(ApiException.class);
-                    checkGPSCallback.processFinish(true,null);
+                    checkGPSCallback.processFinish(true, null);
                 } catch (ApiException exception) {
-                    Log.e("qwe1","qwe1");
+                    Log.e("qwe1", "qwe1");
                     switch (exception.getStatusCode()) {
                         case LocationSettingsStatusCodes.SUCCESS:
                             // All location settings are satisfied. The client can initialize location
@@ -197,7 +199,6 @@ public class ToolUtils {
             }
         });
     }
-
 
 
     public static OkHttpClient getOkHttpClient() {
@@ -246,7 +247,7 @@ public class ToolUtils {
     public static void hideStatus(Activity context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window w = context.getWindow(); // in Activity's onCreate() for instance
-           w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 /*
             w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 */
@@ -494,8 +495,13 @@ public class ToolUtils {
         return "";
     }
 
+    public static String converDateToString(Date date, String format_value) {
+        DateFormat dateFormat = new DateFormat();
+        return dateFormat.format(format_value, date) + "";
+
+    }
+
     public static Date converStringToDate(String dtStart, String format_value) {
-        Log.e("dtStart", "" + dtStart);
         SimpleDateFormat format = new SimpleDateFormat(format_value);
         try {
             Date date = format.parse(dtStart);
@@ -759,6 +765,7 @@ public class ToolUtils {
             });
         }
     }
+
     public static void setImageSmall_50(String url, final ImageView imageView, ImageLoader imageLoader) {
         ImageSize targetSize = new ImageSize(50, 50); // result Bitmap will be fit to this size
 
@@ -768,7 +775,7 @@ public class ToolUtils {
         if (list.size() > 0 || isDiskCache(url)) {
             imageLoader.displayImage(url, imageView);
         } else {
-            imageLoader.loadImage(url,targetSize, new ImageLoadingListener() {
+            imageLoader.loadImage(url, targetSize, new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String s, View view) {
 
@@ -796,11 +803,47 @@ public class ToolUtils {
         File file = DiskCacheUtils.findInCache(url, ImageLoader.getInstance().getDiskCache());
         return file != null;
     }
-    public static void setHtmlToTextView(TextView htmlToTextView, String value){
+
+    public static void setHtmlToTextView(TextView htmlToTextView, String value) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             htmlToTextView.setText(Html.fromHtml(value, Html.FROM_HTML_MODE_COMPACT));
         } else {
             htmlToTextView.setText(Html.fromHtml(value));
         }
+    }
+
+    public static List<String> getAllDays() {
+        List<String> days = new ArrayList<>();
+        Calendar cal = Calendar.getInstance();
+     /*   cal.set(Calendar.MONTH, 1);
+        cal.set(Calendar.DAY_OF_MONTH, 1);*/
+        int maxDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        SimpleDateFormat df = new SimpleDateFormat("MMM-dd-EEE-yyyy");
+        for (int i = 0; i < maxDay; i++) {
+            cal.set(Calendar.DAY_OF_MONTH, i + 1);
+            days.add("" + df.format(cal.getTime()));
+            Log.e("Calendar", ", " + df.format(cal.getTime()));
+        }
+        return days;
+    }
+
+    public static String PreviousDate(String date1) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = converStringToDate(date1,"yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, -1);
+        return dateFormat.format(calendar.getTime());
+    }
+    public static String NextDate(String date1) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = converStringToDate(date1,"yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, 1);
+        return dateFormat.format(calendar.getTime());
+    }
+    public static String convertDateFromFormatToFormat(String date, String format1, String format2){//"yyyy-MM-dd'T'HH:mm:ssZ" Constant.EEEE_dd_MMM_yyyy
+      return   ToolUtils.converDateToString(ToolUtils.converStringToDate(date, format1),format2);
     }
 }

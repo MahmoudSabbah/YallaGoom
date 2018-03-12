@@ -9,7 +9,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -34,14 +33,13 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.yallagoom.R;
 import com.yallagoom.adapter.RecycleViewTicketsDetailsMoreReviews;
+import com.yallagoom.api.BookingsettingsAsyncTask;
 import com.yallagoom.api.TicketDetailsAsyncTask;
 import com.yallagoom.entity.TicketClasses.ReviewListData;
-import com.yallagoom.entity.TicketDetails;
+import com.yallagoom.entity.TicketClasses.TicketDetails;
 import com.yallagoom.interfaces.TicketDeatailsCallback;
 import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.segmented.SegmentedGroup;
-
-import java.util.ArrayList;
 
 import io.realm.RealmList;
 
@@ -71,9 +69,10 @@ public class TicketsdetailsMoreActivity extends AppCompatActivity implements OnM
     private TextView description_value;
     private RecycleViewTicketsDetailsMoreReviews recycleViewTicketsDetailsMoreReviews;
     private SmartRefreshLayout refreshLayout_;
-    private int page =2;
+    private int page = 2;
     private RelativeLayout right_text;
     private RealmList<ReviewListData> list_reviewsData;
+    private RelativeLayout booking_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +115,24 @@ public class TicketsdetailsMoreActivity extends AppCompatActivity implements OnM
         booking_bt1 = (RelativeLayout) findViewById(R.id.booking_bt1);
         booking_bt2 = (RelativeLayout) findViewById(R.id.booking_bt2);
         booking_bt3 = (RelativeLayout) findViewById(R.id.booking_bt3);
+        booking_bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookingNow();
+            }
+        });
+        booking_bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookingNow();
+            }
+        });
+        booking_bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookingNow();
+            }
+        });
         segmented.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -190,8 +207,8 @@ public class TicketsdetailsMoreActivity extends AppCompatActivity implements OnM
             @Override
             public void processFinish(String result) {
                 TicketDetails ticketResult = new Gson().fromJson(result, TicketDetails.class);
-                Log.e("getReview_list",""+ticketResult.getReview_list().getData().size());
-                for (int i=0;i<ticketResult.getReview_list().getData().size();i++){
+                Log.e("getReview_list", "" + ticketResult.getReview_list().getData().size());
+                for (int i = 0; i < ticketResult.getReview_list().getData().size(); i++) {
                     list_reviewsData.add(ticketResult.getReview_list().getData().get(i));
                 }
                 recycleViewTicketsDetailsMoreReviews.notifyDataSetChanged();
@@ -200,7 +217,7 @@ public class TicketsdetailsMoreActivity extends AppCompatActivity implements OnM
             }
         });
 
-        ticketDetailsAsyncTask.execute(ticketDetails.getTicket_info().getId() + "",page+"");
+        ticketDetailsAsyncTask.execute(ticketDetails.getTicket_info().getId() + "", page + "");
 
     }
 
@@ -250,5 +267,8 @@ public class TicketsdetailsMoreActivity extends AppCompatActivity implements OnM
 
     }
 
-
+    private void BookingNow() {
+        BookingsettingsAsyncTask bookingsettingsAsyncTask=new BookingsettingsAsyncTask(TicketsdetailsMoreActivity.this);
+        bookingsettingsAsyncTask.execute(ticketDetails.getTicket_info().getId()+"");
+    }
 }

@@ -9,11 +9,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.github.sundeepk.compactcalendarview.CompactCalendarView;
-import com.github.sundeepk.compactcalendarview.domain.Event;
+
 import com.yallagoom.R;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
+import com.yallagoom.widget.compactcalendarview.CompactCalendarView;
 
 import java.util.Date;
 import java.util.List;
@@ -72,8 +72,6 @@ public class CalenderActivity extends AppCompatActivity {
             public void onDayClick(Date dateClicked) {
                 selectDate = dateClicked;
 
-                List<Event> events = compactCalendarView.getEvents(dateClicked);
-                //    Log.e(TAG, "Day was clicked: " + dateFormat.format("yyyy-MMM-dd",dateClicked) + " with events " + events);
                 dateFormat.format(Constant.yyyy_MM_dd, dateClicked);
                 date_value.setText(dateFormat.format(Constant.dd_MMM_yyyy, dateClicked) + "");
                 //   date_header.setText(dateFormat.format("yyyy-MM-dd", dateClicked) + "");
@@ -81,11 +79,11 @@ public class CalenderActivity extends AppCompatActivity {
                     start_dateValue = dateClicked;
                     date_header.setText(dateFormat.format(Constant.yyyy_MM_dd, dateClicked) + " - ");
                 } else if (end_date.isSelected() && between.isSelected()) {
-                    end_dateValue = dateClicked;
-                    if (start_dateValue.getTime() > end_dateValue.getTime()) {
+                    if (start_dateValue.getTime() > dateClicked.getTime()) {
                         ToolUtils.showSnak(CalenderActivity.this, getString(R.string.check_date_greater));
                     } else {
-                        date_header.setText(date_header.getText().toString() + dateFormat.format(Constant.yyyy_MM_dd, dateClicked) + "");
+                        end_dateValue = dateClicked;
+                        date_header.setText( dateFormat.format(Constant.yyyy_MM_dd, start_dateValue)+" - " + dateFormat.format(Constant.yyyy_MM_dd, dateClicked) + "");
 
                     }
                 } else {
