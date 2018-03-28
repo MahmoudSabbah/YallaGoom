@@ -10,7 +10,7 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class Country extends RealmObject implements Serializable {
-    @PrimaryKey
+   // @PrimaryKey
     private int id;
     private String name_en;
     private String name_ar;

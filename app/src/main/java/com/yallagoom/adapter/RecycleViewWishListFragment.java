@@ -12,6 +12,7 @@ import com.joooonho.SelectableRoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
 import com.yallagoom.entity.TicketClasses.TicketDetails;
+import com.yallagoom.entity.TicketClasses.TicketInfo;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
@@ -23,7 +24,7 @@ import io.realm.RealmResults;
 public class RecycleViewWishListFragment extends RecyclerView.Adapter<RecycleViewWishListFragment.MyViewHolder> {
 
     private final ImageLoader imageLoader;
-    private final RealmResults<TicketDetails> data;
+    private final RealmResults<TicketInfo> data;
     public Context context;
 
 
@@ -55,7 +56,7 @@ public class RecycleViewWishListFragment extends RecyclerView.Adapter<RecycleVie
     }
 
 
-    public RecycleViewWishListFragment(RealmResults<TicketDetails> data) {
+    public RecycleViewWishListFragment(RealmResults<TicketInfo> data) {
         this.data = data;
         imageLoader = ImageLoader.getInstance();
     }
@@ -70,24 +71,25 @@ public class RecycleViewWishListFragment extends RecyclerView.Adapter<RecycleVie
 
     @Override
     public void onBindViewHolder(final RecycleViewWishListFragment.MyViewHolder holder, final int position) {
+
         if (position == data.size() - 1) {
             holder.view_.setVisibility(View.GONE);
         }
-        if (data.get(position).getTicket_info().getImg_url() != null) {
-            ToolUtils.setImage(Constant.imageUrl + data.get(position).getTicket_info().getImg_url(), holder.recomm_image, imageLoader);
+        if (data.get(position).getImg_url() != null) {
+            ToolUtils.setImage(Constant.imageUrl + data.get(position).getImg_url(), holder.recomm_image, imageLoader);
 
         }
-        holder.recom_title.setText(data.get(position).getTicket_info().getTitle());
-        if (data.get(position).getTicket_info().getTime() != null) {
-            holder.time.setText(ToolUtils.convert24TimeTo12(data.get(position).getTicket_info().getTime()));
+        holder.recom_title.setText(data.get(position).getTitle());
+        if (data.get(position).getTime() != null) {
+            holder.time.setText(ToolUtils.convert24TimeTo12(data.get(position).getTime()));
         }
-        if (data.get(position).getTicket_info().getPrice_after_discount() == 0) {
+        if (data.get(position).getPrice_after_discount() == 0) {
             holder.cost_after.setVisibility(View.GONE);
             holder.view_before.setVisibility(View.GONE);
         } else {
-            holder.cost_after.setText("$ " + data.get(position).getTicket_info().getPrice_after_discount());
+            holder.cost_after.setText("$ " + data.get(position).getPrice_after_discount());
         }
-        holder.cost_befor.setText("$ " + data.get(position).getTicket_info().getPrice() + "");
+        holder.cost_befor.setText("$ " + data.get(position).getPrice() + "");
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override

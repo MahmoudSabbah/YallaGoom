@@ -77,11 +77,11 @@ public class RecycleViewDaysScheduleFragment extends RecyclerView.Adapter<Recycl
 
         }*/
 
-    }
-    @Override
+  }
+   /*   @Override
     public long getItemId(int position) {
         return position;
-    }
+    }*/
 
     public int getItemViewType(int position) {
         return position;

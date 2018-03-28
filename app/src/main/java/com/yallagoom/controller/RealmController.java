@@ -86,6 +86,7 @@ public class RealmController {
 
         return realm.where(TicketDetails.class).findAll();
     }
+
     public RealmResults<ReviewList> getReviewList() {
 
         return realm.where(ReviewList.class).findAll();
@@ -107,8 +108,11 @@ public class RealmController {
             return false;
         }
     }
-
     public void removeTickets(int id) {
+        RealmResults<TicketInfo> ticketInfos = realm.where(TicketInfo.class).equalTo("id",id).findAll();
+        ticketInfos.deleteAllFromRealm();
+    }
+  /*  public void removeTickets(int id) {
 
         RealmResults<TicketDetails> ticketDetails = realm.where(TicketDetails.class).findAll();
         Log.e("removeTicketsDetails",""+ticketDetails.size());
@@ -122,6 +126,6 @@ public class RealmController {
             }
         }
 
-    }
+    }*/
 
 }

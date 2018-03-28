@@ -21,7 +21,7 @@
             android:layout_margin="5dp"
             android:layout_marginEnd="@dimen/_7sdp"
             android:layout_marginRight="@dimen/_7sdp"
-            app:color_checked="@color/color_178d8e" />
+            app:color_checked="@color/color_df488a" />
 
         <com.yallagoom.font.Roboto_Regular
             android:id="@+id/title"

@@ -1,7 +1,10 @@
 package com.yallagoom.utils;
 
+import android.content.Context;
+
 import com.yallagoom.entity.Country;
 import com.yallagoom.entity.Event;
+import com.yallagoom.entity.News.Channels;
 import com.yallagoom.entity.User;
 
 import java.util.ArrayList;
@@ -73,9 +76,18 @@ public class Constant {
     public static String booking_settings_ticket=ticket+"/booking_settings";
     public static String discover_category=ticket+"/discover_category";
     public static String sports_matches_list=sports_matches+"/list";
+    public static String sports_matches_list_1=sports_matches+"/list_1";
+    public static String match_details=sports_matches+"/match_details";
+    public static String get_news_feeds=sports_matches+"/get_news_feeds";
+    public static String get_area_category=sports_matches+"/get_area_category";
+    public static String get_news_channel_ids_for_country=sports_matches+"/get_news_channel_ids_for_country";
+    public static String get_club_compitetion_list=sports_matches+"/get_club_compitetion_list";
+    public static String clubs_list=sports_matches+"/clubs_list";
     public static String special_offers=ticket+"/special_offers";
     public static String categories="categories";
     public static String yyyy_MM_dd="yyyy-MM-dd";
+    public static String yyyy_MM_dd__HH_mm="yyyy-MM-dd HH:mm";
+    public static String dd_MM_yyyy="dd/MM/yyyy";
     public static String dd_MMM_yyyy="dd MMM yyyy";
     public static String MMM_dd_EEE_yyyy="MMM-dd-EEE-yyyy";
     public static String EEEE_dd_MMM_yyyy="EEEE, dd MMM yyyy";
@@ -85,4 +97,9 @@ public class Constant {
     public static String country_code_url="http://ip-api.com/json";
     public static String alpha3Country="";
     public static int lastPos;
+    public static String CompClub="CompClub";
+    public static String CompClubData="CompClubList";
+    public static Channels[] ChannelsList;
+    public static String ChannelsListData="ChannelsListData";
+    public static String ChannelsKey="ChannelsKey";
 }

@@ -53,14 +53,14 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/_24sdp"
             android:layout_marginRight="@dimen/_24sdp"
-            android:background="@drawable/selected_contact_friend"
+            android:background="@drawable/selected_radius_df488a_radius_white"
             android:gravity="center"
             android:paddingBottom="@dimen/_7sdp"
             android:paddingLeft="@dimen/_5sdp"
             android:paddingRight="@dimen/_5sdp"
             android:paddingTop="@dimen/_7sdp"
             android:text="@string/invite_to_app"
-            android:textColor="@drawable/select_cotact_friend_color"
+            android:textColor="@drawable/select_8e9093_white_text_color"
             android:textSize="@dimen/_11sdp" />
     </RelativeLayout>
 

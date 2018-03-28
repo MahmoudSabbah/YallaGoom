@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_f9f9f9"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.yallagoom.font.TextAwesome
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:gravity="center_vertical"
+            android:text="@string/fa_server"
+            android:textColor="@color/black_50_op"
+            android:textSize="@dimen/_15sdp" />
+
+        <com.yallagoom.font.Roboto_Regular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:gravity="center_vertical"
+            android:text="@string/results"
+            android:textColor="@color/color_e1000000"
+            android:textSize="@dimen/_12sdp" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_minus4sdp"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@color/color_df488a"
+            app:tabIndicatorHeight="@dimen/_3sdp"
+            app:tabMode="scrollable"
+            app:tabPaddingBottom="@dimen/_minus8sdp"
+            app:tabSelectedTextColor="@color/color_df488a"
+            app:tabTextAppearance="@style/MatchTabText">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/result_tab_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Real Mrdrid" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Barchelona" />
+
+        </android.support.design.widget.TabLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/result_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="vertical"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_f9f9f9"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <com.yallagoom.font.TextAwesome
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:gravity="center_vertical"
+            android:text="@string/fa_server"
+            android:textColor="@color/black_50_op"
+            android:textSize="@dimen/_15sdp" />
+
+        <com.yallagoom.font.Roboto_Regular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:gravity="center_vertical"
+            android:text="@string/stats"
+            android:textColor="@color/color_e1000000"
+            android:textSize="@dimen/_12sdp" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs_stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_minus4sdp"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@color/color_df488a"
+            app:tabIndicatorHeight="@dimen/_3sdp"
+            app:tabMode="scrollable"
+            app:tabPaddingBottom="@dimen/_minus8sdp"
+            app:tabSelectedTextColor="@color/color_df488a"
+            app:tabTextAppearance="@style/MatchTabText">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Real Mrdrid" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Barchelona" />
+
+        </android.support.design.widget.TabLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/stats_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="vertical"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+
+</LinearLayout>

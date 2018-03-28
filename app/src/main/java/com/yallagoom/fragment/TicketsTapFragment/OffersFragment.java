@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -56,7 +57,7 @@ public class OffersFragment extends Fragment {
     private void getData() {
         OfferFragmentDataAsyncTask offerFragmentDataAsyncTask = new OfferFragmentDataAsyncTask(OffersFragment.this.getContext(), new StringResultCallback() {
             @Override
-            public void processFinish(String result) {
+            public void processFinish(String result, KProgressHUD progress) {
                 resultData = new Gson().fromJson(result, TicketFullData.class);
                 recycleViewOfferFragment = new RecycleViewOfferFragment(resultData.getData());
                 offers_list.setAdapter(recycleViewOfferFragment);

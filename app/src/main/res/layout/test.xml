@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_frame"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white_color"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/_5sdp"
+    android:layout_height="wrap_content"
+    android:background="@color/color_e3e3e3"
+    android:orientation="vertical">
 
-    android:paddingRight="@dimen/_5sdp">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
-    <Button
-        android:id="@+id/bttuon"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btton" />
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/action_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
 </RelativeLayout>

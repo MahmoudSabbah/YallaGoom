@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white_color">
+    <com.yallagoom.font.Roboto_Medium
+        android:id="@+id/date_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selected_radius_df488a_radius_white"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:paddingRight="@dimen/_8sdp"
+        android:paddingLeft="@dimen/_8sdp"
+        android:text="6/3/2018"
+        android:minHeight="@dimen/_29sdp"
+        android:textColor="@drawable/select_8e9093_white_text_color"
+        android:textSize="@dimen/_10sdp" />
+
+</LinearLayout>

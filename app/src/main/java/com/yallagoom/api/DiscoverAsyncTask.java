@@ -76,6 +76,7 @@ public class DiscoverAsyncTask extends AsyncTask<String, String, Integer> {
                     JSONObject data = jsonObject.getJSONObject(Constant.data);
                     discover = new Gson().fromJson(data.toString(), Discover.class);
 
+
                 }
                 return status;
             } else {

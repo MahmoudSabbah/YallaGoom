@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/_5sdp"
+    android:layout_marginRight="@dimen/_5sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:background="@drawable/shadow_box"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/news_with_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/top_news_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_170sdp"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/news_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <cn.jzvd.JZVideoPlayerStandard
+                android:id="@+id/videoplayer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/website_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_9sdp"
+                android:layout_marginRight="@dimen/_9sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:text="#Rai news"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/_12sdp" />
+
+            <com.yallagoom.font.Roboto_Medium
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_9sdp"
+                android:layout_marginRight="@dimen/_9sdp"
+                android:text=""
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="normal" />
+        </RelativeLayout>
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/news_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top_news_img"
+            android:layout_margin="@dimen/_9sdp"
+            android:text="3 minutes ago"
+            android:textColor="@color/black_65"
+            android:textSize="@dimen/_10sdp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/website_name2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_9sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_9sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:layout_toLeftOf="@+id/news_time2"
+                android:layout_toStartOf="@+id/news_time2"
+                android:text="#Rai news"
+                android:textColor="@color/color_black_72"
+                android:textSize="@dimen/_12sdp" />
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/news_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_9sdp"
+                android:layout_marginRight="@dimen/_9sdp"
+                android:text="3 minutes ago"
+                android:textColor="@color/black_65"
+                android:textSize="@dimen/_10sdp" />
+
+        </RelativeLayout>
+
+        <com.yallagoom.font.Roboto_Medium
+            android:id="@+id/title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_9sdp"
+            android:layout_marginLeft="@dimen/_9sdp"
+            android:layout_marginRight="@dimen/_9sdp"
+            android:text=""
+            android:textColor="@color/color_black_73"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="normal"
+            android:visibility="visible" />
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/description_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_9sdp"
+            android:layout_marginRight="@dimen/_9sdp"
+            android:text=""
+            android:textColor="@color/color_black_73"
+            android:textSize="@dimen/_13sdp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|end"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:layout_marginRight="@dimen/_7sdp"
+            android:background="@drawable/circle_shap_white"
+            android:padding="@dimen/_7sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_share_lg_blue" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

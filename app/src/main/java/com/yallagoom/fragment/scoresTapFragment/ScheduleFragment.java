@@ -9,22 +9,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.omadahealth.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.omadahealth.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import com.yallagoom.R;
 import com.yallagoom.action.RecyclerItemClickListener;
-import com.yallagoom.adapter.RecycleViewLeagueNamesScheduleFragment;
+import com.yallagoom.adapter.RecycleViewMainListSportScheduleFragment;
 import com.yallagoom.adapter.RecycleViewDaysScheduleFragment;
 import com.yallagoom.api.GetMatchesApiAsyncTask;
-import com.yallagoom.entity.Matches.LeagueMatches;
-import com.yallagoom.entity.Matches.LeagueMatchesList;
+import com.yallagoom.entity.Matches.NewApi.FinalResultData_Data;
 import com.yallagoom.interfaces.MatchesApiCallback;
+import com.yallagoom.interfaces.OnScrollCallBack;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.CenterLayoutManager;
+import com.yallagoom.widget.CustomScrollListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,22 +43,25 @@ public class ScheduleFragment extends Fragment {
     private RecyclerView days_list;
     //public static int lastPos = -1;
     private View lastView = null;
-    private RecycleViewLeagueNamesScheduleFragment recycleViewCountryMatchesScheduleFragment;
+    private RecycleViewMainListSportScheduleFragment recycleViewCountryMatchesScheduleFragment;
     private RecycleViewDaysScheduleFragment recycleViewDayScheduleFragment;
     private List<String> daysList;
     private String currentDate;
     private SwipyRefreshLayout swipyrefreshlayout;
     private String resultDay;
     private String ScheduleDay;
-    private ArrayList<LeagueMatches> leagueMatchesListData;
-    private RecycleViewLeagueNamesScheduleFragment recycleViewLeagueNamesScheduleFragment;
+    private ArrayList<FinalResultData_Data> leagueMatchesListData;
+    private RecycleViewMainListSportScheduleFragment recycleViewLeagueNamesScheduleFragment;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.LayoutManager mLayoutManager2;
     private int checkSelect;
+    private RelativeLayout no_data_layout;
+    private ImageView no_data_image;
 
 
     public ScheduleFragment() {
         // Required empty public constructor
+
     }
 
     @Override
@@ -64,10 +70,11 @@ public class ScheduleFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         daysList = new ArrayList<>();
-        resultDay = ToolUtils.converDateToString(new Date(), Constant.yyyy_MM_dd);
-        ScheduleDay = ToolUtils.converDateToString(new Date(), Constant.yyyy_MM_dd);
-
+        no_data_layout = (RelativeLayout) view.findViewById(R.id.no_data_layout);
+        no_data_image = (ImageView) view.findViewById(R.id.image);
+        no_data_image.setImageResource(R.drawable.score_de);
         Matches_list = (RecyclerView) view.findViewById(R.id.sports_list);
+      //  Matches_list.setNestedScrollingEnabled(false);
         mLayoutManager2 = new CenterLayoutManager(getActivity());
         Matches_list.setLayoutManager(mLayoutManager2);
         final RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(getActivity()) {
@@ -80,11 +87,15 @@ public class ScheduleFragment extends Fragment {
         days_list = (RecyclerView) view.findViewById(R.id.days_list);
         mLayoutManager = new CenterLayoutManager(getActivity());
         days_list.setLayoutManager(mLayoutManager);
-        // daysList = ToolUtils.getAllDays();
-        daysList.add(ToolUtils.convertDateFromFormatToFormat(ToolUtils.PreviousDate(ScheduleDay), Constant.yyyy_MM_dd, Constant.MMM_dd_EEE_yyyy));
+        daysList = ToolUtils.getAllDays();
+
+        resultDay = ToolUtils.convertDateFromFormatToFormat(daysList.get(0), Constant.MMM_dd_EEE_yyyy, Constant.yyyy_MM_dd);
+        ScheduleDay = ToolUtils.convertDateFromFormatToFormat(daysList.get(daysList.size() - 1), Constant.MMM_dd_EEE_yyyy, Constant.yyyy_MM_dd);
+      /*  daysList.add(ToolUtils.convertDateFromFormatToFormat(ToolUtils.PreviousDate(ScheduleDay), Constant.yyyy_MM_dd, Constant.MMM_dd_EEE_yyyy));
         daysList.add(ToolUtils.convertDateFromFormatToFormat(ScheduleDay, Constant.yyyy_MM_dd, Constant.MMM_dd_EEE_yyyy));
         daysList.add(ToolUtils.convertDateFromFormatToFormat(ToolUtils.NextDate(ScheduleDay), Constant.yyyy_MM_dd, Constant.MMM_dd_EEE_yyyy));
-        currentDate = ToolUtils.converDateToString(new Date(), "MMM-dd-EEE");
+      */
+        // currentDate = ToolUtils.converDateToString(new Date(), "MMM-dd-EEE");
 
         recycleViewDayScheduleFragment = new RecycleViewDaysScheduleFragment(days_list, daysList, "" + currentDate);
         recycleViewDayScheduleFragment.setHasStableIds(true);
@@ -96,11 +107,12 @@ public class ScheduleFragment extends Fragment {
                 checkSelect = 1;
                 TextView full_time = view.findViewById(R.id.full_time);
                 for (int i = 0; i < leagueMatchesListData.size(); i++) {
-                    if (ToolUtils.convertDateFromFormatToFormat(leagueMatchesListData.get(i).getMatchesLists2()[0].getScheduled(),
+                    if (ToolUtils.convertDateFromFormatToFormat(leagueMatchesListData.get(i).getStart_date(),
                             Constant.yyyy_MM_dd, Constant.dd_MMM_yyyy).equalsIgnoreCase(
                             ToolUtils.convertDateFromFormatToFormat(full_time.getText().toString(),
                                     Constant.MMM_dd_EEE_yyyy, Constant.dd_MMM_yyyy))) {
                         smoothScroller.setTargetPosition(i);
+                        // ((LinearLayoutManager) mLayoutManager2).startSmoothScroll(smoothScroller);
                         ((LinearLayoutManager) mLayoutManager2).scrollToPositionWithOffset(i, 20);
                         break;
                     }
@@ -116,78 +128,56 @@ public class ScheduleFragment extends Fragment {
                 }
 
                 lastView = view;
-             //    checkSelect = 0;
+                Log.e("RecyclerView", "finish scrolling");
+                //    checkSelect = 0;
 
             }
         }));
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            Matches_list.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    if (checkSelect == 0) {
+        Matches_list.addOnScrollListener(new CustomScrollListener(new OnScrollCallBack() {
+            @Override
+            public void scrollState(int state) {
+                switch (state) {
+                    case RecyclerView.SCROLL_STATE_IDLE:
+                        //  Log.e("RecyclerView","The RecyclerView is not scrolling");
 
-                        View pastVisiblesItems = ((LinearLayoutManager) (mLayoutManager2)).findViewByPosition(recycleViewLeagueNamesScheduleFragment.lastPos);
+                        break;
+                    case RecyclerView.SCROLL_STATE_DRAGGING:
+                        Log.e("RecyclerView", "Scrolling now");
+                        View pastVisiblesItems = ((LinearLayoutManager) (mLayoutManager2)).findViewByPosition(((LinearLayoutManager) (mLayoutManager2)).findLastVisibleItemPosition());
                         if (pastVisiblesItems != null) {
                             TextView time = (TextView) pastVisiblesItems.findViewById(R.id.time);
+                            Log.e("checkSelect", "" + time.getText().toString());
                             for (int i = 0; i < daysList.size(); i++) {
-
                                 if (daysList.get(i).equalsIgnoreCase(
                                         ToolUtils.convertDateFromFormatToFormat(time.getText().toString(),
                                                 Constant.EEEE_dd_MMM_yyyy, Constant.MMM_dd_EEE_yyyy))) {
-                                    Log.e("checkSelect","checkSelect");
 
-                                    if (lastView != null ) {
+                                    if (lastView != null) {
                                         LinearLayout check0 = lastView.findViewById(R.id.layout_select);
                                         check0.setSelected(false);
                                     }
-                                    LinearLayout check1 = days_list.getChildAt(i).findViewById(R.id.layout_select);
-                                    check1.setSelected(true);
-                                    lastView = days_list.getChildAt(i);
+                                    if (days_list.getChildAt(i) != null) {
+                                        LinearLayout check1 = days_list.getChildAt(i).findViewById(R.id.layout_select);
+                                        check1.setSelected(true);
+                                        lastView = days_list.getChildAt(i);
+
+                                    }
 
                                     days_list.smoothScrollToPosition(i);
                                     break;
                                 }
                             }
                         }
-                        checkSelect=1;
-                    }                }
-            });
-        } else {
-            Matches_list.setOnScrollListener(new RecyclerView.OnScrollListener() {
+                        break;
+                    case RecyclerView.SCROLL_STATE_SETTLING:
+                        Log.e("RecyclerView", "Scroll Settling");
+                        break;
 
-                @Override
-                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                    super.onScrolled(recyclerView, dx, dy);
-                    if (checkSelect == 0) {
-
-                        View pastVisiblesItems = ((LinearLayoutManager) (mLayoutManager2)).findViewByPosition(recycleViewLeagueNamesScheduleFragment.lastPos);
-                        if (pastVisiblesItems != null) {
-                            TextView time = (TextView) pastVisiblesItems.findViewById(R.id.time);
-                            for (int i = 0; i < daysList.size(); i++) {
-
-                                if (daysList.get(i).equalsIgnoreCase(
-                                        ToolUtils.convertDateFromFormatToFormat(time.getText().toString(),
-                                                Constant.EEEE_dd_MMM_yyyy, Constant.MMM_dd_EEE_yyyy))) {
-                                    Log.e("checkSelect","checkSelect");
-
-                                    if (lastView != null ) {
-                                        LinearLayout check0 = lastView.findViewById(R.id.layout_select);
-                                        check0.setSelected(false);
-                                    }
-                                    LinearLayout check1 = days_list.getChildAt(i).findViewById(R.id.layout_select);
-                                    check1.setSelected(true);
-                                    lastView = days_list.getChildAt(i);
-
-                                    days_list.smoothScrollToPosition(i);
-                                    break;
-                                }
-                            }
-                        }
-                        checkSelect=1;
-                    }
                 }
-            });
-        }
+
+            }
+        }));
+
 
         swipyrefreshlayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
             @Override
@@ -207,51 +197,133 @@ public class ScheduleFragment extends Fragment {
 
     private void getData(final String type) {
 
+
         GetMatchesApiAsyncTask getMatchesApiAsyncTask = new GetMatchesApiAsyncTask(ScheduleFragment.this.getActivity(), type, new MatchesApiCallback() {
 
             @Override
-            public void processFinish(LeagueMatchesList leagueMatchesList) {
+            public void processFinish(ArrayList<FinalResultData_Data> leagueMatchesList) {
                 if (type.equalsIgnoreCase("Default")) {
-                    leagueMatchesListData = leagueMatchesList.getLeagueMatches();
-                    recycleViewLeagueNamesScheduleFragment = new RecycleViewLeagueNamesScheduleFragment(leagueMatchesListData);
-                    Matches_list.setAdapter(recycleViewLeagueNamesScheduleFragment);
+                    if (leagueMatchesList != null) {
+                        leagueMatchesListData = leagueMatchesList;
+                        recycleViewLeagueNamesScheduleFragment = new RecycleViewMainListSportScheduleFragment(leagueMatchesListData, getActivity());
+                        Matches_list.setAdapter(recycleViewLeagueNamesScheduleFragment);
+                        setCurrentDate();
+                    }
+                    ScheduleDay = ToolUtils.NextDate(ScheduleDay);
+                    resultDay = ToolUtils.PreviousDate(resultDay);
+
                 } else if (type.equalsIgnoreCase("NewMatches")) {
+                    if (leagueMatchesList != null) {
+                        leagueMatchesListData.addAll(leagueMatchesList);
+                        recycleViewLeagueNamesScheduleFragment.notifyDataSetChanged();
+                    }
+                    daysList.add(ToolUtils.convertDateFromFormatToFormat(ScheduleDay, Constant.yyyy_MM_dd, Constant.MMM_dd_EEE_yyyy));
+                    ScheduleDay = ToolUtils.NextDate(ScheduleDay);
                     recycleViewDayScheduleFragment.notifyDataSetChanged();
-                    leagueMatchesListData.addAll(leagueMatchesList.getLeagueMatches());
-                    recycleViewLeagueNamesScheduleFragment.notifyDataSetChanged();
+
                 } else {
+                    if (leagueMatchesList != null) {
+                        //    ArrayList<FinalResultData_Data> leagueMatchesListData2 = new ArrayList<>();
+                        //    leagueMatchesListData2.addAll(leagueMatchesListData);
+                        //     leagueMatchesListData.clear();
+                        leagueMatchesListData.addAll(0, leagueMatchesList);
+                        recycleViewLeagueNamesScheduleFragment.notifyDataSetChanged();
+                    }
+                    //  leagueMatchesListData.addAll(leagueMatchesListData2);
+                    daysList.add(0, ToolUtils.convertDateFromFormatToFormat(resultDay, Constant.yyyy_MM_dd, Constant.MMM_dd_EEE_yyyy));
+                    resultDay = ToolUtils.PreviousDate(resultDay);
                     recycleViewDayScheduleFragment.notifyDataSetChanged();
-                    ArrayList<LeagueMatches> leagueMatchesListData2 = new ArrayList<>();
-                    leagueMatchesListData2.addAll(leagueMatchesListData);
-                    leagueMatchesListData.clear();
-                    leagueMatchesListData.addAll(leagueMatchesList.getLeagueMatches());
-                    leagueMatchesListData.addAll(leagueMatchesListData2);
-                    recycleViewLeagueNamesScheduleFragment.notifyDataSetChanged();
+                //   setPreDate();
+
                 }
                 swipyrefreshlayout.setRefreshing(false);
+                if (leagueMatchesListData.size() == 0) {
+                    no_data_layout.setVisibility(View.VISIBLE);
+                } else {
+                    no_data_layout.setVisibility(View.GONE);
+
+                }
             }
         });
         if (type.equalsIgnoreCase("Default")) {
-            ScheduleDay = ToolUtils.NextDate(ScheduleDay);
-            resultDay = ToolUtils.PreviousDate(resultDay);
             getMatchesApiAsyncTask.execute(resultDay, ScheduleDay);
 
         } else if (type.equalsIgnoreCase("NewMatches")) {
-            ScheduleDay = ToolUtils.NextDate(ScheduleDay);
-            daysList.add(ToolUtils.convertDateFromFormatToFormat(ScheduleDay, Constant.yyyy_MM_dd, Constant.MMM_dd_EEE_yyyy));
             getMatchesApiAsyncTask.execute(ScheduleDay, ScheduleDay);
 
         } else {
-            resultDay = ToolUtils.PreviousDate(resultDay);
-            List<String> daysList2 = new ArrayList<>();
-            daysList2.addAll(daysList);
-            daysList.clear();
-            daysList.add(ToolUtils.convertDateFromFormatToFormat(resultDay, Constant.yyyy_MM_dd, Constant.MMM_dd_EEE_yyyy));
-            daysList.addAll(daysList2);
             getMatchesApiAsyncTask.execute(resultDay, resultDay);
 
         }
     }
 
+    private void setCurrentDate() {
+        boolean checkCurrentDate = false;
+        for (int i = 0; i < leagueMatchesListData.size(); i++) {
 
+            if (ToolUtils.convertDateFromFormatToFormat(leagueMatchesListData.get(i).getStart_date(),
+                    Constant.yyyy_MM_dd, Constant.dd_MMM_yyyy).equalsIgnoreCase(ToolUtils.converDateToString(new Date(), Constant.dd_MMM_yyyy)
+            )) {
+                checkCurrentDate = true;
+                // ((LinearLayoutManager) mLayoutManager2).startSmoothScroll(smoothScroller);
+                ((LinearLayoutManager) mLayoutManager2).scrollToPositionWithOffset(i, 20);
+                break;
+            }
+        }
+        for (int i = 0; i < daysList.size(); i++) {
+
+            if (checkCurrentDate) {
+                if (daysList.get(i).equalsIgnoreCase(ToolUtils.converDateToString(new Date(), Constant.MMM_dd_EEE_yyyy))) {
+                    LinearLayout check1 = days_list.getLayoutManager().getChildAt(i).findViewById(R.id.layout_select);
+                    check1.setSelected(true);
+                    if (lastView != null) {
+                        LinearLayout checkPre = lastView.findViewById(R.id.layout_select);
+                        checkPre.setSelected(false);
+                    }
+                    lastView = days_list.getChildAt(i);
+                    days_list.smoothScrollToPosition(i);
+                    break;
+                }
+            } else if (leagueMatchesListData.size() != 0 && daysList.get(i).equalsIgnoreCase(ToolUtils.converDateToString(ToolUtils.converStringToDate(
+                    leagueMatchesListData.get(0).getStart_date(), Constant.yyyy_MM_dd
+            ), Constant.MMM_dd_EEE_yyyy))) {
+                //  if (days_list.getChildAt(i) != null) {
+                LinearLayout check1 = days_list.getLayoutManager().getChildAt(i).findViewById(R.id.layout_select);
+                check1.setSelected(true);
+                //  }
+
+                if (lastView != null) {
+                    LinearLayout checkPre = lastView.findViewById(R.id.layout_select);
+                    checkPre.setSelected(false);
+                }
+                lastView = days_list.getChildAt(i);
+                days_list.smoothScrollToPosition(i);
+                break;
+            }
+
+        }
+    }
+
+    private void setPreDate() {
+
+        for (int i = 0; i < daysList.size(); i++) {
+            if (leagueMatchesListData.size() != 0 && daysList.get(i).equalsIgnoreCase(ToolUtils.converDateToString(ToolUtils.converStringToDate(
+                    leagueMatchesListData.get(0).getStart_date(), Constant.yyyy_MM_dd
+            ), Constant.MMM_dd_EEE_yyyy))) {
+                //   if (days_list.getChildAt(i) != null) {
+                Log.e("daysList", "" + daysList.size());
+
+                LinearLayout check1 = days_list.getChildAt(i).findViewById(R.id.layout_select);
+                check1.setSelected(true);
+                //  }
+                if (lastView != null) {
+                    LinearLayout checkPre = lastView.findViewById(R.id.layout_select);
+                    checkPre.setSelected(false);
+                }
+                lastView = days_list.getChildAt(i);
+                days_list.smoothScrollToPosition(i);
+                break;
+            }
+        }
+    }
 }

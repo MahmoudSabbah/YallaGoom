@@ -6,6 +6,7 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
@@ -14,14 +15,19 @@ import android.support.v4.content.ContextCompat;
 import android.telephony.SmsManager;
 import android.text.Html;
 import android.text.format.DateFormat;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +46,8 @@ import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
@@ -55,7 +63,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -219,6 +226,41 @@ public class ToolUtils {
     public static SharedPreferences getSharedPreferences(Context context, String title) {
         SharedPreferences prefs = context.getSharedPreferences(title, MODE_PRIVATE);
         return prefs;
+    }
+
+    public static ArrayList<String> getArrayOfCompAndClub(Context context) {
+        String dat = ToolUtils.getSharedPreferences(context, Constant.CompClub).getString(Constant.CompClubData, null);
+        if (dat != null) {
+            Gson gson = new Gson();
+            ArrayList<String> dataStoreList = gson.fromJson(dat, new TypeToken<ArrayList<String>>() {
+            }.getType());
+            return dataStoreList;
+        } else {
+            return new ArrayList<String>();
+        }
+    }
+
+    public static void setCompAndClub(Context context, ArrayList<String> stringArrayList) {
+        Gson gson = new Gson();
+        String data = gson.toJson(stringArrayList);
+        ToolUtils.setSharedPrefernce(context, Constant.CompClub).putString(Constant.CompClubData, data).apply();
+    }
+    public static ArrayList<String> getArrayOfChannels(Context context) {
+        String dat = ToolUtils.getSharedPreferences(context, Constant.ChannelsListData).getString(Constant.ChannelsKey, null);
+        if (dat != null) {
+            Gson gson = new Gson();
+            ArrayList<String> dataStoreList = gson.fromJson(dat, new TypeToken<ArrayList<String>>() {
+            }.getType());
+            return dataStoreList;
+        } else {
+            return new ArrayList<String>();
+        }
+    }
+
+    public static void setChannels(Context context, ArrayList<String> stringArrayList) {
+        Gson gson = new Gson();
+        String data = gson.toJson(stringArrayList);
+        ToolUtils.setSharedPrefernce(context, Constant.ChannelsListData).putString(Constant.ChannelsKey, data).apply();
     }
 
     public static SharedPreferences.Editor setSharedPrefernce(Context context, String title) {
@@ -480,6 +522,24 @@ public class ToolUtils {
             String day = sdf.format(calendar.getTime());
             Log.e("day " + i, day);
         }
+    }
+    public static List<String> next3AndPre3Days() {
+        SimpleDateFormat sdf = new SimpleDateFormat( Constant.MMM_dd_EEE_yyyy);
+        List<String> strings=new ArrayList<>();
+    /*    for (int i = -1; i > -4; i--) {
+            Calendar calendar = new GregorianCalendar();
+            calendar.add(Calendar.DATE, i);
+            String day = sdf.format(calendar.getTime());
+            Log.e("day " + i, day);
+        }*/
+        for (int i = -3; i < 4; i++) {
+            Calendar calendar = new GregorianCalendar();
+            calendar.add(Calendar.DATE, i);
+            String day = sdf.format(calendar.getTime());
+            Log.e("day " + i, day);
+            strings.add(day);
+        }
+        return strings;
     }
 
     public static String convert24TimeTo12(String time) {
@@ -765,6 +825,38 @@ public class ToolUtils {
             });
         }
     }
+    public static void setImageWithProgress(String url, final ImageView imageView, ImageLoader imageLoader, final ProgressBar progressBar) {
+        List<Bitmap> list = MemoryCacheUtils.findCachedBitmapsForImageUri(url, ImageLoader.getInstance().getMemoryCache());
+        Log.e("list.size()", "" + list.size());
+        Log.e("list.size()", "" + isDiskCache(url));
+        if (list.size() > 0 || isDiskCache(url)) {
+            imageLoader.displayImage(url, imageView);
+            progressBar.setVisibility(View.GONE);
+        } else {
+            imageLoader.loadImage(url, new ImageLoadingListener() {
+                @Override
+                public void onLoadingStarted(String s, View view) {
+
+                }
+
+                @Override
+                public void onLoadingFailed(String s, View view, FailReason failReason) {
+
+                }
+
+                @Override
+                public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+                    imageView.setImageBitmap(bitmap);
+                    progressBar.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onLoadingCancelled(String s, View view) {
+
+                }
+            });
+        }
+    }
 
     public static void setImageSmall_50(String url, final ImageView imageView, ImageLoader imageLoader) {
         ImageSize targetSize = new ImageSize(50, 50); // result Bitmap will be fit to this size
@@ -822,28 +914,84 @@ public class ToolUtils {
         for (int i = 0; i < maxDay; i++) {
             cal.set(Calendar.DAY_OF_MONTH, i + 1);
             days.add("" + df.format(cal.getTime()));
-            Log.e("Calendar", ", " + df.format(cal.getTime()));
+           // Log.e("Calendar", ", " + df.format(cal.getTime()));
         }
         return days;
     }
 
     public static String PreviousDate(String date1) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = converStringToDate(date1,"yyyy-MM-dd");
+        Date date = converStringToDate(date1, "yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DATE, -1);
         return dateFormat.format(calendar.getTime());
     }
+
     public static String NextDate(String date1) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = converStringToDate(date1,"yyyy-MM-dd");
+        Date date = converStringToDate(date1, "yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DATE, 1);
         return dateFormat.format(calendar.getTime());
     }
-    public static String convertDateFromFormatToFormat(String date, String format1, String format2){//"yyyy-MM-dd'T'HH:mm:ssZ" Constant.EEEE_dd_MMM_yyyy
-      return   ToolUtils.converDateToString(ToolUtils.converStringToDate(date, format1),format2);
+
+    public static String convertDateFromFormatToFormat(String date, String format1, String format2) {//"yyyy-MM-dd'T'HH:mm:ssZ" Constant.EEEE_dd_MMM_yyyy
+        return ToolUtils.converDateToString(ToolUtils.converStringToDate(date, format1), format2);
+    }
+
+    public static void scrollToView(final ScrollView scrollViewParent, final View view) {
+        // Get deepChild Offset
+        Point childOffset = new Point();
+        getDeepChildOffset(scrollViewParent, view.getParent(), view, childOffset);
+        // Scroll to child.
+        scrollViewParent.smoothScrollTo(0, childOffset.y);
+    }
+
+    /**
+     * Used to get deep child offset.
+     * <p/>
+     * 1. We need to scroll to child in scrollview, but the child may not the direct child to scrollview.
+     * 2. So to get correct child position to scroll, we need to iterate through all of its parent views till the main parent.
+     *
+     * @param mainParent        Main Top parent.
+     * @param parent            Parent.
+     * @param child             Child.
+     * @param accumulatedOffset Accumulated Offset.
+     */
+    public static void getDeepChildOffset(final ViewGroup mainParent, final ViewParent parent, final View child, final Point accumulatedOffset) {
+        ViewGroup parentGroup = (ViewGroup) parent;
+        accumulatedOffset.x += child.getLeft();
+        accumulatedOffset.y += child.getTop();
+        if (parentGroup.equals(mainParent)) {
+            return;
+        }
+        getDeepChildOffset(mainParent, parentGroup.getParent(), parentGroup, accumulatedOffset);
+    }
+
+    public static String calculateTime(Date past) {
+        try {
+            Date now = new Date();
+            long seconds = TimeUnit.MILLISECONDS.toSeconds(now.getTime() - past.getTime());
+            long minutes = TimeUnit.MILLISECONDS.toMinutes(now.getTime() - past.getTime());
+            long hours = TimeUnit.MILLISECONDS.toHours(now.getTime() - past.getTime());
+            long days = TimeUnit.MILLISECONDS.toDays(now.getTime() - past.getTime());
+            if (seconds < 60) {
+                return (seconds + " seconds ago");
+            } else if (minutes < 60) {
+                return(minutes + " minutes ago");
+            } else if (hours < 24) {
+                return(hours + " hours ago");
+            } else {
+                return(days + " days ago");
+            }
+        } catch (Exception j) {
+            j.printStackTrace();
+            return null;
+        }
+    }
+    public static String getTimeSince(Date date){
+       return (String) DateUtils.getRelativeTimeSpanString(date.getTime(), Calendar.getInstance().getTimeInMillis(), DateUtils.MINUTE_IN_MILLIS);
     }
 }

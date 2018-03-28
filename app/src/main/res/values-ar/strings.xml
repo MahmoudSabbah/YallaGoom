@@ -204,5 +204,29 @@
     <string name="option2">option2</string>
     <string name="option3">option3</string>
     <string name="schedule2">Schedule2</string>
+    <string name="match_details">Match details</string>
+    <string name="details">Details</string>
+    <string name="participants">Participants</string>
+    <string name="incidents">Incidents</string>
+    <string name="results">Results</string>
+    <string name="stats">Stats</string>
+    <string name="time_counter_down">Time Counter down</string>
+    <string name="which_clubs_and_competitions_you_want_to_follow">Which clubs and competitions you want to follow ?</string>
+    <string name="international">International</string>
+    <string name="by_country">By Country</string>
+    <string name="competitions">competitions</string>
+    <string name="clubs">Clubs</string>
+    <string name="select">Select</string>
+    <string name="my_favourite">My favourite</string>
+    <string name="update_favourite">Update favourite</string>
+    <string name="matches">Matches</string>
+    <string name="favourite_matches">Favourite matches</string>
+    <string name="select_club">Selected Clubs</string>
+    <string name="select_comp">Selected Competitions</string>
+    <string name="news">News</string>
+    <string name="no_data_found">No data found</string>
+    <string name="news_settings">News settings</string>
+    <string name="which_channels_you_want_to_follow">Which Channels you want to follow ?</string>
+    <string name="founded_since">Founded since</string>
 
 </resources>

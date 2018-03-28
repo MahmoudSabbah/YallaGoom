@@ -20,14 +20,7 @@ public class LeagueMatches {
         this.leagueName = leagueName;
     }
 
- /*   public ArrayList<MatchesList> getMatchesLists() {
-        return matchesLists;
-    }
 
-    public void setMatchesLists(ArrayList<MatchesList> matchesLists) {
-        this.matchesLists = matchesLists;
-    }
-*/
     public MatchesList[] getMatchesLists2() {
         return matchesLists2;
     }

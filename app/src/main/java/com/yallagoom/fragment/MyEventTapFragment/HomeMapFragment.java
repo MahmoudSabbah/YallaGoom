@@ -71,24 +71,6 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
         cameraZoom();
         imageLoader = ImageLoader.getInstance();
 
-    /*    ToolUtils.buildAlertMessageNoGps(HomeMapFragment.this.getActivity(), this, this, new CheckGPSCallback() {
-            @Override
-            public void processFinish(boolean check, Status status) {
-                if (!check) {
-                    try {
-                        status.startResolutionForResult(
-                                HomeMapFragment.this.getActivity(), REQUEST_CHECK_SETTINGS);
-                    } catch (IntentSender.SendIntentException e) {
-                        // Ignore the error.
-                    }
-                } else {
-                    mapFragment.getMapAsync(HomeMapFragment.this);
-                    cameraZoom();
-                }
-            }
-        });*/
-
-
         return view;
 
     }
@@ -137,7 +119,6 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
             case REQUEST_CHECK_SETTINGS:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
-                        mapFragment.getMapAsync(HomeMapFragment.this);
                         cameraZoom();
                         break;
                     case Activity.RESULT_CANCELED:
@@ -167,49 +148,15 @@ public class HomeMapFragment extends Fragment implements OnMapReadyCallback, Goo
                                     numTxt.setText(nearEvent.getData().get(i).getEventTitle());
                                     //     imageLoader.displayImage(Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), image_event);
                                     if (nearEvent.getData().get(i).getEventImage() != null) {
+                                        Log.e("getEventImage",""+Constant.imageUrl + nearEvent.getData().get(i).getEventImage());
                                         ToolUtils.setImageSmall_50(Constant.imageUrl + nearEvent.getData().get(i).getEventImage(),image_event,imageLoader);
-                                   /*     imageLoader.loadImage(Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), targetSize, new ImageLoadingListener() {
-                                            @Override
-                                            public void onLoadingStarted(String s, View view) {
-                                                Log.e("onLoading", "onLoadingStarted");
-
-                                            }
-
-                                            @Override
-                                            public void onLoadingFailed(String s, View view, FailReason failReason) {
-                                                Log.e("onLoading", "onLoadingFailed");
-
-                                            }
-
-                                            @Override
-                                            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                                                Log.e("onLoading", "onLoadingComplete" + s);
-                                                // image_event.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 80, 80, false));
-                                                image_event.setImageBitmap(bitmap);
-                                            }
-
-                                            @Override
-                                            public void onLoadingCancelled(String s, View view) {
-                                                Log.e("onLoading", "onLoadingCancelled");
-
-                                            }
-                                        });*/
                                     }
-                                    //  MapUtils.PicassoImage(getActivity(), Constant.imageUrl + nearEvent.getData().get(i).getEventImage(), image_event);
                                     BitmapDescriptor imagelayout = BitmapDescriptorFactory.fromBitmap(MapUtils.createDrawableFromView(getActivity(), marker));
                                     if (imagelayout != null) {
                                         mGoogleMap.addMarker(new MarkerOptions()
                                                 .position(latLng)
                                                 .icon(imagelayout));
                                     }
-
-
-
-
-                              /*      final MarkerOptions marker = new MarkerOptions().position(
-                                            latLng).anchor(0.5f, 0.5f) .title(nearEvent.getData().get(i).getEventTitle())
-                                            .snippet(nearEvent.getData().get(i).getStartEventDate()+" "+nearEvent.getData().get(i).getStartEventTime()).flat(true);//fromBitmap(MapUtils.getbitmap(CONTEXT, MapUtils.carIconMarker))
-                                    mGoogleMap.addMarker(marker).setTag(nearEvent.getData().get(i).getId());*/
                                 }
                                 LatLng myLocation = new LatLng(location.getLatitude(), location.getLongitude());
                                 final CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(myLocation, 15);

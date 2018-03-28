@@ -72,8 +72,8 @@ public class RecycleViewLeagueNameSchedule2Fragment extends RecyclerView.Adapter
         holder.competition_name.setText(leagueMatchesListData.get(position).getLeagueName());
         Log.e("","");
         if (position>0){
-            if (!ToolUtils.converDateToString(ToolUtils.converStringToDate(leagueMatchesListData.get(position-1).getMatchesLists2()[0].getScheduled(), "yyyy-MM-dd"), Constant.EEEE_dd_MMM_yyyy)
-                    .equalsIgnoreCase(ToolUtils.converDateToString(ToolUtils.converStringToDate(leagueMatchesListData.get(position).getMatchesLists2()[0].getScheduled(), "yyyy-MM-dd"), Constant.EEEE_dd_MMM_yyyy))) {
+            if (!ToolUtils.converDateToString(ToolUtils.converStringToDate(leagueMatchesListData.get(position-1).getMatchesLists2()[0].getStart_date(), Constant.yyyy_MM_dd__HH_mm), Constant.EEEE_dd_MMM_yyyy)
+                    .equalsIgnoreCase(ToolUtils.converDateToString(ToolUtils.converStringToDate(leagueMatchesListData.get(position).getMatchesLists2()[0].getStart_date(),  Constant.yyyy_MM_dd__HH_mm), Constant.EEEE_dd_MMM_yyyy))) {
                 //  holder.time.setText(ToolUtils.converDateToString(ToolUtils.converStringToDate(leagueMatchesList.get(position).getMatchesLists().get(0).getScheduled(), "yyyy-MM-dd'T'HH:mm:ssZ"), Constant.EEEE_dd_MMM_yyyy));
             }else {
                 //   holder.time.setText(ToolUtils.converDateToString(ToolUtils.converStringToDate(leagueMatchesList.get(position).getMatchesLists().get(0).getScheduled(), "yyyy-MM-dd'T'HH:mm:ssZ"), Constant.EEEE_dd_MMM_yyyy));
@@ -88,7 +88,7 @@ public class RecycleViewLeagueNameSchedule2Fragment extends RecyclerView.Adapter
 
 */
 
-        holder.date_day.setText(ToolUtils.converDateToString(ToolUtils.converStringToDate(leagueMatchesListData.get(position).getMatchesLists2()[0].getScheduled(), "yyyy-MM-dd"), Constant.EEEE_dd_MMM_yyyy));
+        holder.date_day.setText(ToolUtils.converDateToString(ToolUtils.converStringToDate(leagueMatchesListData.get(position).getMatchesLists2()[0].getStart_date(),  Constant.yyyy_MM_dd__HH_mm), Constant.EEEE_dd_MMM_yyyy));
 
      //   holder.competition_name.setText(result.get(position).getName());
     }

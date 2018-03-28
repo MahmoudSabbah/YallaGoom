@@ -1,9 +1,6 @@
 package com.yallagoom.api;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -15,14 +12,10 @@ import com.yallagoom.interfaces.GetCountriesCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -31,27 +24,33 @@ import okhttp3.Response;
 
 public class GetCountriesAsyncTask extends AsyncTask<String, String, Integer> {
     private final Context mContext;
+    private final KProgressHUD kProgressHUD;
     private KProgressHUD progress;
     private String error;
     private String language;
     private GetCountriesCallback getCountriesCallback;
     private Country country;
 
-    public GetCountriesAsyncTask(Context context, GetCountriesCallback getCountriesCallback) {
+    public GetCountriesAsyncTask(Context context, KProgressHUD kProgressHUD, GetCountriesCallback getCountriesCallback) {
         mContext = context;
         this.getCountriesCallback = getCountriesCallback;
+        this.kProgressHUD = kProgressHUD;
     }
 
     @Override
     protected void onPreExecute() {
-        progress = KProgressHUD.create(mContext)
-                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                .setLabel(mContext.getString(R.string.please_wait))
-                .setCancellable(true)
-                .setAnimationSpeed(2)
-                .setDimAmount(0.5f)
+        if (kProgressHUD == null) {
+            progress = KProgressHUD.create(mContext)
+                    .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                    .setLabel(mContext.getString(R.string.please_wait))
+                    .setCancellable(true)
+                    .setAnimationSpeed(2)
+                    .setDimAmount(0.5f)
                 /*.setWindowColor(R.color.color_ffba00)*/
-                .show();
+                    .show();
+        } else {
+            progress = kProgressHUD;
+        }
     }
 
     @Override

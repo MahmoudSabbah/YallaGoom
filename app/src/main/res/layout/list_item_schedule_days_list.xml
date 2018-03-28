@@ -32,6 +32,7 @@
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
             android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_gravity="center"
             android:background="@drawable/select_transparent_color_df488a_circle"
             android:gravity="center">
 
@@ -49,6 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sat"
+            android:layout_gravity="center"
+
             android:textColor="@drawable/select_black_50_color_df488a"
             android:textSize="@dimen/_10sdp" />
     </LinearLayout>

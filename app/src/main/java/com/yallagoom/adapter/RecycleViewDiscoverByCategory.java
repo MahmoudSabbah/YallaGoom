@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
 import com.yallagoom.activity.DiscoverCategoryActivity;
 import com.yallagoom.api.DiscoverCategoryAsyncTask;
@@ -71,7 +72,7 @@ public class RecycleViewDiscoverByCategory extends RecyclerView.Adapter<RecycleV
             public void onClick(View v) {
                 DiscoverCategoryAsyncTask discoverCategoryAsyncTask=new DiscoverCategoryAsyncTask(context, new StringResultCallback() {
                     @Override
-                    public void processFinish(String result) {
+                    public void processFinish(String result, KProgressHUD progress) {
                         Intent intent = new Intent(context, DiscoverCategoryActivity.class);
                         intent.putExtra("resultData",""+result);
                         intent.putExtra("countryDataEN",""+countryData.getName_en());

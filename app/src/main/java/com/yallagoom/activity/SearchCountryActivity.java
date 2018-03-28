@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
 import com.yallagoom.adapter.ListAdapterCategory;
 import com.yallagoom.adapter.ListAdapterCountry;
@@ -148,7 +149,7 @@ public class SearchCountryActivity extends AppCompatActivity {
     }
 
     private void getCountry() {
-        GetCountriesAsyncTask getCountriesAsyncTask=new GetCountriesAsyncTask(SearchCountryActivity.this, new GetCountriesCallback() {
+        GetCountriesAsyncTask getCountriesAsyncTask=new GetCountriesAsyncTask(SearchCountryActivity.this, new KProgressHUD(this) ,new GetCountriesCallback() {
             @Override
             public void processFinish(Country country) {
                 countryListData = country.getData();

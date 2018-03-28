@@ -1,11 +1,14 @@
 package com.yallagoom.activity;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.format.DateFormat;
+import android.transition.Fade;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,7 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.TransitionManager;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
@@ -60,6 +65,7 @@ public class TicketsDetailsActivity extends AppCompatActivity {
     private RelativeLayout booking_bt1;
     private RelativeLayout booking_bt2;
 
+  //  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,10 +73,20 @@ public class TicketsDetailsActivity extends AppCompatActivity {
         parent = (LinearLayout) findViewById(R.id.parent);
         ToolUtils.hideStatus(TicketsDetailsActivity.this);
         ToolUtils.setLightStatusBar(parent, TicketsDetailsActivity.this);
+     /*   Transition fade = TransitionInflater.from(this).inflateTransition(R.transition.activity_slide);
+        getWindow().setEnterTransition(fade);*/
+
         imageLoader = ImageLoader.getInstance();
         dateFormat = new DateFormat();
         mRealm = Realm.getDefaultInstance();
         realmController = new RealmController(mRealm);
+       /* try {
+            mRealm.close();
+            Realm.deleteRealm(mRealm.getConfiguration());
+        } catch (Exception e) {
+        }
+*/
+
         Bundle bundle = getIntent().getExtras();
         mTicketsDetails = bundle.getString("TicketsDetails");
         ticketDetails = new Gson().fromJson(mTicketsDetails, TicketDetails.class);
@@ -122,7 +138,7 @@ public class TicketsDetailsActivity extends AppCompatActivity {
                 Log.e("getTicketDetailsCkeck", "" + realmController.checkTicketsExists(ticketDetails.getTicket_info().getId()));
                 if (!realmController.checkTicketsExists(ticketDetails.getTicket_info().getId())) {
                     mRealm.beginTransaction();
-                    mRealm.copyToRealmOrUpdate(ticketDetails.getReview_list());
+                   // mRealm.copyToRealm(ticketDetails.getReview_list());
                     mRealm.copyToRealmOrUpdate(ticketDetails.getTicket_info());
                     mRealm.commitTransaction();
                 } else {
@@ -138,17 +154,7 @@ public class TicketsDetailsActivity extends AppCompatActivity {
                 } else {
                     select_true.setVisibility(View.VISIBLE);
                     select_false.setVisibility(View.GONE);
-                  /*  if (!realmController.checkTicketsExists(ticketDetails.getTicket_info().getId())) {
-                        mRealm.beginTransaction();
-                        mRealm.copyToRealm(ticketDetails);
-                        mRealm.commitTransaction();
-                    }*/
 
-                }
-                Log.e("getTicketDetails", "" + realmController.getTicketDetails().size());
-                Log.e("getTicketDetailsCountry", "" + realmController.getCountry().size());
-                for (int i = 0; i < realmController.getCountry().size(); i++) {
-                    Log.e("getCountry",""+realmController.getCountry().get(i).getId());
                 }
             }
         });

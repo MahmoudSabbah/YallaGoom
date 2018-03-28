@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_color"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/segmented_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginLeft="@dimen/_14sdp"
+        android:layout_marginRight="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layoutDirection="ltr"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        segmentedgroup:sc_border_width=".7dp"
+        segmentedgroup:sc_checked_text_color="@color/white"
+        segmentedgroup:sc_corner_radius="5dp"
+        segmentedgroup:sc_tint_color="@color/color_918e8f"
+        segmentedgroup:sc_unchecked_text_color="@color/color_595757"
+        segmentedgroup:sc_unchecked_tint_color="@color/transparent">
+
+        <com.yallagoom.font.Roboto_RegularRadio
+            android:id="@+id/my_favourite"
+            style="@style/RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="@string/my_favourite"
+            android:textSize="@dimen/_12sdp" />
+
+        <com.yallagoom.font.Roboto_RegularRadio
+            android:id="@+id/update_favourite"
+            style="@style/RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="@string/update_favourite"
+            android:textSize="@dimen/_12sdp" />
+
+    </com.yallagoom.widget.segmented.SegmentedGroup>
+
+    <LinearLayout
+        android:id="@+id/update_favourite_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.yallagoom.font.Roboto_Medium
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:text="@string/which_clubs_and_competitions_you_want_to_follow"
+            android:textColor="@color/color_df488a"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="normal" />
+
+        <com.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
+            android:id="@+id/country_inter_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+
+        </com.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/my_favourite_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_favourite_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+</LinearLayout>

@@ -38,8 +38,8 @@ public class WishlistFragment extends Fragment {
         wishlist_list = (RecyclerView) view.findViewById(R.id.wishlist_list);
 
         RealmController realmController = new RealmController(realm);
-        Log.e("getTicketDetails", "" + realmController.getTicketDetails().size());
-        RecycleViewWishListFragment recycleViewWishListFragment = new RecycleViewWishListFragment(realmController.getTicketDetails()
+        Log.e("getTicketDetails2", "" + realmController.getTicketInfo().size());
+        RecycleViewWishListFragment recycleViewWishListFragment = new RecycleViewWishListFragment(realmController.getTicketInfo()
         );
         wishlist_list.setAdapter(recycleViewWishListFragment);
         return view;

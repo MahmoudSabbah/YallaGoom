@@ -14,7 +14,13 @@ import android.widget.TextView;
 
 import com.yallagoom.R;
 import com.yallagoom.activity.LoginActivity;
+import com.yallagoom.fragment.scoresTapFragment.ChannelSettingsFragment;
+import com.yallagoom.fragment.scoresTapFragment.ClubsAndTeamsFragment;
+import com.yallagoom.fragment.scoresTapFragment.CompetitionsSettingsFragment;
+import com.yallagoom.fragment.scoresTapFragment.NewsFragment;
 import com.yallagoom.fragment.scoresTapFragment.Schedule2Fragment;
+import com.yallagoom.fragment.scoresTapFragment.Schedule3Fragment;
+import com.yallagoom.fragment.scoresTapFragment.Schedule4Fragment;
 import com.yallagoom.fragment.scoresTapFragment.ScheduleFragment;
 
 /**
@@ -40,13 +46,13 @@ public class ScoresFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_scores, container, false);
-        header_title=(TextView)getActivity().findViewById(R.id.header_title);
+        header_title = (TextView) getActivity().findViewById(R.id.header_title);
         header_title.setText(getString(R.string.scores));
-        login_bt=(TextView)view.findViewById(R.id.login_bt);
+        login_bt = (TextView) view.findViewById(R.id.login_bt);
         login_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ScoresFragment.this.getActivity(), LoginActivity.class);
+                Intent intent = new Intent(ScoresFragment.this.getActivity(), LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();
             }
@@ -70,12 +76,16 @@ public class ScoresFragment extends Fragment {
                         fragment = new ScheduleFragment();
                         break;
                     case 1:
-                        fragment = new Schedule2Fragment();
-
+                        fragment = new CompetitionsSettingsFragment();
                         break;
                     case 2:
+                        fragment = new NewsFragment();
                         break;
-                    case 3:
+                       case 3:
+                        fragment = new ChannelSettingsFragment();
+                        break;
+                    case 4:
+                        fragment = new ClubsAndTeamsFragment();
                         break;
 
                 }
@@ -92,11 +102,12 @@ public class ScoresFragment extends Fragment {
 
             }
         });
-        fragment = new ScheduleFragment();
+        fragment = new Schedule2Fragment();
         changeFragment(fragment);
         return view;
 
     }
+
     private void changeFragment(Fragment fragment) {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();

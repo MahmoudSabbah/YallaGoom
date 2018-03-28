@@ -83,7 +83,7 @@ public class OfferFragmentDataAsyncTask extends AsyncTask<String, String, Intege
         super.onPostExecute(status);
      //   progress.dismiss();
         if (status == 1) {
-            stringResultCallback.processFinish(dataResult + "");
+            stringResultCallback.processFinish(dataResult + "", progress);
 
         } else {
             ToolUtils.viewToast(mContext, error);

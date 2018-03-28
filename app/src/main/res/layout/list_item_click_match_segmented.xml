@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="horizontal"
+    android:id="@+id/parent_"
+    android:gravity="center_vertical"
+    android:paddingBottom="1dp"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_f9f9f9"
+        android:paddingBottom="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:layout_marginRight="1dp"
+
+        android:layout_weight=".5">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_weight=".5">
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/_28sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:text="name"
+                android:textColor="@color/color_7f7d7e" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f9f9f9"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:gravity="center_vertical"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5">
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/_28sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:text="Value"
+                android:textColor="@color/color_7f7d7e" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

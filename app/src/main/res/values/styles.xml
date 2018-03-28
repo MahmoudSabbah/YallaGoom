@@ -23,6 +23,10 @@
     <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">@dimen/_11sdp</item>
     </style>
+    <style name="MatchTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textColor">@color/color_df488a</item>
+    </style>
    <!-- <style name="card_form" parent="AppTheme">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">45dp</item>

@@ -20,16 +20,25 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
+import com.google.gson.Gson;
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.tumblr.permissme.PermissMe;
 import com.yallagoom.R;
 import com.yallagoom.adapter.SplashPagerAdapter;
+import com.yallagoom.api.GetChannelsAsyncTask;
 import com.yallagoom.api.GetCountriesAsyncTask;
+import com.yallagoom.api.GetCountryCodeAsyncTask;
 import com.yallagoom.entity.Country;
+import com.yallagoom.entity.News.Channels;
 import com.yallagoom.interfaces.CheckGPSCallback;
 import com.yallagoom.interfaces.GetCountriesCallback;
+import com.yallagoom.interfaces.GetCountryCodeCallback;
+import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.animator.ViewAnimator;
+
+import java.util.Locale;
 
 import me.relex.circleindicator.CircleIndicator;
 
@@ -52,7 +61,6 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         ToolUtils.hideStatus(SplashScreenActivity.this);
-        ToolUtils.getAllDays();
         SharedPreferences sharedPreferences = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.loginCheck);
         //   SharedPreferences sharedPreferences2 = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.userData);
 
@@ -218,22 +226,44 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
             }
 
             public void onFinish() {
-                if (verification_check) {
-                    Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
+                GetCountryCodeAsyncTask getCountryCodeAsyncTask = new GetCountryCodeAsyncTask(SplashScreenActivity.this, new GetCountryCodeCallback() {
+                    @Override
+                    public void processFinish(String code, KProgressHUD progress) {
 
-                } else {
-                    GetCountriesAsyncTask getCountriesAsyncTask = new GetCountriesAsyncTask(SplashScreenActivity.this, new GetCountriesCallback() {
-                        @Override
-                        public void processFinish(Country country) {
-                            Constant.countriesData = country;
-                            splash_imag.setVisibility(View.GONE);
+                        String alpha3Country = new Locale("en", code).getISO3Country();
+                        Constant.alpha3Country = alpha3Country;
 
-                        }
-                    });
-                    getCountriesAsyncTask.execute();
-                }
+                        GetChannelsAsyncTask getChannelsAsyncTask = new GetChannelsAsyncTask(SplashScreenActivity.this, progress, new StringResultCallback() {
+                            @Override
+                            public void processFinish(String result, KProgressHUD progress) {
+                              Constant.ChannelsList=  new Gson().fromJson(result,Channels[].class);
+                                if (verification_check) {
+                                    Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                    finish();
+
+                                } else {
+                                    GetCountriesAsyncTask getCountriesAsyncTask = new GetCountriesAsyncTask(SplashScreenActivity.this, progress, new GetCountriesCallback() {
+                                        @Override
+                                        public void processFinish(Country country) {
+                                            Log.e("alpha3Country", "" + Constant.alpha3Country);
+                                            Constant.countriesData = country;
+                                            splash_imag.setVisibility(View.GONE);
+
+                                        }
+                                    });
+                                    getCountriesAsyncTask.execute();
+                                }
+
+                            }
+                        });
+                        getChannelsAsyncTask.execute(Constant.alpha3Country);
+
+                    }
+                });
+                getCountryCodeAsyncTask.execute();
+
+
             }
 
         }.start();

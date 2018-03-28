@@ -1,206 +1,100 @@
 package com.yallagoom.entity.Matches;
 
+import java.util.ArrayList;
+
 /**
- * Created by Mahmoud Sabbah on 3/11/2018.
+ * Created by Mahmoud Sabbah on 3/17/2018.
  */
 
 public class MatchesList {
-    private int match_id;
-    private String scheduled;
-    private String start_time_tbd;
-    private String status;
-    private String season_name;
-    private String tournament_name;
-    private int season_id;
-    private int tournament_id;
-    private int competitors_1_id;
-    private int competitors_2_id;
-    private String competitors_1_name;
-    private String competitors_2_name;
-    private String competitors_1_country;
-    private String competitors_2_country;
-    private String competitors_1_qualifier;
-    private String competitors_2_qualifier;
-    private MatchResult match_result;
-    private Competitors competitors_1;
-    private Competitors competitors_2;
-    private Season season;
-    private Tournament tournament;
-    private Venue venue;
+    private int id;
+    private int competitions_id;
+    private int seasons_id;
+    private int stages_id;
+    private String start_date;
+    private String status_name;
+    private String status_type;
+    private Competition competitions;
+    private ArrayList<ParticipantsList> participants_list;
+    private ArrayList<ResultsList> results_list;
 
-    public Venue getVenue() {
-        return venue;
+    public String getStatus_name() {
+        return status_name;
     }
 
-    public void setVenue(Venue venue) {
-        this.venue = venue;
+    public void setStatus_name(String status_name) {
+        this.status_name = status_name;
     }
 
-    public Tournament getTournament() {
-        return tournament;
+    public int getId() {
+        return id;
     }
 
-    public void setTournament(Tournament tournament) {
-        this.tournament = tournament;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Season getSeason() {
-        return season;
+    public int getCompetitions_id() {
+        return competitions_id;
     }
 
-    public void setSeason(Season season) {
-        this.season = season;
+    public void setCompetitions_id(int competitions_id) {
+        this.competitions_id = competitions_id;
     }
 
-    public Competitors getCompetitors_2() {
-        return competitors_2;
+    public int getSeasons_id() {
+        return seasons_id;
     }
 
-    public void setCompetitors_2(Competitors competitors_2) {
-        this.competitors_2 = competitors_2;
+    public void setSeasons_id(int seasons_id) {
+        this.seasons_id = seasons_id;
     }
 
-    public Competitors getCompetitors_1() {
-        return competitors_1;
+    public int getStages_id() {
+        return stages_id;
     }
 
-    public void setCompetitors_1(Competitors competitors_1) {
-        this.competitors_1 = competitors_1;
+    public void setStages_id(int stages_id) {
+        this.stages_id = stages_id;
     }
 
-    public int getMatch_id() {
-        return match_id;
+    public String getStart_date() {
+        return start_date;
     }
 
-    public void setMatch_id(int match_id) {
-        this.match_id = match_id;
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
     }
 
-    public String getScheduled() {
-        return scheduled;
+    public String getStatus_type() {
+        return status_type;
     }
 
-    public void setScheduled(String scheduled) {
-        this.scheduled = scheduled;
+    public void setStatus_type(String status_type) {
+        this.status_type = status_type;
     }
 
-    public String getStart_time_tbd() {
-        return start_time_tbd;
+    public Competition getCompetitions() {
+        return competitions;
     }
 
-    public void setStart_time_tbd(String start_time_tbd) {
-        this.start_time_tbd = start_time_tbd;
+    public void setCompetitions(Competition competitions) {
+        this.competitions = competitions;
     }
 
-    public String getStatus() {
-        return status;
+    public ArrayList<ParticipantsList> getParticipants_list() {
+        return participants_list;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setParticipants_list(ArrayList<ParticipantsList> participants_list) {
+        this.participants_list = participants_list;
     }
 
-    public String getSeason_name() {
-        return season_name;
+    public ArrayList<ResultsList> getResults_list() {
+        return results_list;
     }
 
-    public void setSeason_name(String season_name) {
-        this.season_name = season_name;
-    }
-
-    public String getTournament_name() {
-        return tournament_name;
-    }
-
-    public void setTournament_name(String tournament_name) {
-        this.tournament_name = tournament_name;
-    }
-
-    public int getSeason_id() {
-        return season_id;
-    }
-
-    public void setSeason_id(int season_id) {
-        this.season_id = season_id;
-    }
-
-    public int getTournament_id() {
-        return tournament_id;
-    }
-
-    public void setTournament_id(int tournament_id) {
-        this.tournament_id = tournament_id;
-    }
-
-    public int getCompetitors_1_id() {
-        return competitors_1_id;
-    }
-
-    public void setCompetitors_1_id(int competitors_1_id) {
-        this.competitors_1_id = competitors_1_id;
-    }
-
-    public int getCompetitors_2_id() {
-        return competitors_2_id;
-    }
-
-    public void setCompetitors_2_id(int competitors_2_id) {
-        this.competitors_2_id = competitors_2_id;
-    }
-
-    public String getCompetitors_1_name() {
-        return competitors_1_name;
-    }
-
-    public void setCompetitors_1_name(String competitors_1_name) {
-        this.competitors_1_name = competitors_1_name;
-    }
-
-    public String getCompetitors_2_name() {
-        return competitors_2_name;
-    }
-
-    public void setCompetitors_2_name(String competitors_2_name) {
-        this.competitors_2_name = competitors_2_name;
-    }
-
-    public String getCompetitors_1_country() {
-        return competitors_1_country;
-    }
-
-    public void setCompetitors_1_country(String competitors_1_country) {
-        this.competitors_1_country = competitors_1_country;
-    }
-
-    public String getCompetitors_2_country() {
-        return competitors_2_country;
-    }
-
-    public void setCompetitors_2_country(String competitors_2_country) {
-        this.competitors_2_country = competitors_2_country;
-    }
-
-    public String getCompetitors_1_qualifier() {
-        return competitors_1_qualifier;
-    }
-
-    public void setCompetitors_1_qualifier(String competitors_1_qualifier) {
-        this.competitors_1_qualifier = competitors_1_qualifier;
-    }
-
-    public String getCompetitors_2_qualifier() {
-        return competitors_2_qualifier;
-    }
-
-    public void setCompetitors_2_qualifier(String competitors_2_qualifier) {
-        this.competitors_2_qualifier = competitors_2_qualifier;
-    }
-
-    public MatchResult getMatch_result() {
-        return match_result;
-    }
-
-    public void setMatch_result(MatchResult match_result) {
-        this.match_result = match_result;
+    public void setResults_list(ArrayList<ResultsList> results_list) {
+        this.results_list = results_list;
     }
 }

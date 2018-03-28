@@ -7,7 +7,6 @@ import android.util.Log;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
 import com.yallagoom.interfaces.StringResultCallback;
-import com.yallagoom.interfaces.TicketDeatailsCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
@@ -85,7 +84,7 @@ public class DiscoverCategoryAsyncTask extends AsyncTask<String, String, Integer
         super.onPostExecute(status);
         progress.dismiss();
         if (status == 1) {
-            stringResultCallback.processFinish(dataResult + "");
+            stringResultCallback.processFinish(dataResult + "", progress);
 
         } else {
             ToolUtils.viewToast(mContext, error);

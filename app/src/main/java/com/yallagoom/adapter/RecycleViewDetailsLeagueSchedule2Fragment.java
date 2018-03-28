@@ -2,6 +2,7 @@ package com.yallagoom.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,25 +64,33 @@ public class RecycleViewDetailsLeagueSchedule2Fragment extends RecyclerView.Adap
 
     @Override
     public void onBindViewHolder(final RecycleViewDetailsLeagueSchedule2Fragment.MyViewHolder holder, final int position) {
-        holder.home.setText(matchesLists2[position].getCompetitors_1().getCompetitors_name());
-        holder.away.setText(matchesLists2[position].getCompetitors_2().getCompetitors_name());
-        holder.status.setText(matchesLists2[position].getStatus());
-        if (matchesLists2[position].getStatus().equalsIgnoreCase("closed")){
-            if (matchesLists2[position].getMatch_result()!=null){
-                holder.score_layout.setVisibility(View.VISIBLE);
-                holder.time_layout.setVisibility(View.GONE);
-                holder.home_value.setText(matchesLists2[position].getMatch_result().getHome_score()+"");
-                holder.away_value.setText(matchesLists2[position].getMatch_result().getAway_score()+"");
-            }else {
+        if (matchesLists2[position].getParticipants_list().size() == 2) {
+            holder.status.setText(matchesLists2[position].getStatus_type());
+            holder.home.setText(matchesLists2[position].getParticipants_list().get(0).getParticipants_data().getShort_name());
+            holder.away.setText(matchesLists2[position].getParticipants_list().get(1).getParticipants_data().getShort_name());
+      /*  if (matchesLists[position].getStatus_type().equalsIgnoreCase("finished")){
+            holder.score_layout.setVisibility(View.VISIBLE);
+            holder.time_layout.setVisibility(View.GONE);
+            holder.home_value.setText(matchesLists[position].getResults_list().get(2).getResult_value()+"");
+            holder.away_value.setText(matchesLists[position].getResults_list().get(12).getResult_value()+"");
+        }*/
+            if (matchesLists2[position].getStatus_type().equalsIgnoreCase("scheduled")) {
                 holder.score_layout.setVisibility(View.GONE);
                 holder.time_layout.setVisibility(View.VISIBLE);
-                holder.time_value.setText("-");
+                holder.time_value.setText(ToolUtils.converDateToString(ToolUtils.converStringToDate(matchesLists2[position].getStart_date(), Constant.yyyy_MM_dd__HH_mm), Constant.hh_mm_aa));
+            } else {
+                holder.score_layout.setVisibility(View.VISIBLE);
+                holder.time_layout.setVisibility(View.GONE);
+                if (matchesLists2[position].getParticipants_list().get(0).getParticipant_id() == matchesLists2[position].getResults_list().get(2).getParticipants_id()) {
+                    holder.home_value.setText(matchesLists2[position].getResults_list().get(2).getResult_value() + "");
+                    holder.away_value.setText(matchesLists2[position].getResults_list().get(12).getResult_value() + "");
+                } else {
+                    holder.away_value.setText(matchesLists2[position].getResults_list().get(2).getResult_value() + "");
+                    holder.home_value.setText(matchesLists2[position].getResults_list().get(12).getResult_value() + "");
+                }
             }
-        }else if (matchesLists2[position].getStatus().equalsIgnoreCase("not_started")){
-            holder.score_layout.setVisibility(View.GONE);
-            holder.time_layout.setVisibility(View.VISIBLE);
-            holder.time_value.setText(ToolUtils.converDateToString(ToolUtils.converStringToDate(matchesLists2[position].getScheduled(),"yyyy-MM-dd'T'HH:mm:ssZ"), Constant.hh_mm_aa));
         }
+
 
     }
 

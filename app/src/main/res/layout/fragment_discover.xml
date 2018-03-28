@@ -273,6 +273,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/recommendations_for_you_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_f9f9f9"
@@ -325,6 +326,7 @@
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"></android.support.v7.widget.RecyclerView>
 
         <RelativeLayout
+            android:id="@+id/special_offers_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_f9f9f9"
