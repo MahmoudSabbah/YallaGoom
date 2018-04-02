@@ -82,6 +82,7 @@ public class RegisterAsyncTask extends AsyncTask<String, String, Integer> {
                     SharedPreferences.Editor shared = ToolUtils.setSharedPrefernce(mContext, Constant.userData);
                     shared.putString(Constant.userToken, data.getString("token"));
                     shared.putInt(Constant.userId, data.getInt("id"));
+                    shared.putString(Constant.allUserData, data.toString());
                     shared.apply();
                 }
                 return status;

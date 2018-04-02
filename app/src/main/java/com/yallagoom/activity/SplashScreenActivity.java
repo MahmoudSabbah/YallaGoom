@@ -60,13 +60,9 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
         ToolUtils.hideStatus(SplashScreenActivity.this);
         SharedPreferences sharedPreferences = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.loginCheck);
-        //   SharedPreferences sharedPreferences2 = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.userData);
-
-        sharedPreferences.edit().putBoolean(Constant.verification_check, false).apply();
-        //  sharedPreferences2.edit().clear().apply();
-
         verification_check = sharedPreferences.getBoolean(Constant.verification_check, false);
 
         splash_imag = (RelativeLayout) findViewById(R.id.splash_imag);
@@ -137,7 +133,7 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
                     public void onSuccess() {
                      /*   logo_text.startAnimation(animationDown);
                         logo.startAnimation(animation);*/
-                        Log.e("test1", "test1");
+                        //  Log.e("test1", "test1");
 
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                             ToolUtils.buildAlertMessageNoGps2(SplashScreenActivity.this, new CheckGPSCallback() {
@@ -155,13 +151,13 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
                                             status.startResolutionForResult(
                                                     SplashScreenActivity.this, REQUEST_CHECK_SETTINGS);
                                         } catch (IntentSender.SendIntentException e) {
-                                            Log.e("test2", "test2");
+                                            //    Log.e("test2", "test2");
 
                                         }
                                     } else {
                                         excNext();
                                     }
-                                    Log.e("test3", "test3");
+                                    //    Log.e("test3", "test3");
                                 }
                             });
 
@@ -184,7 +180,6 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
                 .
 
                         verifyPermissions();
-
 
     }
 
@@ -236,7 +231,7 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
                         GetChannelsAsyncTask getChannelsAsyncTask = new GetChannelsAsyncTask(SplashScreenActivity.this, progress, new StringResultCallback() {
                             @Override
                             public void processFinish(String result, KProgressHUD progress) {
-                              Constant.ChannelsList=  new Gson().fromJson(result,Channels[].class);
+                                Constant.ChannelsList = new Gson().fromJson(result, Channels[].class);
                                 if (verification_check) {
                                     Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
                                     startActivity(intent);

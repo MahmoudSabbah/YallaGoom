@@ -527,12 +527,14 @@
             <com.yallagoom.font.Roboto_Bold
                 android:id="@+id/sign_up_bt"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bt_bg_gradiant180"
                 android:gravity="center"
                 android:layout_below="@+id/view"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:paddingTop="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_8sdp"
                 android:text="@string/sing_up"
                 android:textColor="@drawable/pressed_white"
                 android:textSize="@dimen/_12sdp" />

@@ -86,7 +86,7 @@ public class DiscoverFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DiscoverFragment.this.getContext(), SearchCountryActivity.class);
-
+                intent.putExtra("id",-1);
                 startActivityForResult(intent, 104);
             }
         });

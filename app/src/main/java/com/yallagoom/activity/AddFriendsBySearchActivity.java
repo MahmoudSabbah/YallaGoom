@@ -214,6 +214,7 @@ public class AddFriendsBySearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AddFriendsBySearchActivity.this, SearchCountryActivity.class);
+                intent.putExtra("id",-1);
                 startActivityForResult(intent, 102);
             }
         });

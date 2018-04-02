@@ -65,10 +65,12 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
         date = (EditText) findViewById(R.id.date);
         gender = (EditText) findViewById(R.id.gender);
         gender.setFocusable(false);
+        gender.setLongClickable(false);
         switch_button = (SwitchButton) findViewById(R.id.switch_button);
         dateEdite.setFocusable(false);
+        dateEdite.setLongClickable(false);
 
-        dateEdite.setInputType(InputType.TYPE_CLASS_TEXT);
+       // dateEdite.setInputType(InputType.TYPE_CLASS_TEXT);
         dateEdite.requestFocus();
         InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mgr.showSoftInput(dateEdite, InputMethodManager.SHOW_FORCED);

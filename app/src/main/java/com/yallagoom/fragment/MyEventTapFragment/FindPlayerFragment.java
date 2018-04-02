@@ -205,6 +205,7 @@ public class FindPlayerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FindPlayerFragment.this.getActivity(), SearchCountryActivity.class);
+                intent.putExtra("id",-1);
                 startActivityForResult(intent, 102);
             }
         });

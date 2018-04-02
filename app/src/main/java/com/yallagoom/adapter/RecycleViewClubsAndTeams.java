@@ -8,13 +8,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
+import com.yallagoom.activity.ClubsDetailsActivity;
 import com.yallagoom.activity.SelectCompetitinsAndClubsActivity;
+import com.yallagoom.api.GetClubAndTeamsDetailsApiAsyncTask;
 import com.yallagoom.api.GetClubCompitetionListApiAsyncTask;
 import com.yallagoom.entity.Matches.ClubsAndTeams;
 import com.yallagoom.entity.Matches.MatchCategory;
@@ -56,6 +59,22 @@ public class RecycleViewClubsAndTeams extends RecyclerView.Adapter<RecycleViewCl
         }else {
             holder.founded.setText(mContext.getString(R.string.founded_since)+" "+clubsAndTeams[position].getFounded());
         }
+        holder.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetClubAndTeamsDetailsApiAsyncTask getClubAndTeamsDetailsApiAsyncTask=new GetClubAndTeamsDetailsApiAsyncTask(mContext, new StringResultCallback() {
+                    @Override
+                    public void processFinish(String result, KProgressHUD progress) {
+                        Intent intent=new Intent(mContext, ClubsDetailsActivity.class);
+                        intent.putExtra("Club_details",result);
+                        intent.putExtra("Club_name",clubsAndTeams[position].getName());
+                        mContext.startActivity(intent);
+                    }
+                });
+                getClubAndTeamsDetailsApiAsyncTask.execute(clubsAndTeams[position].getId()+"");
+
+            }
+        });
     }
 
     @Override
@@ -94,6 +113,7 @@ public class RecycleViewClubsAndTeams extends RecyclerView.Adapter<RecycleViewCl
         private final TextView name;
         private final TextView type;
         private final TextView founded;
+        private final LinearLayout parent;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -102,6 +122,7 @@ public class RecycleViewClubsAndTeams extends RecyclerView.Adapter<RecycleViewCl
             name = (TextView) itemView.findViewById(R.id.name);
             type = (TextView) itemView.findViewById(R.id.type);
             founded = (TextView) itemView.findViewById(R.id.founded);
+            parent = (LinearLayout) itemView.findViewById(R.id.parent);
             view = (View) itemView.findViewById(R.id.view);
 
 

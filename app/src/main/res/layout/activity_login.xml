@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/parent"
     android:background="@color/color_f7f7f7"
     tools:context="com.yallagoom.activity.LoginActivity">
 
@@ -126,27 +126,38 @@
         android:layout_marginRight="@dimen/_20sdp"
         android:background="@color/color_b2b2ba" />
 
-
-    <com.yallagoom.font.Roboto_Bold
-        android:id="@+id/login"
+    <RelativeLayout
+        android:id="@+id/login_bt1"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:background="@drawable/bt_bg_gradiant180"
-        android:gravity="center"
-        android:text="@string/next"
-        android:textColor="@drawable/pressed_white"
-        android:textSize="@dimen/_12sdp" />
+        android:paddingBottom="@dimen/_8sdp"
+        android:paddingLeft="@dimen/_5sdp"
+        android:paddingRight="@dimen/_5sdp"
+        android:paddingTop="@dimen/_8sdp">
+
+        <com.yallagoom.font.Roboto_Bold
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="@string/next"
+            android:textColor="@drawable/pressed_white"
+            android:textSize="@dimen/_12sdp" />
+    </RelativeLayout>
 
 
     <com.yallagoom.font.Roboto_Regular
         android:id="@+id/sign_up"
         android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"
-        android:layout_below="@+id/login"
+        android:layout_below="@+id/login_bt1"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="center"

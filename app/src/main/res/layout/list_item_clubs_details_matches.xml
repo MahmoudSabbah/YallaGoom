@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:background="@color/white_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_14sdp"
+        android:orientation="vertical">
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/matche_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_11sdp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:textColor="@color/color_7f7d7e"
+            android:text="Wed , 10 March 2017"
+            />
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_f9f9f9"
+            android:minHeight="@dimen/_37sdp">
+
+            <RelativeLayout
+                android:id="@+id/result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/_radius_white"
+                android:gravity="center"
+                android:minHeight="@dimen/_25sdp"
+                android:minWidth="@dimen/_60sdp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/score_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <com.yallagoom.font.Roboto_Medium
+                        android:id="@+id/away_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="3"
+                        android:textColor="@color/color_df488a"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <com.yallagoom.font.Roboto_Medium
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_marginRight="@dimen/_3sdp"
+
+                        android:gravity="center_vertical"
+                        android:text=":"
+                        android:textColor="@color/color_df488a"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <com.yallagoom.font.Roboto_Medium
+                        android:id="@+id/home_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="1"
+                        android:textColor="@color/color_df488a"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/time_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.yallagoom.font.Roboto_Medium
+                        android:id="@+id/time_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="-"
+                        android:textColor="@color/color_df488a"
+                        android:textSize="@dimen/_11sdp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toLeftOf="@+id/result"
+                android:layout_toStartOf="@+id/result">
+
+                <RelativeLayout
+                    android:id="@+id/team_first_icon_layout"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/circle_shap_white">
+
+                    <ImageView
+                        android:id="@+id/team_first_icon"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/real_icon" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/team_first_icon_layout"
+                    android:layout_toRightOf="@+id/team_first_icon_layout">
+
+                    <com.yallagoom.font.Roboto_Regular
+                        android:id="@+id/away"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Barcha"
+                        android:textColor="@color/black_70"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_toEndOf="@+id/result"
+                android:layout_toRightOf="@+id/result">
+
+                <RelativeLayout
+                    android:id="@+id/team_scound_icon_layout"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle_shap_white">
+
+                    <ImageView
+                        android:id="@+id/team_second_icon"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/barcha_icon" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_toLeftOf="@+id/team_scound_icon_layout"
+                    android:layout_toStartOf="@+id/team_scound_icon_layout">
+
+                    <com.yallagoom.font.Roboto_Regular
+                        android:id="@+id/home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Real Madrid"
+                        android:textColor="@color/black_70"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

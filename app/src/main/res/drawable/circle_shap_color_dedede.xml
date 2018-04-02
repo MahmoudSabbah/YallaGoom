@@ -1,7 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:endColor="@color/color_eaeaea"
-        android:startColor="@color/color_eaeaea"/>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Drop Shadow Stack -->
+    <item>
+        <shape android:shape="oval">
+            <padding android:top="1dp" android:right="1dp" android:bottom="2dp" android:left="1dp" />
+            <corners android:radius="5dp" />
+            <solid android:color="#00CCCCCC" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <padding android:top="1dp" android:right="1dp" android:bottom="2dp" android:left="1dp" />
+            <corners android:radius="5dp" />
+            <solid android:color="#10CCCCCC" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <padding android:top="1dp" android:right="1dp" android:bottom="2dp" android:left="1dp" />
+            <corners android:radius="5dp" />
+            <solid android:color="#20CCCCCC" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <padding android:top="1dp" android:right="1dp" android:bottom="2dp" android:left="1dp" />
+            <corners android:radius="5dp" />
+            <solid android:color="#30CCCCCC" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <padding android:top="1dp" android:right="1dp" android:bottom="2dp" android:left="1dp" />
+            <corners android:radius="5dp" />
+            <solid android:color="#50CCCCCC" />
+        </shape>
+    </item>
 
-</shape>
+    <!-- Background -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#ffffff" />
+            <corners android:radius="0dp" />
+        </shape>
+    </item>
+</layer-list>
+<!--<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    &lt;!&ndash; Drop Shadow Stack &ndash;&gt;
+    <item>
+        <shape android:shape="oval">
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <solid android:color="#00CCCCCC" />
+
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="oval">
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <solid android:color="#20CCCCCC" />
+
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <solid android:color="#30CCCCCC" />
+
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+
+    &lt;!&ndash; Background &ndash;&gt;
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@android:color/white" />
+
+            <corners android:radius="3dp" />
+        </shape>
+    </item>
+
+</layer-list>-->
+<!--<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/color_eaeaea" />
+            &lt;!&ndash;shadow Color&ndash;&gt;
+        </shape>
+    </item>
+
+    <item
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/white_color" />//Background Color
+        </shape>
+    </item>
+</layer-list>-->
+
+<!--
+    <?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="oval"
+xmlns:android="http://schemas.android.com/apk/res/android">
+<gradient android:endColor="@color/color_eaeaea"
+    android:startColor="@color/color_eaeaea"/>
+
+</shape>-->

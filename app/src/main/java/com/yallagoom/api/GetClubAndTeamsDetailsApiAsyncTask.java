@@ -28,6 +28,8 @@ public class GetClubAndTeamsDetailsApiAsyncTask extends AsyncTask<String, String
     private KProgressHUD progress;
     private String error;
     private JSONArray dataResult;
+    private String id;
+    private JSONObject dataResultObjtect;
 
     public GetClubAndTeamsDetailsApiAsyncTask(Context context, StringResultCallback stringResultCallback) {
         mContext = context;
@@ -48,8 +50,11 @@ public class GetClubAndTeamsDetailsApiAsyncTask extends AsyncTask<String, String
     @Override
     protected Integer doInBackground(String[] params) {
         FormBody.Builder formBody = new FormBody.Builder();
-
-        formBody.add("code_3", Constant.alpha3Country);
+        id = params[0];
+        formBody.add("code_3", "QAT");
+        if (!id.equalsIgnoreCase("-1")) {
+            formBody.add("club_id", id);
+        }
 
         Request.Builder builder = new Request.Builder();
         builder.url(Constant.urlData + Constant.clubs_list);
@@ -68,7 +73,11 @@ public class GetClubAndTeamsDetailsApiAsyncTask extends AsyncTask<String, String
                     error = errorMsg.names().getString(0);
                     error = errorMsg.getString(error);
                 } else {
-                    dataResult = jsonObject.getJSONArray(Constant.data);
+                    if (id.equalsIgnoreCase("-1")) {
+                        dataResult = jsonObject.getJSONArray(Constant.data);
+                    } else {
+                        dataResultObjtect = jsonObject.getJSONObject(Constant.data);
+                    }
                 }
                 return status;
             } else {
@@ -86,7 +95,11 @@ public class GetClubAndTeamsDetailsApiAsyncTask extends AsyncTask<String, String
         super.onPostExecute(status);
         progress.dismiss();
         if (status == 1) {
-            stringResultCallback.processFinish(dataResult + "", progress);
+            if (id.equalsIgnoreCase("-1")) {
+                stringResultCallback.processFinish(dataResult + "", progress);
+            } else {
+                stringResultCallback.processFinish(dataResultObjtect + "", progress);
+            }
         } else {
             ToolUtils.viewToast(mContext, error);
         }

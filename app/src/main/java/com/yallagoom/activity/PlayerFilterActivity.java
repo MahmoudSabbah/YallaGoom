@@ -84,6 +84,7 @@ public class PlayerFilterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PlayerFilterActivity.this, SearchCountryActivity.class);
+                intent.putExtra("id",-1);
                 startActivityForResult(intent, 102);
             }
         });

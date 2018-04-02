@@ -11,16 +11,18 @@ import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
 import com.yallagoom.adapter.RecycleViewClubsAndTeams;
-import com.yallagoom.api.GetClubAndTeamsDetailsApiAsyncTask;
-import com.yallagoom.entity.Matches.ClubsAndTeams;
+import com.yallagoom.adapter.RecycleViewPlayerInfo;
+import com.yallagoom.api.GetPlayersApiAsyncTask;
+import com.yallagoom.entity.Matches.Player.PlayerList;
 import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;
 
 
 public class PlayerInfoFragment extends Fragment {
     private RecyclerView channels_list;
-    private IndexFastScrollRecyclerView clubs_list;
+    private IndexFastScrollRecyclerView player_list;
     private RecycleViewClubsAndTeams recycleViewClubsAndTeams;
+    private RecycleViewPlayerInfo recycleViewPlayerInfo;
 
     public PlayerInfoFragment() {
         // Required empty public constructor
@@ -30,10 +32,10 @@ public class PlayerInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_clubs_teams, container, false);
-        clubs_list = (IndexFastScrollRecyclerView) view.findViewById(R.id.clubs_list);
-        clubs_list.setIndexBarTransparentValue(0);
-        clubs_list.setIndexBarTextColor("#6b6a6a");
+        View view = inflater.inflate(R.layout.fragment_player_info, container, false);
+        player_list = (IndexFastScrollRecyclerView) view.findViewById(R.id.player_list);
+        player_list.setIndexBarTransparentValue(0);
+        player_list.setIndexBarTextColor("#6b6a6a");
 
         getData();
         return view;
@@ -41,15 +43,15 @@ public class PlayerInfoFragment extends Fragment {
     }
 
     private void getData() {
-        GetClubAndTeamsDetailsApiAsyncTask getClubAndTeamsDetailsApiAsyncTask = new GetClubAndTeamsDetailsApiAsyncTask(PlayerInfoFragment.this.getActivity(), new StringResultCallback() {
+        GetPlayersApiAsyncTask getPlayersApiAsyncTask = new GetPlayersApiAsyncTask(PlayerInfoFragment.this.getActivity(),-1, new StringResultCallback() {
             @Override
             public void processFinish(String result, KProgressHUD progress) {
-                ClubsAndTeams[] clubsAndTeams = new Gson().fromJson(result, ClubsAndTeams[].class);
-                recycleViewClubsAndTeams = new RecycleViewClubsAndTeams(PlayerInfoFragment.this.getActivity(), clubsAndTeams);
-                clubs_list.setAdapter(recycleViewClubsAndTeams);
+                PlayerList[] playerInfo = new Gson().fromJson(result, PlayerList[].class);
+                recycleViewPlayerInfo = new RecycleViewPlayerInfo(PlayerInfoFragment.this.getActivity(), playerInfo);
+                player_list.setAdapter(recycleViewPlayerInfo);
             }
         });
-        getClubAndTeamsDetailsApiAsyncTask.execute();
+        getPlayersApiAsyncTask.execute();
     }
 
 

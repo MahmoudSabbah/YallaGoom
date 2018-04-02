@@ -83,6 +83,10 @@ public class Constant {
     public static String get_news_channel_ids_for_country=sports_matches+"/get_news_channel_ids_for_country";
     public static String get_club_compitetion_list=sports_matches+"/get_club_compitetion_list";
     public static String clubs_list=sports_matches+"/clubs_list";
+    public static String players_list=sports_matches+"/players_list";
+    public static String profile_update="profile_update";
+    public static String logout="logout";
+    public static String update_user_image="update_user_image";
     public static String special_offers=ticket+"/special_offers";
     public static String categories="categories";
     public static String yyyy_MM_dd="yyyy-MM-dd";
@@ -102,4 +106,5 @@ public class Constant {
     public static Channels[] ChannelsList;
     public static String ChannelsListData="ChannelsListData";
     public static String ChannelsKey="ChannelsKey";
+    public static String allUserData="allUserData";
 }

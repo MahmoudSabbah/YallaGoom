@@ -84,8 +84,11 @@ public class ClickMatchActivity extends AppCompatActivity {
         time_counter_down = (TextView) findViewById(R.id.time_counter_down);
         team_first = (TextView) findViewById(R.id.team_first);
         team_second = (TextView) findViewById(R.id.team_second);
-        team_first.setText(matchDetails.getParticipants_list().get(1).getParticipants_data().getShort_name());
-        team_second.setText(matchDetails.getParticipants_list().get(0).getParticipants_data().getShort_name());
+        if (matchDetails.getParticipants_list().size()>0){
+            team_first.setText(matchDetails.getParticipants_list().get(1).getParticipants_data().getShort_name());
+            team_second.setText(matchDetails.getParticipants_list().get(0).getParticipants_data().getShort_name());
+        }
+
 
         segmented_match = (SegmentedGroup) findViewById(R.id.segmented_match);
         details = (RadioButton) findViewById(R.id.details);
@@ -93,8 +96,11 @@ public class ClickMatchActivity extends AppCompatActivity {
         action_layout = (LinearLayout) findViewById(R.id.action_layout);
         participants_layout = (View) findViewById(R.id.participants_layout);
         details_list = (RecyclerView) findViewById(R.id.details_list);
+        details_list.setNestedScrollingEnabled(false);
         result_list = (RecyclerView) findViewById(R.id.result_list);
+        result_list.setNestedScrollingEnabled(false);
         stats_list = (RecyclerView) findViewById(R.id.stats_list);
+        stats_list.setNestedScrollingEnabled(false);
         result_list.setFocusable(false);
         details_list.setFocusable(false);
         stats_list.setFocusable(false);
@@ -269,10 +275,8 @@ public class ClickMatchActivity extends AppCompatActivity {
             TextView time_left = (TextView) inflatedLayout.findViewById(R.id.time_left);
             TextView time_right = (TextView) inflatedLayout.findViewById(R.id.time_right);
             if (i == 0 || (ckeck_value != -1 && ckeck_value == i)) {
-                Log.e(" index : "+i,"VISIBLE");
                 small_circle.setVisibility(View.VISIBLE);
             } else {
-                Log.e(" index : "+i,"GONE");
                 small_circle.setVisibility(View.GONE);
 
             }
@@ -288,28 +292,28 @@ public class ClickMatchActivity extends AppCompatActivity {
             if (i == matchDetails.getIncidents().size() - 1) {
                 view2_lay.setVisibility(View.VISIBLE);
             }
-            if (i % 2 == 0) {
+            if ((matchDetails.getParticipants_list().get(1).getParticipant_id() + "").equalsIgnoreCase(matchDetails.getIncidents().get(i).getParticipant_id())) {
                 mes_left.setVisibility(View.VISIBLE);
                 if (matchDetails.getIncidents().get(i).getSubparticipant_name().equalsIgnoreCase("")) {
-                    text_message_left.setText(matchDetails.getIncidents().get(i).getParticipant_name());
+                    text_message_left.setText(matchDetails.getIncidents().get(i).getIncident_name());
 
                 } else {
                     text_message_left.setText(matchDetails.getIncidents().get(i).getSubparticipant_name());
 
                 }
-                time_left.setText(matchDetails.getIncidents().get(i).getEvent_time().split(":")[0]+"`");
+                time_left.setText(matchDetails.getIncidents().get(i).getEvent_time().split(":")[0] + "`");
                 mes_right.setVisibility(View.GONE);
             } else {
                 mes_left.setVisibility(View.GONE);
                 mes_right.setVisibility(View.VISIBLE);
                 if (matchDetails.getIncidents().get(i).getSubparticipant_name().equalsIgnoreCase("")) {
-                    text_message_right.setText(matchDetails.getIncidents().get(i).getParticipant_name());
+                    text_message_right.setText(matchDetails.getIncidents().get(i).getIncident_name());
 
                 } else {
                     text_message_right.setText(matchDetails.getIncidents().get(i).getSubparticipant_name());
 
                 }
-                time_right.setText(matchDetails.getIncidents().get(i).getEvent_time().split(":")[0]+"`");
+                time_right.setText(matchDetails.getIncidents().get(i).getEvent_time().split(":")[0] + "`");
 
             }
             switch (matchDetails.getIncidents().get(i).getIncident_name()) {
@@ -317,52 +321,47 @@ public class ClickMatchActivity extends AppCompatActivity {
                     icon.setImageResource(R.drawable.ic_start_game);
                     break;
                 case "Possible goal":
-                    icon.setVisibility(View.INVISIBLE);
-                    icon.setImageResource(R.drawable.ic_start_game);
+                    icon.setImageResource(R.drawable.possible_goal);
                     break;
                 case "Goal":
                     icon.setImageResource(R.drawable.ic_goal);
                     break;
                 case "Yellow card":
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int) getResources().getDimension(R.dimen._12sdp), (int) getResources().getDimension(R.dimen._20sdp));
-                    layoutParams.gravity=Gravity.CENTER;
-                  //  layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+                    layoutParams.gravity = Gravity.CENTER;
+                    //  layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
                     icon.setLayoutParams(layoutParams);
-                    icon.setImageResource(R.drawable.ic_yallow_card);
+                    icon.setImageResource(R.drawable.yallow_card);
                     break;
                 case "Injury time":
-                    icon.setVisibility(View.INVISIBLE);
-                    icon.setImageResource(R.drawable.ic_start_game);
+                    icon.setImageResource(R.drawable._injury_time_icon);
                     break;
                 case "2nd half started":
-                    icon.setImageResource(R.drawable.ic_start_game);
+                    icon.setImageResource(R.drawable.twnd_half_started);
                     break;
                 case "Substitution out":
-                    icon.setImageResource(R.drawable.ic_change_payer);
+                    icon.setImageResource(R.drawable.substitution_out);
                     break;
                 case "Substitution in":
-                    icon.setImageResource(R.drawable.ic_change_payer);
+                    icon.setImageResource(R.drawable.substitution_in);
                     break;
                 case "Possible card":
-                    icon.setVisibility(View.INVISIBLE);
-                    icon.setImageResource(R.drawable.ic_start_game);
+                    icon.setImageResource(R.drawable.possible_card);
                     break;
                 case "Halftime":
-                    icon.setVisibility(View.INVISIBLE);
-                    icon.setImageResource(R.drawable.ic_start_game);
+                    icon.setImageResource(R.drawable.halftime);
                     break;
                 case "Finished regular time":
                     icon.setImageResource(R.drawable.ic_end_game);
                     break;
                 case "Red card":
-                    icon.setImageResource(R.drawable.ic_red_card);
+                    icon.setImageResource(R.drawable.red_card);
                     break;
                 case "Penalty":
                     icon.setImageResource(R.drawable.ic_penalty);
                     break;
                 case "Possible penalty":
-                    icon.setVisibility(View.INVISIBLE);
-                    icon.setImageResource(R.drawable.ic_start_game);
+                    icon.setImageResource(R.drawable.possible_penalty);
                     break;
                 case "Missed penalty":
                     icon.setImageResource(R.drawable.ic_missed_penalty);

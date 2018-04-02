@@ -77,6 +77,7 @@ dependencies {
     compile 'com.github.omadahealth:swipy:1.2.3@aar'
     compile 'com.github.frankiesardo:linearlistview:1.0.1@aar'
     compile 'cn.jzvd:jiaozivideoplayer:6.2.8'
+    compile 'com.github.yalantis:ucrop:2.2.1-native'
 //    compile 'com.linsea:universalvideoview:1.1.0@aar'
 
     //compile 'io.realm:realm-android:0.82.1'
@@ -103,4 +104,6 @@ dependencies {
     implementation 'com.android.support:support-annotations:27.0.2'
     /*compile 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'*/
+    compile 'com.github.frankiesardo:linearlistview:1.0.1@aar'
+
 }

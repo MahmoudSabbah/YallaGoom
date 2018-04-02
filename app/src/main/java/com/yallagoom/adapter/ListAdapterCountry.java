@@ -17,16 +17,19 @@ import java.util.List;
 /**
  * Created by Mahmoud Sabbah on 2/7/2018.
  */
-public class ListAdapterCountry extends BaseAdapter  {
+public class ListAdapterCountry extends BaseAdapter {
     private final ArrayList<Country.Data> arraylist;
     private final ArrayList<Country.Data> mStringFilterList;
+   // private final int id;
     List<Country.Data> arrayList;
     private ArrayList<Country.Data> categorySearchesList;    // Values to be displayed
     LayoutInflater inflater;
     private List<Country.Data> arrayListNames;
+
     public ListAdapterCountry(Context context, ArrayList<Country.Data> categorySearchesList) {
         this.categorySearchesList = categorySearchesList;
         mStringFilterList = categorySearchesList;
+       // this.id = id;
         inflater = LayoutInflater.from(context);
         this.arraylist = new ArrayList<Country.Data>();
         this.arraylist.addAll(categorySearchesList);
@@ -74,7 +77,7 @@ public class ListAdapterCountry extends BaseAdapter  {
             holder.check = (TextView) convertView.findViewById(R.id.check);
             holder.id_value = (TextView) convertView.findViewById(R.id.id_value);
             holder.name.setText(categorySearchesList.get(position).getName_en());
-            holder.id_value.setText(categorySearchesList.get(position).getId()+"");
+            holder.id_value.setText(categorySearchesList.get(position).getId() + "");
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -86,6 +89,12 @@ public class ListAdapterCountry extends BaseAdapter  {
             holder.check.setVisibility(View.VISIBLE);
 
         }
+       /* if (id != -1) {
+           if (categorySearchesList.get(position).getId()==id){
+               categorySearchesList.get(position).setVis(1);
+               holder.check.setVisibility(View.VISIBLE);
+           }
+        }*/
         return convertView;
     }
 

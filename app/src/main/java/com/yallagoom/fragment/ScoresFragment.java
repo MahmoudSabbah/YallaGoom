@@ -18,6 +18,7 @@ import com.yallagoom.fragment.scoresTapFragment.ChannelSettingsFragment;
 import com.yallagoom.fragment.scoresTapFragment.ClubsAndTeamsFragment;
 import com.yallagoom.fragment.scoresTapFragment.CompetitionsSettingsFragment;
 import com.yallagoom.fragment.scoresTapFragment.NewsFragment;
+import com.yallagoom.fragment.scoresTapFragment.PlayerInfoFragment;
 import com.yallagoom.fragment.scoresTapFragment.Schedule2Fragment;
 import com.yallagoom.fragment.scoresTapFragment.Schedule3Fragment;
 import com.yallagoom.fragment.scoresTapFragment.Schedule4Fragment;
@@ -81,11 +82,14 @@ public class ScoresFragment extends Fragment {
                     case 2:
                         fragment = new NewsFragment();
                         break;
-                       case 3:
+                    case 3:
                         fragment = new ChannelSettingsFragment();
                         break;
                     case 4:
                         fragment = new ClubsAndTeamsFragment();
+                        break;
+                    case 5:
+                        fragment = new PlayerInfoFragment();
                         break;
 
                 }
@@ -102,7 +106,7 @@ public class ScoresFragment extends Fragment {
 
             }
         });
-        fragment = new Schedule2Fragment();
+        fragment = new ScheduleFragment();
         changeFragment(fragment);
         return view;
 

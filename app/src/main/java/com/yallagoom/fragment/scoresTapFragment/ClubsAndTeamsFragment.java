@@ -54,7 +54,7 @@ public class ClubsAndTeamsFragment extends Fragment {
                 clubs_list.setAdapter(recycleViewClubsAndTeams);
             }
         });
-        getClubAndTeamsDetailsApiAsyncTask.execute();
+        getClubAndTeamsDetailsApiAsyncTask.execute("-1");
     }
 
 

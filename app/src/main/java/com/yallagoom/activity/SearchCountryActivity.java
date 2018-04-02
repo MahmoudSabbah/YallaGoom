@@ -88,6 +88,7 @@ public class SearchCountryActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
+
         country_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -126,8 +127,8 @@ public class SearchCountryActivity extends AppCompatActivity {
                     intent.putExtra("code_3", code_3);
                     setResult(102, intent);
                     finish();
-                }else {
-                    ToolUtils.showSnak(SearchCountryActivity.this,getString(R.string.select_cat));
+                } else {
+                    ToolUtils.showSnak(SearchCountryActivity.this, getString(R.string.select_cat));
                 }
 
             }
@@ -142,18 +143,24 @@ public class SearchCountryActivity extends AppCompatActivity {
     }
 
 
-
     public boolean hexChecker(String c, String value) {
         String string = value;
         return string.indexOf(c) > -1;
     }
 
     private void getCountry() {
-        GetCountriesAsyncTask getCountriesAsyncTask=new GetCountriesAsyncTask(SearchCountryActivity.this, new KProgressHUD(this) ,new GetCountriesCallback() {
+        GetCountriesAsyncTask getCountriesAsyncTask = new GetCountriesAsyncTask(SearchCountryActivity.this, new KProgressHUD(this), new GetCountriesCallback() {
             @Override
             public void processFinish(Country country) {
                 countryListData = country.getData();
-                 listAdapterCountry=new ListAdapterCountry(SearchCountryActivity.this,country.getData());
+                for (int j = 0; j < countryListData.size(); j++) {
+                    if (countryListData.get(j).getId() == getIntent().getExtras().getInt("id")) {
+                        countryListData.get(j).setVis(1);
+
+                    }
+                }
+
+                listAdapterCountry = new ListAdapterCountry(SearchCountryActivity.this, country.getData());
                 country_list.setAdapter(listAdapterCountry);
             }
         });

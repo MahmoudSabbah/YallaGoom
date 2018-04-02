@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srl_direction="both">
+
             <ScrollView
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
@@ -51,15 +52,29 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight=".11"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/days_list"
+        <ScrollView
+            android:id="@+id/day_scroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+            <LinearLayout
+                android:id="@+id/days_list_linear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"></LinearLayout>
+        </ScrollView>
+
+        <!--  <android.support.v7.widget.RecyclerView
+              android:id="@+id/days_list"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:orientation="vertical"
+
+              app:layoutManager="android.support.v7.widget.LinearLayoutManager" />-->
     </LinearLayout>
 </LinearLayout>

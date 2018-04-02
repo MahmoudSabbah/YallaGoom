@@ -17,6 +17,33 @@ public class User {
     private String gender;
     private String token;
     private String name;
+    private String img_url;
+    private String status;
+    private UserCountry get_country_data;
+
+    public UserCountry getGet_country_data() {
+        return get_country_data;
+    }
+
+    public void setGet_country_data(UserCountry get_country_data) {
+        this.get_country_data = get_country_data;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getName() {
         return name;

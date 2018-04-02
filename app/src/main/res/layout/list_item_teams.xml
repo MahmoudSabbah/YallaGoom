@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_10sdp"
+    android:id="@+id/parent"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingTop="@dimen/_10sdp"
     android:orientation="vertical">
 
     <LinearLayout
