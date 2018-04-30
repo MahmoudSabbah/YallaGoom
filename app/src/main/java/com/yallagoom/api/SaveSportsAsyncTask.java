@@ -13,14 +13,17 @@ import com.yallagoom.activity.HomeActivity;
 import com.yallagoom.entity.Country;
 import com.yallagoom.entity.SportSave;
 import com.yallagoom.interfaces.GetCountriesCallback;
+import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import okhttp3.FormBody;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -32,12 +35,14 @@ import okhttp3.Response;
 public class SaveSportsAsyncTask extends AsyncTask<String, String, Integer> {
     private final Context mContext;
     private final List<SportSave> hashMaps;
+    private final StringResultCallback stringResultCallback;
     private KProgressHUD progress;
     private String error;
 
-    public SaveSportsAsyncTask(Context context, List<SportSave> hashMaps) {
+    public SaveSportsAsyncTask(Context context, List<SportSave> hashMaps , StringResultCallback stringResultCallback) {
         mContext = context;
         this.hashMaps = hashMaps;
+        this.stringResultCallback = stringResultCallback;
 
     }
 
@@ -55,16 +60,15 @@ public class SaveSportsAsyncTask extends AsyncTask<String, String, Integer> {
 
     @Override
     protected Integer doInBackground(String[] params) {
-        MultipartBody.Builder req = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        FormBody.Builder formBody = new FormBody.Builder();
         for (int i = 0; i < hashMaps.size(); i++) {
-            req.addFormDataPart("sport_id[]", hashMaps.get(i).getSport_id()+"");
-            req.addFormDataPart("rate[]", hashMaps.get(i).getRate()+"");
+            formBody.add("sport_id[]", hashMaps.get(i).getSport_id()+"");
+            formBody.add("rate[]", hashMaps.get(i).getRate()+"");
 
         }
         Request.Builder builder = new Request.Builder();
         builder.url(Constant.urlData + Constant.user_sport);
-        Log.e("response", "" + ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.userToken, null));
-        builder.post(req.build());
+        builder.post(formBody.build());
         builder.header("Authorization", "Bearer " + ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.userToken, null));
         Request request = builder.build();
 
@@ -97,10 +101,14 @@ public class SaveSportsAsyncTask extends AsyncTask<String, String, Integer> {
         super.onPostExecute(status);
         progress.dismiss();
         if (status == 1) {
-            Intent intent = new Intent(mContext, HomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            mContext.startActivity(intent);
-            ((Activity) mContext).finish();
+           /* ArrayList<String> sportData=new ArrayList<>();
+            for (int i = 0; i < hashMaps.size(); i++) {
+                sportData.add(hashMaps.get(i).getSport_id()+"-"+hashMaps.get(i).getRate());
+            }
+            ToolUtils.setArrayToShared(mContext,Constant.userData,Constant.userSport,sportData);*/
+            ToolUtils.viewToast(mContext, mContext.getString(R.string.save_sport));
+            stringResultCallback.processFinish("",progress);
+
         } else {
             ToolUtils.viewToast(mContext, error);
         }

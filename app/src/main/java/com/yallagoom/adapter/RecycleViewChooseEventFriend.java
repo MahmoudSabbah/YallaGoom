@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
@@ -27,16 +29,21 @@ public class RecycleViewChooseEventFriend extends RecyclerView.Adapter<RecycleVi
     private final ImageLoader imageLoader;
     private final ArrayList<Player.PlayerList> playerLists;
     public Context context;
+    public static CircularImageView image_player_not_send;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
 
         private final CircularImageView image_player;
+        private final TextView check_invited;
+        private final RelativeLayout check_invited_lay;
 
         public MyViewHolder(View view) {
             super(view);
             context = view.getContext();
             image_player = (CircularImageView)view.findViewById(R.id.image_player);
+            check_invited = (TextView)view.findViewById(R.id.check_invited);
+            check_invited_lay = (RelativeLayout)view.findViewById(R.id.check_invited_lay);
 
 
         }
@@ -71,6 +78,16 @@ public class RecycleViewChooseEventFriend extends RecyclerView.Adapter<RecycleVi
         }else {
            // holder.progress_bar.setVisibility(View.GONE);
         }*/
+
+       if (playerLists.get(position).isInvited()){
+           holder.check_invited.setText(context.getString(R.string.fa_close));
+           holder.check_invited_lay.setVisibility(View.VISIBLE);
+           image_player_not_send=holder.image_player;
+       }else {
+           holder.check_invited.setText(context.getString(R.string.fa_check));
+           holder.check_invited_lay.setVisibility(View.GONE);
+
+       }
         try {
             if (playerLists.get(position).getImg_url() != null) {
                 ToolUtils.setImageSmall_50(Constant.imageUrl + playerLists.get(position).getImg_url() , holder.image_player, imageLoader);

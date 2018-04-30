@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp">
+
+        <com.yallagoom.widget.SmoothCheckBox.SmoothCheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            app:color_checked="@color/color_178d8e" />
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/sport_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_toEndOf="@+id/checkbox"
+            android:layout_toRightOf="@+id/checkbox"
+            android:text="Basket Ball"
+            android:textColor="@color/black_65"
+            android:textSize="@dimen/_11sdp" />
+    </RelativeLayout>
+
+    <com.yallagoom.font.Roboto_Regular
+        android:id="@+id/rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:text="@string/rate_yourself_0_10"
+        android:textColor="@color/color_df488a"
+        android:visibility="gone"
+        android:textSize="@dimen/_11sdp" />
+
+    <RelativeLayout
+        android:id="@+id/rate_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp">
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Min"
+            android:textColor="@color/black_65"
+            android:textSize="@dimen/_11sdp" />
+
+        <com.yallagoom.widget.RangeSeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:layout_toEndOf="@+id/min"
+            android:layout_toLeftOf="@+id/max"
+            android:layout_toRightOf="@+id/min"
+            android:layout_toStartOf="@+id/max"
+            app:rsb_cellMode="number"
+            app:rsb_lineColorEdge="@color/colorSeekBarDefault"
+            app:rsb_lineColorSelected="@color/colorAccent"
+            app:rsb_max="10"
+            app:rsb_min="1"
+            app:rsb_thumbResId="@drawable/circle_shadow_ic"
+            app:rsb_progressHintMode="alwaysHide"
+            app:rsb_seekBarMode="single" />
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="Max"
+            android:textColor="@color/black_65"
+            android:textSize="@dimen/_11sdp" />
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_33000000" />
+</LinearLayout>

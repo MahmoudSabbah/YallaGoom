@@ -8,9 +8,7 @@ import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yallagoom.R;
-import com.yallagoom.entity.Country;
-import com.yallagoom.entity.Sport;
-import com.yallagoom.interfaces.GetCountriesCallback;
+import com.yallagoom.entity.AllSport;
 import com.yallagoom.interfaces.GetSportCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
@@ -31,7 +29,7 @@ public class GetSportsAsyncTask extends AsyncTask<String, String, Integer> {
     private String error;
     private String language;
     private GetSportCallback getSportCallback;
-    private Sport sport;
+    private AllSport sport;
 
     public GetSportsAsyncTask(Context context, SmartRefreshLayout smartRefreshLayout, GetSportCallback getSportCallback) {
         mContext = context;
@@ -74,7 +72,7 @@ public class GetSportsAsyncTask extends AsyncTask<String, String, Integer> {
                     error = errorMsg.names().getString(0);
                 } else {
                     JSONObject data = jsonObject.getJSONObject("data");
-                    sport = new Gson().fromJson(data.toString(), Sport.class);
+                    sport = new Gson().fromJson(data.toString(), AllSport.class);
                 }
                 return status;
             } else {

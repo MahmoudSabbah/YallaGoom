@@ -2,20 +2,23 @@ package com.yallagoom.adapter;
 
 
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import com.joooonho.SelectableRoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.yallagoom.R;
+import com.yallagoom.activity.UpcomingEventListClickActivity;
+import com.yallagoom.api.event.GetAuthorizeEventsClickAsyncTask;
+import com.yallagoom.entity.Event;
 import com.yallagoom.entity.FriendsEvents;
+import com.yallagoom.interfaces.MyEventCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
@@ -43,7 +46,23 @@ public class RecycleFriendsEventByType extends RecyclerView.Adapter<RecycleFrien
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.event_name.setText(data.get(position).getEventTitle());
-        ToolUtils.setImage(Constant.imageUrl + data.get(position).getEventImage(),holder.my_event_image,imageLoader);
+        ToolUtils.setImage(Constant.imageUrl + data.get(position).getEventImage(), holder.my_event_image, imageLoader);
+        holder.parent_raw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetAuthorizeEventsClickAsyncTask getAuthorizeEventsClickAsyncTask = new GetAuthorizeEventsClickAsyncTask(context, new MyEventCallback() {
+                    @Override
+                    public void processFinish(Event.DataEvent event) {
+                        Intent intent = new Intent(context, UpcomingEventListClickActivity.class);
+                        intent.putExtra("EventData", event);
+                        context.startActivity(intent);
+                    }
+                });
+                //  if (data.get(position).getPrivateOrPublic().equalsIgnoreCase("public")){
+                getAuthorizeEventsClickAsyncTask.execute(data.get(position).getId() + "");//,"public_event"
+
+            }
+        });
     }
 
     @Override
@@ -57,6 +76,7 @@ public class RecycleFriendsEventByType extends RecyclerView.Adapter<RecycleFrien
         private final SelectableRoundedImageView my_event_image;
         private final TextView event_name;
         private final TextView year;
+        private final RelativeLayout parent_raw;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -64,6 +84,7 @@ public class RecycleFriendsEventByType extends RecyclerView.Adapter<RecycleFrien
             my_event_image = (SelectableRoundedImageView) itemView.findViewById(R.id.my_event_image);
             event_name = (TextView) itemView.findViewById(R.id.event_name);
             year = (TextView) itemView.findViewById(R.id.year);
+            parent_raw = (RelativeLayout) itemView.findViewById(R.id.parent_raw);
 
         }
     }

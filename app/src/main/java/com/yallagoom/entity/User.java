@@ -1,10 +1,12 @@
 package com.yallagoom.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Mahmoud Sabbah on 2/5/2018.
  */
 
-public class User {
+public class User implements Serializable {
     private int id;
     private String email;
     private String mobile;
@@ -19,7 +21,16 @@ public class User {
     private String name;
     private String img_url;
     private String status;
+    private String firebase_auth_user_id;
     private UserCountry get_country_data;
+
+    public String getFirebase_auth_user_id() {
+        return firebase_auth_user_id;
+    }
+
+    public void setFirebase_auth_user_id(String firebase_auth_user_id) {
+        this.firebase_auth_user_id = firebase_auth_user_id;
+    }
 
     public UserCountry getGet_country_data() {
         return get_country_data;

@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,21 +23,20 @@ import com.tumblr.permissme.PermissMe;
 import com.yalantis.ucrop.UCrop;
 import com.yallagoom.R;
 import com.yallagoom.activity.LoginActivity;
+import com.yallagoom.activity.SettingsHomeClickHobbiesActivity;
 import com.yallagoom.activity.SettingsHomeClickNewsSettingsActivity;
+import com.yallagoom.activity.SettingsHomeClickPrivacyTermsActivity;
 import com.yallagoom.activity.SettingsHomeClickProfileActivity;
 import com.yallagoom.activity.SettingsHomeClickStatusActivity;
-import com.yallagoom.api.DeleteGroupAsyncTask;
 import com.yallagoom.api.LogOutApiAsyncTask;
 import com.yallagoom.api.UpdateUseImagerApiAsyncTask;
 import com.yallagoom.entity.User;
 import com.yallagoom.interfaces.ClickPopUpCallback;
-import com.yallagoom.interfaces.DeleteCallback;
 import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.CameraGalleryChoicePopup;
 import com.yallagoom.widget.CircularImageView;
-import com.yallagoom.widget.PhotoChoicePopup;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -74,6 +72,9 @@ public class SettingsFragment extends Fragment {
     private ImageLoader imageLoader;
     private CameraGalleryChoicePopup photoPopup;
     private RelativeLayout sign_in_out_lay;
+    private RelativeLayout terms_conditions;
+    private RelativeLayout privacy_policy;
+    private RelativeLayout _share;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -101,6 +102,9 @@ public class SettingsFragment extends Fragment {
         hobbies_layout_view = (View) view.findViewById(R.id.hobbies_layout_view);
         profile_layout = (RelativeLayout) view.findViewById(R.id.profile_layout);
         sign_in_out_lay = (RelativeLayout) view.findViewById(R.id.sign_in_out_lay);
+        terms_conditions = (RelativeLayout) view.findViewById(R.id.terms_conditions);
+        privacy_policy = (RelativeLayout) view.findViewById(R.id.privacy_policy);
+        _share = (RelativeLayout) view.findViewById(R.id._share);
 
         if (ToolUtils.getSharedPreferences(SettingsFragment.this.getActivity(), Constant.userData).getString(Constant.allUserData, null) == null) {
             user_name.setText(getString(R.string.not_registered));
@@ -201,6 +205,30 @@ public class SettingsFragment extends Fragment {
                         })
                         .verifyPermissions();
 
+            }
+        });
+        hobbies_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsFragment.this.getContext(), SettingsHomeClickHobbiesActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        privacy_policy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsFragment.this.getContext(), SettingsHomeClickPrivacyTermsActivity.class);
+                intent.putExtra("type","privacy");
+                startActivity(intent);
+            }
+        });
+        terms_conditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsFragment.this.getContext(), SettingsHomeClickPrivacyTermsActivity.class);
+                intent.putExtra("type","terms");
+                startActivity(intent);
             }
         });
         return view;

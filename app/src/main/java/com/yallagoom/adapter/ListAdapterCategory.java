@@ -1,7 +1,6 @@
 package com.yallagoom.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +9,9 @@ import android.widget.TextView;
 
 import com.yallagoom.R;
 import com.yallagoom.entity.Category;
-import com.yallagoom.entity.CategorySportsSearch;
-import com.yallagoom.entity.Sport;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Mahmoud Sabbah on 2/7/2018.

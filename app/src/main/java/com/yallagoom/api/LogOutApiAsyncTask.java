@@ -10,6 +10,7 @@ import android.util.Log;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
 import com.yallagoom.activity.SplashScreenActivity;
+import com.yallagoom.app.MainApplication;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
@@ -84,6 +85,7 @@ public class LogOutApiAsyncTask extends AsyncTask<String, String, Integer> {
         super.onPostExecute(status);
         progress.dismiss();
         if (status == 1) {
+            MainApplication.verification_check =false;
             SharedPreferences.Editor sharedUserData = ToolUtils.setSharedPrefernce(mContext, Constant.userData);
             SharedPreferences.Editor sharedCheck = ToolUtils.setSharedPrefernce(mContext, Constant.loginCheck);
             sharedUserData.putString(Constant.allUserData, null);

@@ -15,7 +15,8 @@ import android.widget.TextView;
 import com.yallagoom.R;
 import com.yallagoom.adapter.ListAdapterSport;
 import com.yallagoom.api.GetSportsListAsyncTask;
-import com.yallagoom.entity.Sport;
+import com.yallagoom.entity.AllSport;
+import com.yallagoom.entity.SportObject;
 import com.yallagoom.interfaces.GetSportCallback;
 import com.yallagoom.utils.ToolUtils;
 
@@ -30,7 +31,7 @@ public class SearchSportsActivity extends AppCompatActivity {
     private List<String> categorySearches;
     private TextView ok;
     private TextView cancel;
-    private ArrayList<Sport.Data> sportList;
+    private ArrayList<SportObject> sportList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,7 @@ public class SearchSportsActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
-                ArrayList<Sport.Data> listData = new ArrayList<>();
+                ArrayList<SportObject> listData = new ArrayList<>();
 
                 for (int i = 0; i < sportList.size(); i++) {
                     if (hexChecker(cs.toString().toUpperCase(), sportList.get(i).getName_en().toUpperCase())) {
@@ -144,12 +145,15 @@ public class SearchSportsActivity extends AppCompatActivity {
     }
 
     private void getSports() {
-        GetSportsListAsyncTask getSportsAsyncTask = new GetSportsListAsyncTask(SearchSportsActivity.this, new GetSportCallback() {
+        GetSportsListAsyncTask getSportsAsyncTask = new GetSportsListAsyncTask(SearchSportsActivity.this,true, new GetSportCallback() {
             @Override
-            public void processFinish(Sport sport) {
-                sportList = sport.getData();
-                listAdapterSport = new ListAdapterSport(SearchSportsActivity.this, sport.getData());
-                sports_list.setAdapter(listAdapterSport);
+            public void processFinish(AllSport sport) {
+                if (sport!=null){
+                    sportList = sport.getData();
+                    listAdapterSport = new ListAdapterSport(SearchSportsActivity.this, sport.getData());
+                    sports_list.setAdapter(listAdapterSport);
+                }
+
             }
         });
         getSportsAsyncTask.execute();

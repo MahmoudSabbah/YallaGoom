@@ -1,5 +1,6 @@
 package com.yallagoom.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -112,5 +113,9 @@ public class LoginActivity extends AppCompatActivity {
         back_lay.setVisibility(View.GONE);
         name_user.setVisibility(View.GONE);
         login.setText(getString(R.string.next));
+    }
+    public static void startLoginActivity(Activity activity){
+        Intent intent=new Intent(activity,LoginActivity.class);
+        activity.startActivity(intent);
     }
 }

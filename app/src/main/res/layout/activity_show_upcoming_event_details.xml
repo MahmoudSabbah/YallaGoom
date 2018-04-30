@@ -15,9 +15,11 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/content_lay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white_color"
+            android:paddingBottom="@dimen/_10sdp"
             android:descendantFocusability="blocksDescendants"
             android:orientation="vertical">
             <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
@@ -76,18 +78,21 @@
                 android:layout_marginTop="@dimen/_17sdp"
                 android:orientation="horizontal">
 
-                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+
+                <com.joooonho.SelectableRoundedImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/my_event_image"
                     android:layout_width="@dimen/_78sdp"
                     android:layout_height="@dimen/_78sdp"
+                    android:src="@drawable/default_image_small"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/food_img_bg"
-                    app:riv_border_color="#333333"
-                    app:riv_border_width="0dip"
-                    app:riv_corner_radius="5dip"
-                    app:riv_mutate_background="true"
-                    app:riv_oval="false" />
-
+                    app:sriv_border_color="#008fea"
+                    app:sriv_border_width="0dip"
+                    app:sriv_left_bottom_corner_radius="5dip"
+                    app:sriv_left_top_corner_radius="5dip"
+                    app:sriv_oval="false"
+                    app:sriv_right_bottom_corner_radius="5dip"
+                    app:sriv_right_top_corner_radius="5dip" />
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -562,13 +567,12 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1.1dp"
-                android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_9sdp"
                 android:layout_marginRight="@dimen/_9sdp"
                 android:layout_marginTop="@dimen/_13sdp"
                 android:background="@color/color_e2dfdf" />
 
-            <RelativeLayout
+         <!--   <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical">
@@ -627,7 +631,7 @@
                 android:layout_marginTop="@dimen/_22sdp"
                 android:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
-            >
+            >-->
 
 
 

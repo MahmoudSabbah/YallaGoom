@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.yallagoom.R;
@@ -80,15 +81,18 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
-
-        fragment = new EventFragment();
+        if (getIntent().hasExtra("ActionNotification")) {
+            fragment = new EventFragment();
+        } else {
+            fragment = new EventFragment();
+        }
         changeFragment(fragment);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("onActivityResult","onActivityResult");
+        Log.e("onActivityResult", "onActivityResult");
         for (Fragment fragment : getSupportFragmentManager().getFragments()) {
             fragment.onActivityResult(requestCode, resultCode, data);
         }
@@ -134,5 +138,10 @@ public class HomeActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         JZVideoPlayer.releaseAllVideos();
+    }
+
+    public void Login(View view) {
+        LoginActivity.startLoginActivity(this);
+        finish();
     }
 }

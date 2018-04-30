@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -20,8 +20,13 @@ import com.yallagoom.R;
 import com.yallagoom.adapter.RecycleViewWhoGoing;
 import com.yallagoom.api.DeleteEventAsyncTask;
 import com.yallagoom.entity.Event;
+import com.yallagoom.entity.InvitationRecord;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
+import com.yallagoom.widget.CameraGalleryChoicePopup;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MyEventListClickActivity extends AppCompatActivity {
 
@@ -51,6 +56,11 @@ public class MyEventListClickActivity extends AppCompatActivity {
     private TextView thu_value;
     private TextView wen_value;
     private TextView fri_value;
+    private CameraGalleryChoicePopup photoPopup;
+    private static final int RESULT_LOAD_IMAGE = 202;
+    private static final int REQUEST_IMAGE_CAPTURE = 204;
+    private LinearLayout list_of_status;
+    private HashMap<String, ArrayList<InvitationRecord>> invitedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +68,11 @@ public class MyEventListClickActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_event_main_click);
         imageLoader = ImageLoader.getInstance();
         dateFormat = new DateFormat();
-
         parent = (LinearLayout) findViewById(R.id.parent);
         ToolUtils.hideStatus(MyEventListClickActivity.this);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         scrollView.fullScroll(ScrollView.FOCUS_UP);
         edit = (TextView) findViewById(R.id.right_text);
-        whw_going_list = (RecyclerView) findViewById(R.id.whw_going_list);
         ToolUtils.setLightStatusBar(parent, MyEventListClickActivity.this);
         bundle = getIntent().getExtras();
         eventData = (Event.DataEvent) bundle.getSerializable("event_data");
@@ -81,9 +89,67 @@ public class MyEventListClickActivity extends AppCompatActivity {
         delete = (TextView) findViewById(R.id.delete);
         name_header = (TextView) findViewById(R.id.name_header);
         name_header.setText(eventData.getEventTitle());
+        list_of_status = (LinearLayout) findViewById(R.id.list_of_status);
+        if (getIntent().hasExtra("Invited_list")) {
+            ArrayList<InvitationRecord> Invited_list = (ArrayList<InvitationRecord>) bundle.getSerializable("Invited_list");
+            invitedList = new HashMap<>();
+            for (int i = 0; i < Invited_list.size(); i++) {
+                switch (Invited_list.get(i).getInvitation_status()) {
+                    case "going":
+                        if (invitedList.containsKey("going")) {
+                            invitedList.get("going").add(Invited_list.get(i));
+                        } else {
+                            ArrayList<InvitationRecord> invitationRecords = new ArrayList<>();
+                            invitationRecords.add(Invited_list.get(i));
+                            invitedList.put("going", invitationRecords);
+                        }
+                        break;
+                    case "maybe":
+                        if (invitedList.containsKey("maybe")) {
+                            invitedList.get("maybe").add(Invited_list.get(i));
+                        } else {
+                            ArrayList<InvitationRecord> invitationRecords = new ArrayList<>();
+                            invitationRecords.add(Invited_list.get(i));
+                            invitedList.put("maybe", invitationRecords);
+                        }
+                        break;
+                    case "not interested":
+                        if (invitedList.containsKey("not interested")) {
+                            invitedList.get("not interested").add(Invited_list.get(i));
+                        } else {
+                            ArrayList<InvitationRecord> invitationRecords = new ArrayList<>();
+                            invitationRecords.add(Invited_list.get(i));
+                            invitedList.put("not interested", invitationRecords);
+                        }
+                        break;
+                }
+            }
+            for (int j = 0; j < invitedList.size(); j++) {
+                LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+                View inflatedLayout = inflater.inflate(R.layout.who_respond_invitation, null, false);
+                RecyclerView who_going_list_data = (RecyclerView) inflatedLayout.findViewById(R.id.who_going_list);
+                TextView title = (TextView) inflatedLayout.findViewById(R.id.title);
+                RecycleViewWhoGoing recycleViewWhoGoing = new RecycleViewWhoGoing(invitedList.keySet().toArray()[j] + "", invitedList.get(invitedList.keySet().toArray()[j]));
+                who_going_list_data.setAdapter(recycleViewWhoGoing);
+                switch (invitedList.keySet().toArray()[j] + "") {
+                    case "going":
+                        title.setText(getString(R.string.respond_going));
+                        break;
+                    case "maybe":
+                        title.setText(getString(R.string.respond_maybe));
+                        break;
+                    case "not interested":
+                        title.setText(getString(R.string.respond_not_interested));
+                        break;
+                }
+                list_of_status.addView(inflatedLayout);
+            }
+          /*  ToolUtils.viewToast(getApplicationContext(),""+invitedList.size());
+            Log.e("invitedList",""+invitedList.size());*/
+        }
 
-        RecycleViewWhoGoing recycleViewWhoGoing = new RecycleViewWhoGoing();
-        whw_going_list.setAdapter(recycleViewWhoGoing);
+      /*  RecycleViewWhoGoing recycleViewWhoGoing = new RecycleViewWhoGoing(invitedList.keySet().toArray()[j], invitedList.get(invitedList.keySet().toArray()[j]));
+        whw_going_list.setAdapter(recycleViewWhoGoing);*/
         // ToolUtils.next7Days();
         edit.setOnClickListener(new View.OnClickListener() {
             @Override

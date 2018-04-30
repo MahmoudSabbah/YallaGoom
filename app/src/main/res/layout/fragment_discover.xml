@@ -88,6 +88,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:paddingBottom="@dimen/_10sdp"
             android:paddingLeft="@dimen/_13sdp"
             android:paddingStart="@dimen/_13sdp"
@@ -132,11 +133,13 @@
             android:layout_height=".5dp"
             android:layout_marginLeft="@dimen/_13sdp"
             android:layout_marginStart="@dimen/_13sdp"
+            android:visibility="gone"
             android:background="@color/color_33000000" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:paddingBottom="@dimen/_10sdp"
             android:paddingLeft="@dimen/_13sdp"
             android:paddingStart="@dimen/_13sdp"
@@ -181,6 +184,7 @@
             android:layout_height=".5dp"
             android:layout_marginLeft="@dimen/_13sdp"
             android:layout_marginStart="@dimen/_13sdp"
+            android:visibility="gone"
             android:background="@color/color_33000000" />
 
         <RelativeLayout
@@ -189,6 +193,7 @@
             android:paddingBottom="@dimen/_10sdp"
             android:paddingLeft="@dimen/_13sdp"
             android:paddingStart="@dimen/_13sdp"
+            android:visibility="gone"
             android:paddingTop="@dimen/_10sdp">
 
             <ImageView
@@ -229,6 +234,7 @@
             android:layout_height=".5dp"
             android:layout_marginLeft="@dimen/_13sdp"
             android:layout_marginStart="@dimen/_13sdp"
+            android:visibility="gone"
             android:background="@color/color_33000000" />
 
         <RelativeLayout
@@ -237,6 +243,7 @@
             android:paddingBottom="@dimen/_10sdp"
             android:paddingLeft="@dimen/_13sdp"
             android:paddingStart="@dimen/_13sdp"
+            android:visibility="gone"
             android:paddingTop="@dimen/_10sdp">
 
             <ImageView

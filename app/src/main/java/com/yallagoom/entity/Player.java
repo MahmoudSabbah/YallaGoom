@@ -36,6 +36,15 @@ public class Player implements Serializable {
         private String gender;
         private String img_url;
         private int checkSelectGroup = 0;
+        private boolean invited = false;
+
+        public boolean isInvited() {
+            return invited;
+        }
+
+        public void setInvited(boolean invited) {
+            this.invited = invited;
+        }
 
         public String getImg_url() {
             return img_url;

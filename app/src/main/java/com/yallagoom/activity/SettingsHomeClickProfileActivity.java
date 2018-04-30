@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -169,7 +170,15 @@ public class SettingsHomeClickProfileActivity extends AppCompatActivity implemen
                     //   hashMapsData.add(stringStringHashMap);
                     //   stringStringHashMap.
                     UpdateUserApiAsyncTask updateUserApiAsyncTask = new UpdateUserApiAsyncTask(SettingsHomeClickProfileActivity.this,
-                            stringStringHashMap);
+                            stringStringHashMap, new StringResultCallback() {
+                        @Override
+                        public void processFinish(String result, KProgressHUD progress) {
+                            SharedPreferences.Editor shared = ToolUtils.setSharedPrefernce(SettingsHomeClickProfileActivity.this, Constant.userData);
+                            shared.putString(Constant.allUserData, result);
+                            shared.apply();
+                            ToolUtils.viewToast(SettingsHomeClickProfileActivity.this, getString(R.string.update_status));
+                        }
+                    });
                     updateUserApiAsyncTask.execute();
                 }
             }

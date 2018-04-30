@@ -1,5 +1,6 @@
 package com.yallagoom.activity;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -8,11 +9,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yallagoom.R;
 import com.yallagoom.adapter.Settings.RecycleViewSettingsStatus;
 import com.yallagoom.api.UpdateUserApiAsyncTask;
 import com.yallagoom.entity.User;
+import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.CircularImageView;
@@ -67,7 +70,15 @@ public class SettingsHomeClickStatusActivity extends AppCompatActivity {
                 stringStringHashMap.put("status", recycleViewSettingsStatus.valueSelect);
              //   hashMapsData.add(stringStringHashMap);
                 UpdateUserApiAsyncTask updateUserApiAsyncTask = new UpdateUserApiAsyncTask(SettingsHomeClickStatusActivity.this,
-                        stringStringHashMap);
+                        stringStringHashMap, new StringResultCallback() {
+                    @Override
+                    public void processFinish(String result, KProgressHUD progress) {
+                        SharedPreferences.Editor shared = ToolUtils.setSharedPrefernce(SettingsHomeClickStatusActivity.this, Constant.userData);
+                        shared.putString(Constant.allUserData, result);
+                        shared.apply();
+                        ToolUtils.viewToast(SettingsHomeClickStatusActivity.this, getString(R.string.update_status));
+                    }
+                });
                 updateUserApiAsyncTask.execute();
             }
         });

@@ -8,12 +8,16 @@ package com.yallagoom.controller;
 import android.app.Activity;
 import android.app.Application;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 
 import com.yallagoom.entity.TicketClasses.Country;
 import com.yallagoom.entity.TicketClasses.ReviewList;
 import com.yallagoom.entity.TicketClasses.TicketInfo;
 import com.yallagoom.entity.TicketClasses.TicketDetails;
+import com.yallagoom.entity.gift.FavoriteGifts;
+import com.yallagoom.entity.gift.Gift;
+import com.yallagoom.entity.gift.MyCart;
+
+import java.util.ArrayList;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -91,14 +95,17 @@ public class RealmController {
 
         return realm.where(ReviewList.class).findAll();
     }
+
     public RealmResults<Country> getCountry() {
 
         return realm.where(Country.class).findAll();
     }
-    public RealmResults<TicketInfo> getTicketInfo () {
+
+    public RealmResults<TicketInfo> getTicketInfo() {
 
         return realm.where(TicketInfo.class).findAll();
     }
+
     public boolean checkTicketsExists(int id) {
         TicketInfo ticketInfo = realm.where(TicketInfo.class).equalTo("id", id).findFirst();
 
@@ -108,9 +115,83 @@ public class RealmController {
             return false;
         }
     }
+
     public void removeTickets(int id) {
-        RealmResults<TicketInfo> ticketInfos = realm.where(TicketInfo.class).equalTo("id",id).findAll();
+        RealmResults<TicketInfo> ticketInfos = realm.where(TicketInfo.class).equalTo("id", id).findAll();
         ticketInfos.deleteAllFromRealm();
+    }
+
+    public boolean checkGift(int id) {
+        RealmResults<Gift> gifts = realm.where(Gift.class).equalTo("id", id).findAll();
+        if (gifts.size() > 0) {
+            return true;
+        } else
+            return false;
+    }
+
+    public void removeGift(final int id) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<Gift> gifts = realm.where(Gift.class).equalTo("id", id).findAll();
+                gifts.deleteAllFromRealm();
+            }
+        });
+
+    }
+
+    public boolean checkMyCart(int id) {
+        RealmResults<MyCart> myCarts = realm.where(MyCart.class).equalTo("id", id).findAll();
+        if (myCarts.size() > 0) {
+            return true;
+        } else
+            return false;
+    }
+
+    public void removeMyCart(final int id) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<MyCart> myCarts = realm.where(MyCart.class).equalTo("id", id).findAll();
+                myCarts.deleteAllFromRealm();
+            }
+        });
+
+    }
+
+    public RealmResults<MyCart> getMyCart() {
+
+        return realm.where(MyCart.class).findAll();
+    }
+
+    public boolean checkFavoriteGifts(int id) {
+        RealmResults<FavoriteGifts> favoriteGifts = realm.where(FavoriteGifts.class).equalTo("id", id).findAll();
+        if (favoriteGifts.size() > 0) {
+            return true;
+        } else
+            return false;
+    }
+
+    public void removeFavoriteGifts(final int id) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<FavoriteGifts> favoriteGifts = realm.where(FavoriteGifts.class).equalTo("id", id).findAll();
+                favoriteGifts.deleteAllFromRealm();
+            }
+        });
+
+    }
+
+    public FavoriteGifts[] getFavoriteGifts() {
+        ArrayList<FavoriteGifts> list = new ArrayList(realm.where(FavoriteGifts.class).findAll());
+        FavoriteGifts[] array = list.toArray(new FavoriteGifts[list.size()]);
+        return array;
+    }
+    public MyCart[] getMyCarts() {
+        ArrayList<MyCart> list = new ArrayList(realm.where(MyCart.class).findAll());
+        MyCart[] array = list.toArray(new MyCart[list.size()]);
+        return array;
     }
   /*  public void removeTickets(int id) {
 

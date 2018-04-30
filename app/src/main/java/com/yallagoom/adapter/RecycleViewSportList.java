@@ -2,21 +2,17 @@ package com.yallagoom.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yallagoom.R;
-import com.yallagoom.entity.Category;
-import com.yallagoom.entity.Event;
-import com.yallagoom.entity.Sport;
+import com.yallagoom.entity.AllSport;
+import com.yallagoom.entity.SportObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Mahmoud Sabbah on 2/7/2018.
@@ -24,7 +20,7 @@ import java.util.List;
 public class RecycleViewSportList extends RecyclerView.Adapter<RecycleViewSportList.MyViewHolder> {
 
     private final RecyclerView recyclerView;
-    private ArrayList<Sport.Data> dataArrayList;
+    private ArrayList<SportObject> dataArrayList;
     public Context context;
     // private List<Driver> drivers;
     public int lastPosition = -1;
@@ -47,7 +43,7 @@ public class RecycleViewSportList extends RecyclerView.Adapter<RecycleViewSportL
     }
 
 
-    public RecycleViewSportList(RecyclerView recyclerView,ArrayList<Sport.Data> dataArrayList) {
+    public RecycleViewSportList(RecyclerView recyclerView,ArrayList<SportObject> dataArrayList) {
         this.dataArrayList = dataArrayList;
         this.recyclerView = recyclerView;
     }

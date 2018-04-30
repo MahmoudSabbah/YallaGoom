@@ -6,20 +6,20 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.ramotion.foldingcell.FoldingCell;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yallagoom.R;
-import com.yallagoom.adapter.RecycleViewHome;
 import com.yallagoom.adapter.RecycleViewSport;
 import com.yallagoom.api.GetSportsAsyncTask;
 import com.yallagoom.api.SaveSportsAsyncTask;
-import com.yallagoom.entity.Sport;
+import com.yallagoom.entity.AllSport;
 import com.yallagoom.interfaces.GetSportCallback;
+import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.utils.ToolUtils;
 
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class MySportsActivity extends AppCompatActivity {
             public void onRefresh(RefreshLayout refreshlayout) {
                 GetSportsAsyncTask getSportsAsyncTask = new GetSportsAsyncTask(MySportsActivity.this, refreshLayout, new GetSportCallback() {
                     @Override
-                    public void processFinish(Sport sport) {
+                    public void processFinish(AllSport sport) {
                         recycleViewSport = new RecycleViewSport(sport.getData());
                         sport_list.setAdapter(recycleViewSport);
                         refreshLayout.finishRefresh();
@@ -73,7 +73,15 @@ public class MySportsActivity extends AppCompatActivity {
     }
 
     public void Save(View view) {
-        SaveSportsAsyncTask saveSportsAsyncTask = new SaveSportsAsyncTask(MySportsActivity.this, recycleViewSport.getList());
+        SaveSportsAsyncTask saveSportsAsyncTask = new SaveSportsAsyncTask(MySportsActivity.this, recycleViewSport.getList(), new StringResultCallback() {
+            @Override
+            public void processFinish(String result, KProgressHUD progress) {
+                Intent intent = new Intent(MySportsActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
         saveSportsAsyncTask.execute();
       /*  for (int i=0;i<recycleViewSport.getList().size();i++){
             Log.e("recycleViewSport",""+recycleViewSport.getList().get(i).getSport_id());

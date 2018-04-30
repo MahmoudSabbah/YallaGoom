@@ -4,57 +4,71 @@
     android:layout_height="match_parent"
     android:background="@color/color_fcfcfc"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center">
+
         <ImageView
             android:id="@+id/must_login"
-            android:layout_width="@dimen/_130sdp"
+            android:layout_width="@dimen/_139sdp"
+            android:layout_height="@dimen/_110sdp"
             android:layout_centerHorizontal="true"
-            android:layout_height="@dimen/_79sdp"
-            android:src="@drawable/must_login_icon"/>
+            android:src="@drawable/not_login_img" />
+
         <com.yallagoom.font.Roboto_Regular
-            android:id="@+id/login_text"
+            android:id="@+id/oops"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/must_login"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_60sdp"
-            android:textColor="@color/black"
-            android:text="@string/you_must"
-            android:textSize="@dimen/_17sdp"
-            android:layout_below="@+id/must_login"/>
+            android:layout_marginTop="@dimen/_23sdp"
+            android:text="@string/oops"
+            android:textColor="@color/black_33_255_op"
+            android:textSize="17sp" />
+
         <com.yallagoom.font.Roboto_Regular
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/oops"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:textColor="@color/color_96282828"
             android:gravity="center"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:text="Lorem Ipsum is simply dummy text of the printing"
-            android:textSize="@dimen/_16sdp"
-            android:layout_below="@+id/login_text"/>
+            android:text="@string/to_access_this_feature_you_must_have_account"
+            android:textColor="@color/black_33_255_op"
+            android:textSize="@dimen/_13sdp" />
 
-        <com.yallagoom.font.Roboto_Regular
-            android:id="@+id/login_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_55sdp"
-            android:textColor="@drawable/pressed_color_178d8e"
-            android:gravity="center"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:text="@string/log_in"
-            android:textSize="@dimen/_16sdp"
-            android:layout_below="@+id/title"/>
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/_radius_199899">
 
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/login_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:paddingBottom="@dimen/_7sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
+                android:paddingTop="@dimen/_7sdp"
+                android:text="@string/log_in_"
+                android:onClick="Login"
+                android:textColor="@drawable/pressed_white"
+                android:textSize="@dimen/_13sdp" />
+        </RelativeLayout>
     </RelativeLayout>
-
-
 
 
 </LinearLayout>

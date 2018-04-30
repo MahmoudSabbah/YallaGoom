@@ -11,8 +11,12 @@ import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
 import com.yallagoom.activity.MySportsActivity;
+import com.yallagoom.activity.SplashScreenActivity;
+import com.yallagoom.app.MainApplication;
 import com.yallagoom.entity.User;
+import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.FirebaseUtils;
 import com.yallagoom.utils.ToolUtils;
 
 import org.json.JSONObject;
@@ -82,6 +86,7 @@ public class RegisterAsyncTask extends AsyncTask<String, String, Integer> {
                     SharedPreferences.Editor shared = ToolUtils.setSharedPrefernce(mContext, Constant.userData);
                     shared.putString(Constant.userToken, data.getString("token"));
                     shared.putInt(Constant.userId, data.getInt("id"));
+                    shared.putString(Constant.password, params[1]);
                     shared.putString(Constant.allUserData, data.toString());
                     shared.apply();
                 }
@@ -101,12 +106,21 @@ public class RegisterAsyncTask extends AsyncTask<String, String, Integer> {
         super.onPostExecute(status);
         progress.dismiss();
         if (status == 1) {
+            MainApplication.verification_check = true;
             SharedPreferences.Editor shared = ToolUtils.setSharedPrefernce(mContext, Constant.loginCheck);
             shared.putBoolean(Constant.verification_check, true).apply();
-            Intent intent = new Intent(mContext, MySportsActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            mContext.startActivity(intent);
-            ((Activity) mContext).finish();
+
+            RegisterUserTokenToFirebaseAsyncTask registerUserTokenToFirebaseAsyncTask = new
+                    RegisterUserTokenToFirebaseAsyncTask(mContext, new StringResultCallback() {
+                @Override
+                public void processFinish(String result, KProgressHUD progress) {
+                    User user = new Gson().fromJson(ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.allUserData, null), User.class);
+                    FirebaseUtils.CreateFirebaseUser(user.getEmail(), ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.password, ""),
+                            user.getFirst_name() + " " + user.getLast_name(), Constant.imageUrl + user.getImg_url(), (Activity) mContext, progress, 1);
+                }
+            });
+            registerUserTokenToFirebaseAsyncTask.execute();
+
         } else {
             ToolUtils.viewToast(mContext, error);
         }

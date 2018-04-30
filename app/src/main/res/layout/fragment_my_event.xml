@@ -1,224 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_f6f4f4">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/content_lay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginRight="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_13sdp"
-            android:background="@drawable/layout_round_corners"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/_8sdp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:src="@drawable/circle_arrow" />
-
-                <com.yallagoom.font.Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_toEndOf="@+id/logo"
-                    android:layout_toLeftOf="@+id/show_me"
-                    android:layout_toRightOf="@+id/logo"
-                    android:layout_toStartOf="@+id/show_me"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="MANAGE YOUR EVENTS"
-                    android:textColor="@color/black_50_op"
-                    android:textSize="@dimen/_11sdp"
-                    android:textStyle="normal" />
-
-                <com.yallagoom.font.Roboto_Regular
-                    android:id="@+id/show_me"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_21sdp"
-                    android:layout_marginRight="@dimen/_21sdp"
-                    android:text="@string/show_more"
-                    android:textColor="@drawable/pressed_black_50_op"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="normal" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:layout_marginLeft="@dimen/_16sdp"
-                android:layout_marginRight="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp">
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:background="@drawable/layout_round_corners"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/_8sdp">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/my_event_list"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/ic_management" />
+
+                    <com.yallagoom.font.Roboto_Regular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_toEndOf="@+id/logo"
+                        android:layout_toLeftOf="@+id/show_me"
+                        android:layout_toRightOf="@+id/logo"
+                        android:layout_toStartOf="@+id/show_me"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="MANAGE YOUR EVENTS"
+                        android:textColor="@color/black_50_op"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="normal" />
+
+                    <com.yallagoom.font.Roboto_Regular
+                        android:id="@+id/show_me"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_21sdp"
+                        android:layout_marginRight="@dimen/_21sdp"
+                        android:text="@string/show_more"
+                        android:textColor="@drawable/pressed_black_50_op"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp">
 
-            </RelativeLayout>
-        </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/my_event_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginRight="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_11sdp"
-            android:background="@drawable/layout_round_corners"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/_8sdp">
+                </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/logo_2"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:src="@drawable/circle_arrow" />
-
-                <com.yallagoom.font.Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_toEndOf="@+id/logo_2"
-                    android:layout_toRightOf="@+id/logo_2"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="YOUR RESPONSES TO OTHER’S"
-
-                    android:textColor="@color/black_50_op"
-                    android:textSize="@dimen/_11sdp"
-                    android:textStyle="normal" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:layout_marginLeft="@dimen/_16sdp"
-                android:layout_marginRight="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp">
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:background="@drawable/layout_round_corners"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/_8sdp">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/check_going_list"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/logo_2"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/ic_responses" />
+
+                    <com.yallagoom.font.Roboto_Regular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_toEndOf="@+id/logo_2"
+                        android:layout_toRightOf="@+id/logo_2"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="YOUR RESPONSES TO OTHER’S"
+
+                        android:textColor="@color/black_50_op"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="normal" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp">
 
-            </RelativeLayout>
-        </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/check_going_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_23sdp"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginRight="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_11sdp"
-            android:background="@drawable/layout_round_corners"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/_8sdp">
+                </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/logo_3"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:src="@drawable/circle_arrow" />
-
-                <com.yallagoom.font.Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_toEndOf="@+id/logo_3"
-                    android:layout_toLeftOf="@+id/show_all"
-                    android:layout_toRightOf="@+id/logo_3"
-                    android:layout_toStartOf="@+id/show_all"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="UPCOMMING EVENTS"
-                    android:textColor="@color/black_50_op"
-                    android:textSize="@dimen/_11sdp"
-                    android:textStyle="normal" />
-
-                <com.yallagoom.font.Roboto_Regular
-                    android:id="@+id/show_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_21sdp"
-                    android:layout_marginRight="@dimen/_21sdp"
-                    android:text="@string/show_all"
-                    android:textColor="@drawable/pressed_black_50_op"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="normal" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_35sdp"
-                android:layout_marginLeft="@dimen/_16sdp"
-                android:layout_marginRight="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_23sdp">
+                android:layout_marginBottom="@dimen/_23sdp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:background="@drawable/layout_round_corners"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/_8sdp">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/coming_event_list"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/logo_3"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/ic_upcoming" />
+
+                    <com.yallagoom.font.Roboto_Regular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_toEndOf="@+id/logo_3"
+                        android:layout_toLeftOf="@+id/show_all"
+                        android:layout_toRightOf="@+id/logo_3"
+                        android:layout_toStartOf="@+id/show_all"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="UPCOMMING EVENTS"
+                        android:textColor="@color/black_50_op"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="normal" />
+
+                    <com.yallagoom.font.Roboto_Regular
+                        android:id="@+id/show_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_21sdp"
+                        android:layout_marginRight="@dimen/_21sdp"
+                        android:text="@string/show_all"
+                        android:textColor="@drawable/pressed_black_50_op"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+                    android:layout_marginBottom="@dimen/_35sdp"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_23sdp">
 
-            </RelativeLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/coming_event_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
-
-</ScrollView>
+    <include
+        android:id="@+id/no_access_found"
+        layout="@layout/must_login"
+        android:visibility="gone" />
+</RelativeLayout>

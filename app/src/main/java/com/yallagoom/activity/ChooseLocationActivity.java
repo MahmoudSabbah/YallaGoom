@@ -201,6 +201,7 @@ public class ChooseLocationActivity extends AppCompatActivity implements OnMapRe
 
             @Override
             public void onMapClick(LatLng point) {
+
                 // TODO Auto-generated method stub
                 Log.e("mainMarker", "mainMarker");
                 if (mainMarker == null) {

@@ -43,8 +43,8 @@ public class Test2 extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tes2t);
-        parent = (LinearLayout) findViewById(R.id.parent);
+        setContentView(R.layout.item_outcoming_image_message);
+   /*     parent = (LinearLayout) findViewById(R.id.parent);
         points = (LinearLayout) findViewById(R.id.points);
         top_lay = (RelativeLayout) findViewById(R.id.top_lay);
         height_edit = (EditText) findViewById(R.id.height_edit);
@@ -89,7 +89,7 @@ public class Test2 extends AppCompatActivity implements View.OnClickListener {
             }
         });
 
-       /* yPosition=(int) getResources().getDimension(R.dimen._10sdp);
+       *//* yPosition=(int) getResources().getDimension(R.dimen._10sdp);
         playground.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -97,8 +97,8 @@ public class Test2 extends AppCompatActivity implements View.OnClickListener {
                 int value=playground.getHeight()/4;
                 Log.e("playground",""+ playground.getHeight());
             }
-        });*/
-    /*  for (int i=0;i<4;i++){
+        });*//*
+    *//*  for (int i=0;i<4;i++){
           ImageView imageView = new ImageView(getApplicationContext());
           imageView.setX((int) getResources().getDimension(R.dimen._20sdp));
           imageView.setY(yPosition);

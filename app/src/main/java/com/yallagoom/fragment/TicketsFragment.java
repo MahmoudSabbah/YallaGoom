@@ -14,10 +14,10 @@ import android.widget.TextView;
 
 import com.yallagoom.R;
 import com.yallagoom.activity.LoginActivity;
-import com.yallagoom.fragment.TicketsTapFragment.DiscoverFragment;
-import com.yallagoom.fragment.TicketsTapFragment.MyBookingFragment;
-import com.yallagoom.fragment.TicketsTapFragment.OffersFragment;
-import com.yallagoom.fragment.TicketsTapFragment.WishlistFragment;
+import com.yallagoom.fragment.ticketsTapFragment.DiscoverFragment;
+import com.yallagoom.fragment.ticketsTapFragment.MyBookingFragment;
+import com.yallagoom.fragment.ticketsTapFragment.OffersFragment;
+import com.yallagoom.fragment.ticketsTapFragment.WishlistFragment;
 
 /**
  * Created by Mahmoud Sabbah on 2/1/2018.

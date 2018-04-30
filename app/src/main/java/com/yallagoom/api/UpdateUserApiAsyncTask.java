@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
+import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
@@ -27,15 +28,17 @@ import okhttp3.Response;
 public class UpdateUserApiAsyncTask extends AsyncTask<String, String, Integer> {
     private final Context mContext;
     private final HashMap<String, String> hashMapsData;
-    // private final StringResultCallback stringResultCallback;
+    private final StringResultCallback stringResultCallback;
     private KProgressHUD progress;
     private String error;
     private JSONObject jsonObject;
     private JSONObject data;
 
-    public UpdateUserApiAsyncTask(Context context, HashMap<String, String> hashMapsData) {
+
+    public UpdateUserApiAsyncTask(Context context, HashMap<String, String> hashMapsData ,  StringResultCallback stringResultCallback) {
         mContext = context;
         this.hashMapsData = hashMapsData;
+        this.stringResultCallback = stringResultCallback;
     }
 
     @Override
@@ -95,10 +98,8 @@ public class UpdateUserApiAsyncTask extends AsyncTask<String, String, Integer> {
         super.onPostExecute(status);
         progress.dismiss();
         if (status == 1) {
-            SharedPreferences.Editor shared = ToolUtils.setSharedPrefernce(mContext, Constant.userData);
-            shared.putString(Constant.allUserData, data.toString());
-            shared.apply();
-            ToolUtils.viewToast(mContext, mContext.getString(R.string.update_status));
+            stringResultCallback.processFinish(data.toString(),progress);
+
         } else {
             ToolUtils.viewToast(mContext, error);
         }

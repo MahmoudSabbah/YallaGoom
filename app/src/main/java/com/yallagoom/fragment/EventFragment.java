@@ -16,14 +16,14 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.yallagoom.R;
-import com.yallagoom.fragment.MyEventTapFragment.ChatFragment;
-import com.yallagoom.fragment.MyEventTapFragment.FindEventFragment;
-import com.yallagoom.fragment.MyEventTapFragment.FindPlayerFragment;
-import com.yallagoom.fragment.MyEventTapFragment.FriendEventFragment;
-import com.yallagoom.fragment.MyEventTapFragment.FriendFragment;
-import com.yallagoom.fragment.MyEventTapFragment.GroupFragment;
-import com.yallagoom.fragment.MyEventTapFragment.HomeFragment;
-import com.yallagoom.fragment.MyEventTapFragment.MyEventFragment;
+import com.yallagoom.fragment.myEventTapFragment.ChatFragment;
+import com.yallagoom.fragment.myEventTapFragment.FindEventFragment;
+import com.yallagoom.fragment.myEventTapFragment.FindPlayerFragment;
+import com.yallagoom.fragment.myEventTapFragment.FriendEventFragment;
+import com.yallagoom.fragment.myEventTapFragment.FriendFragment;
+import com.yallagoom.fragment.myEventTapFragment.GroupFragment;
+import com.yallagoom.fragment.myEventTapFragment.HomeFragment;
+import com.yallagoom.fragment.myEventTapFragment.MyEventFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,12 +51,12 @@ public class EventFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tabevent_item, container, false);
-        header_title=(TextView)getActivity().findViewById(R.id.header_title);
+        header_title = (TextView) getActivity().findViewById(R.id.header_title);
         header_title.setText(getString(R.string.my_event));
 
         body = (FrameLayout) view.findViewById(R.id.body);
-       // viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-         // viewPager.setOffscreenPageLimit(0);
+        // viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        // viewPager.setOffscreenPageLimit(0);
         // setupViewPager(viewPager);
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         //    tabLayout.setupWithViewPager(viewPager);
@@ -109,7 +109,24 @@ public class EventFragment extends Fragment {
 
             }
         });
-        fragment = new HomeFragment();
+        if (getActivity().getIntent().hasExtra("ActionNotification")) {
+            switch (getActivity().getIntent().getExtras().getString("ActionNotification")) {
+                case "friend_request":
+                    TabLayout.Tab tab = tabLayout.getTabAt(3);
+                    tab.select();
+                    fragment = new FriendFragment();
+                    break;
+                case "you_got_new_friend":
+                    TabLayout.Tab tab2 = tabLayout.getTabAt(3);
+                    tab2.select();
+                    fragment = new FriendFragment();
+                    break;
+                default:
+                    fragment = new HomeFragment();
+            }
+        } else {
+            fragment = new HomeFragment();
+        }
         changeFragment(fragment);
         return view;
 
@@ -171,6 +188,15 @@ public class EventFragment extends Fragment {
         ft.replace(R.id.body, fragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.e("Evente","event");
+        if (getActivity().getIntent().hasExtra("ActionNotification")) {
+            getActivity().getIntent().removeExtra("ActionNotification");
+        }
     }
 }
 

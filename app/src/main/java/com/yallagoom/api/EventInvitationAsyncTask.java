@@ -56,7 +56,9 @@ public class EventInvitationAsyncTask extends AsyncTask<String, String, Integer>
     protected Integer doInBackground(String[] params) {
         MultipartBody.Builder req = new MultipartBody.Builder().setType(MultipartBody.FORM);
         for (int i = 0; i < selectPlayerLists.size(); i++) {
-            req.addFormDataPart("invitee_id[]", selectPlayerLists.get(i).getId() + "");
+            if (!selectPlayerLists.get(i).isInvited()){
+                req.addFormDataPart("invitee_id[]", selectPlayerLists.get(i).getId() + "");
+            }
         }
         req.addFormDataPart("event_id", eventId + "");
 

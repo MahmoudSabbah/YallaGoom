@@ -16,21 +16,20 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ramotion.foldingcell.FoldingCell;
 import com.warkiz.widget.IndicatorSeekBar;
 import com.yallagoom.R;
-import com.yallagoom.entity.Sport;
+import com.yallagoom.entity.AllSport;
+import com.yallagoom.entity.SportObject;
 import com.yallagoom.entity.SportSave;
 import com.yallagoom.widget.SmoothCheckBox.SmoothCheckBox;
 import com.yallagoom.widget.animator.ViewAnimator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class RecycleViewSport extends RecyclerView.Adapter<RecycleViewSport.MyViewHolder> {
 
-    private ArrayList<Sport.Data> dataSport;
+    private ArrayList<SportObject> dataSport;
     public Context context;
     // private List<Driver> drivers;
     public int lastPosition = -1;
@@ -59,7 +58,7 @@ public class RecycleViewSport extends RecyclerView.Adapter<RecycleViewSport.MyVi
     }
 
 
-    public RecycleViewSport(ArrayList<Sport.Data> data) {
+    public RecycleViewSport(ArrayList<SportObject> data) {
         this.dataSport = data;
         hashMaps = new ArrayList<>();
     }

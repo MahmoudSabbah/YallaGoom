@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:emojicon="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contentRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/color_fafafa"
+    android:orientation="vertical">
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:foreground="?android:selectableItemBackground"
+      >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_d1f8f8f8"
+        android:minHeight="?attr/actionBarSize">
+
+        <com.yallagoom.font.TextAwesome
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="@dimen/_40sdp"
+            android:onClick="Back"
+            android:text="@string/fa_chevron_left_right"
+            android:textColor="@drawable/pressed_189091"
+            android:textSize="@dimen/_15sdp" />
+
+        <com.yallagoom.widget.CircularImageView
+            android:id="@+id/friend_image"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/back"
+            android:layout_toRightOf="@+id/back"
+            android:src="@drawable/default_image_small"
+            app:civ_border_color="@color/color_199899"
+            app:civ_border_width="@dimen/_1sdp" />
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/users_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/friend_image"
+            android:layout_toLeftOf="@+id/add_member"
+            android:layout_toRightOf="@+id/friend_image"
+            android:layout_toStartOf="@+id/add_member"
+            android:text=""
+            android:textColor="@color/color_199899"
+            android:textSize="@dimen/_12sdp" />
+
+        <com.yallagoom.font.TextAwesome
+            android:id="@+id/add_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:padding="@dimen/_7sdp"
+            android:text="@string/fa_plus"
+            android:textColor="@color/color_199899"
+            android:textSize="@dimen/_18sdp"
+            android:visibility="gone">
+
+        </com.yallagoom.font.TextAwesome>
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/messageRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/view"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:scrollbars="none"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_above="@+id/send_msg_layout"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shadow_top" />
+
+        <LinearLayout
+            android:id="@+id/send_msg_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/msg_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/record_button"
+                    android:layout_toStartOf="@+id/record_button"
+                    android:background="#fff"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/buttonEmoji"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignBottom="@+id/editTextMessage"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:padding="4dp"
+                        android:src="@drawable/smiley" />
+
+                    <com.yallagoom.font.TextAwesome
+                        android:id="@+id/select_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_toEndOf="@+id/buttonEmoji"
+                        android:layout_toRightOf="@+id/buttonEmoji"
+                        android:text="@string/fa_image"
+                        android:padding="@dimen/_5sdp"
+                        android:textColor="@color/black_70"
+                        android:textSize="@dimen/_17sdp" />
+
+                    <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
+                        android:id="@+id/editTextMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/select_image"
+                        android:layout_toRightOf="@+id/select_image"
+                        android:layout_toStartOf="@+id/buttonMessage"
+                        android:layout_centerVertical="true"
+                        android:maxLines="4"
+                        emojicon:emojiconSize="28sp" />
+
+                    <ImageView
+                        android:id="@+id/buttonMessage"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignBottom="@+id/editTextMessage"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="4dp"
+                        android:src="@android:drawable/ic_menu_send"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+
+                <com.devlomi.record_view.RecordView
+                    android:id="@+id/record_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/record_button"
+                    android:layout_toStartOf="@+id/record_button"
+                    app:slide_to_cancel_arrow="@drawable/ic_keyboard_arrow_left"
+                    app:slide_to_cancel_margin_right="10dp"
+                    app:slide_to_cancel_text="Slide To Cancel" />
+
+                <com.devlomi.record_view.RecordButton
+                    android:id="@+id/record_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:background="@drawable/bg_mic"
+                    android:scaleType="centerInside"
+                    app:src="@drawable/ic_mic_white" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

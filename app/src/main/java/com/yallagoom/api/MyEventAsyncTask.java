@@ -58,7 +58,6 @@ public class MyEventAsyncTask extends AsyncTask<String, String, Integer> {
         builder.post(formBody);
         builder.header("Authorization", "Bearer " + ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.userToken, null));
         Request request = builder.build();
-        Log.e("Bearer", "" + "Bearer " + ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.userToken, null));
         try {
             Response response = ToolUtils.getOkHttpClient().newCall(request).execute();
             if (response.code() != 500) {

@@ -1,9 +1,11 @@
 package com.yallagoom.utils;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -12,6 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.telephony.SmsManager;
@@ -58,11 +61,16 @@ import com.nostra13.universalimageloader.utils.DiskCacheUtils;
 import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 import com.tapadoo.alerter.Alerter;
 import com.yallagoom.R;
+import com.yallagoom.activity.NotificationActivity;
 import com.yallagoom.interfaces.CheckGPSCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.ParseException;
@@ -80,6 +88,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okio.Buffer;
 
+import static android.content.Context.ACTIVITY_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 import static io.nlopez.smartlocation.location.providers.LocationGooglePlayServicesProvider.REQUEST_CHECK_SETTINGS;
 
@@ -92,6 +101,25 @@ public class ToolUtils {
         Typeface externalFont = Typeface.createFromAsset(context
                 .getAssets(), "font/" + font);
         return externalFont;
+    }
+    public static String getDate(long timestamp) {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTimeInMillis(timestamp);
+        String date = DateFormat.format("dd MMM hh:mm aa", cal).toString();
+        return date;
+    }
+    public static String getDate(long milliSeconds, String dateFormat)
+    {
+        Log.e("milliSeconds",""+milliSeconds);
+        Log.e("milliSeconds2",""+new Date().getTime());
+
+        // Create a DateFormatter object for displaying date in specified format.
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+
+        // Create a calendar object that will convert the date and time value in milliseconds to date.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(milliSeconds);
+        return formatter.format(calendar.getTime());
     }
     public static byte[] getByteFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -233,6 +261,23 @@ public class ToolUtils {
     public static SharedPreferences getSharedPreferences(Context context, String title) {
         SharedPreferences prefs = context.getSharedPreferences(title, MODE_PRIVATE);
         return prefs;
+    }
+
+    public static ArrayList<String> getArrayFromShared(Context context , String name,String label) {
+        String dat = ToolUtils.getSharedPreferences(context, name).getString(label, null);
+        if (dat != null) {
+            Gson gson = new Gson();
+            ArrayList<String> dataStoreList = gson.fromJson(dat, new TypeToken<ArrayList<String>>() {
+            }.getType());
+            return dataStoreList;
+        } else {
+            return new ArrayList<String>();
+        }
+    }
+    public static void setArrayToShared(Context context , String name,String label, ArrayList<String> stringArrayList) {
+        Gson gson = new Gson();
+        String data = gson.toJson(stringArrayList);
+        ToolUtils.setSharedPrefernce(context, name).putString(label, data).apply();
     }
 
     public static ArrayList<String> getArrayOfCompAndClub(Context context) {
@@ -805,7 +850,7 @@ public class ToolUtils {
     public static void setImage(String url, final ImageView imageView, ImageLoader imageLoader) {
         List<Bitmap> list = MemoryCacheUtils.findCachedBitmapsForImageUri(url, ImageLoader.getInstance().getMemoryCache());
         Log.e("list.size()", "" + list.size());
-        Log.e("list.size()", "" + isDiskCache(url));
+        Log.e("urlurl", "" +url);
         if (list.size() > 0 || isDiskCache(url)) {
             imageLoader.displayImage(url, imageView);
         } else {
@@ -1050,5 +1095,116 @@ public class ToolUtils {
         inImage.compress(Bitmap.CompressFormat.PNG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
+    }
+
+    public static boolean checkActivityLAst(Context context){
+        ActivityManager mngr = (ActivityManager) context.getSystemService( ACTIVITY_SERVICE );
+
+        List<ActivityManager.RunningTaskInfo> taskList = mngr.getRunningTasks(10);
+
+        if(taskList.get(0).numActivities == 1 &&
+                taskList.get(0).topActivity.getClassName().equals(context.getClass().getName())) {
+            Log.i("", "This is last activity in the stack");
+            return true;
+        }
+        return false;
+    }
+    private static final int EOF = -1;
+    private static final int DEFAULT_BUFFER_SIZE = 1024 * 4;
+    private static String[] splitFileName(String fileName) {
+        String name = fileName;
+        String extension = "";
+        int i = fileName.lastIndexOf(".");
+        if (i != -1) {
+            name = fileName.substring(0, i);
+            extension = fileName.substring(i);
+        }
+
+        return new String[]{name, extension};
+    }
+    public static File from(Context context, Uri uri) throws IOException {
+        InputStream inputStream = context.getContentResolver().openInputStream(uri);
+        String fileName = getFileName(context, uri);
+        String[] splitName = splitFileName(fileName);
+        File tempFile = File.createTempFile(splitName[0], splitName[1]);
+        tempFile = rename(tempFile, fileName);
+        tempFile.deleteOnExit();
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream(tempFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (inputStream != null) {
+            copy(inputStream, out);
+            inputStream.close();
+        }
+
+        if (out != null) {
+            out.close();
+        }
+        return tempFile;
+    }
+    private static String getFileName(Context context, Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                }
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf(File.separator);
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
+    }
+
+    private static File rename(File file, String newName) {
+        File newFile = new File(file.getParent(), newName);
+        if (!newFile.equals(file)) {
+            if (newFile.exists() && newFile.delete()) {
+                Log.d("FileUtil", "Delete old " + newName + " file");
+            }
+            if (file.renameTo(newFile)) {
+                Log.d("FileUtil", "Rename file to " + newName);
+            }
+        }
+        return newFile;
+    }
+
+    private static long copy(InputStream input, OutputStream output) throws IOException {
+        long count = 0;
+        int n;
+        byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
+        while (EOF != (n = input.read(buffer))) {
+            output.write(buffer, 0, n);
+            count += n;
+        }
+        return count;
+    }
+    public static int getProgressPercentage(long currentDuration, long totalDuration) {
+        Double percentage;
+        long currentSeconds = (int) (currentDuration / 1000);
+        long totalSeconds = (int) (totalDuration / 1000);
+        percentage = (((double) currentSeconds) / totalSeconds) * 100;
+        return percentage.intValue();
+    }
+    public static String timeFromTimestamp(long milli){
+       return String.format("%02d:%02d",
+                TimeUnit.MILLISECONDS.toMinutes(milli),
+                TimeUnit.MILLISECONDS.toSeconds(milli) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(milli)));
     }
 }

@@ -23,6 +23,7 @@ import com.yallagoom.entity.Category;
 import com.yallagoom.entity.Country;
 import com.yallagoom.interfaces.GetCategoryCallback;
 import com.yallagoom.interfaces.GetCountriesCallback;
+import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
 import java.util.ArrayList;
@@ -113,11 +114,14 @@ public class SearchCountryActivity extends AppCompatActivity {
                 int id = -1;
                 String country_name = null;
                 String code_3 = null;
+                String phone_code = null;
                 for (int i = 0; i < countryListData.size(); i++) {
                     if (countryListData.get(i).getVis() == 1) {
                         id = countryListData.get(i).getId();
                         country_name = countryListData.get(i).getName_en();
                         code_3 = countryListData.get(i).getCode_3();
+                        phone_code= countryListData.get(i).getPhone_code();
+
                     }
                 }
                 if (id != -1) {
@@ -125,6 +129,7 @@ public class SearchCountryActivity extends AppCompatActivity {
                     intent.putExtra("country_id", id);
                     intent.putExtra("country_name", country_name);
                     intent.putExtra("code_3", code_3);
+                    intent.putExtra("phone_code", phone_code);
                     setResult(102, intent);
                     finish();
                 } else {
@@ -149,22 +154,24 @@ public class SearchCountryActivity extends AppCompatActivity {
     }
 
     private void getCountry() {
-        GetCountriesAsyncTask getCountriesAsyncTask = new GetCountriesAsyncTask(SearchCountryActivity.this, new KProgressHUD(this), new GetCountriesCallback() {
+       /* GetCountriesAsyncTask getCountriesAsyncTask = new GetCountriesAsyncTask(SearchCountryActivity.this, new KProgressHUD(this), new GetCountriesCallback() {
             @Override
-            public void processFinish(Country country) {
-                countryListData = country.getData();
-                for (int j = 0; j < countryListData.size(); j++) {
-                    if (countryListData.get(j).getId() == getIntent().getExtras().getInt("id")) {
-                        countryListData.get(j).setVis(1);
+            public void processFinish(Country country) {*/
 
-                    }
-                }
+        countryListData = Constant.countriesData.getData();
+        for (int j = 0; j < countryListData.size(); j++) {
+            if (countryListData.get(j).getId() == getIntent().getExtras().getInt("id")) {
+                countryListData.get(j).setVis(1);
 
-                listAdapterCountry = new ListAdapterCountry(SearchCountryActivity.this, country.getData());
-                country_list.setAdapter(listAdapterCountry);
             }
-        });
-        getCountriesAsyncTask.execute();
+        }
+
+        listAdapterCountry = new ListAdapterCountry(SearchCountryActivity.this, Constant.countriesData.getData());
+        country_list.setAdapter(listAdapterCountry);
 
     }
+     /*   });
+        getCountriesAsyncTask.execute();*/
+
+
 }

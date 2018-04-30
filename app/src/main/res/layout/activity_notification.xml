@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_color"
+    tools:context="com.yallagoom.activity.NotificationActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bt_bg_gradiant180"
+        android:gravity="center"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingTop="@dimen/_19sdp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <com.yallagoom.font.TextAwesome
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="@string/fa_sort_amount_desc"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_19sdp" />
+
+            <com.yallagoom.font.Roboto_Regular
+                android:id="@+id/close_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_marginRight="@dimen/_3sdp"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/close"
+                android:textColor="@drawable/pressed_white"
+                android:textSize="@dimen/_12sdp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/logo" />
+
+                <com.yallagoom.font.Roboto_Medium
+                    android:id="@+id/header_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_toRightOf="@+id/logo"
+                    android:gravity="center"
+                    android:text="@string/notification"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlAccentColor="@color/white_color"
+        app:srlEnableHeaderTranslationContent="false"
+        app:srlEnableLoadmore="true"
+        app:srlEnableRefresh="true"
+        app:srlPrimaryColor="@color/color_178d8e">
+
+    <com.scwang.smartrefresh.header.WaveSwipeHeader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/notification_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

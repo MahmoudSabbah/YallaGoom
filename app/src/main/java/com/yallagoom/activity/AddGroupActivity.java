@@ -15,11 +15,8 @@ import android.widget.TextView;
 import com.yallagoom.R;
 import com.yallagoom.adapter.RecycleViewFriendsListGroup;
 import com.yallagoom.api.AddGroupAsyncTask;
-import com.yallagoom.api.GetMyFriendAsyncTask;
 import com.yallagoom.api.SearchFriendsAsyncTask;
-import com.yallagoom.entity.MyFriendList;
 import com.yallagoom.entity.Player;
-import com.yallagoom.interfaces.GetMyFriendListCallback;
 import com.yallagoom.interfaces.SearchFriendsCallback;
 import com.yallagoom.utils.ToolUtils;
 

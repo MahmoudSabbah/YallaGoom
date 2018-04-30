@@ -5,28 +5,15 @@ package com.yallagoom.adapter;
  */
 
 import android.content.Context;
-import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.warkiz.widget.IndicatorSeekBar;
 import com.yallagoom.R;
-import com.yallagoom.entity.Sport;
-import com.yallagoom.entity.SportSave;
-import com.yallagoom.widget.SmoothCheckBox.SmoothCheckBox;
-import com.yallagoom.widget.animator.ViewAnimator;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RecycleViewSearchCategory extends RecyclerView.Adapter<RecycleViewSearchCategory.MyViewHolder> implements Filterable {
 

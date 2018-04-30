@@ -3,15 +3,21 @@ package com.yallagoom.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.NetworkInfo;
+import android.support.multidex.MultiDex;
 
 
 import com.github.pwittchen.reactivenetwork.library.Connectivity;
 import com.github.pwittchen.reactivenetwork.library.ReactiveNetwork;
+import com.google.firebase.FirebaseApp;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.yallagoom.activity.SplashScreenActivity;
+import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.ToolUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,9 +44,15 @@ public class MainApplication extends Application {
     public static boolean isConnected;
     public static boolean networkAvailable;
     public static boolean detectorInitialized;
+    public static boolean verification_check;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        SharedPreferences sharedPreferences = ToolUtils.getSharedPreferences(this, Constant.loginCheck);
+        verification_check = sharedPreferences.getBoolean(Constant.verification_check, false);
+
+        FirebaseApp.initializeApp(this);
 
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
@@ -113,4 +125,10 @@ public class MainApplication extends Application {
         super.onConfigurationChanged(newConfig);
     //    LocaleChanger.onConfigurationChanged();
     }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 }

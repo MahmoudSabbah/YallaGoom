@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_color"
+    android:orientation="vertical"
+    tools:context="com.yallagoom.activity.DiscoverCategoryActivity">
+
+    <include layout="@layout/header_search2" />
+
+    <RelativeLayout
+        android:id="@+id/group_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_d1f8f8f8"
+        android:visibility="gone"
+        android:padding="@dimen/_10sdp">
+
+        <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/group_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColor="@color/color_199899"
+            android:text="@string/group_name2"
+            android:textSize="@dimen/_12sdp" />
+        <com.yallagoom.font.Roboto_Reqular_EditText
+            android:id="@+id/group_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:hint="@string/group_name"
+            android:paddingRight="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:maxLines="1"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/group_label"
+            android:layout_toEndOf="@+id/group_label"
+            android:textSize="@dimen/_11sdp"
+            android:background="@null"/>
+    </RelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_friends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

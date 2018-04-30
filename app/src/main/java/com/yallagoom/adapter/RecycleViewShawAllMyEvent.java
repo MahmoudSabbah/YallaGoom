@@ -1,18 +1,24 @@
 package com.yallagoom.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.yallagoom.R;
+import com.yallagoom.activity.MyEventListClickActivity;
+import com.yallagoom.api.event.GetAuthorizeEventsClickAsyncTask;
 import com.yallagoom.entity.Event;
+import com.yallagoom.interfaces.MyEventCallback;
 import com.yallagoom.utils.Constant;
 
 import java.util.ArrayList;
@@ -25,6 +31,7 @@ public class RecycleViewShawAllMyEvent extends RecyclerView.Adapter<RecycleViewS
     private final ArrayList<Event.DataEvent> data;
     private final ImageLoader imageLoader;
     public Context context;
+    public static  int lastPosition=-1;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -34,6 +41,7 @@ public class RecycleViewShawAllMyEvent extends RecyclerView.Adapter<RecycleViewS
         private final TextView type_cost_free;
         private final TextView category;
         private final RoundedImageView my_event_image;
+        private final RelativeLayout parent_;
 
         public MyViewHolder(View view) {
             super(view);
@@ -42,6 +50,7 @@ public class RecycleViewShawAllMyEvent extends RecyclerView.Adapter<RecycleViewS
             type_cost_free = (TextView) view.findViewById(R.id.type_cost_free);
             category = (TextView) view.findViewById(R.id.type);
             my_event_image = (RoundedImageView) view.findViewById(R.id.my_event_image);
+            parent_ = (RelativeLayout) view.findViewById(R.id.parent_);
 
 
         }
@@ -79,6 +88,26 @@ public class RecycleViewShawAllMyEvent extends RecyclerView.Adapter<RecycleViewS
                 }
             });
         }
+        holder.parent_.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lastPosition=position;
+                GetAuthorizeEventsClickAsyncTask getAuthorizeEventsClickAsyncTask =new GetAuthorizeEventsClickAsyncTask(context, new MyEventCallback() {
+                    @Override
+                    public void processFinish(Event.DataEvent event) {
+                        Intent intent = new Intent(context, MyEventListClickActivity.class);
+                        intent.putExtra("event_data",event);
+                        if (data.get(position).getInvited_lis() != null && data.get(position).getInvited_lis().size() > 0) {
+                            intent.putExtra("Invited_list", data.get(position).getInvited_lis());
+                        }
+                        ((Activity)context).startActivityForResult(intent,206);
+                    }
+                });
+                getAuthorizeEventsClickAsyncTask.execute(data.get(position).getId()+"");//,"my_event"
+
+
+            }
+        });
     }
 
     public int getItemViewType(int position) {

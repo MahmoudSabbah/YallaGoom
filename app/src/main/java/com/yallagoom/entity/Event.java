@@ -1,5 +1,6 @@
 package com.yallagoom.entity;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -39,6 +40,24 @@ public class Event implements Serializable {
         private String created_at;
         private String updated_at;
         private Category category;
+        private ArrayList<InvitationRecord> my_invitation_record;
+        private ArrayList<InvitationRecord> invited_lis;
+
+        public ArrayList<InvitationRecord> getInvited_lis() {
+            return invited_lis;
+        }
+
+        public void setInvited_lis(ArrayList<InvitationRecord> invited_lis) {
+            this.invited_lis = invited_lis;
+        }
+
+        public ArrayList<InvitationRecord> getMy_invitation_record() {
+            return my_invitation_record;
+        }
+
+        public void setMy_invitation_record(ArrayList<InvitationRecord> my_invitation_record) {
+            this.my_invitation_record = my_invitation_record;
+        }
 
         public Category getCategory() {
             return category;

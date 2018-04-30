@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.yallagoom.widget.CircularImageView
-        android:id="@+id/image_player"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginRight="@dimen/_5sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:src="@drawable/default_image"
-        app:civ_border_width="0sp" />
+    android:layout_marginEnd="@dimen/_5sdp"
+    android:layout_marginRight="@dimen/_5sdp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.yallagoom.widget.CircularImageView
+            android:id="@+id/image_player"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/default_image"
+            app:civ_border_width="0sp" />
+
+        <RelativeLayout
+            android:id="@+id/check_invited_lay"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:alpha=".7"
+            android:background="@drawable/circle_shap_color_gray_dark">
+
+            <com.yallagoom.font.TextAwesome
+                android:id="@+id/check_invited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/fa_close"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/_16sdp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -5,11 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
-import com.yallagoom.entity.Sport;
-import com.yallagoom.interfaces.GetSportCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
@@ -81,7 +78,7 @@ public class DeleteEventAsyncTask extends AsyncTask<String, String, Integer> {
           progress.dismiss();
         if (status == 1) {
             ToolUtils.viewToast(mContext, mContext.getString(R.string.delete_event_msg));
-            ((Activity)mContext).setResult(102);
+            ((Activity)mContext).setResult(Activity.RESULT_OK);
             ((Activity)mContext).finish();
 
         } else {

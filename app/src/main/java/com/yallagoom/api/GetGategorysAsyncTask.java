@@ -6,12 +6,9 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yallagoom.R;
 import com.yallagoom.entity.Category;
-import com.yallagoom.entity.Sport;
 import com.yallagoom.interfaces.GetCategoryCallback;
-import com.yallagoom.interfaces.GetSportCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 

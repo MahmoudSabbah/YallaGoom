@@ -1,10 +1,16 @@
 package com.yallagoom.activity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -15,14 +21,20 @@ import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+import com.yalantis.ucrop.UCrop;
 import com.yallagoom.R;
 import com.yallagoom.api.UpdateEventAsyncTask;
 import com.yallagoom.entity.Event;
+import com.yallagoom.interfaces.ClickPopUpCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
+import com.yallagoom.widget.CameraGalleryChoicePopup;
 import com.yallagoom.widget.compactcalendarview.CompactCalendarView;
 import com.yallagoom.widget.segmented.SegmentedGroup;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -65,6 +77,11 @@ public class EditMyEventItemActivity extends AppCompatActivity implements TimePi
     private Date startDate;
     private Date endDate;
     private RoundedImageView event_image;
+    private RelativeLayout my_event_image;
+    private static final int RESULT_LOAD_IMAGE = 205;
+    private static final int REQUEST_IMAGE_CAPTURE = 204;
+    private CameraGalleryChoicePopup photoPopup;
+    private Bitmap selectedImage=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +99,7 @@ public class EditMyEventItemActivity extends AppCompatActivity implements TimePi
         header_title = (TextView) findViewById(R.id.name_header);
         header_title.setText(eventInformation.getEventTitle());
         right_text.setText(getString(R.string.ok));
+        my_event_image = (RelativeLayout) findViewById(R.id.my_event_image);
         event_image = (RoundedImageView) findViewById(R.id.event_image);
         title = (TextView) findViewById(R.id.title);
         add_description = (EditText) findViewById(R.id.add_description);
@@ -320,8 +338,33 @@ public class EditMyEventItemActivity extends AppCompatActivity implements TimePi
                 }
             }
         });
+        my_event_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                photoPopup = new CameraGalleryChoicePopup(EditMyEventItemActivity.this, getString(R.string.camera_gallery_choose), new ClickPopUpCallback() {
+                    @Override
+                    public void processFinish(final int check) {
+                        photoPopup.dismiss();
+                        if (check == 0) {
+                            dispatchTakePictureIntent();
+                        } else {
+                            Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                            photoPickerIntent.setType("image/*");
+                            startActivityForResult(photoPickerIntent, RESULT_LOAD_IMAGE);
+                        }
+                    }
+                });
+                photoPopup.showAtLocation(((Activity) EditMyEventItemActivity.this).findViewById(R.id.parent),
+                        Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+            }
+        });
     }
-
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
     public void Back(View view) {
         finish();
     }
@@ -348,6 +391,37 @@ public class EditMyEventItemActivity extends AppCompatActivity implements TimePi
                     categoryId = data.getExtras().getInt("cat_id");
                     cat_name.setText(data.getExtras().getString("cat_name"));
 
+                }
+                break;
+            case REQUEST_IMAGE_CAPTURE:
+                if (resultCode == RESULT_OK) {
+                    String destinationFileName = "crop";
+                    Bundle extras = data.getExtras();
+                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    UCrop.of(ToolUtils.getImageUri(EditMyEventItemActivity.this, imageBitmap)
+                            , Uri.fromFile(new File(getCacheDir(), destinationFileName)))
+                            .start(EditMyEventItemActivity.this);
+                }
+                break;
+            case RESULT_LOAD_IMAGE:
+                if (resultCode == RESULT_OK) {
+                    String destinationFileName = "crop";
+                    UCrop.of(data.getData(), Uri.fromFile(new File(getCacheDir(), destinationFileName)))
+                            .withMaxResultSize(500, 500)
+                            .start(EditMyEventItemActivity.this);
+                }
+                break;
+            case UCrop.REQUEST_CROP:
+                if (resultCode == RESULT_OK) {
+                    final Uri resultUri = UCrop.getOutput(data);
+                    try {
+                        final InputStream imageStream = getContentResolver().openInputStream(resultUri);
+                        selectedImage = BitmapFactory.decodeStream(imageStream);
+
+                        event_image.setImageBitmap(selectedImage);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
         }

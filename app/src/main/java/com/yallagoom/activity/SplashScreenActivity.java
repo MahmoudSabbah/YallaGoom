@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.tumblr.permissme.PermissMe;
@@ -28,13 +29,18 @@ import com.yallagoom.adapter.SplashPagerAdapter;
 import com.yallagoom.api.GetChannelsAsyncTask;
 import com.yallagoom.api.GetCountriesAsyncTask;
 import com.yallagoom.api.GetCountryCodeAsyncTask;
+import com.yallagoom.api.GetMyDataProfileApiAsyncTask;
+import com.yallagoom.api.RegisterUserTokenToFirebaseAsyncTask;
+import com.yallagoom.app.MainApplication;
 import com.yallagoom.entity.Country;
 import com.yallagoom.entity.News.Channels;
+import com.yallagoom.entity.User;
 import com.yallagoom.interfaces.CheckGPSCallback;
 import com.yallagoom.interfaces.GetCountriesCallback;
 import com.yallagoom.interfaces.GetCountryCodeCallback;
 import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.FirebaseUtils;
 import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.animator.ViewAnimator;
 
@@ -54,16 +60,18 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
     private TextView done;
     private RelativeLayout splash_imag;
     private ImageView logo;
-    private boolean verification_check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+          /*  if(getIntent().hasExtra("type")){
+                Log.e("type",""+ getIntent().getExtras().getString("type"));
+            }else{
+                // Do something else
+            }*/
 
         ToolUtils.hideStatus(SplashScreenActivity.this);
-        SharedPreferences sharedPreferences = ToolUtils.getSharedPreferences(SplashScreenActivity.this, Constant.loginCheck);
-        verification_check = sharedPreferences.getBoolean(Constant.verification_check, false);
 
         splash_imag = (RelativeLayout) findViewById(R.id.splash_imag);
         logo_text = (TextView) findViewById(R.id.logo_text);
@@ -125,61 +133,76 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
             }
         });
 
+      /*  if (getIntent().hasExtra("type")) {
+            Intent intent = new Intent(this, NotificationActivity.class);
+            switch (getIntent().getExtras().getString("type")) {
+                case "friend_request":
+                    intent = new Intent(this, HomeActivity.class);
+                    intent.putExtra("ActionNotification","friend_request");
+                    break;
+                case "you_got_new_friend":
+                    intent = new Intent(this, HomeActivity.class);
+                    intent.putExtra("ActionNotification","you_got_new_friend");
+                    break;
 
-        PermissMe.with(SplashScreenActivity.this)
-                .setRequiredPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
-                .listener(new PermissMe.PermissionListener() {
-                    @Override
-                    public void onSuccess() {
+            }
+            startActivity(intent);
+            finish();
+        } else {*/
+            PermissMe.with(SplashScreenActivity.this)
+                    .setRequiredPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE
+                            , Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO)
+                    .listener(new PermissMe.PermissionListener() {
+                        @Override
+                        public void onSuccess() {
                      /*   logo_text.startAnimation(animationDown);
                         logo.startAnimation(animation);*/
-                        //  Log.e("test1", "test1");
+                            //  Log.e("test1", "test1");
 
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                            ToolUtils.buildAlertMessageNoGps2(SplashScreenActivity.this, new CheckGPSCallback() {
-                                @Override
-                                public void processFinish(boolean b, Status status) {
-                                    excNext();
-                                }
-                            });
-                        } else {
-                            ToolUtils.buildAlertMessageNoGps(SplashScreenActivity.this, SplashScreenActivity.this, SplashScreenActivity.this, new CheckGPSCallback() {
-                                @Override
-                                public void processFinish(boolean check, Status status) {
-                                    if (!check) {
-                                        try {
-                                            status.startResolutionForResult(
-                                                    SplashScreenActivity.this, REQUEST_CHECK_SETTINGS);
-                                        } catch (IntentSender.SendIntentException e) {
-                                            //    Log.e("test2", "test2");
-
-                                        }
-                                    } else {
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                                ToolUtils.buildAlertMessageNoGps2(SplashScreenActivity.this, new CheckGPSCallback() {
+                                    @Override
+                                    public void processFinish(boolean b, Status status) {
                                         excNext();
                                     }
-                                    //    Log.e("test3", "test3");
-                                }
-                            });
+                                });
+                            } else {
+                                ToolUtils.buildAlertMessageNoGps(SplashScreenActivity.this, SplashScreenActivity.this, SplashScreenActivity.this, new CheckGPSCallback() {
+                                    @Override
+                                    public void processFinish(boolean check, Status status) {
+                                        if (!check) {
+                                            try {
+                                                status.startResolutionForResult(
+                                                        SplashScreenActivity.this, REQUEST_CHECK_SETTINGS);
+                                            } catch (IntentSender.SendIntentException e) {
+
+                                            }
+                                        } else {
+
+                                            excNext();
+                                        }
+                                    }
+                                });
+
+                            }
+                        }
+
+                        @Override
+                        public void onRequiredPermissionDenied(String[] deniedPermissions,
+                                                               boolean[] isAutoDenied) {
+                            finish();
+                        }
+
+                        @Override
+                        public void onOptionalPermissionDenied(String[] deniedPermissions,
+                                                               boolean[] isAutoDenied) {
+                            Log.e("test4", "test4");
 
                         }
-                    }
+                    })
+                    .verifyPermissions();
+     //   }
 
-                    @Override
-                    public void onRequiredPermissionDenied(String[] deniedPermissions,
-                                                           boolean[] isAutoDenied) {
-                        finish();
-                    }
-
-                    @Override
-                    public void onOptionalPermissionDenied(String[] deniedPermissions,
-                                                           boolean[] isAutoDenied) {
-                        Log.e("test4", "test4");
-
-                    }
-                })
-                .
-
-                        verifyPermissions();
 
     }
 
@@ -203,7 +226,7 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
     }
 
     private void excNext() {
-        Log.e("SnackTextSnackText", "SnackTextSnackText");
+        Log.e("token1", "" + FirebaseInstanceId.getInstance().getToken());
         logo.setVisibility(View.VISIBLE);
         logo_text.setVisibility(View.VISIBLE);
         ViewAnimator
@@ -224,31 +247,58 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
                 GetCountryCodeAsyncTask getCountryCodeAsyncTask = new GetCountryCodeAsyncTask(SplashScreenActivity.this, new GetCountryCodeCallback() {
                     @Override
                     public void processFinish(String code, KProgressHUD progress) {
-
                         String alpha3Country = new Locale("en", code).getISO3Country();
                         Constant.alpha3Country = alpha3Country;
-
                         GetChannelsAsyncTask getChannelsAsyncTask = new GetChannelsAsyncTask(SplashScreenActivity.this, progress, new StringResultCallback() {
                             @Override
-                            public void processFinish(String result, KProgressHUD progress) {
+                            public void processFinish(String result, final KProgressHUD progress) {
                                 Constant.ChannelsList = new Gson().fromJson(result, Channels[].class);
-                                if (verification_check) {
-                                    Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                GetCountriesAsyncTask getCountriesAsyncTask = new GetCountriesAsyncTask(SplashScreenActivity.this, progress, new GetCountriesCallback() {
+                                    @Override
+                                    public void processFinish(Country country) {
+                                        Constant.countriesData = country;
+                                        if (MainApplication.verification_check) {
+                                            GetMyDataProfileApiAsyncTask getMyDataProfileApiAsyncTask = new GetMyDataProfileApiAsyncTask(SplashScreenActivity.this, progress, new StringResultCallback() {
+                                                @Override
+                                                public void processFinish(String result, KProgressHUD progress) {
+                                                    if (getIntent().hasExtra("type")) {
+                                                        Intent intent = new Intent(SplashScreenActivity.this, NotificationActivity.class);
+                                                        switch (getIntent().getExtras().getString("type")) {
+                                                            case "friend_request":
+                                                                intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                                                                intent.putExtra("ActionNotification","friend_request");
+                                                                intent.putExtra("active",true);
 
-                                } else {
-                                    GetCountriesAsyncTask getCountriesAsyncTask = new GetCountriesAsyncTask(SplashScreenActivity.this, progress, new GetCountriesCallback() {
-                                        @Override
-                                        public void processFinish(Country country) {
-                                            Log.e("alpha3Country", "" + Constant.alpha3Country);
-                                            Constant.countriesData = country;
+                                                                break;
+                                                            case "you_got_new_friend":
+                                                                intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                                                                intent.putExtra("ActionNotification","you_got_new_friend");
+                                                                intent.putExtra("active",true);
+                                                                break;
+
+                                                        }
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }else {
+                                                        Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+
+                                                }
+                                            });
+                                            getMyDataProfileApiAsyncTask.execute();
+
+
+                                        } else {
                                             splash_imag.setVisibility(View.GONE);
 
                                         }
-                                    });
-                                    getCountriesAsyncTask.execute();
-                                }
+
+                                    }
+                                });
+                                getCountriesAsyncTask.execute();
+
 
                             }
                         });

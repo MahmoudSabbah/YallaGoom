@@ -20,6 +20,8 @@ public class Constant {
     public static String urlData="http://devyallagoom.com/"+api+"/";
     public static String imageUrl="http://devyallagoom.com/"+uploads+"/";
     public static String urlImage="http://devyallagoom.com/";
+    public static final String URL_STORAGE_REFERENCE = "gs://yallagoom-ea793.appspot.com";
+    public static final String FOLDER_STORAGE_IMG = "messagePics";
 
     public static String urlMatches1="https://api.sportradar.us/soccer-t3/global/en/schedules/";
     public static String urlMatchesResults2 ="/results.json?api_key=99935cnbcu7cv797fy4kd4xd";
@@ -39,9 +41,11 @@ public class Constant {
     public static String players="players/search";
     public static String friend_search="friend/search";
     public static String show_event="event/show";
+    public static String show_details_for_un_authorize="event/show_details_for_un_authorize";
     public static String data="data";
     public static User user;
     public static String sports="sports";
+    public static String getUserSports="getUserSports";
     public static String groups="groups/show_my_and_others_groups";
     public static String delete_event="event/delete";
     public static String FriendsEvents="event/FriendsEvents";
@@ -50,12 +54,14 @@ public class Constant {
     public static String lat="lat";
     public static String lng="lng";
     public static String distance="distance";
+    public static String get_constants_privacy_tearm="get_constants";
     public static boolean click=false;
     public static ArrayList<Event.DataEvent> eventsData;
     public static String register="register";
     public static String userData="userData";
     public static String userToken="userToken";
     public static String user_sport="user-sports";
+    public static String updateUserSports="updateUserSports";
     public static String defultDistance="5";
     public static String search_event="event/search";
     public static String EventInvitation="EventInvitation/send";
@@ -65,11 +71,15 @@ public class Constant {
     public static String block_friend="friend/block";
     public static String add_friend="friend/add";
     public static String accept_friend="friend/accept";
+    public static String get_user_notifications_list="get_user_notifications_list";
     public static String add_group="groups/store";
     public static String reject_friend="friend/reject";
     public static String MyFriendList="friend/getMyFriendList";
     public static String getNewRequest="friend/getNewRequest";
     public static String ticket="ticket";
+    public static String gifts="gifts";
+    public static String all_gifts=gifts+"/all";
+    public static String add_user_to_firebase="add_user_to_firebase";
     public static String sports_matches="sports_matches";
     public static String discover_ticket=ticket+"/discover";
     public static String show_ticket=ticket+"/show";
@@ -85,12 +95,14 @@ public class Constant {
     public static String clubs_list=sports_matches+"/clubs_list";
     public static String players_list=sports_matches+"/players_list";
     public static String profile_update="profile_update";
+    public static String get_user_data="get_user_data";
     public static String logout="logout";
     public static String update_user_image="update_user_image";
     public static String special_offers=ticket+"/special_offers";
     public static String categories="categories";
     public static String yyyy_MM_dd="yyyy-MM-dd";
     public static String yyyy_MM_dd__HH_mm="yyyy-MM-dd HH:mm";
+    public static String yyyy_MM_dd__HH_mm_ss="yyyy-MM-dd HH:mm:ss";
     public static String dd_MM_yyyy="dd/MM/yyyy";
     public static String dd_MMM_yyyy="dd MMM yyyy";
     public static String MMM_dd_EEE_yyyy="MMM-dd-EEE-yyyy";
@@ -107,4 +119,13 @@ public class Constant {
     public static String ChannelsListData="ChannelsListData";
     public static String ChannelsKey="ChannelsKey";
     public static String allUserData="allUserData";
+    public static String userSport="userSport";
+    public static String password="password";
+    public static String conversations="conversations";
+    public static String users="users";
+    public static String group="group";
+    public static String user_="user";
+    public static String admin="admin";
+    public static String credentials="credentials";
+    public static String rule="rule";
 }

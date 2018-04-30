@@ -1,13 +1,11 @@
 package com.yallagoom.activity;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -20,13 +18,14 @@ import com.suke.widget.SwitchButton;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.yallagoom.R;
 import com.yallagoom.api.RegisterAsyncTask;
+import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class SignUpActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
+    private static final int REQUEST_ID_COUNTRY = 104;
     private TextView logo_text;
     private TextView condition;
     private TextView condition1;
@@ -37,13 +36,15 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
     private EditText lastname;
     private EditText email;
     private EditText password;
-    private EditText country;
+    private TextView country;
     private TextView code;
     private EditText phone;
     private EditText date;
     private EditText gender;
     private SwitchButton switch_button;
     private ScrollView parent;
+    private int country_id = -1;
+    private TextInputLayout location_float_label;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +52,19 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
         setContentView(R.layout.activity_sign_up);
         ToolUtils.hideStatus(SignUpActivity.this);
         parent = (ScrollView) findViewById(R.id.parent);
-        ToolUtils.hideKeyFromScreen(parent,SignUpActivity.this);
+        ToolUtils.hideKeyFromScreen(parent, SignUpActivity.this);
         date_float_label = (TextInputLayout) findViewById(R.id.date_float_label);
+        location_float_label = (TextInputLayout) findViewById(R.id.location_float_label);
         dateEdite = (EditText) findViewById(R.id.date);
         first_name = (EditText) findViewById(R.id.first_name);
         lastname = (EditText) findViewById(R.id.lastname);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
-        country = (EditText) findViewById(R.id.country);
+        country = (TextView) findViewById(R.id.country);
         country.setFocusable(false);
+        country.setLongClickable(false);
+        country.requestFocus();
+
         code = (TextView) findViewById(R.id.code);
         phone = (EditText) findViewById(R.id.phone);
         date = (EditText) findViewById(R.id.date);
@@ -70,7 +75,7 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
         dateEdite.setFocusable(false);
         dateEdite.setLongClickable(false);
 
-       // dateEdite.setInputType(InputType.TYPE_CLASS_TEXT);
+        // dateEdite.setInputType(InputType.TYPE_CLASS_TEXT);
         dateEdite.requestFocus();
         InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mgr.showSoftInput(dateEdite, InputMethodManager.SHOW_FORCED);
@@ -126,9 +131,9 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
                     ToolUtils.showSnak(SignUpActivity.this, getString(R.string.check_last_name));
                 } else if (email.getText().toString().equalsIgnoreCase("")) {
                     ToolUtils.showSnak(SignUpActivity.this, getString(R.string.check_email));
-                }  else if (password.getText().toString().equalsIgnoreCase("")) {
+                } else if (password.getText().toString().equalsIgnoreCase("")) {
                     ToolUtils.showSnak(SignUpActivity.this, getString(R.string.check_password));
-                } else if (password.getText().toString().toCharArray().length<6) {
+                } else if (password.getText().toString().toCharArray().length < 6) {
                     ToolUtils.showSnak(SignUpActivity.this, getString(R.string.password_size));
                 } else if (country.getText().toString().equalsIgnoreCase("")) {
                     ToolUtils.showSnak(SignUpActivity.this, getString(R.string.check_country));
@@ -141,9 +146,24 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
                 } else {
                     RegisterAsyncTask registerAsnc = new RegisterAsyncTask(SignUpActivity.this);
                     registerAsnc.execute(email.getText().toString(), password.getText().toString(), first_name.getText().toString()
-                            , lastname.getText().toString(), "1", date.getText().toString(), gender.getText().toString(), "+974" + phone.getText().toString());
+                            , lastname.getText().toString(), country_id + "", date.getText().toString(), gender.getText().toString(), code.getText().toString() + phone.getText().toString());
                 }
 
+            }
+        });
+        for (int i = 0; i < Constant.countriesData.getData().size(); i++) {
+            if (Constant.countriesData.getData().get(i).getCode_3().equalsIgnoreCase(Constant.alpha3Country)) {
+                country.setText(Constant.countriesData.getData().get(i).getName_en());
+                country_id = Constant.countriesData.getData().get(i).getId();
+                code.setText("+" + Constant.countriesData.getData().get(i).getPhone_code());
+            }
+        }
+        country.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUpActivity.this, SearchCountryActivity.class);
+                intent.putExtra("id", country_id);
+                startActivityForResult(intent, REQUEST_ID_COUNTRY);
             }
         });
     }
@@ -157,7 +177,21 @@ public class SignUpActivity extends AppCompatActivity implements DatePickerDialo
     public void Back(View view) {
         finish();
     }
-  /*  SwitchDateTimeDialogFragment dateTimeDialogFragment = SwitchDateTimeDialogFragment.newInstance(
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQUEST_ID_COUNTRY:
+                if (resultCode == 102) {
+                    country_id = data.getExtras().getInt("country_id");
+                    country.setText(data.getExtras().getString("country_name"));
+                    code.setText("+" + data.getExtras().getString("phone_code"));
+                }
+                break;
+        }
+    }
+    /*  SwitchDateTimeDialogFragment dateTimeDialogFragment = SwitchDateTimeDialogFragment.newInstance(
             "Title example",
             "OK",
             "Cancel",

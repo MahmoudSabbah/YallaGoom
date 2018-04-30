@@ -2,7 +2,6 @@ package com.yallagoom.api;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -10,12 +9,10 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.yallagoom.R;
-import com.yallagoom.activity.HomeActivity;
-import com.yallagoom.activity.LoginActivity;
-import com.yallagoom.activity.MySportsActivity;
 import com.yallagoom.entity.User;
-import com.yallagoom.interfaces.LoginFirstStepCallback;
+import com.yallagoom.interfaces.StringResultCallback;
 import com.yallagoom.utils.Constant;
+import com.yallagoom.utils.FirebaseUtils;
 import com.yallagoom.utils.ToolUtils;
 
 import org.json.JSONObject;
@@ -74,14 +71,16 @@ public class LoginSecondStepAsyncTask extends AsyncTask<String, String, Integer>
 
                   /*  error = errorMsg.getString(Constant.error_callback);*/
                 } else {
-                //    JSONObject data = jsonObject.getJSONObject(Constant.data);
-                   //  user = new Gson().fromJson(data.toString(), User.class);
-                 //   Constant.user = user;
+                    //    JSONObject data = jsonObject.getJSONObject(Constant.data);
+                    //  user = new Gson().fromJson(data.toString(), User.class);
+                    //   Constant.user = user;
                     JSONObject data = jsonObject.getJSONObject(Constant.data);
+
                     SharedPreferences.Editor shared = ToolUtils.setSharedPrefernce(mContext, Constant.userData);
                     shared.putString(Constant.userToken, data.getString("token"));
                     shared.putString(Constant.allUserData, data.toString());
                     shared.putInt(Constant.userId, data.getInt("id"));
+                    shared.putString(Constant.password, params[1]);
                     shared.apply();
                 }
                 return status;
@@ -100,12 +99,24 @@ public class LoginSecondStepAsyncTask extends AsyncTask<String, String, Integer>
         super.onPostExecute(status);
         progress.dismiss();
         if (status == 1) {
-            SharedPreferences.Editor shared = ToolUtils.setSharedPrefernce(mContext, Constant.loginCheck);
-            shared.putBoolean(Constant.verification_check, true).apply();
-            Intent intent = new Intent(mContext, HomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            mContext.startActivity(intent);
-            ((Activity) mContext).finish();
+            RegisterUserTokenToFirebaseAsyncTask registerUserTokenToFirebaseAsyncTask = new
+                    RegisterUserTokenToFirebaseAsyncTask(mContext, new StringResultCallback() {
+                @Override
+                public void processFinish(String result, KProgressHUD progress) {
+                    User user = new Gson().fromJson(ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.allUserData, null), User.class);
+                    if (user.getFirebase_auth_user_id() != null) {
+                        FirebaseUtils.loginUserToFirebase(mContext, user.getEmail(), ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.password, "")
+                                , progress);
+                    } else {
+                        FirebaseUtils.CreateFirebaseUser(user.getEmail(), ToolUtils.getSharedPreferences(mContext, Constant.userData).getString(Constant.password, ""),
+                                user.getFirst_name()+" "+user.getLast_name(),Constant.imageUrl+user.getImg_url(),(Activity)mContext,progress,0) ;
+                    }
+
+                }
+            });
+            registerUserTokenToFirebaseAsyncTask.execute();
+
+            //
         } else {
             ToolUtils.viewToast(mContext, error);
         }

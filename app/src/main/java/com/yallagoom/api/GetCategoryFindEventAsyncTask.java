@@ -6,9 +6,8 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yallagoom.R;
-import com.yallagoom.entity.Sport;
+import com.yallagoom.entity.AllSport;
 import com.yallagoom.interfaces.GetSportCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
@@ -28,7 +27,7 @@ public class GetCategoryFindEventAsyncTask extends AsyncTask<String, String, Int
     private String error;
     private String language;
     private GetSportCallback getSportCallback;
-    private Sport sport;
+    private AllSport sport;
 
     public GetCategoryFindEventAsyncTask(Context context, GetSportCallback getSportCallback) {
         mContext = context;
@@ -67,7 +66,7 @@ public class GetCategoryFindEventAsyncTask extends AsyncTask<String, String, Int
                     error = errorMsg.names().getString(0);
                 } else {
                     JSONObject data = jsonObject.getJSONObject("data");
-                    sport = new Gson().fromJson(data.toString(), Sport.class);
+                    sport = new Gson().fromJson(data.toString(), AllSport.class);
                 }
                 return status;
             } else {

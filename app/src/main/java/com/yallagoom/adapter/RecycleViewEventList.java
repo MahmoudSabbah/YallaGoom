@@ -2,6 +2,7 @@ package com.yallagoom.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import com.yallagoom.R;
 import com.yallagoom.entity.Event;
+import com.yallagoom.entity.Player;
+import com.yallagoom.interfaces.ViewEventListCallback;
 
 import java.util.ArrayList;
 
@@ -21,8 +24,8 @@ public class RecycleViewEventList extends RecyclerView.Adapter<RecycleViewEventL
     private final RecyclerView recyclerView;
     private final ArrayList<Event.DataEvent> dataList;
     public Context context;
-    public int prePosition = -1;
-    public int eventId = -1;
+   // public int prePosition = -1;
+    //public int eventId = -1;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private final TextView name;
@@ -59,11 +62,12 @@ public class RecycleViewEventList extends RecyclerView.Adapter<RecycleViewEventL
     public void onBindViewHolder(final RecycleViewEventList.MyViewHolder holder, final int position) {
         holder.name.setText(dataList.get(position).getEventTitle());
         holder.id_value.setText(dataList.get(position).getId()+"");
-        holder.parent.setOnClickListener(new View.OnClickListener() {
+    /*    holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if (prePosition != position) {
+
                     TextView check1 = recyclerView.findViewHolderForAdapterPosition(position).itemView.findViewById(R.id.check);
                     if (prePosition != -1) {
                         TextView check2 = recyclerView.findViewHolderForAdapterPosition(prePosition).itemView.findViewById(R.id.check);
@@ -72,10 +76,13 @@ public class RecycleViewEventList extends RecyclerView.Adapter<RecycleViewEventL
                     check1.setVisibility(View.VISIBLE);
                     prePosition = position;
                     eventId=dataList.get(position).getId();
+                    viewEventListCallback.processFinish(position);
+
+
 
                 }
             }
-        });
+        });*/
     }
 
     public int getItemViewType(int position) {

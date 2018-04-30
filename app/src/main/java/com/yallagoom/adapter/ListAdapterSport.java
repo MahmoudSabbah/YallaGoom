@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.yallagoom.R;
-import com.yallagoom.entity.Category;
-import com.yallagoom.entity.Sport;
+import com.yallagoom.entity.AllSport;
+import com.yallagoom.entity.SportObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,21 +18,21 @@ import java.util.List;
  * Created by Mahmoud Sabbah on 2/7/2018.
  */
 public class ListAdapterSport extends BaseAdapter  {
-    private final ArrayList<Sport.Data> arraylist;
-    private final ArrayList<Sport.Data> mStringFilterList;
-    List<Sport.Data> arrayList;
-    private ArrayList<Sport.Data> categorySearchesList;    // Values to be displayed
+    private final ArrayList<SportObject> arraylist;
+    private final ArrayList<SportObject> mStringFilterList;
+    List<SportObject> arrayList;
+    private ArrayList<SportObject> categorySearchesList;    // Values to be displayed
     LayoutInflater inflater;
-    private List<Sport.Data> arrayListNames;
-    public ListAdapterSport(Context context, ArrayList<Sport.Data> categorySearchesList) {
+    private List<SportObject> arrayListNames;
+    public ListAdapterSport(Context context, ArrayList<SportObject> categorySearchesList) {
         this.categorySearchesList = categorySearchesList;
         mStringFilterList = categorySearchesList;
         inflater = LayoutInflater.from(context);
-        this.arraylist = new ArrayList<Sport.Data>();
+        this.arraylist = new ArrayList<SportObject>();
         this.arraylist.addAll(categorySearchesList);
     }
 
-    public void updateList(ArrayList<Sport.Data> mDisplayedValues) {
+    public void updateList(ArrayList<SportObject> mDisplayedValues) {
         this.categorySearchesList = mDisplayedValues;
        /* for (int i = 0; i < mProductArrayList.size(); i++) {
             Log.e("mDisplayedValues", "" + mDisplayedValues.get(i).getName() + " " + mDisplayedValues.get(i).getVis());

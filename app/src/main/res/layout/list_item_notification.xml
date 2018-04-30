@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/content_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp">
+
+        <com.yallagoom.widget.CircularImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:civ_border="false"
+            android:src="@drawable/default_image_small" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/img"
+            android:layout_toRightOf="@+id/img">
+
+            <HorizontalScrollView
+                android:id="@+id/top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <com.yallagoom.font.Roboto_Medium
+                        android:id="@+id/_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:maxLines="1"
+                        android:text="Mohammed S. Yahi"
+                        android:textColor="@color/color_747272"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <com.yallagoom.font.Roboto_Regular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/_name"
+                        android:layout_toRightOf="@+id/_name"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:visibility="gone"
+                        android:scrollHorizontally="true"
+                        android:text="@string/send_you_friend_request"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+                </RelativeLayout>
+
+            </HorizontalScrollView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/top"
+                android:layout_marginTop="@dimen/_5sdp">
+
+                <com.yallagoom.font.TextAwesome
+                    android:id="@+id/icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:text="@string/user_plus"
+                    android:textColor="@color/color_df488a"
+                    android:textSize="@dimen/_15sdp" />
+
+                <com.yallagoom.font.Roboto_Regular
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/icon"
+                    android:layout_toRightOf="@+id/icon"
+                    android:text="1 hour ago"
+                    android:textColor="@color/black_65"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:background="@color/color_33000000"
+    android:layout_below="@+id/content_lay"/>
+
+</RelativeLayout>

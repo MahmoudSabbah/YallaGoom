@@ -11,16 +11,20 @@
         android:orientation="vertical">
 
         <com.yallagoom.widget.CircularImageView
+            android:id="@+id/user_image"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:src="@drawable/food_img_bg" />
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/default_image_small" />
 
         <com.yallagoom.font.Roboto_Regular
+            android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_5sdp"
-            android:text="Jane"
+            android:maxEms="7"
+            android:text="mahmoud sabbah"
             android:textColor="@color/color_black_80"
             android:textSize="@dimen/_11sdp" />
     </LinearLayout>

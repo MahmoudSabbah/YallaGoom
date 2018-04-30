@@ -104,6 +104,7 @@ public class UpdateEventAsyncTask extends AsyncTask<String, String, Integer> {
     @Override
     protected Integer doInBackground(String[] params) {
         final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/*");
+        MultipartBody.Builder req = new MultipartBody.Builder().setType(MultipartBody.FORM);
         FormBody.Builder formBody = new FormBody.Builder();
         formBody.add("id", event_id + "");
         if (EventCategoryId != -1)
@@ -118,8 +119,9 @@ public class UpdateEventAsyncTask extends AsyncTask<String, String, Integer> {
         formBody.add("StartEventTime", startEventTime);
         if (!endEventTime.equalsIgnoreCase(""))
             formBody.add("EndEventTime", endEventTime);
-        //  if (eventImage != null)
-        // formBody.add("EventImage", "eventImage.png", RequestBody.create(MEDIA_TYPE_PNG, ToolUtils.BitMapToByte(eventImage)));
+        if (eventImage != null)
+           req.addFormDataPart("EventImage", "eventImage.png", RequestBody.create(MEDIA_TYPE_PNG, ToolUtils.BitMapToByte(eventImage)));
+
         if (!eventDescription.equalsIgnoreCase(""))
             formBody.add("EventDescription", eventDescription);
         formBody.add("IsFree", isFree + "");
@@ -133,7 +135,6 @@ public class UpdateEventAsyncTask extends AsyncTask<String, String, Integer> {
             formBody.add("PrivateOrPublic", "public");
         } else {
             formBody.add("PrivateOrPublic", "private");
-
         }
         if (!activityTitle.equalsIgnoreCase(""))
             formBody.add("ActivityTitle[]", activityTitle);
@@ -188,9 +189,9 @@ public class UpdateEventAsyncTask extends AsyncTask<String, String, Integer> {
         progress.dismiss();
         if (status == 1) {
             ToolUtils.viewToast(mContext, mContext.getString(R.string.update_event));
-            Intent intent=new Intent();
-            intent.putExtra("UpdateEvent",myEvent);
-            ((Activity)mContext).setResult(102,intent);
+            Intent intent = new Intent();
+            intent.putExtra("UpdateEvent", myEvent);
+            ((Activity) mContext).setResult(102, intent);
         } else {
             ToolUtils.viewToast(mContext, error);
         }

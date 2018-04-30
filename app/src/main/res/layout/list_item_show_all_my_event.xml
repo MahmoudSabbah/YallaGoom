@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_10sdp"
+    android:background="?android:attr/selectableItemBackground"
+    android:id="@+id/parent_">
 
     <LinearLayout
         android:id="@+id/content"
@@ -133,7 +136,6 @@
         android:layout_width="match_parent"
         android:layout_height=".9dp"
         android:layout_below="@+id/content"
-        android:layout_marginBottom="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@color/color_e2dfdf" />
 </RelativeLayout>

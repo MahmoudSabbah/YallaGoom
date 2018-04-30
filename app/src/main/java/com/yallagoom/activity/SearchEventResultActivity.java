@@ -9,14 +9,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.yallagoom.R;
-import com.yallagoom.adapter.RecycleViewHome;
+import com.yallagoom.adapter.event.home.RecycleViewHomeList;
 import com.yallagoom.entity.Event;
 import com.yallagoom.utils.ToolUtils;
 
 public class SearchEventResultActivity extends AppCompatActivity {
 
     private RecyclerView event_list;
-    private RecycleViewHome recycleViewHome;
+    private RecycleViewHomeList recycleViewHome;
     private LinearLayout parent;
 
     @Override
@@ -33,7 +33,7 @@ public class SearchEventResultActivity extends AppCompatActivity {
         event_list.setItemAnimator(new DefaultItemAnimator());
         Event nearEvent = (Event) getIntent().getSerializableExtra("data");
 
-        recycleViewHome = new RecycleViewHome(nearEvent.getData());
+        recycleViewHome = new RecycleViewHomeList(nearEvent.getData());
         event_list.setAdapter(recycleViewHome);
     }
 

@@ -2,12 +2,16 @@ package com.yallagoom.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -20,8 +24,11 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import com.yallagoom.R;
+import com.yallagoom.action.RecyclerItemClickListener;
 import com.yallagoom.adapter.RecycleViewChooseEventFriend;
 import com.yallagoom.adapter.RecycleViewEventList;
 import com.yallagoom.api.EventInvitationAsyncTask;
@@ -30,6 +37,7 @@ import com.yallagoom.api.NewEventAsyncTask;
 import com.yallagoom.entity.Event;
 import com.yallagoom.entity.Player;
 import com.yallagoom.interfaces.NearEventCallback;
+import com.yallagoom.interfaces.ViewEventListCallback;
 import com.yallagoom.utils.Constant;
 import com.yallagoom.utils.ToolUtils;
 import com.yallagoom.widget.segmented.SegmentedGroup;
@@ -79,6 +87,12 @@ public class InviteToEventActivity extends AppCompatActivity implements TimePick
     private TextView end_time_remove;
     private Date startTimeValue;
     private ImageView image_event;
+    private ArrayList<Event.DataEvent> allEvents;
+    private RecycleViewChooseEventFriend recycleViewChooseEventFriend;
+    private int eventId = -1;
+    private View lastView;
+    private boolean checkView=true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -303,7 +317,7 @@ public class InviteToEventActivity extends AppCompatActivity implements TimePick
         });
 
 
-        RecycleViewChooseEventFriend recycleViewChooseEventFriend = new RecycleViewChooseEventFriend(selectPlayerLists);
+        recycleViewChooseEventFriend = new RecycleViewChooseEventFriend(selectPlayerLists);
         friend_list.setAdapter(recycleViewChooseEventFriend);
         my_event = (RelativeLayout) findViewById(R.id.my_event);
         my_event.setSelected(true);
@@ -369,8 +383,8 @@ public class InviteToEventActivity extends AppCompatActivity implements TimePick
             @Override
             public void onClick(View view) {
                 if (my_event.isSelected()) {
-                    if (recycleViewEventList.eventId != -1) {
-                        EventInvitationAsyncTask eventInvitationAsyncTask = new EventInvitationAsyncTask(InviteToEventActivity.this, selectPlayerLists, recycleViewEventList.eventId);
+                    if (eventId != -1) {
+                        EventInvitationAsyncTask eventInvitationAsyncTask = new EventInvitationAsyncTask(InviteToEventActivity.this, selectPlayerLists, eventId);
                         eventInvitationAsyncTask.execute();
                     } else {
                         ToolUtils.showSnak(InviteToEventActivity.this, getString(R.string.select_one_event));
@@ -466,6 +480,65 @@ public class InviteToEventActivity extends AppCompatActivity implements TimePick
 
             }
         });
+        event_list.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                if (lastView != view) {
+                    TextView newCheck = view.findViewById(R.id.check);
+                    newCheck.setVisibility(View.VISIBLE);
+                    if (lastView != null) {
+                        TextView check2 = lastView.findViewById(R.id.check);
+                        check2.setVisibility(View.GONE);
+                    }
+                    lastView = view;
+                    eventId = allEvents.get(position).getId();
+                    for (int j = 0; j < selectPlayerLists.size(); j++) {
+                        selectPlayerLists.get(j).setInvited(false);
+                    }
+                    View test=null;
+                    if (allEvents.get(position).getInvited_lis() != null) {
+                        for (int i = 0; i < allEvents.get(position).getInvited_lis().size(); i++) {
+                            for (int j = 0; j < selectPlayerLists.size(); j++) {
+                                if (selectPlayerLists.get(j).getId() == allEvents.get(position).getInvited_lis().get(i).getInvitee_id()) {
+                                    Log.e("selectPlayerLists", "" + selectPlayerLists.get(j).getId());
+                                    selectPlayerLists.get(j).setInvited(true);
+                                    test=friend_list.getChildAt(j);
+                                } else {
+                                    selectPlayerLists.get(j).setInvited(false);
+                                }
+                            }
+
+                        }
+                        recycleViewChooseEventFriend.notifyDataSetChanged();
+                    }
+                    if (test!=null && checkView){
+                        TextPaint content = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                        content.setTextSize(getResources().getDimension(R.dimen._14sdp));
+                        content.setColor(Color.WHITE);
+                        TextPaint title = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                        title.setTextSize(getResources().getDimension(R.dimen._16sdp));
+                        title.setUnderlineText(true);
+                        title.setColor(ContextCompat.getColor(InviteToEventActivity.this,R.color.color_df488a));
+                        new ShowcaseView.Builder(InviteToEventActivity.this)
+                                .setTarget(new ViewTarget(test))
+                                .withMaterialShowcase()
+                                .setStyle(R.style.CustomShowcaseTheme2)
+                                .hideOnTouchOutside()
+                                .setContentTitle(getString(R.string.attention))
+                                .setContentText(getString(R.string.not_send))
+                                // .singleShot(42)
+                                .setContentTextPaint(content)
+                                .setContentTitlePaint(title)
+                                .build();
+                        checkView=false;
+                    }
+
+                }
+
+            }
+        }));
+
+
         getMyEvent();
     }
 
@@ -517,9 +590,10 @@ public class InviteToEventActivity extends AppCompatActivity implements TimePick
     private void getMyEvent() {
         MyEventAsyncTask myEventAsyncTask = new MyEventAsyncTask(InviteToEventActivity.this, new NearEventCallback() {
             @Override
-            public void processFinish(Event nearEvent) {
-
-                recycleViewEventList = new RecycleViewEventList(event_list, nearEvent.getData());
+            public void processFinish(Event event) {
+                allEvents = event.getData();
+                recycleViewEventList = new RecycleViewEventList(event_list, allEvents);
+                //  recycleViewEventList.setHasStableIds(true);
                 event_list.setAdapter(recycleViewEventList);
                 swipe_refresh.setRefreshing(false);
 

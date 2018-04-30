@@ -269,5 +269,36 @@
     <string name="camera_gallery_choose">Choose Camera or Gallery?</string>
     <string name="last_match_result">Last Match Result</string>
     <string name="next_match">Next Match</string>
+    <string name="select_your_hobbies_and_rate_your_self">Select your Hobbies and rate your self?</string>
+    <string name="rate_yourself_0_10">Rate yourself (1/10)</string>
+    <string name="rate_your_self">Rate yourself</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="share_yallagoom">Share YallaGoom</string>
+    <string name="save_sport">Save sport successfully</string>
+    <string name="select_at_least_one_sport">Please select at least one sport</string>
+    <string name="oops">OOPs</string>
+    <string name="to_access_this_feature_you_must_have_account">To access this feature you must have account</string>
+    <string name="notification">Notification</string>
+    <string name="send_you_friend_request">send you friend request</string>
+    <string name="close">Close</string>
+    <string name="respond_going">Who respond going</string>
+    <string name="respond_maybe">Who respond maybe</string>
+    <string name="respond_not_interested">Who respond not interested</string>
+    <string name="not_send">X mean: This person has already been invited, the notification will not be send</string>
+    <string name="not_send_to_this_people">Invitation will not be sent to this people</string>
+    <string name="attention">Attention</string>
+    <string name="group_name2">Group name:</string>
+    <string name="enter_group_name">Please enter group name</string>
+    <string name="add_friends">Please add friends</string>
+    <string name="try_again">Some error please try again.</string>
+    <string name="get_phone">Get Photo From</string>
+    <string name="gifts_list">Gifts List</string>
+    <string name="favourite">Favourite</string>
+    <string name="my_cart">My Cart</string>
+    <string name="add_cart">Add Cart</string>
+    <string name="added_to_cart">Added</string>
+    <string name="remove_cart">Remove cart</string>
+    <string name="image">Image</string>
+    <string name="audio">Audio</string>
 
 </resources>
