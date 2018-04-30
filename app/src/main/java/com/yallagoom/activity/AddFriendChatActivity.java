@@ -95,7 +95,6 @@ public class AddFriendChatActivity extends AppCompatActivity {
                                             }
                                         }
 
-
                                     }
                                 }
                                 registerChat();
