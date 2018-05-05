@@ -38,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:visibility="gone" />
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/website_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                 android:textColor="@color/white_color"
                 android:textSize="@dimen/_12sdp" />
 
-            <com.yallagoom.font.Roboto_Medium
+            <com.oxygen.yallagoom.font.Roboto_Medium
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:textStyle="normal" />
         </RelativeLayout>
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/news_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/website_name2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                 android:textColor="@color/color_black_72"
                 android:textSize="@dimen/_12sdp" />
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/news_time2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
 
         </RelativeLayout>
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/title2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
             android:textStyle="normal"
             android:visibility="visible" />
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/description_news"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

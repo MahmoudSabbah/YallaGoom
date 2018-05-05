@@ -24,7 +24,7 @@
                 android:layout_height="@dimen/_15sdp"
                 android:layout_centerInParent="true" />
 
-            <com.yallagoom.widget.CircularImageView
+            <com.oxygen.yallagoom.widget.CircularImageView
                 android:id="@+id/image_player"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:scrollbars="none">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/player_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             </HorizontalScrollView>
 
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/location_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
 
         </RelativeLayout>
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/check_friend"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="wrap_content"

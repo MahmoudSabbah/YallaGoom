@@ -7,7 +7,7 @@
     android:background="@color/white_color"
     android:orientation="vertical"
     android:scrollbars="none"
-    tools:context="com.yallagoom.activity.TicketsDetailsActivity">
+    tools:context="com.oxygen.yallagoom.activity.TicketsDetailsActivity">
 
     <LinearLayout
         android:id="@+id/parent"
@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:scrollbars="none">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/match_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                         android:textSize="@dimen/_11sdp" />
                 </HorizontalScrollView>
 
-                <com.yallagoom.font.Roboto_Bold
+                <com.oxygen.yallagoom.font.Roboto_Bold
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <com.yallagoom.font.Roboto_Medium
+                <com.oxygen.yallagoom.font.Roboto_Medium
                     android:id="@+id/team_first"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <com.yallagoom.font.Roboto_Medium
+                <com.oxygen.yallagoom.font.Roboto_Medium
                     android:id="@+id/time_counter_down"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <com.yallagoom.font.Roboto_Medium
+                <com.oxygen.yallagoom.font.Roboto_Medium
                     android:id="@+id/team_second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        <com.oxygen.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
             android:id="@+id/segmented_match"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -173,7 +173,7 @@
             segmentedgroup:sc_unchecked_text_color="@color/color_595757"
             segmentedgroup:sc_unchecked_tint_color="@color/transparent">
 
-            <com.yallagoom.font.Roboto_RegularRadio
+            <com.oxygen.yallagoom.font.Roboto_RegularRadio
                 android:id="@+id/details"
                 style="@style/RadioButton"
                 android:layout_width="0dp"
@@ -182,7 +182,7 @@
                 android:text="@string/details"
                 android:textSize="@dimen/_12sdp" />
 
-            <com.yallagoom.font.Roboto_RegularRadio
+            <com.oxygen.yallagoom.font.Roboto_RegularRadio
                 android:id="@+id/participants"
                 style="@style/RadioButton"
                 android:layout_width="0dp"
@@ -191,7 +191,7 @@
                 android:text="@string/participants"
                 android:textSize="@dimen/_12sdp" />
 
-            <com.yallagoom.font.Roboto_RegularRadio
+            <com.oxygen.yallagoom.font.Roboto_RegularRadio
                 android:id="@+id/incidents"
                 style="@style/RadioButton"
                 android:layout_width="0dp"
@@ -199,7 +199,7 @@
                 android:layout_weight=".3"
                 android:text="@string/incidents"
                 android:textSize="@dimen/_12sdp" />
-        </com.yallagoom.widget.segmented.SegmentedGroup>
+        </com.oxygen.yallagoom.widget.segmented.SegmentedGroup>
 
         <ScrollView
             android:layout_width="match_parent"

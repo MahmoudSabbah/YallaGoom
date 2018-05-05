@@ -8,10 +8,11 @@
         android:id="@+id/content_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
         android:paddingBottom="@dimen/_10sdp"
         android:paddingTop="@dimen/_10sdp">
 
-        <com.yallagoom.widget.CircularImageView
+        <com.oxygen.yallagoom.widget.CircularImageView
             android:id="@+id/img"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
@@ -41,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical">
 
-                    <com.yallagoom.font.Roboto_Medium
+                    <com.oxygen.yallagoom.font.Roboto_Medium
                         android:id="@+id/_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -52,7 +53,7 @@
                         android:textColor="@color/color_747272"
                         android:textSize="@dimen/_12sdp" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/_name"
@@ -74,7 +75,7 @@
                 android:layout_below="@+id/top"
                 android:layout_marginTop="@dimen/_5sdp">
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,7 +86,7 @@
                     android:textColor="@color/color_df488a"
                     android:textSize="@dimen/_15sdp" />
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

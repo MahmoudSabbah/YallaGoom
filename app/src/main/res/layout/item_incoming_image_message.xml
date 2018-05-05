@@ -60,7 +60,7 @@
                 app:sriv_right_bottom_corner_radius="15dip"
                 app:sriv_right_top_corner_radius="15dip" />
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/timestamp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

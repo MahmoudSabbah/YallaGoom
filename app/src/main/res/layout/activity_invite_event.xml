@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_f6f7f9"
     android:orientation="vertical"
-    tools:context="com.yallagoom.activity.InviteToEventActivity">
+    tools:context="com.oxygen.yallagoom.activity.InviteToEventActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp">
 
-            <com.yallagoom.font.Roboto_Medium
+            <com.oxygen.yallagoom.font.Roboto_Medium
                 android:id="@+id/ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:paddingRight="@dimen/_10sdp"
                 android:paddingTop="@dimen/_7sdp">
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/filter_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                     android:textColor="@color/color_615e5e"
                     android:textSize="@dimen/_15sdp" />
 
-                <com.yallagoom.font.Roboto_Medium
+                <com.oxygen.yallagoom.font.Roboto_Medium
                     android:id="@+id/search_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                     />
             </RelativeLayout>
 
-            <com.yallagoom.font.Roboto_Medium
+            <com.oxygen.yallagoom.font.Roboto_Medium
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
             android:paddingBottom="@dimen/_7sdp"
             android:paddingTop="@dimen/_7sdp">
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -174,7 +174,7 @@
             android:paddingBottom="@dimen/_7sdp"
             android:paddingTop="@dimen/_7sdp">
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -254,7 +254,7 @@
                     android:layout_toLeftOf="@+id/title_remove"
                     android:layout_toStartOf="@+id/title_remove">
 
-                    <com.yallagoom.font.Roboto_Light_EditText
+                    <com.oxygen.yallagoom.font.Roboto_Light_EditText
                         android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -269,7 +269,7 @@
                         android:textSize="@dimen/_12sdp" />
                 </android.support.design.widget.TextInputLayout>
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/title_remove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -299,7 +299,7 @@
                 android:layout_marginRight="@dimen/_3sdp"
                 android:layout_marginTop="@dimen/_15sdp">
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/choose_sport_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -322,7 +322,7 @@
                     android:layout_toStartOf="@+id/sport_remove"
                     android:paddingBottom="@dimen/_5sdp">
 
-                    <com.yallagoom.font.Roboto_Light_EditText
+                    <com.oxygen.yallagoom.font.Roboto_Light_EditText
                         android:id="@+id/search_sport"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -339,7 +339,7 @@
                         android:textSize="@dimen/_12sdp" />
                 </android.support.design.widget.TextInputLayout>
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/sport_remove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -368,7 +368,7 @@
                 android:layout_marginRight="@dimen/_3sdp"
                 android:layout_marginTop="@dimen/_15sdp">
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/calendar_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -391,7 +391,7 @@
                     android:layout_toStartOf="@+id/calendar_remove"
                     android:paddingBottom="@dimen/_5sdp">
 
-                    <com.yallagoom.font.Roboto_Light_EditText
+                    <com.oxygen.yallagoom.font.Roboto_Light_EditText
                         android:id="@+id/calendar_edit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -408,7 +408,7 @@
                         android:textSize="@dimen/_12sdp" />
                 </android.support.design.widget.TextInputLayout>
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/calendar_remove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -448,7 +448,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp">
 
-                        <com.yallagoom.font.TextAwesome
+                        <com.oxygen.yallagoom.font.TextAwesome
                             android:id="@+id/time_start_icon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -470,7 +470,7 @@
                             android:layout_toStartOf="@+id/start_time_remove"
                             android:layout_weight="1">
 
-                            <com.yallagoom.font.Roboto_Light_EditText
+                            <com.oxygen.yallagoom.font.Roboto_Light_EditText
                                 android:id="@+id/start_time"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -489,7 +489,7 @@
                                 android:textSize="@dimen/_12sdp" />
                         </android.support.design.widget.TextInputLayout>
 
-                        <com.yallagoom.font.TextAwesome
+                        <com.oxygen.yallagoom.font.TextAwesome
                             android:id="@+id/start_time_remove"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -522,7 +522,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1">
 
-                    <com.yallagoom.font.TextAwesome
+                    <com.oxygen.yallagoom.font.TextAwesome
                         android:id="@+id/time_end_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -547,7 +547,7 @@
                         android:paddingLeft="3dp"
                         android:paddingStart="3dp">
 
-                        <com.yallagoom.font.Roboto_Light_EditText
+                        <com.oxygen.yallagoom.font.Roboto_Light_EditText
                             android:id="@+id/end_time"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -566,7 +566,7 @@
                             android:textSize="@dimen/_12sdp" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <com.yallagoom.font.TextAwesome
+                    <com.oxygen.yallagoom.font.TextAwesome
                         android:id="@+id/end_time_remove"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -593,7 +593,7 @@
             </LinearLayout>
 
 
-            <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+            <com.oxygen.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/segmented1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -609,7 +609,7 @@
                 segmentedgroup:sc_unchecked_text_color="@color/color_999999"
                 segmentedgroup:sc_unchecked_tint_color="@color/transparent">
 
-                <com.yallagoom.font.Roboto_LightRadio
+                <com.oxygen.yallagoom.font.Roboto_LightRadio
                     android:id="@+id/free_ra"
                     style="@style/RadioButton"
                     android:layout_width="0dp"
@@ -619,7 +619,7 @@
                     android:textSize="@dimen/_12sdp" />
 
 
-                <com.yallagoom.font.Roboto_LightRadio
+                <com.oxygen.yallagoom.font.Roboto_LightRadio
                     android:id="@+id/paid_ra"
                     style="@style/RadioButton"
                     android:layout_width="0dp"
@@ -627,7 +627,7 @@
                     android:layout_weight=".5"
                     android:text="@string/paid"
                     android:textSize="@dimen/_12sdp" />
-            </com.yallagoom.widget.segmented.SegmentedGroup>
+            </com.oxygen.yallagoom.widget.segmented.SegmentedGroup>
 
             <LinearLayout
                 android:id="@+id/_cost_liner"
@@ -652,7 +652,7 @@
                         android:layout_toStartOf="@+id/cost_remove"
                         android:paddingBottom="@dimen/_5sdp">
 
-                        <com.yallagoom.font.Roboto_Light_EditText
+                        <com.oxygen.yallagoom.font.Roboto_Light_EditText
                             android:id="@+id/cost"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -667,7 +667,7 @@
                             android:textSize="@dimen/_12sdp" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <com.yallagoom.font.TextAwesome
+                    <com.oxygen.yallagoom.font.TextAwesome
                         android:id="@+id/cost_remove"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -698,7 +698,7 @@
                 android:layout_marginRight="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_15sdp">
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/location_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -721,7 +721,7 @@
                     android:layout_toStartOf="@+id/location_remove"
                     android:paddingBottom="@dimen/_5sdp">
 
-                    <com.yallagoom.font.Roboto_Light_EditText
+                    <com.oxygen.yallagoom.font.Roboto_Light_EditText
                         android:id="@+id/location_edit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -736,7 +736,7 @@
                         android:textSize="@dimen/_12sdp" />
                 </android.support.design.widget.TextInputLayout>
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/location_remove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -757,7 +757,7 @@
                 android:layout_height=".9dp"
                 android:background="@color/color_view_bg" />
 
-            <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+            <com.oxygen.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/segmented2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -773,7 +773,7 @@
                 segmentedgroup:sc_unchecked_text_color="@color/color_999999"
                 segmentedgroup:sc_unchecked_tint_color="@color/transparent">
 
-                <com.yallagoom.font.Roboto_LightRadio
+                <com.oxygen.yallagoom.font.Roboto_LightRadio
                     android:id="@+id/public_ra"
                     style="@style/RadioButton"
                     android:layout_width="0dp"
@@ -787,7 +787,7 @@
                     android:textSize="@dimen/_12sdp" />
 
 
-                <com.yallagoom.font.Roboto_LightRadio
+                <com.oxygen.yallagoom.font.Roboto_LightRadio
                     android:id="@+id/private_ra"
                     style="@style/RadioButton"
                     android:layout_width="0dp"
@@ -799,7 +799,7 @@
                     android:scrollHorizontally="true"
                     android:text="@string/private_"
                     android:textSize="@dimen/_12sdp" />
-            </com.yallagoom.widget.segmented.SegmentedGroup>
+            </com.oxygen.yallagoom.widget.segmented.SegmentedGroup>
 
 
             <RelativeLayout
@@ -819,7 +819,7 @@
                     android:layout_toStartOf="@+id/description_remove"
                     android:paddingBottom="@dimen/_5sdp">
 
-                    <com.yallagoom.font.Roboto_Light_EditText
+                    <com.oxygen.yallagoom.font.Roboto_Light_EditText
                         android:id="@+id/description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -834,7 +834,7 @@
                         android:textSize="@dimen/_12sdp" />
                 </android.support.design.widget.TextInputLayout>
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/description_remove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -861,7 +861,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@color/color_f6f7f9">
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"

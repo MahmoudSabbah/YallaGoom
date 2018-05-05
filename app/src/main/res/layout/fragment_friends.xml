@@ -26,7 +26,7 @@
                 android:paddingBottom="@dimen/_7sdp"
                 android:paddingTop="@dimen/_7sdp">
 
-                <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                <com.oxygen.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/segmented_friends"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                     segmentedgroup:sc_unchecked_text_color="@color/color_595757"
                     segmentedgroup:sc_unchecked_tint_color="@color/transparent">
 
-                    <com.yallagoom.font.Roboto_RegularRadio
+                    <com.oxygen.yallagoom.font.Roboto_RegularRadio
                         android:id="@+id/friends_list"
                         style="@style/RadioButton"
                         android:layout_width="0dp"
@@ -50,7 +50,7 @@
                         android:text="@string/friends_list"
                         android:textSize="@dimen/_12sdp" />
 
-                    <com.yallagoom.font.Roboto_RegularRadio
+                    <com.oxygen.yallagoom.font.Roboto_RegularRadio
                         android:id="@+id/new_requests"
                         style="@style/RadioButton"
                         android:layout_width="0dp"
@@ -59,7 +59,7 @@
                         android:text="@string/new_requests"
                         android:textSize="@dimen/_12sdp" />
 
-                </com.yallagoom.widget.segmented.SegmentedGroup>
+                </com.oxygen.yallagoom.widget.segmented.SegmentedGroup>
 
 
             </RelativeLayout>
@@ -120,7 +120,7 @@
                     android:layout_marginRight="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_15sdp">
 
-                    <com.yallagoom.widget.floatingactionbutton.FloatingActionsMenu
+                    <com.oxygen.yallagoom.widget.floatingactionbutton.FloatingActionsMenu
                         android:id="@+id/multiple_actions_down"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
                         fab:fab_addButtonSize="normal"
                         fab:fab_expandDirection="left">
 
-                        <com.yallagoom.widget.floatingactionbutton.FloatingActionButton
+                        <com.oxygen.yallagoom.widget.floatingactionbutton.FloatingActionButton
                             android:id="@+id/search_friends"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                             fab:fab_colorPressed="@color/white_color"
                             fab:fab_size="mini" />
 
-                        <com.yallagoom.widget.floatingactionbutton.FloatingActionButton
+                        <com.oxygen.yallagoom.widget.floatingactionbutton.FloatingActionButton
                             android:id="@+id/contact_friend"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -154,9 +154,9 @@
                             fab:fab_title="Click to remove" />
 
 
-                    </com.yallagoom.widget.floatingactionbutton.FloatingActionsMenu>
+                    </com.oxygen.yallagoom.widget.floatingactionbutton.FloatingActionsMenu>
 
-                    <com.yallagoom.font.TextAwesome
+                    <com.oxygen.yallagoom.font.TextAwesome
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"

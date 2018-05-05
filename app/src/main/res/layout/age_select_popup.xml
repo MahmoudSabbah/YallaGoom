@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr">
+
+    <LinearLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_30_255_op"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/layout_round_corners"
+            android:orientation="vertical">
+
+            <com.oxygen.yallagoom.font.Roboto_Regular
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:text="@string/select_age_range"
+                android:textColor="@color/black_50_op"
+                android:textSize="@dimen/_12sdp" />
+
+            <RelativeLayout
+                android:id="@+id/rate_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp">
+
+                <com.oxygen.yallagoom.font.Roboto_Regular
+                    android:id="@+id/min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="16"
+                    android:textColor="@color/black_65"
+                    android:textSize="@dimen/_11sdp" />
+
+                <com.oxygen.yallagoom.widget.RangeSeekBar
+                    android:id="@+id/seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/min"
+                    android:layout_toLeftOf="@+id/max"
+                    android:layout_toRightOf="@+id/min"
+                    android:layout_toStartOf="@+id/max"
+                    android:paddingLeft="@dimen/_7sdp"
+                    android:paddingStart="@dimen/_7sdp"
+                    app:rsb_cellMode="number"
+                    app:rsb_lineColorEdge="@color/colorSeekBarDefault"
+                    app:rsb_lineColorSelected="@color/colorAccent"
+                    app:rsb_max="63"
+                    app:rsb_min="16"
+                    app:rsb_progressHintMode="alwaysHide"
+                    app:rsb_reserve="5"
+                    app:rsb_seekBarMode="range"
+                    app:rsb_thumbResId="@drawable/circle_shadow_ic" />
+
+                <com.oxygen.yallagoom.font.Roboto_Regular
+                    android:id="@+id/max"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="63"
+                    android:textColor="@color/black_65"
+                    android:textSize="@dimen/_11sdp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/color_e2dfdf" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5">
+
+                    <com.oxygen.yallagoom.font.Roboto_Regular
+                        android:id="@+id/cancel_bt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:text="@string/cancel"
+                        android:textColor="@color/color_199899"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_e2dfdf" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5">
+
+                    <com.oxygen.yallagoom.font.Roboto_Regular
+                        android:id="@+id/ok_bt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:text="@string/ok"
+                        android:textColor="@color/color_199899"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

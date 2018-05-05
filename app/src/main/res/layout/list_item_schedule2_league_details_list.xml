@@ -59,7 +59,7 @@
                     android:orientation="horizontal"
                     android:visibility="visible">
 
-                    <com.yallagoom.font.Roboto_Medium
+                    <com.oxygen.yallagoom.font.Roboto_Medium
                         android:id="@+id/away_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                         android:textColor="@color/color_df488a"
                         android:textSize="@dimen/_12sdp" />
 
-                    <com.yallagoom.font.Roboto_Medium
+                    <com.oxygen.yallagoom.font.Roboto_Medium
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -83,7 +83,7 @@
                         android:textColor="@color/color_df488a"
                         android:textSize="@dimen/_12sdp" />
 
-                    <com.yallagoom.font.Roboto_Medium
+                    <com.oxygen.yallagoom.font.Roboto_Medium
                         android:id="@+id/home_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone">
 
-                    <com.yallagoom.font.Roboto_Medium
+                    <com.oxygen.yallagoom.font.Roboto_Medium
                         android:id="@+id/time_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/away_team"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -182,7 +182,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/home_team"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

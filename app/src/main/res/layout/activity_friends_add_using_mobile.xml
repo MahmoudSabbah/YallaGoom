@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white_color"
     android:orientation="vertical"
-    tools:context="com.yallagoom.activity.AddFriendsUsingMobileActivity">
+    tools:context="com.oxygen.yallagoom.activity.AddFriendsUsingMobileActivity">
 
     <include layout="@layout/header" />
 
@@ -28,7 +28,7 @@
             android:paddingBottom="@dimen/_7sdp"
             android:paddingTop="@dimen/_7sdp">
 
-            <com.yallagoom.font.TextAwesome
+            <com.oxygen.yallagoom.font.TextAwesome
                 android:id="@+id/search_icon_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 android:textColor="@color/color_8c8c8c"
                 android:textSize="@dimen/_14sdp" />
 
-            <com.yallagoom.font.Roboto_Reqular_EditText
+            <com.oxygen.yallagoom.font.Roboto_Reqular_EditText
                 android:id="@+id/search_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,13 +59,13 @@
 
     </RelativeLayout>
 
-    <com.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
+    <com.oxygen.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="@dimen/_17sdp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager">
 
-    </com.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView>
+    </com.oxygen.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView>
 
 </LinearLayout>

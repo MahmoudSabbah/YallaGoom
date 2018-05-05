@@ -19,7 +19,7 @@
             android:background="@drawable/layout_round_corners"
             android:orientation="vertical">
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                 android:layout_height=".5dp"
                 android:background="@color/color_e2dfdf" />
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/delete_bt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
             android:background="@drawable/layout_round_corners"
             android:orientation="vertical">
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/choose_cancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -15,7 +15,7 @@
         android:background="@drawable/pressed_bg_transparent"
         android:paddingBottom="@dimen/_8sdp"
         android:paddingTop="@dimen/_8sdp">
-        <com.yallagoom.widget.CircularImageView
+        <com.oxygen.yallagoom.widget.CircularImageView
             android:id="@+id/image_friend"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
@@ -34,7 +34,7 @@
             android:layout_toStartOf="@+id/checkbox_select"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_10sdp">
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
 
         </RelativeLayout>
 
-        <com.yallagoom.widget.SmoothCheckBox.SmoothCheckBox
+        <com.oxygen.yallagoom.widget.SmoothCheckBox.SmoothCheckBox
             android:id="@+id/checkbox_select"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"

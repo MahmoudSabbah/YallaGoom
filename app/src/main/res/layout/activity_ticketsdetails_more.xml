@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white_color"
     android:orientation="vertical"
-    tools:context="com.yallagoom.activity.TicketsdetailsMoreActivity">
+    tools:context="com.oxygen.yallagoom.activity.TicketsdetailsMoreActivity">
 
     <LinearLayout
         android:id="@+id/parent"
@@ -16,7 +16,7 @@
 
         <include layout="@layout/header_3" />
 
-        <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        <com.oxygen.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
             android:id="@+id/segmented"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             segmentedgroup:sc_unchecked_text_color="@color/color_595757"
             segmentedgroup:sc_unchecked_tint_color="@color/transparent">
 
-            <com.yallagoom.font.Roboto_RegularRadio
+            <com.oxygen.yallagoom.font.Roboto_RegularRadio
                 android:id="@+id/description_radio"
                 style="@style/RadioButton"
                 android:layout_width="0dp"
@@ -48,7 +48,7 @@
                 android:text="@string/description"
                 android:textSize="@dimen/_12sdp" />
 
-            <com.yallagoom.font.Roboto_RegularRadio
+            <com.oxygen.yallagoom.font.Roboto_RegularRadio
                 android:id="@+id/reviews_radio"
                 style="@style/RadioButton"
                 android:layout_width="0dp"
@@ -59,7 +59,7 @@
                 android:text="@string/reviews"
                 android:textSize="@dimen/_12sdp" />
 
-            <com.yallagoom.font.Roboto_RegularRadio
+            <com.oxygen.yallagoom.font.Roboto_RegularRadio
                 android:id="@+id/map_radio"
                 style="@style/RadioButton"
                 android:layout_width="0dp"
@@ -69,7 +69,7 @@
                 android:maxLines="1"
                 android:text="@string/map"
                 android:textSize="@dimen/_12sdp" />
-        </com.yallagoom.widget.segmented.SegmentedGroup>
+        </com.oxygen.yallagoom.widget.segmented.SegmentedGroup>
 
         <LinearLayout
             android:id="@+id/description_layout"
@@ -88,7 +88,7 @@
                 android:paddingStart="@dimen/_15sdp"
                 android:paddingTop="@dimen/_5sdp">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -104,7 +104,7 @@
                 android:layout_marginRight="@dimen/_15sdp"
                 android:orientation="vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/description_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
                 android:paddingRight="@dimen/_5sdp"
                 android:paddingTop="@dimen/_7sdp">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -157,7 +157,7 @@
                 android:paddingStart="@dimen/_15sdp"
                 android:paddingTop="@dimen/_5sdp">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -219,7 +219,7 @@
                     android:paddingRight="@dimen/_5sdp"
                     android:paddingTop="@dimen/_7sdp">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -251,7 +251,7 @@
                 android:paddingStart="@dimen/_15sdp"
                 android:paddingTop="@dimen/_5sdp">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -286,7 +286,7 @@
                     android:paddingRight="@dimen/_5sdp"
                     android:paddingTop="@dimen/_7sdp">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"

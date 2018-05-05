@@ -39,7 +39,7 @@
                         android:layout_marginStart="@dimen/_8sdp"
                         android:src="@drawable/ic_management" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -56,7 +56,7 @@
                         android:textSize="@dimen/_11sdp"
                         android:textStyle="normal" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/show_me"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                         android:layout_marginStart="@dimen/_8sdp"
                         android:src="@drawable/ic_responses" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -174,7 +174,7 @@
                         android:layout_marginStart="@dimen/_8sdp"
                         android:src="@drawable/ic_upcoming" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -191,7 +191,7 @@
                         android:textSize="@dimen/_11sdp"
                         android:textStyle="normal" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/show_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

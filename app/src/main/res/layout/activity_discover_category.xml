@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white_color"
     android:orientation="vertical"
-    tools:context="com.yallagoom.activity.DiscoverCategoryActivity">
+    tools:context="com.oxygen.yallagoom.activity.DiscoverCategoryActivity">
 
     <include layout="@layout/header" />
     <android.support.v7.widget.RecyclerView

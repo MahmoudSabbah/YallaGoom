@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yallagoom">
+    package="com.oxygen.yallagoom">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -84,9 +84,10 @@
         <activity
             android:name=".activity.InviteToEventActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.SearchSportsActivity" />
+        <activity android:name=".activity.SearchSportsActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.MyEventListClickActivity"
+            android:name="activity.MyEventListClickActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ShowAllMyEventActivity"

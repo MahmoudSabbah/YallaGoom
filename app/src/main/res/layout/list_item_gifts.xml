@@ -61,7 +61,7 @@
                         app:backgroundTint="@color/color_df488a"
                         app:fabSize="mini" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
 
                 </LinearLayout>
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/add_to_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                 android:layout_toStartOf="@+id/right_lay"
                 android:orientation="vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/gift_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="normal" />
 
-                <com.yallagoom.font.Roboto_Medium
+                <com.oxygen.yallagoom.font.Roboto_Medium
                     android:id="@+id/gifts_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <com.yallagoom.font.TextAwesomeRegular
+                    <com.oxygen.yallagoom.font.TextAwesomeRegular
                         android:id="@+id/like_false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
                         android:textColor="@color/color_df488a"
                         android:textSize="@dimen/_16sdp" />
 
-                    <com.yallagoom.font.TextAwesome
+                    <com.oxygen.yallagoom.font.TextAwesome
                         android:id="@+id/like_true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

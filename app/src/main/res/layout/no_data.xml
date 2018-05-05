@@ -12,7 +12,7 @@
         android:layout_height="@dimen/_25sdp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/foot_de"/>
-    <com.yallagoom.font.Roboto_Regular
+    <com.oxygen.yallagoom.font.Roboto_Regular
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/_11sdp"

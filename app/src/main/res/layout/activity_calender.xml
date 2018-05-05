@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.yallagoom.activity.CalenderActivity">
+    tools:context="com.oxygen.yallagoom.activity.CalenderActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp">
 
-            <com.yallagoom.font.Roboto_Medium
+            <com.oxygen.yallagoom.font.Roboto_Medium
                 android:id="@+id/ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:paddingRight="@dimen/_10sdp"
                 android:paddingTop="@dimen/_7sdp">
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/filter_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                     android:textColor="@color/color_615e5e"
                     android:textSize="@dimen/_15sdp" />
 
-                <com.yallagoom.font.Roboto_Medium
+                <com.oxygen.yallagoom.font.Roboto_Medium
                     android:id="@+id/search_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                     />
             </RelativeLayout>
 
-            <com.yallagoom.font.Roboto_Medium
+            <com.oxygen.yallagoom.font.Roboto_Medium
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
         android:layout_height=".9dp"
         android:background="@color/color_e2dfdf" />
 
-    <com.yallagoom.font.Roboto_Medium
+    <com.oxygen.yallagoom.font.Roboto_Medium
         android:id="@+id/date_header"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -127,7 +127,7 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:orientation="horizontal">
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/between"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
             android:textColor="@drawable/select_calender"
             android:textSize="@dimen/_13sdp" />
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/after_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
             android:textColor="@drawable/select_calender"
             android:textSize="@dimen/_13sdp" />
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/specific_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
         android:visibility="gone"
         android:orientation="horizontal">
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
             android:textColor="@drawable/select_calender"
             android:textSize="@dimen/_12sdp" />
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/end_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
         android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginRight="@dimen/_15sdp">
 
-        <com.yallagoom.font.TextAwesome
+        <com.oxygen.yallagoom.font.TextAwesome
             android:id="@+id/previous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -211,7 +211,7 @@
 
             android:textSize="@dimen/_19sdp" />
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/date_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
             android:textColor="@color/color_6a6767"
             android:textSize="@dimen/_13sdp" />
 
-        <com.yallagoom.font.TextAwesome
+        <com.oxygen.yallagoom.font.TextAwesome
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -234,7 +234,7 @@
             android:textSize="@dimen/_19sdp" />
     </RelativeLayout>
 
-    <com.yallagoom.widget.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.oxygen.yallagoom.widget.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/compactcalendar_view"
         android:layout_width="fill_parent"
         android:layout_height="250dp"

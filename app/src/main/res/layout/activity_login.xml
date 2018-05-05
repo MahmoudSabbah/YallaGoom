@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_f7f7f7"
-    tools:context="com.yallagoom.activity.LoginActivity">
+    tools:context="com.oxygen.yallagoom.activity.LoginActivity">
 
     <LinearLayout
         android:id="@+id/back_lay"
@@ -19,7 +19,7 @@
         android:orientation="horizontal"
         android:visibility="gone">
 
-        <com.yallagoom.font.TextAwesome
+        <com.oxygen.yallagoom.font.TextAwesome
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -29,7 +29,7 @@
             android:textColor="@color/color_st_1cacad"
             android:textSize="@dimen/_17sdp" />
 
-        <com.yallagoom.font.Roboto_Light
+        <com.oxygen.yallagoom.font.Roboto_Light
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -60,7 +60,7 @@
         app:simultaneousColors="2"
         app:speed="10000" />
 
-    <com.yallagoom.font.Roboto_Regular
+    <com.oxygen.yallagoom.font.Roboto_Regular
         android:id="@+id/name_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
         android:textSize="@dimen/_13sdp"
         android:visibility="gone" />
 
-    <com.yallagoom.font.Roboto_Light_EditText
+    <com.oxygen.yallagoom.font.Roboto_Light_EditText
         android:id="@+id/mobile_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
         android:textColorHint="@color/color_86999999"
         android:textSize="@dimen/_12sdp" />
 
-    <com.yallagoom.font.Roboto_Light_EditText
+    <com.oxygen.yallagoom.font.Roboto_Light_EditText
         android:id="@+id/password_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
         android:paddingRight="@dimen/_5sdp"
         android:paddingTop="@dimen/_8sdp">
 
-        <com.yallagoom.font.Roboto_Bold
+        <com.oxygen.yallagoom.font.Roboto_Bold
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
     </RelativeLayout>
 
 
-    <com.yallagoom.font.Roboto_Regular
+    <com.oxygen.yallagoom.font.Roboto_Regular
         android:id="@+id/sign_up"
         android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"
@@ -164,7 +164,7 @@
         android:text="@string/create_a_new_account"
         android:textColor="@drawable/pressed_defult" />
 
-    <com.yallagoom.font.Roboto_Light
+    <com.oxygen.yallagoom.font.Roboto_Light
         android:id="@+id/skip"
         android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"

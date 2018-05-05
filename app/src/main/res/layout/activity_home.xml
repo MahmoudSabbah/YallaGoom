@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
-            <com.yallagoom.font.TextAwesome
+            <com.oxygen.yallagoom.font.TextAwesome
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -30,15 +30,16 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_19sdp" />
 
-            <com.yallagoom.font.TextAwesome
+            <com.oxygen.yallagoom.font.TextAwesome
+                android:id="@+id/search_home_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:layout_marginRight="@dimen/_15sdp"
+                android:padding="@dimen/_15sdp"
                 android:gravity="center"
+                android:background="?android:attr/selectableItemBackground"
                 android:text="@string/fa_search"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_17sdp" />
@@ -57,7 +58,7 @@
                     android:layout_centerVertical="true"
                     android:src="@drawable/logo" />
 
-                <com.yallagoom.font.Roboto_Medium
+                <com.oxygen.yallagoom.font.Roboto_Medium
                     android:id="@+id/header_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -54,7 +54,7 @@
                     android:layout_toLeftOf="@+id/like"
                     android:layout_toStartOf="@+id/like">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/recom_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                     android:layout_marginRight="@dimen/_14sdp"
                     android:gravity="center">
 
-                    <com.yallagoom.font.TextAwesome
+                    <com.oxygen.yallagoom.font.TextAwesome
                         android:id="@+id/heart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
                         android:textColor="@color/color_df488a"
                         android:textSize="@dimen/_14sdp" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/like_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
 
             </RelativeLayout>
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                 android:textColor="@color/black_40"
                 android:textSize="@dimen/_11sdp" />
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

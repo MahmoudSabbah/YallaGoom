@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white_color"
     android:orientation="vertical">
-    <com.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
+    <com.oxygen.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
         android:id="@+id/player_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,6 +13,6 @@
         android:layout_marginBottom="@dimen/_10sdp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager">
 
-    </com.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView>
+    </com.oxygen.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView>
 
 </LinearLayout>

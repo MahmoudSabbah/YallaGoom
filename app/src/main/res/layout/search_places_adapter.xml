@@ -15,7 +15,7 @@
 
 
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

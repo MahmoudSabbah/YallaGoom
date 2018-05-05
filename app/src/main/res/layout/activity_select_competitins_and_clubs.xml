@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     android:background="@color/white_color"
     android:orientation="vertical"
-    tools:context="com.yallagoom.activity.SelectCompetitinsAndClubsActivity">
+    tools:context="com.oxygen.yallagoom.activity.SelectCompetitinsAndClubsActivity">
 
     <include layout="@layout/header_3" />
 
-    <com.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    <com.oxygen.yallagoom.widget.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
         android:id="@+id/segmented_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         segmentedgroup:sc_unchecked_text_color="@color/color_595757"
         segmentedgroup:sc_unchecked_tint_color="@color/transparent">
 
-        <com.yallagoom.font.Roboto_RegularRadio
+        <com.oxygen.yallagoom.font.Roboto_RegularRadio
             android:id="@+id/competitions"
             style="@style/RadioButton"
             android:layout_width="0dp"
@@ -39,7 +39,7 @@
             android:text="@string/competitions"
             android:textSize="@dimen/_12sdp" />
 
-        <com.yallagoom.font.Roboto_RegularRadio
+        <com.oxygen.yallagoom.font.Roboto_RegularRadio
             android:id="@+id/clubs"
             style="@style/RadioButton"
             android:layout_width="0dp"
@@ -48,8 +48,8 @@
             android:text="@string/clubs"
             android:textSize="@dimen/_12sdp" />
 
-    </com.yallagoom.widget.segmented.SegmentedGroup>
-    <com.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
+    </com.oxygen.yallagoom.widget.segmented.SegmentedGroup>
+    <com.oxygen.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
         android:id="@+id/comp_club_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,7 +57,7 @@
         android:layout_marginBottom="@dimen/_10sdp"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager">
 
-    </com.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView>
+    </com.oxygen.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView>
 
    <!-- <android.support.v7.widget.RecyclerView
         android:id="@+id/comp_club_list"

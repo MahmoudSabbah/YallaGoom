@@ -15,7 +15,7 @@
         android:elevation="@dimen/elevation_header"
         tools:ignore="UnusedAttribute">
 
-        <com.yallagoom.widget.CircularImageView
+        <com.oxygen.yallagoom.widget.CircularImageView
             android:id="@+id/avatar"
             android:layout_width="@dimen/size_avatar_toolbar"
             android:layout_height="@dimen/size_avatar_toolbar"
@@ -34,7 +34,7 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <com.yallagoom.widget.TouchImageView
+    <com.oxygen.yallagoom.widget.TouchImageView
         android:layout_below="@+id/toolbar"
         android:id="@+id/imageView"
         android:layout_width="match_parent"

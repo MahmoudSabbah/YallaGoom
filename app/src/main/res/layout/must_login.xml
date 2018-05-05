@@ -17,7 +17,7 @@
             android:layout_centerHorizontal="true"
             android:src="@drawable/not_login_img" />
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/oops"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:textColor="@color/black_33_255_op"
             android:textSize="17sp" />
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/_radius_199899">
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/login_bt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

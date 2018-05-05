@@ -43,7 +43,7 @@
     </RelativeLayout>
 
 
-    <com.yallagoom.font.Roboto_Regular
+    <com.oxygen.yallagoom.font.Roboto_Regular
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30sdp"

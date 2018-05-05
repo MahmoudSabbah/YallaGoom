@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white_color"
     android:orientation="vertical"
-    tools:context="com.yallagoom.activity.SettingsHomeClickStatusActivity">
+    tools:context="com.oxygen.yallagoom.activity.SettingsHomeClickStatusActivity">
 
     <include layout="@layout/header" />
 
@@ -18,7 +18,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_10sdp">
 
-        <com.yallagoom.widget.CircularImageView
+        <com.oxygen.yallagoom.widget.CircularImageView
             android:id="@+id/user_image"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
@@ -26,7 +26,7 @@
 
     </RelativeLayout>
 
-    <com.yallagoom.font.Roboto_Regular
+    <com.oxygen.yallagoom.font.Roboto_Regular
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:background="@color/color_f6f4f4">
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_8sdp"

@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.yallagoom.widget.CircularImageView
+        <com.oxygen.yallagoom.widget.CircularImageView
             android:id="@+id/image_player"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
@@ -24,7 +24,7 @@
             android:alpha=".7"
             android:background="@drawable/circle_shap_color_gray_dark">
 
-            <com.yallagoom.font.TextAwesome
+            <com.oxygen.yallagoom.font.TextAwesome
                 android:id="@+id/check_invited"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

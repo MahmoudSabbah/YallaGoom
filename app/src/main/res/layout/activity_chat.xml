@@ -22,7 +22,7 @@
         android:background="@color/color_d1f8f8f8"
         android:minHeight="?attr/actionBarSize">
 
-        <com.yallagoom.font.TextAwesome
+        <com.oxygen.yallagoom.font.TextAwesome
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -33,7 +33,7 @@
             android:textColor="@drawable/pressed_189091"
             android:textSize="@dimen/_15sdp" />
 
-        <com.yallagoom.widget.CircularImageView
+        <com.oxygen.yallagoom.widget.CircularImageView
             android:id="@+id/friend_image"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
@@ -44,7 +44,7 @@
             app:civ_border_color="@color/color_199899"
             app:civ_border_width="@dimen/_1sdp" />
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/users_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:textColor="@color/color_199899"
             android:textSize="@dimen/_12sdp" />
 
-        <com.yallagoom.font.TextAwesome
+        <com.oxygen.yallagoom.font.TextAwesome
             android:id="@+id/add_member"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:textSize="@dimen/_18sdp"
             android:visibility="gone">
 
-        </com.yallagoom.font.TextAwesome>
+        </com.oxygen.yallagoom.font.TextAwesome>
     </RelativeLayout>
     </android.support.v7.widget.CardView>
     <RelativeLayout
@@ -137,7 +137,7 @@
                         android:padding="4dp"
                         android:src="@drawable/smiley" />
 
-                    <com.yallagoom.font.TextAwesome
+                    <com.oxygen.yallagoom.font.TextAwesome
                         android:id="@+id/select_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

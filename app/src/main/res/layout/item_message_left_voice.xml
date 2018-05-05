@@ -10,7 +10,7 @@
     android:paddingRight="16dp"
     android:paddingTop="5dp">
 
-    <com.yallagoom.widget.CircularImageView
+    <com.oxygen.yallagoom.widget.CircularImageView
         android:id="@+id/ivUserChat"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -113,7 +113,7 @@
                 android:layout_toEndOf="@+id/play_audio_lay"
                 android:layout_toRightOf="@+id/play_audio_lay">
                 <!-- Current Duration Label -->
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/audio_current_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
                     android:textSize="12sp"
                     android:visibility="visible" />
                 <!-- Total Duration Label -->
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/audio_total_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/_3sdp"
         android:layout_marginBottom="@dimen/_3sdp">
 
-        <com.yallagoom.widget.CircularImageView
+        <com.oxygen.yallagoom.widget.CircularImageView
             android:id="@+id/friend_image"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
@@ -22,7 +22,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/default_image_small" />
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/friend_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:textColor="@color/color_black_80"
             android:textSize="@dimen/_11sdp" />
 
-        <com.yallagoom.widget.SmoothCheckBox.SmoothCheckBox
+        <com.oxygen.yallagoom.widget.SmoothCheckBox.SmoothCheckBox
             android:id="@+id/checkbox"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white_color"
     android:orientation="vertical">
-    <com.yallagoom.font.Roboto_Medium
+    <com.oxygen.yallagoom.font.Roboto_Medium
         android:id="@+id/date_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/england_icon"/>
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/competition_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

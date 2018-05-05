@@ -13,7 +13,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <com.yallagoom.font.TextAwesome
+        <com.oxygen.yallagoom.font.TextAwesome
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -26,7 +26,7 @@
             android:textColor="@color/black_50_op"
             android:textSize="@dimen/_15sdp" />
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -83,7 +83,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:orientation="horizontal">
 
-        <com.yallagoom.font.TextAwesome
+        <com.oxygen.yallagoom.font.TextAwesome
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -96,7 +96,7 @@
             android:textColor="@color/black_50_op"
             android:textSize="@dimen/_15sdp" />
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

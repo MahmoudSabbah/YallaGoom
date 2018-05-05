@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white_color"
-    tools:context="com.yallagoom.activity.AddFriendsBySearchActivity">
+    tools:context="com.oxygen.yallagoom.activity.AddFriendsBySearchActivity">
 
     <include layout="@layout/header_search" />
     <RelativeLayout
@@ -72,7 +72,7 @@
                     android:paddingBottom="@dimen/_7sdp"
                     android:paddingTop="@dimen/_7sdp">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -103,7 +103,7 @@
                         android:paddingBottom="@dimen/_7sdp"
                         android:paddingTop="@dimen/_7sdp">
 
-                        <com.yallagoom.font.Roboto_Regular
+                        <com.oxygen.yallagoom.font.Roboto_Regular
                             android:id="@+id/levels"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                         android:paddingBottom="@dimen/_7sdp"
                         android:paddingTop="@dimen/_7sdp">
 
-                        <com.yallagoom.font.Roboto_Regular
+                        <com.oxygen.yallagoom.font.Roboto_Regular
                             android:id="@+id/gender"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -226,7 +226,7 @@
                     android:paddingBottom="@dimen/_7sdp"
                     android:paddingTop="@dimen/_7sdp">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/category_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -253,7 +253,7 @@
                     android:paddingBottom="@dimen/_7sdp"
                     android:paddingTop="@dimen/_7sdp">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/country_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

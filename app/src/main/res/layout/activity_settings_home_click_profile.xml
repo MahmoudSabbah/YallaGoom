@@ -9,7 +9,7 @@
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     android:fitsSystemWindows="true"
-    tools:context="com.yallagoom.activity.SettingsHomeClickProfileActivity">
+    tools:context="com.oxygen.yallagoom.activity.SettingsHomeClickProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,13 +25,13 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_10sdp">
 
-            <com.yallagoom.widget.CircularImageView
+            <com.oxygen.yallagoom.widget.CircularImageView
                 android:id="@+id/user_image"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/default_image_small" />
 
-            <com.yallagoom.font.Roboto_Medium
+            <com.oxygen.yallagoom.font.Roboto_Medium
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -41,7 +41,7 @@
                 android:textSize="@dimen/_12sdp" />
         </RelativeLayout>
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:background="@color/color_f6f4f4">
 
-            <com.yallagoom.font.Roboto_Medium
+            <com.oxygen.yallagoom.font.Roboto_Medium
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_8sdp"
@@ -95,7 +95,7 @@
                 android:layout_weight="0.32"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -112,7 +112,7 @@
                 android:layout_weight="0.68"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Reqular_EditText
+                <com.oxygen.yallagoom.font.Roboto_Reqular_EditText
                     android:id="@+id/first_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
                 android:layout_weight="0.32"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -170,7 +170,7 @@
                 android:layout_weight="0.68"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Reqular_EditText
+                <com.oxygen.yallagoom.font.Roboto_Reqular_EditText
                     android:id="@+id/last_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
                 android:layout_weight="0.32"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -225,7 +225,7 @@
                 android:layout_weight="0.68"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/date_of_birth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -259,7 +259,7 @@
                 android:layout_weight="0.32"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -277,7 +277,7 @@
                 android:layout_weight="0.68"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/country"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -311,7 +311,7 @@
                 android:layout_weight="0.32"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -328,7 +328,7 @@
                 android:layout_weight="0.68"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Reqular_EditText
+                <com.oxygen.yallagoom.font.Roboto_Reqular_EditText
                     android:id="@+id/mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -364,7 +364,7 @@
                 android:layout_weight="0.32"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -381,7 +381,7 @@
                 android:layout_weight="0.68"
                 android:gravity="center_vertical">
 
-                <com.yallagoom.font.Roboto_Reqular_EditText
+                <com.oxygen.yallagoom.font.Roboto_Reqular_EditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

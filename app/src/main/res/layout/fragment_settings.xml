@@ -37,13 +37,13 @@
                     android:layout_centerVertical="true"
                     android:alpha=".5">
 
-                    <com.yallagoom.widget.CircularImageView
+                    <com.oxygen.yallagoom.widget.CircularImageView
                         android:id="@+id/user_image"
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_60sdp"
                         android:src="@drawable/default_image_small" />
 
-                    <com.yallagoom.font.TextAwesome
+                    <com.oxygen.yallagoom.font.TextAwesome
                         android:id="@+id/camera"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                     android:layout_toStartOf="@+id/arrow"
                     android:gravity="center_vertical">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                         android:textColor="@color/black_90"
                         android:textSize="@dimen/_13sdp" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                         android:textSize="@dimen/_12sdp" />
                 </RelativeLayout>
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                         android:src="@drawable/ic_status_settings" />
                 </RelativeLayout>
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -151,7 +151,7 @@
                     android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_12sdp" />
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -196,7 +196,7 @@
                 </RelativeLayout>
 
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -208,7 +208,7 @@
                     android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_12sdp" />
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -252,7 +252,7 @@
 
                 </RelativeLayout>
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -264,7 +264,7 @@
                     android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_12sdp" />
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -308,7 +308,7 @@
                         android:src="@drawable/ic_notification" />
                 </RelativeLayout>
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -320,7 +320,7 @@
                     android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_12sdp" />
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -370,7 +370,7 @@
 
                 </RelativeLayout>
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -382,7 +382,7 @@
                     android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_12sdp" />
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -426,7 +426,7 @@
                 </RelativeLayout>
 
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -438,7 +438,7 @@
                     android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_12sdp" />
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -482,7 +482,7 @@
                 </RelativeLayout>
 
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -494,7 +494,7 @@
                     android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_12sdp" />
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -538,7 +538,7 @@
                 </RelativeLayout>
 
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -550,7 +550,7 @@
                     android:textColor="@color/color_black_73"
                     android:textSize="@dimen/_12sdp" />
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -594,7 +594,7 @@
 
                 </RelativeLayout>
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/sign_in_out"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

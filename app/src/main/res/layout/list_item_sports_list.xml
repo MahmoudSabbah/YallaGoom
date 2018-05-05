@@ -14,7 +14,7 @@
         android:paddingBottom="@dimen/_7sdp"
         android:paddingTop="@dimen/_7sdp">
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/name_sport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

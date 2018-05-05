@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/parent"
-    tools:context="com.yallagoom.activity.SearchEventResultActivity">
+    tools:context="com.oxygen.yallagoom.activity.SearchEventResultActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp">
 
-            <com.yallagoom.font.TextAwesome
+            <com.oxygen.yallagoom.font.TextAwesome
                 android:id="@+id/ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

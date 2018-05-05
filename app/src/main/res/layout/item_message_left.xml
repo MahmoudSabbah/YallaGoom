@@ -10,7 +10,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
-    <com.yallagoom.widget.CircularImageView
+    <com.oxygen.yallagoom.widget.CircularImageView
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:id="@+id/ivUserChat"

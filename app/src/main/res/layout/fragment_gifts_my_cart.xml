@@ -27,7 +27,7 @@
         android:paddingRight="@dimen/_5sdp"
         android:paddingTop="@dimen/_7sdp">
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"

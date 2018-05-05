@@ -13,7 +13,7 @@
         android:layout_marginBottom="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_5sdp">
 
-        <com.yallagoom.widget.SmoothCheckBox.SmoothCheckBox
+        <com.oxygen.yallagoom.widget.SmoothCheckBox.SmoothCheckBox
             android:id="@+id/checkbox"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
@@ -21,7 +21,7 @@
             android:layout_margin="5dp"
             app:color_checked="@color/color_178d8e" />
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/sport_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:textSize="@dimen/_11sdp" />
     </RelativeLayout>
 
-    <com.yallagoom.font.Roboto_Regular
+    <com.oxygen.yallagoom.font.Roboto_Regular
         android:id="@+id/rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_20sdp">
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             android:textColor="@color/black_65"
             android:textSize="@dimen/_11sdp" />
 
-        <com.yallagoom.widget.RangeSeekBar
+        <com.oxygen.yallagoom.widget.RangeSeekBar
             android:id="@+id/seekbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
             app:rsb_progressHintMode="alwaysHide"
             app:rsb_seekBarMode="single" />
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

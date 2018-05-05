@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/white_color">
-    <com.yallagoom.font.Roboto_Medium
+    <com.oxygen.yallagoom.font.Roboto_Medium
         android:id="@+id/date_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -12,7 +12,7 @@
         android:paddingBottom="@dimen/_10sdp"
         android:paddingTop="@dimen/_10sdp">
 
-        <com.yallagoom.font.Roboto_Medium
+        <com.oxygen.yallagoom.font.Roboto_Medium
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
-        <com.yallagoom.font.TextAwesome
+        <com.oxygen.yallagoom.font.TextAwesome
             android:id="@+id/check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

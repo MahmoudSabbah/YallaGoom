@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/parent"
     android:background="@color/color_f7f7f7"
-    tools:context="com.yallagoom.activity.SignUpActivity">
+    tools:context="com.oxygen.yallagoom.activity.SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:onClick="Back"
             android:orientation="horizontal">
 
-            <com.yallagoom.font.TextAwesome
+            <com.oxygen.yallagoom.font.TextAwesome
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -32,7 +32,7 @@
                 android:textColor="@color/color_st_1cacad"
                 android:textSize="@dimen/_17sdp" />
 
-            <com.yallagoom.font.Roboto_Light
+            <com.oxygen.yallagoom.font.Roboto_Light
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
-                        <com.yallagoom.font.Roboto_Light_EditText
+                        <com.oxygen.yallagoom.font.Roboto_Light_EditText
                             android:id="@+id/first_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                     android:paddingLeft="3dp"
                     android:paddingStart="3dp">
 
-                    <com.yallagoom.font.Roboto_Light_EditText
+                    <com.oxygen.yallagoom.font.Roboto_Light_EditText
                         android:id="@+id/lastname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -173,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <com.yallagoom.font.Roboto_Light_EditText
+            <com.oxygen.yallagoom.font.Roboto_Light_EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -204,7 +204,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <com.yallagoom.font.Roboto_Light_EditText
+            <com.oxygen.yallagoom.font.Roboto_Light_EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -241,7 +241,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1">
 
-                <com.yallagoom.font.Roboto_Light_EditText
+                <com.oxygen.yallagoom.font.Roboto_Light_EditText
                     android:id="@+id/country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -258,7 +258,7 @@
                     android:textSize="@dimen/edit_text_size" />
             </android.support.design.widget.TextInputLayout>
 
-            <com.yallagoom.font.TextAwesome
+            <com.oxygen.yallagoom.font.TextAwesome
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -299,7 +299,7 @@
                     android:layout_centerVertical="true">
 
 
-                    <com.yallagoom.font.Roboto_Light
+                    <com.oxygen.yallagoom.font.Roboto_Light
                         android:id="@+id/code"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -333,7 +333,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <com.yallagoom.font.Roboto_Light_EditText
+                    <com.oxygen.yallagoom.font.Roboto_Light_EditText
                         android:id="@+id/phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -375,7 +375,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <com.yallagoom.font.Roboto_Light_EditText
+                    <com.oxygen.yallagoom.font.Roboto_Light_EditText
                         android:id="@+id/date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -391,7 +391,7 @@
                         android:textSize="@dimen/edit_text_size" />
                 </android.support.design.widget.TextInputLayout>
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:id="@+id/fa_angle_down"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -432,7 +432,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <com.yallagoom.font.Roboto_Light_EditText
+                    <com.oxygen.yallagoom.font.Roboto_Light_EditText
                         android:id="@+id/gender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -450,7 +450,7 @@
                         android:textSize="@dimen/edit_text_size" />
                 </android.support.design.widget.TextInputLayout>
 
-                <com.yallagoom.font.TextAwesome
+                <com.oxygen.yallagoom.font.TextAwesome
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -477,7 +477,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.yallagoom.widget.autofitTextView.AutofitTextView
+            <com.oxygen.yallagoom.widget.autofitTextView.AutofitTextView
                 android:id="@+id/condition1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -491,7 +491,7 @@
                 android:textColor="@color/color_777777"
                 android:textSize="@dimen/edit_text_size" />
 
-            <com.yallagoom.widget.autofitTextView.AutofitTextView
+            <com.oxygen.yallagoom.widget.autofitTextView.AutofitTextView
                 android:id="@+id/condition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -525,7 +525,7 @@
 
         </LinearLayout>
 
-            <com.yallagoom.font.Roboto_Bold
+            <com.oxygen.yallagoom.font.Roboto_Bold
                 android:id="@+id/sign_up_bt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

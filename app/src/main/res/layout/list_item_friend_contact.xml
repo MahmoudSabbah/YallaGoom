@@ -31,7 +31,7 @@
             android:layout_toRightOf="@+id/contact_icon"
             android:layout_toStartOf="@+id/add_friend">
 
-            <com.yallagoom.font.Roboto_Regular
+            <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/contact_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
 
         </RelativeLayout>
 
-        <com.yallagoom.font.Roboto_Regular
+        <com.oxygen.yallagoom.font.Roboto_Regular
             android:id="@+id/add_friend"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"

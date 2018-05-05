@@ -9,7 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
-    <com.yallagoom.widget.CircularImageView
+    <com.oxygen.yallagoom.widget.CircularImageView
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_width="35dp"

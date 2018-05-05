@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white_color"
     android:orientation="vertical"
-    tools:context="com.yallagoom.activity.PlayerDetailsMainActivity">
+    tools:context="com.oxygen.yallagoom.activity.PlayerDetailsMainActivity">
 
     <include layout="@layout/header" />
 
@@ -28,7 +28,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:gravity="center">
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/position_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                     android:textColor="@color/color_7f7d7e"
                     android:textSize="@dimen/_12sdp" />
 
-                <com.yallagoom.font.Roboto_Regular
+                <com.oxygen.yallagoom.font.Roboto_Regular
                     android:id="@+id/position_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                     android:layout_weight=".25"
                     android:orientation="vertical">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/age"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                         android:text="@string/age"
                         android:textColor="@color/color_7f7d7e" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/age_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                     android:layout_weight=".25"
                     android:orientation="vertical">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/country"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                         android:text="@string/country"
                         android:textColor="@color/color_7f7d7e" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/country_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                     android:layout_weight=".25"
                     android:orientation="vertical">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/weight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
                         android:text="@string/weight"
                         android:textColor="@color/color_7f7d7e" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/weight_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                     android:layout_weight=".25"
                     android:orientation="vertical">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/height"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
                         android:text="@string/height"
                         android:textColor="@color/color_7f7d7e" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/height_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -203,7 +203,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <com.yallagoom.font.Roboto_Medium
+            <com.oxygen.yallagoom.font.Roboto_Medium
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -236,7 +236,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -246,7 +246,7 @@
                         android:text="@string/matches_cap"
                         android:textColor="@color/color_7f7d7e" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/matches_cap_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -265,7 +265,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -275,7 +275,7 @@
                         android:text="@string/minutes"
                         android:textColor="@color/color_7f7d7e" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/minutes_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -294,7 +294,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/goal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -305,7 +305,7 @@
                         android:text="@string/goals"
                         android:textColor="@color/color_7f7d7e" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/goal_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -350,7 +350,7 @@
                         android:src="@drawable/yallow_card"
                         android:textColor="@color/color_7f7d7e" />
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/yellow_card_icon_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -379,7 +379,7 @@
                         android:textColor="@color/color_7f7d7e" />
 
 
-                    <com.yallagoom.font.Roboto_Regular
+                    <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/red_card_icon_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
