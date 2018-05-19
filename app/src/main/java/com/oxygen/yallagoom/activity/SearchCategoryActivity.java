@@ -16,6 +16,7 @@ import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.ListAdapterCategory;
 import com.oxygen.yallagoom.api.GetGategorysAsyncTask;
 import com.oxygen.yallagoom.entity.Category;
+import com.oxygen.yallagoom.entity.CategoryDetails;
 import com.oxygen.yallagoom.interfaces.GetCategoryCallback;
 import com.oxygen.yallagoom.utils.ToolUtils;
 
@@ -31,7 +32,7 @@ public class SearchCategoryActivity extends AppCompatActivity {
     private List<String> categorySearches;
     private TextView ok;
     private TextView cancel;
-    private ArrayList<Category.CategoryList> categoryList;
+    private ArrayList<CategoryDetails> categoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class SearchCategoryActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
-                ArrayList<Category.CategoryList> listData = new ArrayList<>();
+                ArrayList<CategoryDetails> listData = new ArrayList<>();
 
                 for (int i = 0; i < categoryList.size(); i++) {
                     if (hexChecker(cs.toString().toUpperCase(), categoryList.get(i).getCategoryName().toUpperCase())) {

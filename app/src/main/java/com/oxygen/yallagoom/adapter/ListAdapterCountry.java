@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.oxygen.yallagoom.R;
-import com.oxygen.yallagoom.entity.Country;
+import com.oxygen.yallagoom.entity.CountryDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,24 +17,24 @@ import java.util.List;
  * Created by Mahmoud Sabbah on 2/7/2018.
  */
 public class ListAdapterCountry extends BaseAdapter {
-    private final ArrayList<Country.Data> arraylist;
-    private final ArrayList<Country.Data> mStringFilterList;
+    private final ArrayList<CountryDetails> arraylist;
+    private final ArrayList<CountryDetails> mStringFilterList;
    // private final int id;
-    List<Country.Data> arrayList;
-    private ArrayList<Country.Data> categorySearchesList;    // Values to be displayed
+    List<CountryDetails> arrayList;
+    private ArrayList<CountryDetails> categorySearchesList;    // Values to be displayed
     LayoutInflater inflater;
-    private List<Country.Data> arrayListNames;
+    private List<CountryDetails> arrayListNames;
 
-    public ListAdapterCountry(Context context, ArrayList<Country.Data> categorySearchesList) {
+    public ListAdapterCountry(Context context, ArrayList<CountryDetails> categorySearchesList) {
         this.categorySearchesList = categorySearchesList;
         mStringFilterList = categorySearchesList;
        // this.id = id;
         inflater = LayoutInflater.from(context);
-        this.arraylist = new ArrayList<Country.Data>();
+        this.arraylist = new ArrayList<CountryDetails>();
         this.arraylist.addAll(categorySearchesList);
     }
 
-    public void updateList(ArrayList<Country.Data> mDisplayedValues) {
+    public void updateList(ArrayList<CountryDetails> mDisplayedValues) {
         this.categorySearchesList = mDisplayedValues;
        /* for (int i = 0; i < mProductArrayList.size(); i++) {
             Log.e("mDisplayedValues", "" + mDisplayedValues.get(i).getName() + " " + mDisplayedValues.get(i).getVis());

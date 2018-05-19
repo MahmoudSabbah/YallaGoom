@@ -1,9 +1,16 @@
 package com.oxygen.yallagoom.activity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -13,6 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.oxygen.yallagoom.interfaces.ClickPopUpCallback;
+import com.oxygen.yallagoom.widget.CameraGalleryChoicePopup;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.api.NewEventAsyncTask;
@@ -20,11 +29,25 @@ import com.oxygen.yallagoom.utils.Constant;
 import com.oxygen.yallagoom.utils.ToolUtils;
 import com.oxygen.yallagoom.widget.compactcalendarview.CompactCalendarView;
 import com.oxygen.yallagoom.widget.segmented.SegmentedGroup;
+import com.yalantis.ucrop.UCrop;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import vn.tungdx.mediapicker.MediaItem;
+import vn.tungdx.mediapicker.MediaOptions;
+import vn.tungdx.mediapicker.activities.MediaPickerActivity;
+
 public class HomeCreateNewEventActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+
+    private static final int REQUEST_IMAGE_CAPTURE = 222;
+    private static final int RESULT_LOAD_IMAGE = 223;
+    private static final int GET_CATEGORY_REQUEST = 204;
+    private static final int GET_LOCATION_REQUEST=205;
 
     private LinearLayout parent;
     private TextView left_text;
@@ -65,6 +88,10 @@ public class HomeCreateNewEventActivity extends AppCompatActivity implements Tim
     private boolean checkLocation = true;
     private EditText organizer_description;
     private EditText organizer_name;
+    private RelativeLayout my_event_image;
+    private CameraGalleryChoicePopup photoPopup;
+    private String TAG="HomeCreateNewEventActivity";
+    private Bitmap selectedImage=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +115,7 @@ public class HomeCreateNewEventActivity extends AppCompatActivity implements Tim
         organizer_name = (EditText) findViewById(R.id.organizer_name);
         compactcalendar_view_start = (CompactCalendarView) findViewById(R.id.compactcalendar_view_start);
         compactcalendar_end = (CompactCalendarView) findViewById(R.id.compactcalendar_end);
+        my_event_image = (RelativeLayout) findViewById(R.id.my_event_image);
         location_name = (RelativeLayout) findViewById(R.id.location_name);
         name_location = (TextView) findViewById(R.id.name_location);
 
@@ -148,7 +176,7 @@ public class HomeCreateNewEventActivity extends AppCompatActivity implements Tim
                 intent.putExtra("lat", lat);
                 intent.putExtra("lng", lng);
                 intent.putExtra("check", checkLocation);
-                startActivityForResult(intent, 202);
+                startActivityForResult(intent, GET_LOCATION_REQUEST);
 
             }
         });
@@ -214,7 +242,7 @@ public class HomeCreateNewEventActivity extends AppCompatActivity implements Tim
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeCreateNewEventActivity.this, SearchCategoryActivity.class);
-                startActivityForResult(intent, 203);
+                startActivityForResult(intent, GET_CATEGORY_REQUEST);
             }
         });
 
@@ -241,7 +269,29 @@ public class HomeCreateNewEventActivity extends AppCompatActivity implements Tim
                 newEvent();
             }
         });
+        my_event_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                photoPopup = new CameraGalleryChoicePopup(HomeCreateNewEventActivity.this, getString(R.string.camera_gallery_choose), new ClickPopUpCallback() {
+                    @Override
+                    public void processFinish(final int check) {
+                        photoPopup.dismiss();
+                        if (check == 0) {
+                            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                            }
+                        } else {
+                            MediaOptions options = MediaOptions.createDefault();
+                            MediaPickerActivity.open(HomeCreateNewEventActivity.this, RESULT_LOAD_IMAGE, options);
 
+                        }
+                    }
+                });
+                photoPopup.showAtLocation(((Activity) HomeCreateNewEventActivity.this).findViewById(R.id.parent),
+                        Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+            }
+        });
 
     }
 
@@ -253,7 +303,7 @@ public class HomeCreateNewEventActivity extends AppCompatActivity implements Tim
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case 202:
+            case GET_LOCATION_REQUEST:
                 if (resultCode == 102) {
                     lat = data.getExtras().getDouble("lat");
                     lng = data.getExtras().getDouble("lng");
@@ -267,11 +317,51 @@ public class HomeCreateNewEventActivity extends AppCompatActivity implements Tim
 
                 }
                 break;
-            case 203:
+            case GET_CATEGORY_REQUEST:
                 if (resultCode == 102) {
                     categoryId = data.getExtras().getInt("cat_id");
                     cat_name.setText(data.getExtras().getString("cat_name"));
 
+                }
+                break;
+            case RESULT_LOAD_IMAGE:
+                if (resultCode == RESULT_OK) {
+                    String destinationFileName = "crop";
+                    ArrayList<MediaItem> mMediaSelectedList = MediaPickerActivity
+                            .getMediaItemSelected(data);
+                    Log.e("mMediaSelectedList",""+mMediaSelectedList.size());
+                    if (mMediaSelectedList != null) {
+                        for (MediaItem mediaItem : mMediaSelectedList) {
+                            UCrop.of(mediaItem.getUriOrigin()
+                                    , Uri.fromFile(new File(getCacheDir(), destinationFileName)))
+                                    .start(HomeCreateNewEventActivity.this);
+                        }
+                    } else {
+                        Log.e(TAG, "Error to get media, NULL");
+                    }
+                }
+                break;
+            case REQUEST_IMAGE_CAPTURE:
+                if (resultCode == RESULT_OK) {
+                    String destinationFileName = "crop";
+                    Bundle extras = data.getExtras();
+                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    UCrop.of(ToolUtils.getImageUri(HomeCreateNewEventActivity.this, imageBitmap)
+                            , Uri.fromFile(new File(getCacheDir(), destinationFileName)))
+                            .start(HomeCreateNewEventActivity.this);
+                }
+                break;
+            case UCrop.REQUEST_CROP:
+                if (resultCode == RESULT_OK) {
+                    final Uri resultUri = UCrop.getOutput(data);
+                    try {
+                        final InputStream imageStream = getContentResolver().openInputStream(resultUri);
+                        selectedImage = BitmapFactory.decodeStream(imageStream);
+
+                        event_image.setImageBitmap(selectedImage);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
         }
@@ -289,19 +379,21 @@ public class HomeCreateNewEventActivity extends AppCompatActivity implements Tim
             startTimeValue = dateFormat.format(Constant.HH_mm_ss, date) + "";
             start_time.setText(dateFormat.format(Constant.hh_mm_aa, date));
         } else {
-
-            String[] st_time = startTimeValue.split(":");
-            String[] en_time = (dateFormat.format(Constant.HH_mm_ss, date) + "").split(":");
-            double finishStartTime = Double.parseDouble(st_time[0]) + (Double.parseDouble(st_time[1]) / 60);
-            double finishEndTime = Double.parseDouble(en_time[0]) + (Double.parseDouble(en_time[1]) / 60);
-            if (startTimeValue != null && finishStartTime <= finishEndTime) {
-                end_time.setText(dateFormat.format(Constant.hh_mm_aa, date));
-                endTimeValue = dateFormat.format(Constant.HH_mm_ss, date) + "";
+            if (startTimeValue.equalsIgnoreCase("")) {
+                ToolUtils.showSnak(HomeCreateNewEventActivity.this, getString(R.string.enter_start_time));
             } else {
-                ToolUtils.showSnak(HomeCreateNewEventActivity.this, getString(R.string.time_check));
+                String[] st_time = startTimeValue.split(":");
+                String[] en_time = (dateFormat.format(Constant.HH_mm_ss, date) + "").split(":");
+                double finishStartTime = Double.parseDouble(st_time[0]) + (Double.parseDouble(st_time[1]) / 60);
+                double finishEndTime = Double.parseDouble(en_time[0]) + (Double.parseDouble(en_time[1]) / 60);
+                if (startTimeValue != null && finishStartTime < finishEndTime) {
+                    end_time.setText(dateFormat.format(Constant.hh_mm_aa, date));
+                    endTimeValue = dateFormat.format(Constant.HH_mm_ss, date) + "";
+                } else {
+                    ToolUtils.showSnak(HomeCreateNewEventActivity.this, getString(R.string.time_check));
 
+                }
             }
-
         }
     }
 
@@ -339,7 +431,7 @@ public class HomeCreateNewEventActivity extends AppCompatActivity implements Tim
                     title.getText().toString(), dateFormat.format(Constant.yyyy_MM_dd, startDate) + ""
                     , dateFormat.format(Constant.yyyy_MM_dd, endDate) + "", startTimeValue,
                     endTimeValue,
-                    null, add_description.getText().toString(), idx, cost_edit.getText().toString(), organizer_name.getText().toString(),
+                    selectedImage, add_description.getText().toString(), idx, cost_edit.getText().toString(), organizer_name.getText().toString(),
                     organizer_description.getText().toString(), pub_pri, "", "", "", ""
                     , "", "", lat, lng, null);
             newEventAsyncTask.execute();

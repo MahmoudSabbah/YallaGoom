@@ -3,17 +3,32 @@
     xmlns:emojicon="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/_6sdp"
     android:layoutDirection="ltr"
     android:paddingEnd="@dimen/_14sdp"
     android:paddingLeft="@dimen/_20sdp"
     android:paddingRight="@dimen/_14sdp"
     android:paddingStart="@dimen/_20sdp"
-    android:paddingTop="@dimen/_6sdp">
+   >
+
+    <com.oxygen.yallagoom.font.Roboto_Regular
+        android:id="@+id/timestamp_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:text="10:22"
+        android:textColor="@color/color_929292"
+        android:textSize="@dimen/_11sdp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timestamp_top"
+        android:layout_marginTop="2dp">
 
         <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ivUserChat"
@@ -24,6 +39,7 @@
             android:layout_alignParentRight="true"
             android:scaleType="centerCrop"
             android:src="@drawable/england_icon"
+            android:visibility="gone"
             app:sriv_border_width="0dip"
             app:sriv_left_bottom_corner_radius="10dip"
             app:sriv_left_top_corner_radius="10dip"
@@ -35,34 +51,30 @@
             android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginLeft="@dimen/_50sdp"
             android:layout_marginRight="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_50sdp"
-            android:layout_toLeftOf="@+id/ivUserChat"
-            android:layout_toStartOf="@+id/ivUserChat"
             android:orientation="vertical">
 
             <ProgressBar
                 android:id="@+id/img_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_centerInParent="true" />
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
 
-            <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/img_chat"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_120sdp"
-
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/default_image_small"
-                app:sriv_border_width="0dip"
-                app:sriv_left_bottom_corner_radius="15dip"
-                app:sriv_left_top_corner_radius="15dip"
-                app:sriv_oval="false"
-                app:sriv_right_bottom_corner_radius="0dip"
-                app:sriv_right_top_corner_radius="15dip" />
+                app:placeholderImage="@drawable/default_image_small"
+                app:roundedCornerRadius="15dip"
+                />
 
             <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/timestamp"
@@ -76,6 +88,7 @@
                 android:layout_marginRight="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:text="10:22"
+                android:visibility="gone"
                 android:textColor="@color/white_color"
                 android:textSize="@dimen/_7sdp" />
         </RelativeLayout>

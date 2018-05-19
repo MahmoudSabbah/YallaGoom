@@ -21,8 +21,8 @@ import com.oxygen.yallagoom.adapter.RecycleFriendsEventByType;
 import com.oxygen.yallagoom.api.event.GetAuthorizeEventsClickAsyncTask;
 import com.oxygen.yallagoom.api.event.GetEventFriendAsyncTask;
 import com.oxygen.yallagoom.app.MainApplication;
-import com.oxygen.yallagoom.entity.Event;
-import com.oxygen.yallagoom.entity.FriendsEvents;
+import com.oxygen.yallagoom.entity.event.Event;
+import com.oxygen.yallagoom.entity.event.FriendsEvents;
 import com.oxygen.yallagoom.interfaces.FriendsEventCallback;
 import com.oxygen.yallagoom.interfaces.MyEventCallback;
 import com.oxygen.yallagoom.utils.Constant;
@@ -50,6 +50,7 @@ public class FriendEventFragment extends Fragment {
     private List<String> months;
     private ScrollView content_lay;
     private View no_access_found;
+    private View no_data_layout;
 
     public FriendEventFragment() {
         // Required empty public constructor
@@ -62,6 +63,7 @@ public class FriendEventFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_friend_event, container, false);
         content_lay = (ScrollView) view.findViewById(R.id.content_lay);
         no_access_found = (View) view.findViewById(R.id.no_access_found);
+        no_data_layout = (View) view.findViewById(R.id.no_data_layout);
 
         list_month = (LinearLayout) view.findViewById(R.id.list_month);
         today_layout = (LinearLayout) view.findViewById(R.id.today_layout);
@@ -75,7 +77,7 @@ public class FriendEventFragment extends Fragment {
         imageLoader = ImageLoader.getInstance();
         if (MainApplication.verification_check) {
             getData();
-        }else {
+        } else {
             no_access_found.setVisibility(View.VISIBLE);
             content_lay.setVisibility(View.GONE);
         }
@@ -92,7 +94,11 @@ public class FriendEventFragment extends Fragment {
                 friendsEventsAllData = friendsEvents;
                 if (friendsEventsAllData.getData().size() > 0) {
                     LastDay = friendsEventsAllData.getData().get(friendsEventsAllData.getData().size() - 1).getStartEventDate();
-                    Log.e("LastDay", "" + LastDay);
+                    no_data_layout.setVisibility(View.GONE);
+                    content_lay.setVisibility(View.VISIBLE);
+                }else {
+                    no_data_layout.setVisibility(View.VISIBLE);
+                    content_lay.setVisibility(View.GONE);
                 }
                 for (int i = 0; i < friendsEvents.getData().size(); i++) {
                     String monthsValue = ToolUtils.getMonth(ToolUtils.converStringToDate(
@@ -119,7 +125,7 @@ public class FriendEventFragment extends Fragment {
                     today_layout.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            GetAuthorizeEventsClickAsyncTask getAuthorizeEventsClickAsyncTask =new GetAuthorizeEventsClickAsyncTask(FriendEventFragment.this.getActivity(), new MyEventCallback() {
+                            GetAuthorizeEventsClickAsyncTask getAuthorizeEventsClickAsyncTask = new GetAuthorizeEventsClickAsyncTask(FriendEventFragment.this.getActivity(), new MyEventCallback() {
                                 @Override
                                 public void processFinish(Event.DataEvent event) {
                                     Intent intent = new Intent(FriendEventFragment.this.getActivity(), UpcomingEventListClickActivity.class);
@@ -127,7 +133,7 @@ public class FriendEventFragment extends Fragment {
                                     startActivity(intent);
                                 }
                             });
-                            getAuthorizeEventsClickAsyncTask.execute(friendsEvents.getData().get(0).getId()+"","event_i_invited_to_it");
+                            getAuthorizeEventsClickAsyncTask.execute(friendsEvents.getData().get(0).getId() + "", "event_i_invited_to_it");
                         }
                     });
 

@@ -165,22 +165,23 @@ public class TicketsDetailsActivity extends AppCompatActivity {
         ticket_title.setText(ticketDetails.getTicket_info().getTitle());
 
         date = (TextView) findViewById(R.id.date);
-        if (ticketDetails.getTicket_info().getDate() != null)
+       /* if (ticketDetails.getTicket_info().getDate() != null)
             date.setText(dateFormat.format("EEEE, MMMM dd, yyyy", ToolUtils.converStringToDate(ticketDetails.getTicket_info().getDate(), Constant.yyyy_MM_dd)));
-
+*/
         time = (TextView) findViewById(R.id.time);
-        if (ticketDetails.getTicket_info().getTime() != null)
-            time.setText(ToolUtils.convert24TimeTo12(ticketDetails.getTicket_info().getTime()));
+     /*   if (ticketDetails.getTicket_info().getTime() != null)
+            time.setText(ToolUtils.convert24TimeTo12(ticketDetails.getTicket_info().getTime()));*/
 
         price = (TextView) findViewById(R.id.price);
-        price.setText(ticketDetails.getTicket_info().getPrice() + " $");
+    //    price.setText(ticketDetails.getTicket_info().getPrice() + " $");
 
         description = (TextView) findViewById(R.id.description);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+        ToolUtils.setHtmlToTextView(description, ticketDetails.getTicket_info().getDescription());
+      /*  if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             description.setText(Html.fromHtml(ticketDetails.getTicket_info().getDescription(), Html.FROM_HTML_MODE_COMPACT));
         } else {
             description.setText(Html.fromHtml(ticketDetails.getTicket_info().getDescription()));
-        }
+        }*/
 
         list_review = (RecyclerView) findViewById(R.id.list_review);
         list_review.setNestedScrollingEnabled(false);

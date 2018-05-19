@@ -20,7 +20,7 @@ import com.oxygen.yallagoom.activity.AddGroupActivity;
 import com.oxygen.yallagoom.adapter.event.group.RecycleViewListGroup;
 import com.oxygen.yallagoom.api.event.GetGroupAsyncTask;
 import com.oxygen.yallagoom.app.MainApplication;
-import com.oxygen.yallagoom.entity.Group;
+import com.oxygen.yallagoom.entity.event.Group;
 import com.oxygen.yallagoom.interfaces.DeleteFragmentCallback;
 import com.oxygen.yallagoom.interfaces.GetGroupCallback;
 import com.oxygen.yallagoom.widget.floatingactionbutton.FloatingActionButton;
@@ -45,6 +45,7 @@ public class GroupFragment extends Fragment implements DeleteFragmentCallback {
     private ArrayList<Group.MyGroup.Data> groupDataGetOthers_group;
     private LinearLayout content_lay;
     private View no_access_found;
+    private View no_data_layout;
 
     public GroupFragment() {
         // Required empty public constructor
@@ -57,6 +58,7 @@ public class GroupFragment extends Fragment implements DeleteFragmentCallback {
         View view = inflater.inflate(R.layout.fragment_group, container, false);
         content_lay = (LinearLayout) view.findViewById(R.id.content_lay);
         no_access_found = (View) view.findViewById(R.id.no_access_found);
+        no_data_layout = (View) view.findViewById(R.id.no_data_layout);
 
         segmented_group = (SegmentedGroup) view.findViewById(R.id.segmented_group);
         my_groups = (RadioButton) view.findViewById(R.id.my_groups);
@@ -84,16 +86,7 @@ public class GroupFragment extends Fragment implements DeleteFragmentCallback {
                 View radioButton = segmented_group.findViewById(radioButtonID);
                 int idx = segmented_group.indexOfChild(radioButton);
                 if (groupDataGetOthers_group != null || groupDataMy_own_group != null) {
-                    if (idx == 0) {
-                        recycleViewListGroup = new RecycleViewListGroup(groupDataMy_own_group, 0, GroupFragment.this);
-                        group_recycler.setAdapter(recycleViewListGroup);
-                        check = 0;
-                    } else {
-                        recycleViewListGroup = new RecycleViewListGroup(groupDataGetOthers_group, 1, GroupFragment.this);
-                        group_recycler.setAdapter(recycleViewListGroup);
-                        check = 1;
-                    }
-
+                    checkSelectGroup(idx);
                 }
             }
         });
@@ -114,15 +107,7 @@ public class GroupFragment extends Fragment implements DeleteFragmentCallback {
             public void processFinish(Group group) {
                 groupDataMy_own_group = group.getMy_own_group().getData();
                 groupDataGetOthers_group = group.getOthers_group().getData();
-                if (i == 0) {
-                    recycleViewListGroup = new RecycleViewListGroup(groupDataMy_own_group, 0, GroupFragment.this);
-                    group_recycler.setAdapter(recycleViewListGroup);
-                    check = 0;
-                } else {
-                    recycleViewListGroup = new RecycleViewListGroup(groupDataGetOthers_group, 1, GroupFragment.this);
-                    group_recycler.setAdapter(recycleViewListGroup);
-                    check = 1;
-                }
+                checkSelectGroup(i);
                 refreshLayout.finishRefresh();
             }
         });
@@ -133,6 +118,13 @@ public class GroupFragment extends Fragment implements DeleteFragmentCallback {
     @Override
     public void processFinish(int position, ArrayList<Group.MyGroup.Data> group, int check) {
         groupDataMy_own_group = group;
+        if (groupDataMy_own_group.size() == 0) {
+            no_data_layout.setVisibility(View.VISIBLE);
+            group_recycler.setVisibility(View.GONE);
+        } else {
+            no_data_layout.setVisibility(View.GONE);
+            group_recycler.setVisibility(View.VISIBLE);
+        }
         recycleViewListGroup = new RecycleViewListGroup(groupDataMy_own_group, check, GroupFragment.this);
         group_recycler.setAdapter(recycleViewListGroup);
     }
@@ -151,6 +143,32 @@ public class GroupFragment extends Fragment implements DeleteFragmentCallback {
                     group_recycler.setAdapter(recycleViewListGroup);*/
                 }
                 break;
+        }
+    }
+
+    private void checkSelectGroup(int idx) {
+        if (idx == 0) {
+            if (groupDataMy_own_group.size() == 0) {
+                no_data_layout.setVisibility(View.VISIBLE);
+                group_recycler.setVisibility(View.GONE);
+            } else {
+                no_data_layout.setVisibility(View.GONE);
+                group_recycler.setVisibility(View.VISIBLE);
+            }
+            recycleViewListGroup = new RecycleViewListGroup(groupDataMy_own_group, 0, GroupFragment.this);
+            group_recycler.setAdapter(recycleViewListGroup);
+            check = 0;
+        } else {
+            if (groupDataGetOthers_group.size() == 0) {
+                no_data_layout.setVisibility(View.VISIBLE);
+                group_recycler.setVisibility(View.GONE);
+            } else {
+                no_data_layout.setVisibility(View.GONE);
+                group_recycler.setVisibility(View.VISIBLE);
+            }
+            recycleViewListGroup = new RecycleViewListGroup(groupDataGetOthers_group, 1, GroupFragment.this);
+            group_recycler.setAdapter(recycleViewListGroup);
+            check = 1;
         }
     }
 }

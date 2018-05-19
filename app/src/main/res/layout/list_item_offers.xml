@@ -10,6 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
         android:paddingBottom="@dimen/_7sdp"
         android:paddingTop="@dimen/_7sdp">
 
@@ -97,7 +98,7 @@
                         android:layout_toEndOf="@+id/heart"
                         android:layout_toRightOf="@+id/heart"
                         android:fontFamily="sans-serif"
-                        android:text="320 Like"
+                        android:text="@string/like"
                         android:textColor="@color/black_40"
                         android:textSize="@dimen/_11sdp"
                         android:textStyle="normal" />
@@ -106,14 +107,14 @@
             </RelativeLayout>
 
             <com.oxygen.yallagoom.font.Roboto_Regular
-                android:id="@+id/time"
+                android:id="@+id/sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/parent_name"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_6sdp"
-                android:text="13:30 PM"
+                android:text=""
                 android:textColor="@color/black_40"
                 android:textSize="@dimen/_11sdp" />
 
@@ -130,6 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$ 15.5.00"
+                    android:visibility="gone"
                     android:layout_centerVertical="true"
                     android:textColor="@color/black_70"
                     android:textSize="@dimen/_11sdp" />
@@ -138,6 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="1.0dp"
                     android:background="@color/black_70"
+                    android:visibility="gone"
                     android:layout_centerVertical="true"
                     android:layout_alignLeft="@+id/cost_befor"
                     android:layout_alignRight="@+id/cost_befor"/>
@@ -154,6 +157,7 @@
                 android:layout_toRightOf="@+id/before"
                 android:layout_toEndOf="@+id/before"
                 android:text="$ 15.5.00"
+                android:visibility="gone"
                 android:textColor="@color/black_70"
                 android:textSize="@dimen/_11sdp" />
         </RelativeLayout>

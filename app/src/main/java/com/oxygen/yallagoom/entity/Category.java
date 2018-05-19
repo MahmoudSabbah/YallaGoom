@@ -7,54 +7,17 @@ import java.util.ArrayList;
  */
 
 public class Category {
-    private ArrayList<CategoryList> data;
+    private ArrayList<CategoryDetails> data;
 
 
-    public ArrayList<CategoryList> getData() {
+    public ArrayList<CategoryDetails> getData() {
         return data;
     }
 
-    public void setData(ArrayList<CategoryList> data) {
+    public void setData(ArrayList<CategoryDetails> data) {
         this.data = data;
     }
 
-    public class CategoryList {
-        private int id;
-        private String CategoryName;
-        private String CategoryDescription;
-        private int vis=0;
-
-        public int getVis() {
-            return vis;
-        }
-
-        public void setVis(int vis) {
-            this.vis = vis;
-        }
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getCategoryName() {
-            return CategoryName;
-        }
-
-        public void setCategoryName(String categoryName) {
-            CategoryName = categoryName;
-        }
-
-        public String getCategoryDescription() {
-            return CategoryDescription;
-        }
-
-        public void setCategoryDescription(String categoryDescription) {
-            CategoryDescription = categoryDescription;
-        }
-    }
 
 
 }

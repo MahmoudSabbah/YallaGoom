@@ -25,7 +25,7 @@ import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.activity.HomeCreateNewEventActivity;
 import com.oxygen.yallagoom.adapter.event.home.RecycleViewHomeList;
 import com.oxygen.yallagoom.api.event.NearByEventAsyncTask;
-import com.oxygen.yallagoom.entity.Event;
+import com.oxygen.yallagoom.entity.event.Event;
 import com.oxygen.yallagoom.interfaces.NearEventCallback;
 import com.oxygen.yallagoom.utils.Constant;
 

@@ -19,7 +19,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.RecycleViewListPlayerInGroup;
 import com.oxygen.yallagoom.api.DeleteGroupAsyncTask;
-import com.oxygen.yallagoom.entity.Group;
+import com.oxygen.yallagoom.entity.event.Group;
 import com.oxygen.yallagoom.interfaces.ClickPopUpCallback;
 import com.oxygen.yallagoom.interfaces.DeleteCallback;
 import com.oxygen.yallagoom.interfaces.DeleteFragmentCallback;

@@ -1,6 +1,6 @@
 package com.oxygen.yallagoom.interfaces;
 
-import com.oxygen.yallagoom.entity.Player;
+import com.oxygen.yallagoom.entity.event.Player;
 
 /**
  * Created by Mahmoud Sabbah on 2/5/2018.

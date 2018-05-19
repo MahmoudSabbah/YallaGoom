@@ -1,6 +1,6 @@
 package com.oxygen.yallagoom.interfaces;
 
-import com.oxygen.yallagoom.entity.Player;
+import com.oxygen.yallagoom.entity.event.Player;
 
 import java.util.ArrayList;
 

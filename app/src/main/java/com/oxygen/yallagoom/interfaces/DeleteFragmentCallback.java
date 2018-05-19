@@ -1,6 +1,6 @@
 package com.oxygen.yallagoom.interfaces;
 
-import com.oxygen.yallagoom.entity.Group;
+import com.oxygen.yallagoom.entity.event.Group;
 
 import java.util.ArrayList;
 

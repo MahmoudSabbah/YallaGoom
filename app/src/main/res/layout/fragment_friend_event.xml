@@ -181,6 +181,10 @@
         android:id="@+id/no_access_found"
         layout="@layout/must_login"
         android:visibility="gone" />
+    <include
+        android:id="@+id/no_data_layout"
+        layout="@layout/no_data"
+        android:visibility="gone" />
 
 </RelativeLayout>
 

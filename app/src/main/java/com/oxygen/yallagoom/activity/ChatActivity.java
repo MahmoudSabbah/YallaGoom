@@ -1,11 +1,17 @@
 package com.oxygen.yallagoom.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Parcelable;
+import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +21,9 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,16 +45,21 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.event.chat.RecycleViewChatAdapter;
+import com.oxygen.yallagoom.api.UpdateUseImagerApiAsyncTask;
 import com.oxygen.yallagoom.entity.Chat.UserConversations;
 import com.oxygen.yallagoom.entity.Chat.UserCredentials;
 import com.oxygen.yallagoom.entity.User;
+import com.oxygen.yallagoom.interfaces.StringResultCallback;
 import com.oxygen.yallagoom.utils.Constant;
 import com.oxygen.yallagoom.utils.FirebaseUtils;
 import com.oxygen.yallagoom.utils.ToolUtils;
 import com.oxygen.yallagoom.widget.CircularImageView;
+import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -54,11 +68,15 @@ import java.util.Map;
 import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
 import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 import id.zelory.compressor.Compressor;
+import vn.tungdx.mediapicker.MediaItem;
+import vn.tungdx.mediapicker.MediaOptions;
+import vn.tungdx.mediapicker.activities.MediaPickerActivity;
 
 public class ChatActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int ADD_MEMBER_CODE = 202;
     private static final int IMAGE_GALLERY_REQUEST = 205;
+    private static final int REQUEST_IMAGE_CAPTURE = 201;
     private View contentRoot;
     private EmojiconEditText edMessage;
     private ImageView btSendMessage;
@@ -71,27 +89,38 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     private User user;
     private RecycleViewChatAdapter recycleViewChatAdapter;
     private LinearLayoutManager linearLayoutManager;
-    private TextView users_name;
-    private CircularImageView friend_image;
+    private TextView title;
+    //  private CircularImageView friend_image;
     private ImageLoader imageLoader;
     private String ownerID;
     private TextView add_member;
-    private TextView select_image;
     private StorageReference storageRef;
     private String TAG = getPackageName();
-    private RecordView recordView;
-    private RecordButton recordButton;
-    private RelativeLayout msg_lay;
+    /* private RecordView recordView;
+     private RecordButton recordButton;*/
+    //   private RelativeLayout msg_lay;
     private MediaRecorder mRecorder = null;
     private static String mFileName = null;
     private KProgressHUD progress;
     private Parcelable recyclerViewState;
+    private RelativeLayout send_mes_lay;
+    private RelativeLayout counter_lay;
+    private Chronometer counter_tv;
+    private TextView fa_camera;
+    private TextView fa_image;
+    private TextView fa_microphone;
+    private TextView fa_close;
+    private TextView fa_ok;
+    private ImageView like_bt;
+    private Animation blink;
+    private MediaPlayer mediaPlayer;
+    private long startTime = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+        setContentView(R.layout.activity_chat2);
         bindViews();
     }
 
@@ -100,7 +129,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         //     ToolUtils.hideStatus(ChatActivity.this);
         ToolUtils.setLightStatusBar(contentRoot, ChatActivity.this);
         createProgress();
-
+        blink = AnimationUtils.loadAnimation(this, R.anim.blink);
         user = new Gson().fromJson(ToolUtils.getSharedPreferences(ChatActivity.this, Constant.userData).getString(Constant.allUserData, null), User.class);
         listOfUser = (ArrayList<UserCredentials>) getIntent().getSerializableExtra("listOfUser");
         conKey = getIntent().getExtras().getString("key");
@@ -109,23 +138,35 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
         userConversationsArrayList = new ArrayList<>();
         edMessage = (EmojiconEditText) findViewById(R.id.editTextMessage);
-        users_name = (TextView) findViewById(R.id.users_name);
+        title = (TextView) findViewById(R.id.title);
         add_member = (TextView) findViewById(R.id.add_member);
-        select_image = (TextView) findViewById(R.id.select_image);
-        select_image.setOnClickListener(this);
-        users_name.setText(getIntent().getExtras().getString("title"));
+        title.setText(getIntent().getExtras().getString("title"));
+        send_mes_lay = (RelativeLayout) findViewById(R.id.send_mes_lay);
+        counter_lay = (RelativeLayout) findViewById(R.id.counter_lay);
+        counter_tv = (Chronometer) findViewById(R.id.counter_tv);
+        fa_camera = (TextView) findViewById(R.id.fa_camera);
+        fa_camera.setOnClickListener(this);
+        fa_image = (TextView) findViewById(R.id.fa_image);
+        fa_image.setOnClickListener(this);
+        fa_microphone = (TextView) findViewById(R.id.fa_microphone);
+        fa_microphone.setOnClickListener(this);
+        fa_close = (TextView) findViewById(R.id.close);
+        fa_close.setOnClickListener(this);
+        fa_ok = (TextView) findViewById(R.id.ok);
+        fa_ok.setOnClickListener(this);
 
-        friend_image = (CircularImageView) findViewById(R.id.friend_image);
+        //  friend_image = (CircularImageView) findViewById(R.id.friend_image);
         if (getIntent().hasExtra("OwnerID")) {
             ownerID = getIntent().getExtras().getString("OwnerID");
-            friend_image.setImageResource(R.drawable.folder_group_icon);
+            //    friend_image.setImageResource(R.drawable.folder_group_icon);
             if (ownerID.equalsIgnoreCase(user.getFirebase_auth_user_id()))
                 add_member.setVisibility(View.VISIBLE);
         } else {
-            ToolUtils.setImage(listOfUser.get(0).getProfilePicLink(), friend_image, imageLoader);
+            //  ToolUtils.setImage(listOfUser.get(0).getProfilePicLink(), friend_image, imageLoader);
         }
-        msg_lay = (RelativeLayout) findViewById(R.id.msg_lay);
-        btSendMessage = (ImageView) findViewById(R.id.buttonMessage);
+        //   msg_lay = (RelativeLayout) findViewById(R.id.msg_lay);
+        btSendMessage = (ImageView) findViewById(R.id.send_bt);
+        like_bt = (ImageView) findViewById(R.id.like_bt);
         btSendMessage.setOnClickListener(this);
         btEmoji = (ImageView) findViewById(R.id.buttonEmoji);
         emojIcon = new EmojIconActions(this, contentRoot, edMessage, btEmoji);
@@ -134,8 +175,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rvListMessage.setLayoutManager(linearLayoutManager);
         recyclerViewState = rvListMessage.getLayoutManager().onSaveInstanceState();
-
         rvListMessage.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+
         recycleViewChatAdapter = new RecycleViewChatAdapter(userConversationsArrayList, user, listOfUser);
         rvListMessage.setAdapter(recycleViewChatAdapter);
         getChatData();
@@ -148,55 +189,15 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(intent, ADD_MEMBER_CODE);
             }
         });
-        recordView = (RecordView) findViewById(R.id.record_view);
-        recordButton = (RecordButton) findViewById(R.id.record_button);
-        //IMPORTANT
-        recordButton.setRecordView(recordView);
-        recordButton.setListenForRecord(true);
-        recordButton.setOnRecordClickListener(new OnRecordClickListener() {
+        edMessage.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View v) {
-                Log.e("RecordButton", "RECORD BUTTON CLICKED");
-                sendMessageFirebase();
+            public void onFocusChange(View v, boolean hasFocus) {
+                fa_camera.setVisibility(View.GONE);
+                fa_image.setVisibility(View.GONE);
+                fa_microphone.setVisibility(View.GONE);
             }
         });
 
-        recordView.setOnRecordListener(new OnRecordListener() {
-            @Override
-            public void onStart() {
-                Log.e("RecordView", "onStart");
-                msg_lay.setVisibility(View.INVISIBLE);
-                startRecording();
-
-            }
-
-            @Override
-            public void onCancel() {
-                Log.e("RecordView", "onCancel");
-                msg_lay.setVisibility(View.VISIBLE);
-                stopRecording(0);
-
-            }
-
-            @Override
-            public void onFinish(long recordTime) {
-                msg_lay.setVisibility(View.VISIBLE);
-                stopRecording(recordTime);
-/*
-                String time = getHumanTimeText(recordTime);
-                Toast.makeText(MainActivity.this, "onFinishRecord - Recorded Time is: " + time, Toast.LENGTH_SHORT).show();
-                */
-                Log.e("RecordView", "onFinish");
-
-            }
-
-            @Override
-            public void onLessThanSecond() {
-                msg_lay.setVisibility(View.VISIBLE);
-                stopRecording(0);
-                Log.e("RecordView", "onLessThanSecond");
-            }
-        });
         edMessage.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -205,14 +206,18 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (edMessage.getText().toString().equalsIgnoreCase("")) {
-                    recordButton.setListenForRecord(true);
-                    recordButton.setImageResource(R.drawable.ic_mic_white);
-
+                if (s.toString().equalsIgnoreCase("")) {
+                    fa_camera.setVisibility(View.VISIBLE);
+                    fa_image.setVisibility(View.VISIBLE);
+                    fa_microphone.setVisibility(View.VISIBLE);
+                    btSendMessage.setVisibility(View.GONE);
+                    like_bt.setVisibility(View.VISIBLE);
                 } else {
-                    recordButton.setListenForRecord(false);
-                    recordButton.setImageResource(R.drawable.ic_send_button);
-
+                    fa_camera.setVisibility(View.GONE);
+                    fa_image.setVisibility(View.GONE);
+                    fa_microphone.setVisibility(View.GONE);
+                    like_bt.setVisibility(View.GONE);
+                    btSendMessage.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -221,16 +226,64 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+        like_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMessageFirebase("\uD83D\uDC4D\uD83C\uDFFB");
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.buttonMessage:
-                sendMessageFirebase();
+            case R.id.send_bt:
+                sendMessageFirebase(edMessage.getText().toString());
                 break;
-            case R.id.select_image:
-                photoGalleryIntent();
+            case R.id.fa_image:
+                // photoGalleryIntent();
+                //  MediaOptions.Builder builder = new MediaOptions.Builder();
+                MediaOptions options = MediaOptions.createDefault();
+                MediaPickerActivity.open(this, IMAGE_GALLERY_REQUEST, options);
+
+                break;
+            case R.id.fa_camera:
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
+                break;
+            case R.id.fa_microphone:
+                mediaPlayer = MediaPlayer.create(ChatActivity.this, R.raw.record_start);
+                if (mediaPlayer != null) {
+                    mediaPlayer.start();
+                }
+                fa_microphone.startAnimation(blink);
+                counter_lay.setVisibility(View.VISIBLE);
+                counter_tv.setBase(SystemClock.elapsedRealtime());
+                counter_tv.start();
+                fa_microphone.setTextColor(ContextCompat.getColor(ChatActivity.this, R.color.red_light));
+                startTime = System.currentTimeMillis();
+                startRecording();
+                break;
+            case R.id.close:
+                if (mediaPlayer != null) {
+                    mediaPlayer.stop();
+                }
+                fa_microphone.clearAnimation();
+                fa_microphone.setTextColor(ContextCompat.getColor(ChatActivity.this, R.color.color_929292));
+                counter_lay.setVisibility(View.GONE);
+                counter_tv.stop();
+                stopRecording(0);
+                break;
+            case R.id.ok:
+                fa_microphone.clearAnimation();
+                fa_microphone.setTextColor(ContextCompat.getColor(ChatActivity.this, R.color.color_929292));
+                counter_lay.setVisibility(View.GONE);
+                counter_tv.stop();
+
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                stopRecording(elapsedTime);
                 break;
         }
     }
@@ -293,14 +346,14 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void sendMessageFirebase() {
+    private void sendMessageFirebase(String text) {
 
         long time = System.currentTimeMillis() / 1000;
         String pushKey = FirebaseUtils.getDatabaseReference().child(Constant.users).child(user.getFirebase_auth_user_id() + "/" + Constant.conversations + "/" + conKey).push().getKey();
 
         Map<String, Object> stringObjectMap = new HashMap<>();
         UserConversations userConversations = new UserConversations();
-        userConversations.setContent(edMessage.getText().toString());
+        userConversations.setContent(text);
         userConversations.setFromID(user.getFirebase_auth_user_id());
         userConversations.setRead(true);
         userConversations.setTimestamp(time);
@@ -333,8 +386,9 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             case IMAGE_GALLERY_REQUEST:
                 if (resultCode == RESULT_OK) {
                     Uri selectedImageUri = data.getData();
-                    if (selectedImageUri != null) {
-                        try {
+                //    if (selectedImageUri != null) {
+                        String destinationFileName = "crop";
+                     /*   try {
                             File actualImage = ToolUtils.from(this, data.getData());
                             //   Bitmap compressedImageBitmap = new Compressor(ChatActivity.this).compressToBitmap(actualImage);
                             long time = System.currentTimeMillis() / 1000;
@@ -345,11 +399,59 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
                         } catch (IOException e) {
                             e.printStackTrace();
+                        }*/
+                        ArrayList<MediaItem> mMediaSelectedList = MediaPickerActivity
+                                .getMediaItemSelected(data);
+                        Log.e("mMediaSelectedList",""+mMediaSelectedList.size());
+                        if (mMediaSelectedList != null) {
+                            for (MediaItem mediaItem : mMediaSelectedList) {
+                                UCrop.of(mediaItem.getUriOrigin()
+                                        , Uri.fromFile(new File(getCacheDir(), destinationFileName)))
+                                        .start(ChatActivity.this);
+
+                            }
+                        } else {
+                            Log.e(TAG, "Error to get media, NULL");
                         }
 
-                    } else {
+                   /* } else {
                         //URI IS NULL
+                    }*/
+                }
+                break;
+            case REQUEST_IMAGE_CAPTURE:
+                if (resultCode == RESULT_OK) {
+                    Uri selectedImageUri = data.getData();
+                    if (selectedImageUri != null) {
+                        UCrop.of(selectedImageUri
+                                , Uri.fromFile(new File(getCacheDir(), "crop")))
+                                .start(ChatActivity.this);
+                      /*  try {
+                            progress.show();
+                        *//*    Bundle extras = data.getExtras();
+                            Bitmap imageBitmap = (Bitmap) extras.get("data");
+                            Uri tempUri = ToolUtils.getImageUri(ChatActivity.this, imageBitmap);*//*
+
+                            // CALL TaHIS METHOD TO GET THE ACTUAL PATH
+                            File finalFile = new File(ToolUtils.getRealPathFromURI(selectedImageUri, ChatActivity.this));
+                            File compressedImageBitmap = new Compressor(ChatActivity.this).compressToFile(finalFile);
+                            long time = System.currentTimeMillis() / 1000;
+
+                            sendFileFirebase(Uri.fromFile(compressedImageBitmap), "photo", "IMAGE", -1, time);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+*/
                     }
+
+                }
+                break;
+            case UCrop.REQUEST_CROP:
+                if (resultCode == RESULT_OK) {
+                    final Uri resultUri = UCrop.getOutput(data);
+                    progress.show();
+                    long time = System.currentTimeMillis() / 1000;
+                    sendFileFirebase(resultUri, "photo", "IMAGE", -1, time);
                 }
                 break;
         }

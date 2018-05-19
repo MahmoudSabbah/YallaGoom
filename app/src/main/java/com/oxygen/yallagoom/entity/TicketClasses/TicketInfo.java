@@ -1,7 +1,10 @@
 package com.oxygen.yallagoom.entity.TicketClasses;
 
+import com.oxygen.yallagoom.entity.CountryDetails;
+
 import java.io.Serializable;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -20,6 +23,7 @@ public class TicketInfo extends RealmObject implements Serializable {
     private double price;
     private double price_after_discount;
     private String title;
+    private String sub_title;
     private String time;
     private String date;
     private String description;
@@ -31,8 +35,33 @@ public class TicketInfo extends RealmObject implements Serializable {
     private String Long_pos;
     private String img_url;
     private String address_id;
-    private Country country;
+    private CountryDetails country;
+    private RealmList<LikesCount> tickets_likes_count;
+    private RealmList<LikesContribution> my_likes_contribution;
 
+    public String getSub_title() {
+        return sub_title;
+    }
+
+    public void setSub_title(String sub_title) {
+        this.sub_title = sub_title;
+    }
+
+    public RealmList<LikesContribution> getMy_likes_contribution() {
+        return my_likes_contribution;
+    }
+
+    public void setMy_likes_contribution(RealmList<LikesContribution> my_likes_contribution) {
+        this.my_likes_contribution = my_likes_contribution;
+    }
+
+    public RealmList<LikesCount> getTickets_likes_count() {
+        return tickets_likes_count;
+    }
+
+    public void setTickets_likes_count(RealmList<LikesCount> tickets_likes_count) {
+        this.tickets_likes_count = tickets_likes_count;
+    }
     public String getFull_description() {
         return full_description;
     }
@@ -201,11 +230,11 @@ public class TicketInfo extends RealmObject implements Serializable {
         this.address_id = address_id;
     }
 
-    public Country getCountry() {
+    public CountryDetails getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(CountryDetails country) {
         this.country = country;
     }
 

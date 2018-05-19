@@ -10,7 +10,8 @@
     <RelativeLayout
         android:id="@+id/top_lay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <RelativeLayout
             android:id="@+id/play_width_lay"
@@ -135,10 +136,9 @@
             android:text="Add Point" />
     </LinearLayout>
 
-    <!--
-        <RelativeLayout
-            android:id="@+id/playground"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
-            android:background="@color/green_light"></RelativeLayout>-->
+    <com.oxygen.yallagoom.widget.recordView.AudioRecordButton
+        android:id="@+id/audio_record_button"
+        android:layout_centerInParent="true"
+        android:layout_width="150dp"
+        android:layout_height="80dp" />
 </LinearLayout>

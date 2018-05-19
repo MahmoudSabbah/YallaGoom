@@ -19,7 +19,7 @@ import com.tumblr.permissme.PermissMe;
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.RecycleViewAddFriendsMobile;
 import com.oxygen.yallagoom.api.SearchFriendsDefaultAsyncTask;
-import com.oxygen.yallagoom.entity.Player;
+import com.oxygen.yallagoom.entity.event.Player;
 import com.oxygen.yallagoom.interfaces.SearchFriendsCallback;
 import com.oxygen.yallagoom.utils.ToolUtils;
 import com.oxygen.yallagoom.widget.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;

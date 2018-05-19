@@ -1,5 +1,6 @@
 package com.oxygen.yallagoom.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +13,10 @@ import android.widget.TextView;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.activity.DiscoverCategoryActivity;
-import com.oxygen.yallagoom.api.DiscoverCategoryAsyncTask;
-import com.oxygen.yallagoom.entity.Discover;
+import com.oxygen.yallagoom.api.ticket.DiscoverCategoryAsyncTask;
+import com.oxygen.yallagoom.entity.CategoryDetails;
+import com.oxygen.yallagoom.entity.CountryDetails;
+import com.oxygen.yallagoom.entity.TicketClasses.Discover;
 import com.oxygen.yallagoom.interfaces.StringResultCallback;
 
 import java.util.ArrayList;
@@ -23,8 +26,8 @@ import java.util.ArrayList;
  */
 public class RecycleViewDiscoverByCategory extends RecyclerView.Adapter<RecycleViewDiscoverByCategory.MyViewHolder> {
 
-    private final ArrayList<Discover.CategoryList> category_list;
-    private final Discover.CountryData countryData;
+    private final ArrayList<CategoryDetails> category_list;
+    private final CountryDetails countryData;
     public Context context;
 
 
@@ -47,7 +50,7 @@ public class RecycleViewDiscoverByCategory extends RecyclerView.Adapter<RecycleV
     }
 
 
-    public RecycleViewDiscoverByCategory(ArrayList<Discover.CategoryList> category_list, Discover.CountryData code_3) {
+    public RecycleViewDiscoverByCategory(ArrayList<CategoryDetails> category_list, CountryDetails code_3) {
         this.category_list = category_list;
         this.countryData = code_3;
 
@@ -67,6 +70,11 @@ public class RecycleViewDiscoverByCategory extends RecyclerView.Adapter<RecycleV
         if (position == category_list.size() - 1) {
             holder._view.setVisibility(View.GONE);
         }
+        if (category_list.get(position).getTickets_list_count().size()>0){
+            holder.number.setText(category_list.get(position).getTickets_list_count().get(0).getTickets_count()+"");
+        }else {
+            holder.number.setText("0");
+        }
         holder.top_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +86,7 @@ public class RecycleViewDiscoverByCategory extends RecyclerView.Adapter<RecycleV
                         intent.putExtra("countryDataEN",""+countryData.getName_en());
                         intent.putExtra("countryDataAR",""+countryData.getName_ar());
                         intent.putExtra("CategoryName",""+category_list.get(position).getCategoryName());
-                        context.startActivity(intent);
+                        ((Activity)context).startActivityForResult(intent,102);
                     }
                 });
                 discoverCategoryAsyncTask.execute(""+category_list.get(position).getId(), countryData.getCode_3());

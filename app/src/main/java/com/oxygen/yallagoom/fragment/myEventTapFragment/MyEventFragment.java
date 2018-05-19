@@ -20,7 +20,7 @@ import com.oxygen.yallagoom.adapter.event.myEvent.RecycleViewMyEventCheckGoing;
 import com.oxygen.yallagoom.adapter.event.myEvent.RecycleViewMyEventComingEvent;
 import com.oxygen.yallagoom.api.event.MyEventsHomeAsyncTask;
 import com.oxygen.yallagoom.app.MainApplication;
-import com.oxygen.yallagoom.entity.Event;
+import com.oxygen.yallagoom.entity.event.Event;
 import com.oxygen.yallagoom.interfaces.MyEventHomeCallback;
 
 
@@ -60,6 +60,7 @@ public class MyEventFragment extends Fragment {
         my_event_list = (RecyclerView) view.findViewById(R.id.my_event_list);
         check_going_list = (RecyclerView) view.findViewById(R.id.check_going_list);
         coming_event_list = (RecyclerView) view.findViewById(R.id.coming_event_list);
+        coming_event_list.setNestedScrollingEnabled(false);
         recycleViewMyEventCheckGoing = new RecycleViewMyEventCheckGoing();
         check_going_list.setAdapter(recycleViewMyEventCheckGoing);
 

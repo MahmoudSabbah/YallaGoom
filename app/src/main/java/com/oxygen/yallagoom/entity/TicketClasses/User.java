@@ -1,5 +1,7 @@
 package com.oxygen.yallagoom.entity.TicketClasses;
 
+import com.oxygen.yallagoom.entity.CountryDetails;
+
 import java.io.Serializable;
 
 import io.realm.RealmObject;
@@ -21,7 +23,7 @@ public class User extends RealmObject implements Serializable {
     private String birth_date;
     private String gender;
     private String img_url;
-    private Country get_country_data;
+    private CountryDetails get_country_data;
 
     public int getId() {
         return id;
@@ -119,11 +121,11 @@ public class User extends RealmObject implements Serializable {
         this.img_url = img_url;
     }
 
-    public Country getGet_country_data() {
+    public CountryDetails getGet_country_data() {
         return get_country_data;
     }
 
-    public void setGet_country_data(Country get_country_data) {
+    public void setGet_country_data(CountryDetails get_country_data) {
         this.get_country_data = get_country_data;
     }
 

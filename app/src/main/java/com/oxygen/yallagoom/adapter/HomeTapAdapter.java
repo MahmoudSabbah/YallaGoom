@@ -9,7 +9,6 @@ import com.oxygen.yallagoom.fragment.EventFragment;
 import com.oxygen.yallagoom.fragment.GiftsFragment;
 import com.oxygen.yallagoom.fragment.ScoresFragment;
 import com.oxygen.yallagoom.fragment.SettingsFragment;
-import com.oxygen.yallagoom.fragment.TextFragment;
 import com.oxygen.yallagoom.fragment.TicketsFragment;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 

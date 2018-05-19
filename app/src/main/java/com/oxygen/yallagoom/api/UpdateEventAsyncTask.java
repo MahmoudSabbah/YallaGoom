@@ -10,7 +10,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.oxygen.yallagoom.R;
-import com.oxygen.yallagoom.entity.Event;
+import com.oxygen.yallagoom.entity.event.Event;
 import com.oxygen.yallagoom.utils.Constant;
 import com.oxygen.yallagoom.utils.ToolUtils;
 

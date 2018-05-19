@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.oxygen.yallagoom.R;
-import com.oxygen.yallagoom.entity.Event;
+import com.oxygen.yallagoom.entity.event.Event;
 
 import java.util.ArrayList;
 

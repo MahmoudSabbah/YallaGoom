@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.support.multidex.MultiDex;
 
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.github.pwittchen.reactivenetwork.library.Connectivity;
 import com.github.pwittchen.reactivenetwork.library.ReactiveNetwork;
 import com.google.firebase.FirebaseApp;
@@ -52,7 +53,7 @@ public class MainApplication extends Application {
         verification_check = sharedPreferences.getBoolean(Constant.verification_check, false);
 
         FirebaseApp.initializeApp(this);
-
+        Fresco.initialize(this);
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
                 .cacheOnDisk(true)

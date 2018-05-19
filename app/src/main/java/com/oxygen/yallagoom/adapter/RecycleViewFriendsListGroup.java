@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.oxygen.yallagoom.R;
-import com.oxygen.yallagoom.entity.Player;
+import com.oxygen.yallagoom.entity.event.Player;
+import com.oxygen.yallagoom.utils.Constant;
+import com.oxygen.yallagoom.utils.ToolUtils;
 import com.oxygen.yallagoom.widget.CircularImageView;
 import com.oxygen.yallagoom.widget.SmoothCheckBox.SmoothCheckBox;
 
@@ -76,14 +78,17 @@ public class RecycleViewFriendsListGroup extends RecyclerView.Adapter<RecycleVie
         holder.checkbox.setOnCheckedChangeListener(new SmoothCheckBox.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     data.get(position).setCheckSelectGroup(1);
-                }else {
+                } else {
                     data.get(position).setCheckSelectGroup(0);
 
                 }
             }
         });
+        if (data.get(position).getImg_url() != null) {
+            ToolUtils.setImage(Constant.imageUrl + data.get(position).getImg_url(), holder.friend_image, imageLoader);
+        }
     }
 
     public int getItemViewType(int position) {

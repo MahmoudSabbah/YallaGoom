@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.oxygen.yallagoom.R;
-import com.oxygen.yallagoom.entity.TicketClasses.ReviewListData;
+import com.oxygen.yallagoom.entity.TicketClasses.ReviewListDetails;
 
 import io.realm.RealmList;
 
@@ -18,7 +18,7 @@ import io.realm.RealmList;
  */
 public class RecycleViewReviewList extends RecyclerView.Adapter<RecycleViewReviewList.MyViewHolder> {
 
-    private final RealmList<ReviewListData> data;
+    private final RealmList<ReviewListDetails> data;
     public Context context;
     public int prePosition = -1;
 
@@ -36,7 +36,7 @@ public class RecycleViewReviewList extends RecyclerView.Adapter<RecycleViewRevie
         }
     }
 
-    public RecycleViewReviewList(RealmList<ReviewListData> data) {
+    public RecycleViewReviewList(RealmList<ReviewListDetails> data) {
         this.data = data;
 
     }

@@ -24,7 +24,7 @@ import com.oxygen.yallagoom.adapter.event.friends.RecycleViewNewFriendsRequest;
 import com.oxygen.yallagoom.api.event.GetMyFriendAsyncTask;
 import com.oxygen.yallagoom.api.event.GetRequestFriendAsyncTask;
 import com.oxygen.yallagoom.app.MainApplication;
-import com.oxygen.yallagoom.entity.MyFriendList;
+import com.oxygen.yallagoom.entity.event.MyFriendList;
 import com.oxygen.yallagoom.entity.MyFriends;
 import com.oxygen.yallagoom.entity.User;
 import com.oxygen.yallagoom.interfaces.GetMyFriendCallback;

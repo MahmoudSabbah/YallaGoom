@@ -12,7 +12,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.oxygen.yallagoom.R;
-import com.oxygen.yallagoom.entity.FriendsEvents;
+import com.oxygen.yallagoom.entity.event.FriendsEvents;
 import com.oxygen.yallagoom.utils.Constant;
 
 import java.util.ArrayList;

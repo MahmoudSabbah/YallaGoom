@@ -5,21 +5,47 @@
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white_color"
+    android:orientation="vertical"
     tools:context="com.oxygen.yallagoom.activity.AddFriendsBySearchActivity">
 
     <include layout="@layout/header_search" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/_5sdp"
         android:paddingRight="@dimen/_5sdp">
+
+        <RelativeLayout
+            android:id="@+id/invite"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/_7sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:background="@drawable/_radius_invite"
+            android:paddingBottom="@dimen/_7sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:paddingTop="@dimen/_7sdp">
+
+            <com.oxygen.yallagoom.font.Roboto_Regular
+                android:id="@+id/invite_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/invite"
+                android:textColor="@drawable/pressed_white"
+                android:textSize="@dimen/_11sdp" />
+        </RelativeLayout>
+
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height=".5dp"
-            android:layout_marginTop="@dimen/_42sdp"
+            android:layout_below="@+id/invite"
             android:background="#33000000" />
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -50,11 +76,81 @@
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-        <HorizontalScrollView
-            android:id="@+id/scrollView"
+        <RelativeLayout
+            android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/color_f6f7f9"
+            android:visibility="gone">
+
+            <com.oxygen.yallagoom.font.TextAwesome
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingLeft="@dimen/_8sdp"
+                android:paddingRight="@dimen/_8sdp"
+                android:text="@string/fa_close"
+                android:textColor="@color/color_445870"
+                android:textSize="@dimen/_15sdp" />
+
+            <RelativeLayout
+                android:id="@+id/search_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/close"
+                android:layout_marginBottom="@dimen/_7sdp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/find_friends_radius_search"
+                android:paddingBottom="@dimen/_7sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_7sdp">
+
+                <com.oxygen.yallagoom.font.TextAwesome
+                    android:id="@+id/search_icon_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:text="@string/fa_search"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/_14sdp" />
+
+                <com.oxygen.yallagoom.font.Roboto_Reqular_EditText
+                    android:id="@+id/search_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/search_icon_"
+                    android:layout_toRightOf="@+id/search_icon_"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:hint="@string/search_small"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/_12sdp" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/filter_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_7sdp"
+            android:layout_toLeftOf="@+id/invite"
+            android:layout_toStartOf="@+id/invite"
             android:overScrollMode="never"
             android:scrollbars="none">
 
@@ -111,6 +207,8 @@
                             android:layout_marginStart="@dimen/_13sdp"
                             android:gravity="center_vertical"
                             android:maxLines="1"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:paddingRight="@dimen/_5sdp"
                             android:text="@string/level"
                             android:textColor="@color/color_8e9093"
                             android:textSize="@dimen/_11sdp" />
@@ -267,15 +365,79 @@
                         android:textSize="@dimen/_11sdp" />
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:id="@+id/age_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/country_lay"
+                    android:layout_toRightOf="@+id/country_lay">
+
+                    <LinearLayout
+                        android:id="@+id/age_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/layout_bg_trasparent"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/_7sdp"
+                        android:paddingTop="@dimen/_7sdp">
+
+                        <com.oxygen.yallagoom.font.Roboto_Regular
+                            android:id="@+id/age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_13sdp"
+                            android:layout_marginStart="@dimen/_13sdp"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text="@string/age"
+                            android:textColor="@color/color_8e9093"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/arrow_bottom3"
+                                android:layout_width="@dimen/_13sdp"
+                                android:layout_height="@dimen/_10sdp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_arrow_bottom" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/list_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/age_parent"
+                        android:layout_alignRight="@+id/age_parent"
+                        android:layout_below="@+id/age_parent"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:background="@drawable/layout_bg_white"
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:visibility="gone"
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+                </RelativeLayout>
+
 
             </RelativeLayout>
 
 
         </HorizontalScrollView>
-        <include layout="@layout/no_data"
+
+        <include
+            layout="@layout/no_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/scrollView"/>
+            android:layout_below="@+id/scrollView" />
 
     </RelativeLayout>
 

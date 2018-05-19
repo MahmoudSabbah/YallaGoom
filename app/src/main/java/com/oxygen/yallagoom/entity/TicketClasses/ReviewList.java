@@ -9,13 +9,13 @@ import io.realm.RealmObject;
  * Created by Mahmoud Sabbah on 2/28/2018.
  */
 public class ReviewList extends RealmObject implements Serializable {
-   private   RealmList<ReviewListData> data;
+   private   RealmList<ReviewListDetails> data;
 
-    public RealmList<ReviewListData> getData() {
+    public RealmList<ReviewListDetails> getData() {
         return data;
     }
 
-    public void setData(RealmList<ReviewListData> data) {
+    public void setData(RealmList<ReviewListDetails> data) {
         this.data = data;
     }
 

@@ -4,16 +4,29 @@
     android:layout_height="wrap_content"
     xmlns:emojicon="http://schemas.android.com/tools"
     android:layoutDirection="ltr"
-    android:layout_marginBottom="@dimen/_6sdp"
     android:paddingLeft="@dimen/_20sdp"
     android:paddingStart="@dimen/_20sdp"
     android:paddingRight="@dimen/_14sdp"
     android:paddingEnd="@dimen/_14sdp"
-    android:paddingTop="@dimen/_6sdp">
-
+  >
+    <com.oxygen.yallagoom.font.Roboto_Regular
+        android:id="@+id/timestamp_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:text="10:22"
+        android:textColor="@color/color_929292"
+        android:textSize="@dimen/_11sdp" />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timestamp_top"
+        android:layout_marginTop="2dp">
 
         <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ivUserChat"
@@ -23,11 +36,11 @@
             android:scaleType="centerCrop"
             android:src="@drawable/england_icon"
             app:sriv_border_width="0dip"
-            app:sriv_left_bottom_corner_radius="10dip"
-            app:sriv_left_top_corner_radius="10dip"
+            app:sriv_left_bottom_corner_radius="15dip"
+            app:sriv_left_top_corner_radius="15dip"
             app:sriv_oval="false"
-            app:sriv_right_bottom_corner_radius="10dip"
-            app:sriv_right_top_corner_radius="10dip" />
+            app:sriv_right_bottom_corner_radius="15dip"
+            app:sriv_right_top_corner_radius="15dip" />
 
         <LinearLayout
             android:id="@+id/message"
@@ -51,9 +64,9 @@
                 android:text="hala"
                 android:paddingLeft="@dimen/_10sdp"
                 android:paddingRight="@dimen/_10sdp"
-                android:textColor="@color/black_90"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
-                emojicon:emojiconSize="28sp"
+                app:emojiconSize="28sp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
             <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/timestamp"
@@ -63,7 +76,8 @@
                 android:text="10:22"
                 android:layout_marginRight="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
-                android:textColor="@color/black_90"
+                android:visibility="gone"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_7sdp" />
         </LinearLayout>
     </RelativeLayout>

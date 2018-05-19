@@ -314,6 +314,10 @@
     <string name="all">All</string>
     <string name="custom">Custom</string>
     <string name="select_age_range">Select Age Range</string>
+    <string name="like">Like</string>
+    <string name="enter_start_time">Please enter start time first</string>
+    <string name="active_now">Active Now</string>
+    <string name="hot_tickets">Hot Tickets</string>
     <!--
         <string name="not_send">Invitation will not be sent to pre-invited people</string>
     -->

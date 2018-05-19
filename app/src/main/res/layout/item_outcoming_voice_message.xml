@@ -1,19 +1,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:emojicon="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:emojicon="http://schemas.android.com/tools"
-    android:layoutDirection="ltr"
-    android:layout_marginBottom="@dimen/_6sdp"
-    android:layout_marginLeft="@dimen/_20sdp"
-    android:layout_marginStart="@dimen/_20sdp"
-    android:layout_marginRight="@dimen/_14sdp"
     android:layout_marginEnd="@dimen/_14sdp"
-    android:layout_marginTop="@dimen/_6sdp">
+    android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_marginRight="@dimen/_14sdp"
+    android:layout_marginStart="@dimen/_20sdp"
+
+    android:layoutDirection="ltr">
+
+    <com.oxygen.yallagoom.font.Roboto_Regular
+        android:id="@+id/timestamp_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:text="10:22"
+        android:textColor="@color/color_929292"
+        android:textSize="@dimen/_11sdp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timestamp_top"
+        android:layout_marginTop="2dp">
 
         <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ivUserChat"
@@ -24,6 +39,7 @@
             android:layout_alignParentRight="true"
             android:scaleType="centerCrop"
             android:src="@drawable/england_icon"
+            android:visibility="gone"
             app:sriv_border_width="0dip"
             app:sriv_left_bottom_corner_radius="10dip"
             app:sriv_left_top_corner_radius="10dip"
@@ -35,21 +51,21 @@
             android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_toLeftOf="@+id/ivUserChat"
-            android:layout_toStartOf="@+id/ivUserChat"
-            android:paddingBottom="@dimen/_7sdp"
-
-            android:paddingTop="@dimen/_7sdp"
+            android:background="@drawable/_radius_outcoming_message"
             android:orientation="vertical"
-            android:background="@drawable/_radius_outcoming_message">
+            android:paddingBottom="@dimen/_7sdp"
+            android:paddingTop="@dimen/_7sdp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <FrameLayout
                     android:id="@+id/play_audio_lay"
                     android:layout_width="wrap_content"
@@ -69,7 +85,7 @@
                         android:paddingRight="6dp"
                         android:paddingTop="6dp"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/ic_pause_white_24dp"
+                        app:srcCompat="@drawable/ic_pause_black_24dp"
                         emojicon:ignore="VectorDrawableCompat" />
 
                     <ImageButton
@@ -84,80 +100,83 @@
                         android:paddingRight="6dp"
                         android:paddingTop="6dp"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/ic_play_arrow_white_24dp"
+                        app:srcCompat="@drawable/ic_play_arrow_black_24dp"
                         emojicon:ignore="VectorDrawableCompat" />
                 </FrameLayout>
+
                 <LinearLayout
                     android:id="@+id/seek_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/play_audio_lay"
-                    android:layout_toEndOf="@+id/play_audio_lay"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
+                    android:layout_toEndOf="@+id/play_audio_lay"
+                    android:layout_toRightOf="@+id/play_audio_lay"
                     android:orientation="vertical">
 
                     <SeekBar
                         android:id="@+id/audio_progress_bar"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
+                        android:layout_height="wrap_content" />
 
                     <!-- Timer Display -->
 
                 </LinearLayout>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/play_audio_lay"
-                    android:layout_toEndOf="@+id/play_audio_lay"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginBottom="@dimen/_5sdp"
                     android:layout_alignLeft="@+id/seek_lay"
                     android:layout_alignRight="@+id/seek_lay"
+                    android:layout_below="@+id/seek_lay"
+                    android:layout_marginBottom="@dimen/_5sdp"
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:layout_marginRight="@dimen/_5sdp"
-                    android:layout_below="@+id/seek_lay">
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/play_audio_lay"
+                    android:layout_toRightOf="@+id/play_audio_lay">
                     <!-- Current Duration Label -->
                     <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/audio_current_duration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="left"
-                        android:textColor="@color/white_color"
-                        android:textSize="12sp"
                         android:text="00:00"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
                         android:visibility="visible" />
                     <!-- Total Duration Label -->
                     <com.oxygen.yallagoom.font.Roboto_Regular
                         android:id="@+id/audio_total_duration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="6dp"
                         android:layout_gravity="right"
-                        android:textColor="@color/white_color"
+                        android:layout_marginRight="6dp"
+                        android:textColor="@color/black"
                         android:textSize="12sp"
                         android:visibility="visible" />
                 </FrameLayout>
             </RelativeLayout>
+
             <com.oxygen.yallagoom.font.Roboto_Regular
                 android:id="@+id/timestamp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:text="10:22"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:textColor="@color/white_color"
+                android:visibility="gone"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_7sdp" />
         </LinearLayout>
     </RelativeLayout>
+
     <TextView
         android:id="@+id/user_url_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
 </RelativeLayout>

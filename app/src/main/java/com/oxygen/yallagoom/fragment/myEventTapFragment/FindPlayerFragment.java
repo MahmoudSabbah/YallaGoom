@@ -22,11 +22,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.gson.Gson;
+import com.kaopiz.kprogresshud.KProgressHUD;
+import com.oxygen.yallagoom.interfaces.StringResultCallback;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.action.RecyclerItemClickListener;
@@ -37,15 +35,12 @@ import com.oxygen.yallagoom.adapter.event.findPlayer.RecycleViewFindPlayer;
 import com.oxygen.yallagoom.adapter.RecycleViewGenderLevelAge;
 import com.oxygen.yallagoom.api.event.SearchPlayerAsyncTask;
 import com.oxygen.yallagoom.app.MainApplication;
-import com.oxygen.yallagoom.entity.Player;
+import com.oxygen.yallagoom.entity.event.Player;
 import com.oxygen.yallagoom.interfaces.AgePopUpCallback;
 import com.oxygen.yallagoom.interfaces.PlayerCallback;
 import com.oxygen.yallagoom.interfaces.PlayerListCallback;
-import com.oxygen.yallagoom.utils.Constant;
 import com.oxygen.yallagoom.utils.ToolUtils;
 import com.oxygen.yallagoom.widget.AgeSelectPopup;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -528,56 +523,28 @@ public class FindPlayerFragment extends Fragment {
     }
 
     private void getDataSearchView(String value) {
-        AndroidNetworking.post(Constant.urlData + Constant.players)
-                .setTag("test")
-                .addBodyParameter("type", "filters")
-                .addBodyParameter("player_name", value)
-                .addHeaders("Authorization", "Bearer " + ToolUtils.getSharedPreferences(getActivity(), Constant.userData).getString(Constant.userToken, null))
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
+        ToolUtils.getDataSearchView(value, FindPlayerFragment.this.getActivity(), new StringResultCallback() {
+            @Override
+            public void processFinish(String result, KProgressHUD progress) {
+                Player playerList = new Gson().fromJson(result, Player.class);
+                if (playerList.getData().size() == 0) {
+                    no_data_layout.setVisibility(View.VISIBLE);
+                } else {
+                    no_data_layout.setVisibility(View.GONE);
 
-                    public String status;
-
+                }
+                recycleViewFindPlayer = new RecycleViewFindPlayer(playerList, new PlayerListCallback() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            int status = response.getInt(Constant.status_callback);
-                            if (status == 0) {
-                                JSONObject errorMsg = response.getJSONObject(Constant.error_callback);
-                            } else {
-                                JSONObject data = response.getJSONObject(Constant.data);
-                                Log.e("Players",""+data);
-                                Player playerList = new Gson().fromJson(data.toString(), Player.class);
-                                if (playerList.getData().size() == 0) {
-                                    no_data_layout.setVisibility(View.VISIBLE);
-                                } else {
-                                    no_data_layout.setVisibility(View.GONE);
-
-                                }
-                                recycleViewFindPlayer = new RecycleViewFindPlayer(playerList, new PlayerListCallback() {
-                                    @Override
-                                    public void processFinish(ArrayList<Player.PlayerList> playerLists) {
-                                        selectPlayerLists = playerLists;
-                                        invite_Lebel.setText(getText(R.string.invite_) + " ( " + playerLists.size() + " )");
-                                    }
-                                });
-                                players_list.setAdapter(recycleViewFindPlayer);
-
-                            }
-                            // Fetching the data from web service in background
-
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError error) {
-                        // handle error
+                    public void processFinish(ArrayList<Player.PlayerList> playerLists) {
+                        selectPlayerLists = playerLists;
+                        invite_Lebel.setText(getText(R.string.invite_) + " ( " + playerLists.size() + " )");
                     }
                 });
+                players_list.setAdapter(recycleViewFindPlayer);
+
+            }
+        });
+
     }
 
 }

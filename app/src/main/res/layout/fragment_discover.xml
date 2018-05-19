@@ -7,357 +7,466 @@
     android:orientation="vertical"
     android:scrollbars="none">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/country_image"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_152sdp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/default_image" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/discover_other_country"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_f9f9f9">
+
+                <!--   <ImageView
+                       android:id="@+id/country_image"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/_152sdp"
+                       android:scaleType="centerCrop"
+                       android:src="@drawable/default_image" />-->
+
+                <RelativeLayout
+                    android:id="@+id/discover_other_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true">
+
+                    <com.oxygen.yallagoom.font.TextAwesome
+                        android:id="@+id/pencil_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_6sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_6sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/fa_pencil"
+
+                        android:textColor="@color/color_848181"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <com.oxygen.yallagoom.font.Roboto_Regular
+                        android:id="@+id/search_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_toEndOf="@+id/pencil_icon"
+                        android:layout_toRightOf="@+id/pencil_icon"
+                        android:text="@string/discover_other_country"
+                        android:textColor="@color/color_787272"
+                        android:textSize="@dimen/_12sdp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:gravity="center">
+
+                    <com.oxygen.yallagoom.font.Roboto_Bold
+                        android:id="@+id/country_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="Palestine"
+                        android:textColor="@color/color_787272"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <com.oxygen.yallagoom.font.Roboto_Regular
+                        android:id="@+id/date_today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/country_name"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal"
+                        android:text="Today , Feb 24      66 F"
+                        android:textColor="@color/white_color"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="normal"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_13sdp"
+                android:paddingStart="@dimen/_13sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:src="@drawable/ic_today" />
+
+                <com.oxygen.yallagoom.font.Roboto_Regular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/image"
+                    android:layout_toRightOf="@+id/image"
+                    android:text="@string/today"
+                    android:textColor="@color/black_50_op"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="normal" />
 
                 <com.oxygen.yallagoom.font.TextAwesome
-                    android:id="@+id/pencil_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="@string/fa_pencil"
-                    android:textColor="@color/white_color"
-                    android:textSize="@dimen/_15sdp" />
+                    android:layout_marginEnd="@dimen/_18sdp"
+                    android:layout_marginRight="@dimen/_18sdp"
+                    android:text="@string/fa_angle_right_left"
+                    android:textColor="@color/color_b5b4b4"
+                    android:textSize="@dimen/_23sdp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:layout_marginLeft="@dimen/_13sdp"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:background="@color/color_33000000"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_13sdp"
+                android:paddingStart="@dimen/_13sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/image_tomorrow"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:src="@drawable/ic_tommorw_" />
 
                 <com.oxygen.yallagoom.font.Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/pencil_icon"
-                    android:layout_toRightOf="@+id/pencil_icon"
-                    android:gravity="center_horizontal"
-                    android:text="@string/discover_other_country"
-                    android:textColor="@color/white_color"
-                    android:textSize="14sp" />
+                    android:layout_toEndOf="@+id/image_tomorrow"
+                    android:layout_toRightOf="@+id/image_tomorrow"
+                    android:text="@string/tomorrow"
+                    android:textColor="@color/black_50_op"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="normal" />
+
+                <com.oxygen.yallagoom.font.TextAwesome
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_18sdp"
+                    android:layout_marginRight="@dimen/_18sdp"
+                    android:text="@string/fa_angle_right_left"
+                    android:textColor="@color/color_b5b4b4"
+                    android:textSize="@dimen/_23sdp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:layout_marginLeft="@dimen/_13sdp"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:background="@color/color_33000000"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_13sdp"
+                android:paddingStart="@dimen/_13sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/image_this_week"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:src="@drawable/ic_week" />
+
+                <com.oxygen.yallagoom.font.Roboto_Regular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/image_this_week"
+                    android:layout_toRightOf="@+id/image_this_week"
+                    android:text="@string/this_week"
+                    android:textColor="@color/black_50_op"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="normal" />
+
+                <com.oxygen.yallagoom.font.TextAwesome
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_18sdp"
+                    android:layout_marginRight="@dimen/_18sdp"
+                    android:text="@string/fa_angle_right_left"
+                    android:textColor="@color/color_b5b4b4"
+                    android:textSize="@dimen/_23sdp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:layout_marginLeft="@dimen/_13sdp"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:background="@color/color_33000000"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_13sdp"
+                android:paddingStart="@dimen/_13sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/image_this_month"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:src="@drawable/ic_month" />
+
+                <com.oxygen.yallagoom.font.Roboto_Regular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/image_this_month"
+                    android:layout_toRightOf="@+id/image_this_month"
+                    android:text="@string/this_month"
+                    android:textColor="@color/black_50_op"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="normal" />
+
+                <com.oxygen.yallagoom.font.TextAwesome
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_18sdp"
+                    android:layout_marginRight="@dimen/_18sdp"
+                    android:text="@string/fa_angle_right_left"
+                    android:textColor="@color/color_b5b4b4"
+                    android:textSize="@dimen/_23sdp" />
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/recommendations_for_you_lay"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center">
-
-                <com.oxygen.yallagoom.font.Roboto_Bold
-                    android:id="@+id/country_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center_horizontal"
-                    android:text="Palestine"
-                    android:textColor="@color/white_color"
-                    android:textSize="@dimen/_19sdp" />
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_13sdp"
+                android:paddingStart="@dimen/_13sdp"
+                android:paddingTop="@dimen/_5sdp">
 
                 <com.oxygen.yallagoom.font.Roboto_Regular
-                    android:id="@+id/date_today"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/country_name"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center_horizontal"
-                    android:text="Today , Feb 24      66 F"
-                    android:textColor="@color/white_color"
-                    android:textSize="@dimen/_13sdp"
-                    android:textStyle="normal" />
+                    android:layout_centerVertical="true"
+                    android:text="@string/hot_tickets"
+                    android:textColor="@color/color_e1000000"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recommendations_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_f9f9f9"
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_13sdp"
+                android:paddingStart="@dimen/_13sdp"
+                android:paddingTop="@dimen/_5sdp">
+
+                <com.oxygen.yallagoom.font.Roboto_Regular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/discover_by_category"
+                    android:textColor="@color/color_e1000000"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/discover_by_category_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"></android.support.v7.widget.RecyclerView>
+
+            <!--   <RelativeLayout
+                   android:id="@+id/special_offers_layout"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:background="@color/color_f9f9f9"
+                   android:paddingBottom="@dimen/_5sdp"
+                   android:paddingLeft="@dimen/_13sdp"
+                   android:paddingStart="@dimen/_13sdp"
+                   android:paddingTop="@dimen/_5sdp">
+
+                   <com.oxygen.yallagoom.font.Roboto_Regular
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_centerVertical="true"
+                       android:text="@string/special_offers"
+                       android:textColor="@color/color_e1000000"
+                       android:textSize="@dimen/_12sdp" />
+               </RelativeLayout>
+
+               <android.support.v7.widget.RecyclerView
+                   android:id="@+id/special_offers_list"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:orientation="vertical"
+                   app:layoutManager="android.support.v7.widget.LinearLayoutManager"></android.support.v7.widget.RecyclerView>
+       -->
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_f6f7f9"
+            android:visibility="gone">
+
+            <com.oxygen.yallagoom.font.TextAwesome
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingLeft="@dimen/_8sdp"
+                android:paddingRight="@dimen/_8sdp"
+                android:text="@string/fa_close"
+                android:textColor="@color/color_445870"
+                android:textSize="@dimen/_15sdp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/close">
+
+                <RelativeLayout
+                    android:id="@+id/search_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/search_bt"
+                    android:layout_toLeftOf="@+id/search_bt"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/_7sdp"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="@drawable/find_friends_radius_search"
+                    android:paddingBottom="@dimen/_7sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_7sdp">
+
+                    <com.oxygen.yallagoom.font.TextAwesome
+                        android:id="@+id/search_icon_"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:text="@string/fa_search"
+                        android:textColor="@color/color_8c8c8c"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <com.oxygen.yallagoom.font.Roboto_Reqular_EditText
+                        android:id="@+id/search_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/search_icon_"
+                        android:layout_toRightOf="@+id/search_icon_"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:hint="@string/search_small"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/color_8c8c8c"
+                        android:textSize="@dimen/_12sdp" />
+
+                </RelativeLayout>
+
+                <com.oxygen.yallagoom.font.Roboto_Regular
+                    android:id="@+id/search_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_2sdp"
+                    android:paddingRight="@dimen/_2sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:text="@string/search_small"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/color_8a8a8f"
+                    android:textSize="@dimen/_12sdp" />
+
             </RelativeLayout>
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:paddingBottom="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_13sdp"
-            android:paddingStart="@dimen/_13sdp"
-            android:paddingTop="@dimen/_10sdp">
-
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_8sdp"
-                android:src="@drawable/ic_today"
-               />
-
-            <com.oxygen.yallagoom.font.Roboto_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/image"
-                android:layout_toRightOf="@+id/image"
-                android:text="@string/today"
-                android:textColor="@color/black_50_op"
-                android:textSize="@dimen/_11sdp"
-                android:textStyle="normal" />
-
-            <com.oxygen.yallagoom.font.TextAwesome
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_18sdp"
-                android:layout_marginRight="@dimen/_18sdp"
-                android:text="@string/fa_angle_right_left"
-                android:textColor="@color/color_b5b4b4"
-                android:textSize="@dimen/_23sdp" />
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height=".5dp"
-            android:layout_marginLeft="@dimen/_13sdp"
-            android:layout_marginStart="@dimen/_13sdp"
-            android:visibility="gone"
-            android:background="@color/color_33000000" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:paddingBottom="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_13sdp"
-            android:paddingStart="@dimen/_13sdp"
-            android:paddingTop="@dimen/_10sdp">
-
-            <ImageView
-                android:id="@+id/image_tomorrow"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_8sdp"
-                android:src="@drawable/ic_tommorw_"
-               />
-
-            <com.oxygen.yallagoom.font.Roboto_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/image_tomorrow"
-                android:layout_toRightOf="@+id/image_tomorrow"
-                android:text="@string/tomorrow"
-                android:textColor="@color/black_50_op"
-                android:textSize="@dimen/_11sdp"
-                android:textStyle="normal" />
-
-            <com.oxygen.yallagoom.font.TextAwesome
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_18sdp"
-                android:layout_marginRight="@dimen/_18sdp"
-                android:text="@string/fa_angle_right_left"
-                android:textColor="@color/color_b5b4b4"
-                android:textSize="@dimen/_23sdp" />
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height=".5dp"
-            android:layout_marginLeft="@dimen/_13sdp"
-            android:layout_marginStart="@dimen/_13sdp"
-            android:visibility="gone"
-            android:background="@color/color_33000000" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_13sdp"
-            android:paddingStart="@dimen/_13sdp"
-            android:visibility="gone"
-            android:paddingTop="@dimen/_10sdp">
-
-            <ImageView
-                android:id="@+id/image_this_week"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_8sdp"
-                android:src="@drawable/ic_week"/>
-
-            <com.oxygen.yallagoom.font.Roboto_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/image_this_week"
-                android:layout_toRightOf="@+id/image_this_week"
-                android:text="@string/this_week"
-                android:textColor="@color/black_50_op"
-                android:textSize="@dimen/_11sdp"
-                android:textStyle="normal" />
-
-            <com.oxygen.yallagoom.font.TextAwesome
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_18sdp"
-                android:layout_marginRight="@dimen/_18sdp"
-                android:text="@string/fa_angle_right_left"
-                android:textColor="@color/color_b5b4b4"
-                android:textSize="@dimen/_23sdp" />
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height=".5dp"
-            android:layout_marginLeft="@dimen/_13sdp"
-            android:layout_marginStart="@dimen/_13sdp"
-            android:visibility="gone"
-            android:background="@color/color_33000000" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_13sdp"
-            android:paddingStart="@dimen/_13sdp"
-            android:visibility="gone"
-            android:paddingTop="@dimen/_10sdp">
-
-            <ImageView
-                android:id="@+id/image_this_month"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_8sdp"
-                android:src="@drawable/ic_month" />
-
-            <com.oxygen.yallagoom.font.Roboto_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/image_this_month"
-                android:layout_toRightOf="@+id/image_this_month"
-                android:text="@string/this_month"
-                android:textColor="@color/black_50_op"
-                android:textSize="@dimen/_11sdp"
-                android:textStyle="normal" />
-
-            <com.oxygen.yallagoom.font.TextAwesome
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_18sdp"
-                android:layout_marginRight="@dimen/_18sdp"
-                android:text="@string/fa_angle_right_left"
-                android:textColor="@color/color_b5b4b4"
-                android:textSize="@dimen/_23sdp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/recommendations_for_you_lay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_f9f9f9"
-            android:paddingBottom="@dimen/_5sdp"
-            android:paddingLeft="@dimen/_13sdp"
-            android:paddingStart="@dimen/_13sdp"
-            android:paddingTop="@dimen/_5sdp">
-
-            <com.oxygen.yallagoom.font.Roboto_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/recommendations_for_you"
-                android:textColor="@color/color_e1000000"
-                android:textSize="@dimen/_12sdp" />
-        </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recommendations_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_f9f9f9"
-            android:paddingBottom="@dimen/_5sdp"
-            android:paddingLeft="@dimen/_13sdp"
-            android:paddingStart="@dimen/_13sdp"
-            android:paddingTop="@dimen/_5sdp">
-
-            <com.oxygen.yallagoom.font.Roboto_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/discover_by_category"
-                android:textColor="@color/color_e1000000"
-                android:textSize="@dimen/_12sdp" />
-        </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/discover_by_category_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"></android.support.v7.widget.RecyclerView>
-
-        <RelativeLayout
-            android:id="@+id/special_offers_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_f9f9f9"
-            android:paddingBottom="@dimen/_5sdp"
-            android:paddingLeft="@dimen/_13sdp"
-            android:paddingStart="@dimen/_13sdp"
-            android:paddingTop="@dimen/_5sdp">
-
-            <com.oxygen.yallagoom.font.Roboto_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/special_offers"
-                android:textColor="@color/color_e1000000"
-                android:textSize="@dimen/_12sdp" />
-        </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/special_offers_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"></android.support.v7.widget.RecyclerView>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </ScrollView>

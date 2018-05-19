@@ -7,7 +7,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.oxygen.yallagoom.R;
-import com.oxygen.yallagoom.entity.Player;
+import com.oxygen.yallagoom.entity.event.Player;
 import com.oxygen.yallagoom.interfaces.SearchFriendsCallback;
 import com.oxygen.yallagoom.utils.Constant;
 import com.oxygen.yallagoom.utils.ToolUtils;

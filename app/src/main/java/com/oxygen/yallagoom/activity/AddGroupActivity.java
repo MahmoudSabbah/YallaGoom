@@ -16,7 +16,7 @@ import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.RecycleViewFriendsListGroup;
 import com.oxygen.yallagoom.api.AddGroupAsyncTask;
 import com.oxygen.yallagoom.api.SearchFriendsAsyncTask;
-import com.oxygen.yallagoom.entity.Player;
+import com.oxygen.yallagoom.entity.event.Player;
 import com.oxygen.yallagoom.interfaces.SearchFriendsCallback;
 import com.oxygen.yallagoom.utils.ToolUtils;
 

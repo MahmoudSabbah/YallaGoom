@@ -15,7 +15,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.RecycleViewOfferFragment;
-import com.oxygen.yallagoom.api.OfferFragmentDataAsyncTask;
+import com.oxygen.yallagoom.api.ticket.OfferFragmentDataAsyncTask;
 import com.oxygen.yallagoom.entity.TicketClasses.TicketFullData;
 import com.oxygen.yallagoom.interfaces.StringResultCallback;
 import com.oxygen.yallagoom.utils.Constant;

@@ -30,7 +30,7 @@ public class RecycleViewWishListFragment extends RecyclerView.Adapter<RecycleVie
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private final TextView recom_title;
         private final TextView like_value;
-        private final TextView time;
+        private final TextView sub_title;
         private final TextView cost_after;
         private final TextView cost_befor;
         private final SelectableRoundedImageView recomm_image;
@@ -43,7 +43,7 @@ public class RecycleViewWishListFragment extends RecyclerView.Adapter<RecycleVie
             context = view.getContext();
             recom_title = (TextView) view.findViewById(R.id.recom_title);
             like_value = (TextView) view.findViewById(R.id.like_value);
-            time = (TextView) view.findViewById(R.id.time);
+            sub_title = (TextView) view.findViewById(R.id.sub_title);
             cost_after = (TextView) view.findViewById(R.id.cost_after);
             cost_befor = (TextView) view.findViewById(R.id.cost_befor);
             view_ = (View) view.findViewById(R.id.view);
@@ -71,15 +71,21 @@ public class RecycleViewWishListFragment extends RecyclerView.Adapter<RecycleVie
     @Override
     public void onBindViewHolder(final RecycleViewWishListFragment.MyViewHolder holder, final int position) {
 
-        if (position == data.size() - 1) {
+        /*if (position == data.size() - 1) {
             holder.view_.setVisibility(View.GONE);
-        }
+        }*/
         if (data.get(position).getImg_url() != null) {
             ToolUtils.setImage(Constant.imageUrl + data.get(position).getImg_url(), holder.recomm_image, imageLoader);
 
         }
         holder.recom_title.setText(data.get(position).getTitle());
-        if (data.get(position).getTime() != null) {
+        holder.sub_title.setText(data.get(position).getSub_title());
+        if (data.get(position).getTickets_likes_count().size()>0){
+            holder.like_value.setText(data.get(position).getTickets_likes_count().get(0).getLikes_count()+" "+context.getString(R.string.like));
+        }else {
+            holder.like_value.setText("0 "+context.getString(R.string.like));
+        }
+   /*     if (data.get(position).getTime() != null) {
             holder.time.setText(ToolUtils.convert24TimeTo12(data.get(position).getTime()));
         }
         if (data.get(position).getPrice_after_discount() == 0) {
@@ -89,7 +95,7 @@ public class RecycleViewWishListFragment extends RecyclerView.Adapter<RecycleVie
             holder.cost_after.setText("$ " + data.get(position).getPrice_after_discount());
         }
         holder.cost_befor.setText("$ " + data.get(position).getPrice() + "");
-
+*/
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

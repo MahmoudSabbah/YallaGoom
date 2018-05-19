@@ -22,7 +22,34 @@ public class User implements Serializable {
     private String img_url;
     private String status;
     private String firebase_auth_user_id;
-    private UserCountry get_country_data;
+    private String facebook;
+    private String twitter;
+    private String device_id;
+    private CountryDetails get_country_data;
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getDevice_id() {
+        return device_id;
+    }
+
+    public void setDevice_id(String device_id) {
+        this.device_id = device_id;
+    }
 
     public String getFirebase_auth_user_id() {
         return firebase_auth_user_id;
@@ -32,11 +59,11 @@ public class User implements Serializable {
         this.firebase_auth_user_id = firebase_auth_user_id;
     }
 
-    public UserCountry getGet_country_data() {
+    public CountryDetails getGet_country_data() {
         return get_country_data;
     }
 
-    public void setGet_country_data(UserCountry get_country_data) {
+    public void setGet_country_data(CountryDetails get_country_data) {
         this.get_country_data = get_country_data;
     }
 

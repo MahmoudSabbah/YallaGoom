@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.oxygen.yallagoom.R;
-import com.oxygen.yallagoom.entity.Event;
+import com.oxygen.yallagoom.entity.event.Event;
 import com.oxygen.yallagoom.interfaces.MyEventCallback;
 import com.oxygen.yallagoom.utils.Constant;
 import com.oxygen.yallagoom.utils.ToolUtils;

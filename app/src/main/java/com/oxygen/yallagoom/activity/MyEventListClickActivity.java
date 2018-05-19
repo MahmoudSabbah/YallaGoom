@@ -19,8 +19,8 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.RecycleViewWhoGoing;
 import com.oxygen.yallagoom.api.DeleteEventAsyncTask;
-import com.oxygen.yallagoom.entity.Event;
-import com.oxygen.yallagoom.entity.InvitationRecord;
+import com.oxygen.yallagoom.entity.event.Event;
+import com.oxygen.yallagoom.entity.event.InvitationRecord;
 import com.oxygen.yallagoom.utils.Constant;
 import com.oxygen.yallagoom.utils.ToolUtils;
 import com.oxygen.yallagoom.widget.CameraGalleryChoicePopup;

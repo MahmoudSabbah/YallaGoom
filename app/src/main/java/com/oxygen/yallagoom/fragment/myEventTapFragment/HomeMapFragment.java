@@ -32,7 +32,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.api.event.NearByEventAsyncTask;
-import com.oxygen.yallagoom.entity.Event;
+import com.oxygen.yallagoom.entity.event.Event;
 import com.oxygen.yallagoom.interfaces.NearEventCallback;
 import com.oxygen.yallagoom.utils.Constant;
 import com.oxygen.yallagoom.utils.MapUtils;

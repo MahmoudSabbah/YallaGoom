@@ -36,7 +36,7 @@ public class Test2 extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item_outcoming_image_message);
+        setContentView(R.layout.tes2t);
    /*     parent = (LinearLayout) findViewById(R.id.parent);
         points = (LinearLayout) findViewById(R.id.points);
         top_lay = (RelativeLayout) findViewById(R.id.top_lay);

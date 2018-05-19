@@ -19,7 +19,7 @@ import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.event.chat.RecycleViewChatChooseFriend;
 import com.oxygen.yallagoom.api.event.GetMyFriendAsyncTask;
 import com.oxygen.yallagoom.entity.Chat.ConversationsGroup;
-import com.oxygen.yallagoom.entity.MyFriendList;
+import com.oxygen.yallagoom.entity.event.MyFriendList;
 import com.oxygen.yallagoom.entity.User;
 import com.oxygen.yallagoom.fragment.myEventTapFragment.ChatFragment;
 import com.oxygen.yallagoom.interfaces.GetMyFriendListCallback;

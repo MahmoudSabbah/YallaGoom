@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.event.home.RecycleViewHomeList;
-import com.oxygen.yallagoom.entity.Event;
+import com.oxygen.yallagoom.entity.event.Event;
 import com.oxygen.yallagoom.utils.ToolUtils;
 
 public class SearchEventResultActivity extends AppCompatActivity {

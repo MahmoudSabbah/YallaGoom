@@ -7,8 +7,10 @@ package com.oxygen.yallagoom.adapter.event.chat;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.joooonho.SelectableRoundedImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.oxygen.yallagoom.R;
@@ -53,12 +56,13 @@ public class RecycleViewChatAdapter extends RecyclerView.Adapter<RecycleViewChat
         private final SelectableRoundedImageView ivUserChat;
         private final TextView txtMessage;
         private final TextView timestamp;
-        private final SelectableRoundedImageView img_chat;
+        private final SimpleDraweeView img_chat;
         private final TextView user_url_image;
         private final ImageButton play_btn_audio;
         private final ImageButton pause_btn_audio;
         private final TextView audio_total_duration;
         private final TextView audio_current_duration;
+        private final TextView timestamp_top;
         private final SeekBar audio_progress_bar;
 
         public MyViewHolder(View view) {
@@ -68,11 +72,12 @@ public class RecycleViewChatAdapter extends RecyclerView.Adapter<RecycleViewChat
             txtMessage = (TextView) view.findViewById(R.id.txtMessage);
             timestamp = (TextView) view.findViewById(R.id.timestamp);
             user_url_image = (TextView) view.findViewById(R.id.user_url_image);
-            img_chat = (SelectableRoundedImageView) view.findViewById(R.id.img_chat);
+            img_chat = (SimpleDraweeView) view.findViewById(R.id.img_chat);
             play_btn_audio = (ImageButton) view.findViewById(R.id.play_btn_audio);
             pause_btn_audio = (ImageButton) view.findViewById(R.id.pause_btn_audio);
             audio_total_duration = (TextView) view.findViewById(R.id.audio_total_duration);
             audio_current_duration = (TextView) view.findViewById(R.id.audio_current_duration);
+            timestamp_top = (TextView) view.findViewById(R.id.timestamp_top);
             audio_progress_bar = (SeekBar) view.findViewById(R.id.audio_progress_bar);
 
 
@@ -115,8 +120,17 @@ public class RecycleViewChatAdapter extends RecyclerView.Adapter<RecycleViewChat
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.timestamp.setText(ToolUtils.getDate(userConversations.get(position).getTimestamp() * 1000));
+        holder.timestamp_top.setText(ToolUtils.getDate(userConversations.get(position).getTimestamp() * 1000));
+        if (position > 0 && ToolUtils.getDate(userConversations.get(position).getTimestamp() * 1000).equalsIgnoreCase(
+                ToolUtils.getDate(userConversations.get(position - 1).getTimestamp() * 1000)
+        )) {
+            holder.timestamp_top.setVisibility(View.GONE);
+        } else {
+            holder.timestamp_top.setVisibility(View.VISIBLE);
+        }
         if (userConversations.get(position).getType().equalsIgnoreCase("text")) {
             holder.txtMessage.setText(userConversations.get(position).getContent());
+
         }
         for (int i = 0; i < listOfUser.size(); i++) {
             if (listOfUser.get(i).getKey().equalsIgnoreCase(userConversations.get(position).getFromID())) {
@@ -136,7 +150,8 @@ public class RecycleViewChatAdapter extends RecyclerView.Adapter<RecycleViewChat
             }
         }
         if (userConversations.get(position).getType().equalsIgnoreCase("photo")) {
-            ToolUtils.setImage(userConversations.get(position).getContent(), holder.img_chat, imageLoader);
+            // ToolUtils.setImage(userConversations.get(position).getContent(), holder.img_chat, imageLoader);
+            holder.img_chat.setImageURI(userConversations.get(position).getContent());
             holder.img_chat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.entity.Category;
+import com.oxygen.yallagoom.entity.CategoryDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,21 +18,21 @@ import java.util.List;
  * Created by Mahmoud Sabbah on 2/7/2018.
  */
 public class ListAdapterCategory extends BaseAdapter  {
-    private final ArrayList<Category.CategoryList> arraylist;
-    private final ArrayList<Category.CategoryList> mStringFilterList;
-    List<Category.CategoryList> arrayList;
-    private ArrayList<Category.CategoryList> categorySearchesList;    // Values to be displayed
+    private final ArrayList<CategoryDetails> arraylist;
+    private final ArrayList<CategoryDetails> mStringFilterList;
+    List<CategoryDetails> arrayList;
+    private ArrayList<CategoryDetails> categorySearchesList;    // Values to be displayed
     LayoutInflater inflater;
-    private List<Category.CategoryList> arrayListNames;
-    public ListAdapterCategory(Context context, ArrayList<Category.CategoryList> categorySearchesList) {
+    private List<CategoryDetails> arrayListNames;
+    public ListAdapterCategory(Context context, ArrayList<CategoryDetails> categorySearchesList) {
         this.categorySearchesList = categorySearchesList;
         mStringFilterList = categorySearchesList;
         inflater = LayoutInflater.from(context);
-        this.arraylist = new ArrayList<Category.CategoryList>();
+        this.arraylist = new ArrayList<CategoryDetails>();
         this.arraylist.addAll(categorySearchesList);
     }
 
-    public void updateList(ArrayList<Category.CategoryList> mDisplayedValues) {
+    public void updateList(ArrayList<CategoryDetails> mDisplayedValues) {
         this.categorySearchesList = mDisplayedValues;
        /* for (int i = 0; i < mProductArrayList.size(); i++) {
             Log.e("mDisplayedValues", "" + mDisplayedValues.get(i).getName() + " " + mDisplayedValues.get(i).getVis());

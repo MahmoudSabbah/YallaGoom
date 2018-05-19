@@ -1,6 +1,6 @@
 package com.oxygen.yallagoom.interfaces;
 
-import com.oxygen.yallagoom.entity.MyFriendList;
+import com.oxygen.yallagoom.entity.event.MyFriendList;
 
 /**
  * Created by Mahmoud Sabbah on 2/5/2018.

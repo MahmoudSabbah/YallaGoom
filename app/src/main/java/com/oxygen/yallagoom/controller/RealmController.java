@@ -9,10 +9,10 @@ import android.app.Activity;
 import android.app.Application;
 import android.support.v4.app.Fragment;
 
-import com.oxygen.yallagoom.entity.TicketClasses.Country;
 import com.oxygen.yallagoom.entity.TicketClasses.ReviewList;
 import com.oxygen.yallagoom.entity.TicketClasses.TicketInfo;
 import com.oxygen.yallagoom.entity.TicketClasses.TicketDetails;
+import com.oxygen.yallagoom.entity.CountryDetails;
 import com.oxygen.yallagoom.entity.gift.FavoriteGifts;
 import com.oxygen.yallagoom.entity.gift.Gift;
 import com.oxygen.yallagoom.entity.gift.MyCart;
@@ -96,9 +96,9 @@ public class RealmController {
         return realm.where(ReviewList.class).findAll();
     }
 
-    public RealmResults<Country> getCountry() {
+    public RealmResults<CountryDetails> getCountry() {
 
-        return realm.where(Country.class).findAll();
+        return realm.where(CountryDetails.class).findAll();
     }
 
     public RealmResults<TicketInfo> getTicketInfo() {

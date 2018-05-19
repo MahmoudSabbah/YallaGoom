@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.RecycleViewShawMoreFriendEvent;
-import com.oxygen.yallagoom.entity.FriendsEvents;
+import com.oxygen.yallagoom.entity.event.FriendsEvents;
 import com.oxygen.yallagoom.utils.ToolUtils;
 
 import java.util.ArrayList;

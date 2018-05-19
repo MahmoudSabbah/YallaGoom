@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.ListAdapterCountry;
-import com.oxygen.yallagoom.entity.Country;
+import com.oxygen.yallagoom.entity.CountryDetails;
 import com.oxygen.yallagoom.utils.Constant;
 import com.oxygen.yallagoom.utils.ToolUtils;
 
@@ -32,7 +32,7 @@ public class SearchCountryActivity extends AppCompatActivity {
     private EditText search_edit;
     private ListView country_list;
     private LinearLayout parent;
-    private ArrayList<Country.Data> countryListData;
+    private ArrayList<CountryDetails> countryListData;
     private ListAdapterCountry listAdapterCountry;
 
     @Override
@@ -54,7 +54,7 @@ public class SearchCountryActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
-                ArrayList<Country.Data> listData = new ArrayList<>();
+                ArrayList<CountryDetails> listData = new ArrayList<>();
 
                 for (int i = 0; i < countryListData.size(); i++) {
                     if (hexChecker(cs.toString().toUpperCase(), countryListData.get(i).getName_en().toUpperCase())) {

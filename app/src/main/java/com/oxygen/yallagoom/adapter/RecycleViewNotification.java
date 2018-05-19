@@ -16,7 +16,7 @@ import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.activity.HomeActivity;
 import com.oxygen.yallagoom.activity.UpcomingEventListClickActivity;
 import com.oxygen.yallagoom.api.event.GetAuthorizeEventsClickAsyncTask;
-import com.oxygen.yallagoom.entity.Event;
+import com.oxygen.yallagoom.entity.event.Event;
 import com.oxygen.yallagoom.entity.Notification;
 import com.oxygen.yallagoom.interfaces.MyEventCallback;
 import com.oxygen.yallagoom.utils.Constant;

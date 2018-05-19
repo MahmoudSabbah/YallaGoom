@@ -1,6 +1,6 @@
 package com.oxygen.yallagoom.interfaces;
 
-import com.oxygen.yallagoom.entity.Discover;
+import com.oxygen.yallagoom.entity.TicketClasses.Discover;
 
 /**
  * Created by Mahmoud Sabbah on 2/5/2018.

@@ -4,16 +4,30 @@
     android:layout_height="wrap_content"
     xmlns:emojicon="http://schemas.android.com/tools"
     android:layoutDirection="ltr"
-    android:layout_marginBottom="@dimen/_6sdp"
     android:paddingLeft="@dimen/_20sdp"
     android:paddingStart="@dimen/_20sdp"
     android:paddingRight="@dimen/_14sdp"
     android:paddingEnd="@dimen/_14sdp"
-    android:paddingTop="@dimen/_6sdp">
-
+   >
+    <com.oxygen.yallagoom.font.Roboto_Regular
+        android:id="@+id/timestamp_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:text="10:22"
+        android:textColor="@color/color_929292"
+        android:textSize="@dimen/_11sdp" />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timestamp_top"
+        android:layout_marginTop="2dp"
+        >
 
         <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ivUserChat"
@@ -66,7 +80,7 @@
                         android:paddingRight="6dp"
                         android:paddingTop="6dp"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/ic_pause_gray_24dp"
+                        app:srcCompat="@drawable/ic_pause_black_24dp"
                         emojicon:ignore="VectorDrawableCompat" />
 
                     <ImageButton
@@ -81,7 +95,7 @@
                         android:paddingRight="6dp"
                         android:paddingTop="6dp"
                         android:visibility="visible"
-                        app:srcCompat="@drawable/ic_play_arrow_gray_24dp"
+                        app:srcCompat="@drawable/ic_play_arrow_black_24dp"
                         emojicon:ignore="VectorDrawableCompat" />
                 </FrameLayout>
 
@@ -125,7 +139,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="left"
                         android:text="00:00"
-                        android:textColor="@color/black_90"
+                        android:textColor="@color/black"
                         android:textSize="12sp"
                         android:visibility="visible" />
                     <!-- Total Duration Label -->
@@ -135,7 +149,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="6dp"
                         android:layout_gravity="right"
-                        android:textColor="@color/black_90"
+                        android:textColor="@color/black"
                         android:textSize="12sp"
                         android:visibility="visible" />
                 </FrameLayout>
@@ -148,7 +162,8 @@
                 android:text="10:22"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
-                android:textColor="@color/black_90"
+                android:textColor="@color/black"
+                android:visibility="gone"
                 android:textSize="@dimen/_7sdp" />
         </LinearLayout>
     </RelativeLayout>

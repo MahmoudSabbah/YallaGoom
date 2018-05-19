@@ -34,8 +34,8 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.RecycleViewTicketsDetailsMoreReviews;
 import com.oxygen.yallagoom.api.BookingsettingsAsyncTask;
-import com.oxygen.yallagoom.api.TicketDetailsAsyncTask;
-import com.oxygen.yallagoom.entity.TicketClasses.ReviewListData;
+import com.oxygen.yallagoom.api.ticket.TicketDetailsAsyncTask;
+import com.oxygen.yallagoom.entity.TicketClasses.ReviewListDetails;
 import com.oxygen.yallagoom.entity.TicketClasses.TicketDetails;
 import com.oxygen.yallagoom.interfaces.TicketDeatailsCallback;
 import com.oxygen.yallagoom.utils.ToolUtils;
@@ -71,7 +71,7 @@ public class TicketsdetailsMoreActivity extends AppCompatActivity implements OnM
     private SmartRefreshLayout refreshLayout_;
     private int page = 2;
     private RelativeLayout right_text;
-    private RealmList<ReviewListData> list_reviewsData;
+    private RealmList<ReviewListDetails> list_reviewsData;
     private RelativeLayout booking_button;
 
     @Override

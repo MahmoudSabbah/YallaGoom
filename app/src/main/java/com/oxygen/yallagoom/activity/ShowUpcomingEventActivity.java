@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.oxygen.yallagoom.R;
 import com.oxygen.yallagoom.adapter.RecycleViewShawAllMyEvent;
-import com.oxygen.yallagoom.entity.Event;
+import com.oxygen.yallagoom.entity.event.Event;
 import com.oxygen.yallagoom.utils.ToolUtils;
 
 public class ShowUpcomingEventActivity extends AppCompatActivity {
